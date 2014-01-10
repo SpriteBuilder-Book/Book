@@ -1,10 +1,17 @@
 
 %%This is a very basic article template.
 %%There is just one section and two subsections.
+%\documentclass[11pt,a5paper,footinclude=true,headinclude=true]{scrbook} %
+%\documentclass[10pt,a4paper,footinclude=true,headinclude=true]{scrreprt} 
 \documentclass{scrreprt}
+% KOMA-Script book
 \usepackage{graphicx} 
 \usepackage{float}
-
+%\usepackage[T1]{fontenc}                
+%\usepackage{lipsum}
+%\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters
+%\usepackage[osf]{libertine}
+\usepackage{amsthm}
 
 \linespread{1.4}
 %%Variables
@@ -30,7 +37,7 @@
 \definecolor{title}{rgb}{0.4,0.4,0.4}
 
 \lstset{
-    language=Lisp,
+    language=[Objective]C,
     basicstyle=\ttfamily\small\color{code},
     showspaces=false,
     showstringspaces=false,
@@ -43,6 +50,9 @@
     stringstyle=\itshape,
     morekeywords={dosync,if},
     deletekeywords={alter}
+    frame=single,
+    breaklines=true,
+    postbreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\color{red}\hookrightarrow\space}}
 }
 
 \makeatletter
@@ -586,6 +596,7 @@ If you want to implement this tutorial you need to start with this template
 project: .We will add multiple scenes for different applications of particle
 effects.
 \end{lamp}
+\label{subsec:particle effects in code}
 \subsection{Configuring particle effects in code}
 Most of the time you will want to design particle effects in a graphical editor
 that provides a nice visual preview. However, to understand the basics we will
@@ -644,14 +655,172 @@ We're going to build following scene:
  \begin{itemize}
    \item two spaceships, one at the left and one at the right edge of the sceen
    \item when a ship get's touched it fires a bullet at the other ship
-   \item when a bullet hits another ship we play a small explosion particle
+   \item when a bullet hits another ship we play an explosion particle
    effect
-   \item when a ship got hit three times it explodes, we play a large explosion
-   particle effect and remove the ship from the scene 
 \end{itemize}
+To create this setting, we will add a lot of code that is not directly related
+to particle effects. Let's discuss that code briefly, all of this takes place
+in \textit{ParticleGamePlayScene.m}:
+\begin{lstlisting}[title=examples/ParticleGamePlayScene.m]
+
+@implementation ParticleGamePlayScene {
+    CCSprite *leftShip;
+    CCSprite *rightShip;
+    NSMutableArray *bullets;
+}
+
+- (id)init
+{
+    self = [super init];
+    
+    if (self) {
+        leftShip = [CCSprite spriteWithImageNamed:@"ship.png"];
+        leftShip.anchorPoint = ccp(0.f, 0.5f);
+        leftShip.position = ccp(0, self.contentSize.height/2);
+        [self addChild:leftShip];
+        
+        rightShip = [CCSprite spriteWithImageNamed:@"ship.png"];
+        rightShip.anchorPoint = ccp(1.f, 0.5f);
+        rightShip.position = ccp(self.contentSize.width-rightShip.contentSize.width, self.contentSize.height/2);
+        rightShip.scaleX = -1.f;
+        [self addChild:rightShip];
+        
+        // enable touches
+        self.userInteractionEnabled = TRUE;
+        
+        // initialize bullets array
+        bullets = [NSMutableArray array];
+    }
+    
+    return self;
+}
+\end{lstlisting}
+Nothing special going on here. We create two ships, enable user interaction and
+initialize a array that we use to keep track of active bullets.
+Next, we need to react to touch input:
+\begin{lstlisting}[title=examples/ParticleGamePlayScene.m]
+#pragma mark - Touch Handling
+
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    CGPoint touchPoint = [touch locationInNode:self];
+    
+    if (CGRectContainsPoint(leftShip.boundingBox, touchPoint)) {
+        // fire left ship
+        [self fireLeftShip];
+    } else if (CGRectContainsPoint(rightShip.boundingBox, touchPoint)) {
+        // fire right ship
+        [self fireRightShip];
+    }
+}
+\end{lstlisting}
+We detect if the left or right ship has been touched by checking if the bounding
+box of either ship contains the touch position. Depending on which ship has been
+touched, we call the according firing method. 
+\begin{lamp}[frametitle={Code Structure}] 
+Please note that we usually would create a subclass for the ship to handle
+touches and/or bullet spawning, however for the sake of readibility we reduce the amount of involved classes and handle everything in the scene itself.
+\end{lamp}
+Here are the firing methods: (TODO: improve positioning when anchor points are
+fixed) 
+\begin{lstlisting}[title=examples/ParticleGamePlayScene.m]
+#pragma mark - Firing methods
+- (void)fireLeftShip
+{
+    CCSprite *bullet = [CCSprite spriteWithImageNamed:@"bullet.png"];
+    bullet.anchorPoint = ccp(0.f, 0.5f);
+    bullet.position = ccp(leftShip.boundingBox.origin.x+leftShip.boundingBox.size.width, leftShip.position.y);
+    [self addChild:bullet];
+    CCAction *bulletMove = [CCActionMoveTo actionWithDuration:3.f position:ccp(self.contentSize.width, rightShip.position.y)];
+    [bullet runAction:bulletMove];
+    [bullets addObject:bullet];
+}
+
+- (void)fireRightShip
+{
+    CCSprite *bullet = [CCSprite spriteWithImageNamed:@"bullet.png"];
+    bullet.scaleX = -1.f;
+    bullet.anchorPoint = ccp(0.f, 0.5f);
+    bullet.position = ccp(rightShip.boundingBox.origin.x-bullet.contentSize.width, rightShip.position.y);
+    [self addChild:bullet];
+    CCAction *bulletMove = [CCActionMoveTo actionWithDuration:3.f position:leftShip.position];
+    [bullet runAction:bulletMove];
+    [bullets addObject:bullet];
+}
+\end{lstlisting}
+The firing methods take care of spawning bullets. We use \textit{CCActionMoveTo}
+to shoot in the direction of the other ship. 
+
+Now that we went through all of the
+boilerplate code we get to the actually interesting part of our small project:
+detecting collisions and launching particle effects.
+For collision detection we use the \textit{update} method, that is called every
+frame. To create particle effects, we use the code from \ref{subsec:particle
+effects in code} with some slight modifications:
+\begin{lstlisting}
+#pragma mark - Collision Detection
+
+- (void)update:(CCTime)delta
+{
+    for (int i = 0; i < [bullets count]; i++) {
+        CCSprite *bullet = bullets[i];
+        
+        if (CGRectIntersectsRect(bullet.boundingBox, leftShip.boundingBox) || CGRectIntersectsRect(bullet.boundingBox, rightShip.boundingBox)) {
+            [bullet removeFromParent];
+            [bullets removeObjectAtIndex:i];
+            CCParticleSystem *particleEffect = [self createParticleEffectInCode];
+            particleEffect.position = bullet.position;
+            [self addChild:particleEffect];
+        }
+    }
+}
  
+#pragma mark - Provide particle effect
+
+- (CCParticleSystem *)createParticleEffectInCode
+{
+    CCParticleSystem *emitter = [[CCParticleSystem alloc] initWithTotalParticles:50];
+	emitter.texture = [[CCTextureCache sharedTextureCache] addImage: @"stars-grayscale.png"];
+	// duration
+	emitter.duration = 1.f;
+    emitter.autoRemoveOnFinish = TRUE;
+	[...]
+	return emitter;
+}
+\end{lstlisting}
+
+\textbf{Collision
+Detection.} We iterate through the bullets, determining if any bullet intersects one of the two ships. Once we detect a collision we remove the
+bullet from the scene and the bullets array and create a particle effect at the
+same position.
+
+\textbf{Creating particle effect.} I stripped away all the visual setup. The two
+important changes to the particle effect, compared to \ref{subsec:particle
+effects in code} are setting the duration to 1 second and setting
+\textit{autoRemoveOnFinish} to \textit{TRUE}. This means that once the particle
+effect is added in the collision detection method it will run for 1 second and
+after it completed it will automatically be removed from the scene. This means
+we don't have to take care of cleaning the partical effect up manually.
+
+If you run the project now, you should be able to fire bullets and you should
+see particle effects every time a bullet collides with a ship.
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=275pt]{images/particles/particle_explosion.png}   
+\end{figure}
+
+Congratulations! Now you know how to dynamically add particle effects to your
+game in \cocos{}. In the next chapter you will learn how to accomplish this in
+Spritebuilder.
+
 \section{Particle Effects in Spritebuilder}
-Now you will learn how to add particle effects to your Spritebuilder project.
+Now that we understand the nature of particle effects and have implemented some
+basics, we will take a look at how Spritebuilder works with particle effects.
+Similar to the preceeding chapter we will start by statically adding particle
+effects to a scene first and then will integrate particle effects
+to our gameplay.
+\textbf{First, let's get started by creating a new Spritebuilder project}.
 First open the menu to add a new interface file: 
 \begin{figure}[H]
 		\centering

@@ -576,7 +576,17 @@ way the particle can be blended into any color.
 with a wide variety of parameters: CCParticleSystem.
 In the appendix you can find a table that provides a brief description of each
 parameter. However, it is a lot easiert to start with some examples.
-\section{Particle Effects in Code}
+\section{Particle Effects in \cocos{}}
+In case you are not using Spritebuilder for your game - or you just want to
+learn the underlying basics of creating custom particle effects, this chapter is
+for you. We will learn how to build particle effects in code and using the
+popular tool \textit{Particle Designer}.
+\begin{lamp}[frametitle={Following this tutorial}]
+If you want to implement this tutorial you need to start with this template
+project: .We will add multiple scenes for different applications of particle
+effects.
+\end{lamp}
+\subsection{Configuring particle effects in code}
 Most of the time you will want to design particle effects in a graphical editor
 that provides a nice visual preview. However, to understand the basics we will
 create our first particle effect in code (this is a great example from 
@@ -585,12 +595,16 @@ the cocos2d tests).
 The steps we need to perform:
  \begin{itemize}
    \item create a CCParticleSystem
-   \item set a texture
+   \item select a particle texture
    \item set a duration for the particle effect
    \item set a huge amount of further, optional parameters
  \end{itemize}
-I won't provide the complete setup code (it's mostly boring but can be found
-here: https://gist.github.com/Ben-G/8340545).
+\textbf{Now let's create our first particle effect.}
+Add a new scene called \textit{ParticleEffectScene} to your project. You also
+need to add a button to the \textit{MenuScene} that will allow us to present the
+new \textit{ParticleEffectScene}.  
+I won't provide the complete setup code (it's mostly
+boring but can be found here: https://gist.github.com/Ben-G/8340545), here's the relevant part:
 \begin{lstlisting}
     CCParticleSystem *emitter = [[CCParticleSystem alloc] initWithTotalParticles:50];
     emitter.texture = [[CCTextureCache sharedTextureCache] addImage: @"stars-grayscale.png"];
@@ -606,8 +620,9 @@ Once the particle system is created, you add it as a child to your scene:
 There is no need to start the particle effect - it is started as soon as it is
 added to a parent node. However you can manually start/stop a particle system by
 using the \textit{stopSystem} and \textit{resetSystem} methods. Now you can run
-the app and you should see a particle effect in the middle of the scene. (TODO: add screenshot)
-\section{Particle Effects with plists}
+the app and you should see a particle effect in the middle of the scene. (TODO:
+add screenshot) 
+\subsection{Particle Effects with plists}
 If you took some time to read through the setup in code
 (https://gist.github.com/Ben-G/8340545) you have seen that it is very cumbersome
 and nothing that actually should be part of your code base. Luckily \cocos{}
@@ -618,7 +633,23 @@ editors to create your particle effects. Spritebuilder comes with an integrated
 particle effect designer. If you don't use Spritebuilder, \textit{Particle
 Designer}(http://particledesigner.71squared.com/) is the preferred tool to
 create particle effects.
-\section{Particle Effects in Particle Designer}
+\subsection{Particle Effects in Particle Designer}
+\subsection{Including particle effects in your gameplay}
+Now that we have the basics it's the right time to add some best practices.
+Mostly you will want to add particle effects dynamically to your scenes, based
+on certain events such as collisions or explosions. Let's create a new class
+called \textit{ParticleGamePlayScene}, again, don't forget to add a entry to
+\textit{MenuScene} that let's you push the new scene.
+We're going to build following scene:
+ \begin{itemize}
+   \item two spaceships, one at the left and one at the right edge of the sceen
+   \item when a ship get's touched it fires a bullet at the other ship
+   \item when a bullet hits another ship we play a small explosion particle
+   effect
+   \item when a ship got hit three times it explodes, we play a large explosion
+   particle effect and remove the ship from the scene 
+\end{itemize}
+ 
 \section{Particle Effects in Spritebuilder}
 Now you will learn how to add particle effects to your Spritebuilder project.
 First open the menu to add a new interface file: 
@@ -671,7 +702,12 @@ Files, here you can choose the CCB of your particle effect.
 		\caption{In the dropdown of the inspector you can choose which CCB File
 		should be included}
 \end{figure}
-\section{Including particle effects in your gameplay}
+Now you have succesfully added the particle effect to your scene. However,
+mostly when you work with particle effects you will not add to your scene
+statically, as we just did, but you will want them to appear when certain events
+occur, e.g. collisions or explosions. In the next chapter we will take a look
+how we can add particle effects to our gameplay - dynamically. 
+\subsection{Including particle effects in your gameplay}
  
 
 \chapter{Audio}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  9 JAN 2014 16:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  10 JAN 2014 11:16
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -969,7 +969,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 ] [4]
 Chapter 2.
-<images/scenegraph.png, id=260, 700.6175pt x 517.935pt>
+<images/scenegraph.png, id=270, 700.6175pt x 517.935pt>
 File: images/scenegraph.png Graphic file (type png)
 
 <use images/scenegraph.png>
@@ -1020,7 +1020,7 @@ LaTeX Font Info:    Try loading font information for U+ark on input line 254.
 File: uark.fd 2001/04/27 v1.00 Font definitions for the ark10 font
 ) [8]
 Chapter 3.
-<images/spritebuilder_publishing.png, id=296, 1806.38866pt x 787.743pt>
+<images/spritebuilder_publishing.png, id=306, 1806.38866pt x 787.743pt>
 File: images/spritebuilder_publishing.png Graphic file (type png)
 
 <use images/spritebuilder_publishing.png>
@@ -1030,7 +1030,7 @@ Package pdftex.def Info: images/spritebuilder_publishing.png used on input line
  [9
 
 ]
-<images/spritebuilder_project_folderstructure.png, id=301, 265.99374pt x 152.57
+<images/spritebuilder_project_folderstructure.png, id=311, 265.99374pt x 152.57
 pt>
 File: images/spritebuilder_project_folderstructure.png Graphic file (type png)
  <use images/spritebuilder_project_folderstructure.png>
@@ -1215,7 +1215,7 @@ Chapter 8.
 
 ]
 Chapter 9.
-<images/particle_stars.png, id=392, 98.3675pt x 103.38625pt>
+<images/particle_stars.png, id=402, 98.3675pt x 103.38625pt>
 File: images/particle_stars.png Graphic file (type png)
 
 <use images/particle_stars.png>
@@ -1225,137 +1225,138 @@ Package pdftex.def Info: images/particle_stars.png used on input line 570.
 
  <./images/particle_stars.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 594.
+Package xcolor Warning: Incompatible color definition on input line 608.
 
 
-Package xcolor Warning: Incompatible color definition on input line 595.
+Package xcolor Warning: Incompatible color definition on input line 609.
 
 
-Overfull \hbox (117.24341pt too wide) in paragraph at lines 595--596
+Overfull \hbox (117.24341pt too wide) in paragraph at lines 609--610
 [][][][][][][][][][][][][][][][][][][][][][] 
  []
 
+[22]
 
-Package xcolor Warning: Incompatible color definition on input line 596.
+Package xcolor Warning: Incompatible color definition on input line 610.
 
 
-Overfull \hbox (167.64331pt too wide) in paragraph at lines 596--597
+Overfull \hbox (167.64331pt too wide) in paragraph at lines 610--611
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
 
-Package xcolor Warning: Incompatible color definition on input line 597.
+Package xcolor Warning: Incompatible color definition on input line 611.
 
 
-Package xcolor Warning: Incompatible color definition on input line 598.
+Package xcolor Warning: Incompatible color definition on input line 612.
 
 
-Package xcolor Warning: Incompatible color definition on input line 601.
+Package xcolor Warning: Incompatible color definition on input line 615.
 
 
-Package xcolor Warning: Incompatible color definition on input line 602.
+Package xcolor Warning: Incompatible color definition on input line 616.
 
 
-Package xcolor Warning: Incompatible color definition on input line 603.
+Package xcolor Warning: Incompatible color definition on input line 617.
 
 
-Package xcolor Warning: Incompatible color definition on input line 603.
+Package xcolor Warning: Incompatible color definition on input line 617.
 
 
-Package xcolor Warning: Incompatible color definition on input line 604.
+Package xcolor Warning: Incompatible color definition on input line 618.
 
-[22]
-<images/particles/Spritebuilder_ParticleEffect_Menu1.png, id=412, 552.0625pt x 
+[23]
+<images/particles/Spritebuilder_ParticleEffect_Menu1.png, id=426, 552.0625pt x 
 153.57375pt>
 File: images/particles/Spritebuilder_ParticleEffect_Menu1.png Graphic file (typ
 e png)
  <use images/particles/Spritebuilder_ParticleEffect_Menu1.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_Menu1.pn
-g used on input line 627.
+g used on input line 658.
 (pdftex.def)             Requested size: 275.0pt x 76.50313pt.
 
-<images/particles/Spritebuilder_ParticleEffect_Menu2.png, id=413, 549.05125pt x
+<images/particles/Spritebuilder_ParticleEffect_Menu2.png, id=427, 549.05125pt x
  271.0125pt>
 File: images/particles/Spritebuilder_ParticleEffect_Menu2.png Graphic file (typ
 e png)
  <use images/particles/Spritebuilder_ParticleEffect_Menu2.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_Menu2.pn
-g used on input line 632.
+g used on input line 663.
 (pdftex.def)             Requested size: 275.0pt x 135.74162pt.
 
-<images/particles/Spritebuilder_ParticleEffect_CCB.png, id=414, 1061.9675pt x 6
+<images/particles/Spritebuilder_ParticleEffect_CCB.png, id=428, 1061.9675pt x 6
 09.27625pt>
 File: images/particles/Spritebuilder_ParticleEffect_CCB.png Graphic file (type 
 png)
  <use images/particles/Spritebuilder_ParticleEffect_CCB.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_CCB.png 
-used on input line 639.
+used on input line 670.
 (pdftex.def)             Requested size: 375.0pt x 215.14642pt.
 
-[23 <./images/particles/Spritebuilder_ParticleEffect_Menu1.png> <./images/parti
+[24 <./images/particles/Spritebuilder_ParticleEffect_Menu1.png> <./images/parti
 cles/Spritebuilder_ParticleEffect_Menu2.png>]
-<images/particles/Spritebuilder_ParticleEffect_Templates.png, id=419, 1004.7537
+<images/particles/Spritebuilder_ParticleEffect_Templates.png, id=433, 1004.7537
 5pt x 543.02875pt>
 File: images/particles/Spritebuilder_ParticleEffect_Templates.png Graphic file 
 (type png)
 
 <use images/particles/Spritebuilder_ParticleEffect_Templates.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_Template
-s.png used on input line 650.
+s.png used on input line 681.
 (pdftex.def)             Requested size: 375.0pt x 202.66582pt.
- [24 <./images/particles/Spritebuilder_ParticleEffect_CCB.png>]
-<images/particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png, id=425, 24
+ [25 <./images/particles/Spritebuilder_ParticleEffect_CCB.png>]
+<images/particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png, id=440, 24
 9.93375pt x 487.8225pt>
 File: images/particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png Graphi
 c file (type png)
 
 <use images/particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_AddInter
-faceFile.png used on input line 662.
+faceFile.png used on input line 693.
 (pdftex.def)             Requested size: 70.0pt x 136.62659pt.
 
-<images/particles/Spritebuilder_ParticleEffect_InterfaceFile.png, id=426, 1081.
+<images/particles/Spritebuilder_ParticleEffect_InterfaceFile.png, id=441, 1081.
 03876pt x 592.2125pt>
 File: images/particles/Spritebuilder_ParticleEffect_InterfaceFile.png Graphic f
 ile (type png)
 
 <use images/particles/Spritebuilder_ParticleEffect_InterfaceFile.png>
 Package pdftex.def Info: images/particles/Spritebuilder_ParticleEffect_Interfac
-eFile.png used on input line 670.
+eFile.png used on input line 701.
 (pdftex.def)             Requested size: 375.0pt x 205.425pt.
- [25 <./images/particles/Spritebuilder_ParticleEffect_Templates.png> <./images/
-particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png>] [26 <./images/par
+ [26 <./images/particles/Spritebuilder_ParticleEffect_Templates.png> <./images/
+particles/Spritebuilder_ParticleEffect_AddInterfaceFile.png>] [27 <./images/par
 ticles/Spritebuilder_ParticleEffect_InterfaceFile.png>]
 Chapter 10.
-[27
-
-]
-Chapter 11.
 [28
 
 ]
-Chapter 12.
+Chapter 11.
 [29
 
 ]
-Chapter 13.
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 708.
+Chapter 12.
 [30
 
-] [31]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 708.
+]
+Chapter 13.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 744.
+[31
+
+] [32]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 744.
  (./document.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 708.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 708.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 744.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 744.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: D28D00B053AF6745ABC43D926CD17F69;3344.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 708.
+(rerunfilecheck)             Checksum: 1C343EFA081107E748FF611CFC635C5E;3555.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 744.
  ) 
 Here is how much of TeX's memory you used:
- 23425 strings out of 493315
- 424974 string characters out of 6137903
+ 23435 strings out of 493315
+ 425210 string characters out of 6137903
  870021 words of memory out of 5000000
- 26348 multiletter control sequences out of 15000+600000
+ 26355 multiletter control sequences out of 15000+600000
  11073 words of font info for 41 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  79i,10n,85p,948b,2014s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1373,10 +1374,10 @@ r9.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8
 pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.p
 fb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt8.pfb
 >
-Output written on document.pdf (31 pages, 2773168 bytes).
+Output written on document.pdf (32 pages, 2777814 bytes).
 PDF statistics:
- 539 PDF objects out of 1000 (max. 8388607)
- 472 compressed objects within 5 object streams
- 140 named destinations out of 1000 (max. 500000)
- 431 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 553 PDF objects out of 1000 (max. 8388607)
+ 485 compressed objects within 5 object streams
+ 143 named destinations out of 1000 (max. 500000)
+ 447 words of extra memory for PDF output out of 10000 (max. 10000000)
 

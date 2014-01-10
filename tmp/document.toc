@@ -34,13 +34,15 @@
 \contentsline {chapter}{\numberline {9}Particle Effects}{21}{chapter.9}
 \contentsline {section}{\numberline {9.1}Art for particle effects}{21}{section.9.1}
 \contentsline {section}{\numberline {9.2}Particle Effect Basics}{21}{section.9.2}
-\contentsline {section}{\numberline {9.3}Particle Effects in Code}{22}{section.9.3}
-\contentsline {section}{\numberline {9.4}Particle Effects with plists}{23}{section.9.4}
-\contentsline {section}{\numberline {9.5}Particle Effects in Particle Designer}{23}{section.9.5}
-\contentsline {section}{\numberline {9.6}Particle Effects in Spritebuilder}{23}{section.9.6}
-\contentsline {subsection}{\numberline {9.6.1}Adding the particle effect to your scene}{25}{subsection.9.6.1}
-\contentsline {section}{\numberline {9.7}Including particle effects in your gameplay}{26}{section.9.7}
-\contentsline {chapter}{\numberline {10}Audio}{27}{chapter.10}
-\contentsline {chapter}{\numberline {11}Tilemaps}{28}{chapter.11}
-\contentsline {chapter}{\numberline {12}Appendix A: Writing your own SpriteBuilder Plugins}{29}{chapter.12}
-\contentsline {chapter}{\numberline {13}Appendix B: Particle Parameters}{30}{chapter.13}
+\contentsline {section}{\numberline {9.3}Particle Effects in cocos2d{}}{22}{section.9.3}
+\contentsline {subsection}{\numberline {9.3.1}Configuring particle effects in code}{22}{subsection.9.3.1}
+\contentsline {subsection}{\numberline {9.3.2}Particle Effects with plists}{23}{subsection.9.3.2}
+\contentsline {subsection}{\numberline {9.3.3}Particle Effects in Particle Designer}{23}{subsection.9.3.3}
+\contentsline {subsection}{\numberline {9.3.4}Including particle effects in your gameplay}{23}{subsection.9.3.4}
+\contentsline {section}{\numberline {9.4}Particle Effects in Spritebuilder}{24}{section.9.4}
+\contentsline {subsection}{\numberline {9.4.1}Adding the particle effect to your scene}{26}{subsection.9.4.1}
+\contentsline {subsection}{\numberline {9.4.2}Including particle effects in your gameplay}{27}{subsection.9.4.2}
+\contentsline {chapter}{\numberline {10}Audio}{28}{chapter.10}
+\contentsline {chapter}{\numberline {11}Tilemaps}{29}{chapter.11}
+\contentsline {chapter}{\numberline {12}Appendix A: Writing your own SpriteBuilder Plugins}{30}{chapter.12}
+\contentsline {chapter}{\numberline {13}Appendix B: Particle Parameters}{31}{chapter.13}

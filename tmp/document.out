@@ -34,13 +34,15 @@
 \BOOKMARK [0][-]{chapter.9}{Particle Effects}{}% 34
 \BOOKMARK [1][-]{section.9.1}{Art for particle effects}{chapter.9}% 35
 \BOOKMARK [1][-]{section.9.2}{Particle Effect Basics}{chapter.9}% 36
-\BOOKMARK [1][-]{section.9.3}{Particle Effects in Code}{chapter.9}% 37
-\BOOKMARK [1][-]{section.9.4}{Particle Effects with plists}{chapter.9}% 38
-\BOOKMARK [1][-]{section.9.5}{Particle Effects in Particle Designer}{chapter.9}% 39
-\BOOKMARK [1][-]{section.9.6}{Particle Effects in Spritebuilder}{chapter.9}% 40
-\BOOKMARK [2][-]{subsection.9.6.1}{Adding the particle effect to your scene}{section.9.6}% 41
-\BOOKMARK [1][-]{section.9.7}{Including particle effects in your gameplay}{chapter.9}% 42
-\BOOKMARK [0][-]{chapter.10}{Audio}{}% 43
-\BOOKMARK [0][-]{chapter.11}{Tilemaps}{}% 44
-\BOOKMARK [0][-]{chapter.12}{Appendix A: Writing your own SpriteBuilder Plugins}{}% 45
-\BOOKMARK [0][-]{chapter.13}{Appendix B: Particle Parameters}{}% 46
+\BOOKMARK [1][-]{section.9.3}{Particle Effects in cocos2d}{chapter.9}% 37
+\BOOKMARK [2][-]{subsection.9.3.1}{Configuring particle effects in code}{section.9.3}% 38
+\BOOKMARK [2][-]{subsection.9.3.2}{Particle Effects with plists}{section.9.3}% 39
+\BOOKMARK [2][-]{subsection.9.3.3}{Particle Effects in Particle Designer}{section.9.3}% 40
+\BOOKMARK [2][-]{subsection.9.3.4}{Including particle effects in your gameplay}{section.9.3}% 41
+\BOOKMARK [1][-]{section.9.4}{Particle Effects in Spritebuilder}{chapter.9}% 42
+\BOOKMARK [2][-]{subsection.9.4.1}{Adding the particle effect to your scene}{section.9.4}% 43
+\BOOKMARK [2][-]{subsection.9.4.2}{Including particle effects in your gameplay}{section.9.4}% 44
+\BOOKMARK [0][-]{chapter.10}{Audio}{}% 45
+\BOOKMARK [0][-]{chapter.11}{Tilemaps}{}% 46
+\BOOKMARK [0][-]{chapter.12}{Appendix A: Writing your own SpriteBuilder Plugins}{}% 47
+\BOOKMARK [0][-]{chapter.13}{Appendix B: Particle Parameters}{}% 48

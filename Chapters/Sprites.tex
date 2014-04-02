@@ -1,0 +1,83 @@
+\chapter{Working with Sprites}
+One of the most used classes in your games will be CCSprites. A CCSprite is a
+CCNode Subclass that represents an image (for example a game character, a tree,
+etc.). 
+\section{Getting started with CCSprite}
+The easiest way to initialize a sprite it this:
+\begin{lstlisting}
+-(void)update:(CCTime)delta {
+	//implement any custom movement/animation here
+}
+\end{lstlisting}
+
+
+\section{Working with Sprites}\label{working-with-sprites}
+
+Sprites are a very important part of Cocos2D, they are used to render
+textures to the screen. This documentation will cover following aspects:
+
+\begin{itemize}
+\itemsep1pt\parskip0pt\parsep0pt
+\item
+  Creating textured sprites
+\item
+  Changing a sprite texture
+\item
+  Sprite Frame Animations
+\item
+  Using 9 Patch Sprite Images
+\end{itemize}
+
+\subsection{Creating a textured
+Sprite}\label{creating-a-textured-sprite}
+
+The easiest way to setup a textured Sprite is the following line of
+code:
+
+\begin{verbatim}
+CCSprite *hero = [CCSprite spriteWithImageNamed:@"hero.png"];
+\end{verbatim}
+
+\texttt{spriteWithImageNamed:} utilizes \texttt{CCFileUtils} to
+automatically find the image in the right resolution, you do not have to
+specify the resolution manually. The line above also works for images
+contained in \emph{Smart Sprite Sheets} created by SpriteBuilder. In
+case you are using folders in SpriteBuilder you need to include the
+complete path to the image, e.g.:
+
+\begin{verbatim}
+CCSprite *hero = [CCSprite spriteWithImageNamed:@"gameAssets/hero.png"];
+\end{verbatim}
+
+The content size of the sprite will automatically be the size of the
+texture.
+
+\subsection{Changing the texture of an existing
+Sprite}\label{changing-the-texture-of-an-existing-sprite}
+
+To change the texture of an initialized Sprite the \emph{spriteFrame}
+property can be used:
+
+\begin{verbatim}
+hero.spriteFrame = [CCSpriteFrame frameWithImageNamed:@"hero_dead.png"];
+\end{verbatim}
+
+\subsection{Sprite frame animations}\label{sprite-frame-animations}
+
+Sprite frame animations are used in basically every 2D game. A sequence
+of different 2D images gets replaced at a defined interval forming an
+animation:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics{animation.png}
+\caption{image}
+\end{figure}
+
+Sprite frame animations can be created in a plist-format which is used
+by plain Cocos2D games or within SpriteBuilder.
+
+
+\begin{lamp}[frametitle={Optimizing Performance with Batch Nodes}]
+Batch Nodes can be used to draw many Sprites witht the same textures at once.
+\end{lamp}

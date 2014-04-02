@@ -1,0 +1,101 @@
+\chapter{Animations and Movements}
+We have multiple different ways to add activity to scenes in \cocos{}. First, it
+is important to know two different forms of activity:
+ 
+\begin{description}
+  \item[Movement] If the position of one of our nodes changes over time, we
+  consider this a movement.
+  \item[Animation] When we iterate through a set of different images, we call
+  this an animation.
+\end{description}
+
+Let's take a look at movements first.
+
+\section{Implementing Movements}
+Since we are using \spriteb{}, we have two different ways to implement this:
+In code or through \spriteb{}'s keyframe animations. Implementing physics for
+your game is another way to add movement to Nodes, but we are going to spare
+that one for later.
+
+\subsection{Implementing Movement manually in code}
+We will first try this the hard way - which is always the best way to learn
+something new. Since I assume that many readers are new to game development, we
+are going to take a small step back and take look at the bigger picture.
+
+One core concept of games is the \textit{game loop}. The game loop takes care of
+giving any object in the game, to implement a time based behaviour, by calling
+certain methods in a regular interval. In \cocos{} the game loop by itself is
+not visible, the only aspect of it we use, is an \textit{update} method. The
+update method is called every render cycle. Any CCNode can override this update
+method.
+
+This update method is where we can implement any time-based actions. The method
+signature looks like this:
+
+\begin{lstlisting}
+-(void)update:(CCTime)delta {
+	//implement any custom movement/animation here
+}
+\end{lstlisting}
+
+The one parameter we get passed in is the time that has passed since the update
+method has been called last. Whichever action we perform/trigger in the update
+method, we need to consider this time factor.
+
+Let's once again implement this by example. We now want to move a simple
+unanimated Sprite over the screen with a constant speed:
+
+\begin{lstlisting}
+-(void)update:(CCTime)delta {
+	//TODO: implement movement code
+}
+\end{lstlisting}
+
+\subsection{Implementing Movement using CCActions}
+When developing games we are mostly confronted with very similar problem sets.
+\cocos{} provides a lot of functionality for common use cases. One of these
+convinience concepts are \textit{CCActions}. CCNodes can run CCActions. The
+CCActions a CCNode runs can affect different properties of the CCNode such as
+position, color or scale.
+
+So for the use case we have seen above, moving a sprite across the screen, we
+don't need to implement custom movement code, we can use CCActions.
+
+There are a large amount of CCAction types in \cocos{}:
+\begin{description}
+  \item[CCActionMove] ...
+\end{description}
+
+We will first take a look at how we can implement the movement using a
+CCActionMove, then we will take a clooser look at the other CCAction types and
+how and when they can be used.
+
+Actually, implementing this is amazingly easy. We create a CCActionMove and let
+our CCNode run this action:
+\begin{lstlisting}
+	CCActionMove *move = [CCActionMove actionWithTargetPosition:pos duration:1.f];
+	[ship runAction:move];
+}
+\end{lstlisting}
+
+\subsection{Implementing Movement with \spriteb{}}
+
+\section{Implementing Animations}
+This section will have to challenges. First we will need to learn a new tool, to
+create images in a way, that we can use them for sprite animations. Second we
+will learn how to implement these animations in code and in \spriteb{}.
+
+In \cocos{}, as in many 2D game engines, animations consist of a group of
+frames. For example a running animation will be a set of 5 different pictures
+showing a character in 5 different stages of a running movement. Basically all a
+game has to do is to switch between these 5 different images with a certain
+delay that makes the animation believable. This is the same approach as used by
+GIF-File animations (these things that splattered the first generation of the
+world wide web).
+
+\section{Creating an animation Spritesheet}
+\section{Implementing animations in code}
+\subsection{Implementing an animation using CCActions}
+\subsection{Implementing an animation using a convenience class}
+\section{Implementing animations using \spriteb{}}
+

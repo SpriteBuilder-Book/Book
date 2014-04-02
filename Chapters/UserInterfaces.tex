@@ -1,0 +1,84 @@
+\chapter{User Interfaces in \cocos{}}
+Similar to UIKit, \cocos{} provides a set of UI components you should be
+familiar with:
+\begin{itemize}
+  \item CCButton
+  \item CCTextField
+  \item CCTableView
+\end{itemize}
+
+\section{Positioning and Layouting in \cocos{}}
+We will first look at positioning: a Node is placed at a certain positioning.
+After that we will take a look at layouting: a Node's position is determined by
+a layouting mechanism.
+\subsection{Positioning}
+In order to create your first menu in \cocos{} you need to understand how the
+layouting/positioning within CCScenes works. If you are already
+familiar with UIKit (Apple's Framework to build iOS Apps with the native
+interface components) there is one significant difference: \cocos{}'s root point
+(x=0, y=0) is in the bottom left corner.
+
+Another aspect to positioning which isn't used by many other frameworks
+are anchor points. Anchor points define which position within your Node is used
+to place the Node. Most Node's anchor point default to 0,0 (the bottom left
+corner), while some CCNode subclasses, such as CCSprite override this property.
+CCSprite's anchor point defaults to (0.5, 0.5) the middle of itself.
+Changing the anchor point will affect positioning and rotation of your Nodes.
+
+\cocos{} 3.0 also introduces a new concept called \textit{positioning types}.
+These positioning types influence the way, the position property of your Node is
+interpreted. Here an overview of the available position types:
+
+\begin{description}
+  \item[CCNormalizedPosition] Normalized means that the position is expressed
+  relative to the parents content size. A 0.5 value for the x-Position means,
+  that the Node will be placed at 50 percent of the parents width - thus
+  horizontally centered.
+  \item[CCAbsolutePosition] Default. Interpretes the position as absolute
+  position.
+\end{description}
+
+Let's come up with some layouting examples to make these theoretical terms into
+practical code:
+
+\begin{lstlisting}
+/* position CCNode at top right; There are other solutions, but this is the
+ideal one:*/
+CCNode *node = [CCNode node];
+node.anchorPoint = (1.f, 1.f)
+node.positioningType = CCTypeNormalized;
+node.position = (1.f,1.f);
+
+/* Place this in the center:*/ 
+CCNode *node = [CCNode node];
+node.anchorPoint = (0.5f, 0.5f)
+node.positioningType = CCTypeNormalized;
+node.position = (0.5f,0.5f);
+\end{lstlisting}
+
+Positioning types can also be combined. Assume we want to center an element
+horizontally, but want it's vertical position to be 100 points from the top of
+the screen. This means we'd like normalized position for our x positioning, but
+absolute positioning for our y position:
+
+\begin{lstlisting}
+/* position CCNode at top right; There are other solutions, but this is the
+ideal one:*/
+CCNode *node = [CCNode node];
+node.anchorPoint = (0.5f, 1.f)
+node.positioningType = CCPositionTypeMake(CCTypeNormalized, CCTypeAbsolute);
+node.position = (0.5f,parent.contentSize.height - 100);
+\end{lstlisting}
+ 
+\subsection{Layouting}
+CCLayoutBox has already been mentioned as one of the important CCNode types in
+\cocos{}. CCLayoutBox can take care of automatically positioning your nodes, by
+aligning them vertically or horizontally with a margin between the items that
+can be defined manually.
+
+Here's a short example:
+\begin{lstlisting}
+/* TODO: layout box example code */
+CCLayoutBox *layoutBox = [CCLayoutBox layoutBox];
+\end{lstlisting}
+ 

@@ -16,10 +16,11 @@
 \linespread{1.4}
 %%Variables
  
-\newcommand{\cocos}{cocos2d}
+\newcommand{\cocos}{Cocos2d}
 \newcommand{\spriteb}{SpriteBuilder}
-\newcommand{\ccscene}{CCScene}
-
+\newcommand{\SB}{SpriteBuilder}
+\newcommand{\xcode}{Xcode}
+\newcommand{\inlinecode}{\texttt}
 
 %% Setup code highlighting
 \usepackage{listings} 
@@ -28,6 +29,7 @@
 %\usepackage{tgadventor}
 \usepackage[usenames,dvipsnames]{color}
 \usepackage[colorlinks=true]{hyperref}
+\usepackage[colorinlistoftodos, textwidth=4cm, shadow]{todonotes}
 
 \definecolor{lineno}{rgb}{0.5,0.5,0.5}
 \definecolor{code}{rgb}{0,0.1,0.6}
@@ -126,51 +128,53 @@ errorsymbol/.style={%
 
 \include{Chapters/Preamble}
 \newpage
-\include{Chapters/Cocos2D}
-\newpage
-\include{Chapters/SpriteBuilder}
-\newpage
-\include{Chapters/Sprites}
-\newpage
-\include{Chapters/Animation_Movement}
-\newpage
-\include{Chapters/UserInteraction}
-\newpage
-\include{Chapters/UserInterfaces}
-\newpage
-\include{Chapters/Physics}
-\newpage
-\include{Chapters/ParticleEffects}
-\newpage
-\include{Chapters/Audio}
-\newpage
-\include{Chapters/Tilemaps}
+\include{Chapters/3_Introduction_SpriteBuilder_Cocos2D}
 
-\chapter{Appendix A: Writing your own SpriteBuilder Plugins}
-\chapter{Appendix B: Particle Parameters}
-\begin{table}
-    \begin{tabular}{lll}
-    Mode                     & Parameter               & Description \\
-    Gravity Mode (Mode A)    & ~                       & ~           \\ \hline
-    ~                        & Gravity                 & a           \\
-    ~                        & Direction               & a           \\
-    ~                        & Speed                   & a           \\
-    ~                        & Tangential acceleration & a           \\
-    ~                        & Radial acceleration     & ~           \\
-    Radius Mode (Mode B)     & ~                       & ~           \\
-    ~                        & Start Radius            & a           \\
-    ~                        & End Radius              & a           \\
-    ~                        & Rotate                  & a           \\
-    Properties for all Modes & ~                       & ~           \\
-    ~                        & Life                    & a           \\
-    ~                        & Start spin              & a           \\
-    ~                        & End spin                & a           \\
-    ~                        & Start size              & a           \\
-    ~                        & End size                & a           \\
-    ~                        & Start color             & a           \\
-    ~                        & End color               & a           \\
-    ~                        & Life                    & a           \\
-    ~                        & Blending function       & a           \\
-    \end{tabular}
-\end{table}
+% \include{Chapters/Cocos2D}
+% \newpage
+% \include{Chapters/SpriteBuilder}
+% \newpage
+% \include{Chapters/Sprites}
+% \newpage
+% \include{Chapters/Animation_Movement}
+% \newpage
+% \include{Chapters/UserInteraction}
+% \newpage
+% \include{Chapters/UserInterfaces}
+% \newpage
+% \include{Chapters/Physics}
+% \newpage
+% \include{Chapters/ParticleEffects}
+% \newpage
+% \include{Chapters/Audio}
+% \newpage
+% \include{Chapters/Tilemaps}
+
+% \chapter{Appendix A: Writing your own SpriteBuilder Plugins}
+% \chapter{Appendix B: Particle Parameters}
+% \begin{table}
+%     \begin{tabular}{lll}
+%     Mode                     & Parameter               & Description \\
+%     Gravity Mode (Mode A)    & ~                       & ~           \\ \hline
+%     ~                        & Gravity                 & a           \\
+%     ~                        & Direction               & a           \\
+%     ~                        & Speed                   & a           \\
+%     ~                        & Tangential acceleration & a           \\
+%     ~                        & Radial acceleration     & ~           \\
+%     Radius Mode (Mode B)     & ~                       & ~           \\
+%     ~                        & Start Radius            & a           \\
+%     ~                        & End Radius              & a           \\
+%     ~                        & Rotate                  & a           \\
+%     Properties for all Modes & ~                       & ~           \\
+%     ~                        & Life                    & a           \\
+%     ~                        & Start spin              & a           \\
+%     ~                        & End spin                & a           \\
+%     ~                        & Start size              & a           \\
+%     ~                        & End size                & a           \\
+%     ~                        & Start color             & a           \\
+%     ~                        & End color               & a           \\
+%     ~                        & Life                    & a           \\
+%     ~                        & Blending function       & a           \\
+%     \end{tabular}
+% \end{table}
 \end{document}

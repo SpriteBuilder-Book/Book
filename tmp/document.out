@@ -1,56 +1,16 @@
 \BOOKMARK [0][-]{chapter.1}{Preample}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Structure of this book}{chapter.1}% 2
 \BOOKMARK [1][-]{section.1.2}{Tools used throughout this book}{chapter.1}% 3
-\BOOKMARK [0][-]{chapter.2}{First steps with cocos2d 3.0}{}% 4
-\BOOKMARK [1][-]{section.2.1}{Scene graph in cocos2d 3.0}{chapter.2}% 5
-\BOOKMARK [1][-]{section.2.2}{CCNodes in cocos2d 3.0}{chapter.2}% 6
-\BOOKMARK [1][-]{section.2.3}{Let's code}{chapter.2}% 7
-\BOOKMARK [0][-]{chapter.3}{Getting started with SpriteBuilder 1.0}{}% 8
-\BOOKMARK [1][-]{section.3.1}{The first Spritebuilder project}{chapter.3}% 9
-\BOOKMARK [1][-]{section.3.2}{The Spritebuilder User Interface}{chapter.3}% 10
-\BOOKMARK [1][-]{section.3.3}{Layouting in Spritebuilder}{chapter.3}% 11
-\BOOKMARK [1][-]{section.3.4}{Custom classes in Spritebuilder}{chapter.3}% 12
-\BOOKMARK [1][-]{section.3.5}{Inheritance using Spritebuilder}{chapter.3}% 13
-\BOOKMARK [0][-]{chapter.4}{Working with Sprites}{}% 14
-\BOOKMARK [1][-]{section.4.1}{Getting started with CCSprite}{chapter.4}% 15
-\BOOKMARK [1][-]{section.4.2}{Working with Sprites}{chapter.4}% 16
-\BOOKMARK [2][-]{subsection.4.2.1}{Creating a textured Sprite}{section.4.2}% 17
-\BOOKMARK [2][-]{subsection.4.2.2}{Changing the texture of an existing Sprite}{section.4.2}% 18
-\BOOKMARK [2][-]{subsection.4.2.3}{Sprite frame animations}{section.4.2}% 19
-\BOOKMARK [0][-]{chapter.5}{Animations and Movements}{}% 20
-\BOOKMARK [1][-]{section.5.1}{Implementing Movements}{chapter.5}% 21
-\BOOKMARK [2][-]{subsection.5.1.1}{Implementing Movement manually in code}{section.5.1}% 22
-\BOOKMARK [2][-]{subsection.5.1.2}{Implementing Movement using CCActions}{section.5.1}% 23
-\BOOKMARK [2][-]{subsection.5.1.3}{Implementing Movement with SpriteBuilder}{section.5.1}% 24
-\BOOKMARK [1][-]{section.5.2}{Implementing Animations}{chapter.5}% 25
-\BOOKMARK [1][-]{section.5.3}{Creating an animation Spritesheet}{chapter.5}% 26
-\BOOKMARK [1][-]{section.5.4}{Implementing animations in code}{chapter.5}% 27
-\BOOKMARK [2][-]{subsection.5.4.1}{Implementing an animation using CCActions}{section.5.4}% 28
-\BOOKMARK [2][-]{subsection.5.4.2}{Implementing an animation using a convenience class}{section.5.4}% 29
-\BOOKMARK [1][-]{section.5.5}{Implementing animations using SpriteBuilder}{chapter.5}% 30
-\BOOKMARK [0][-]{chapter.6}{User Interaction}{}% 31
-\BOOKMARK [1][-]{section.6.1}{Handling touch input in cocos2d}{chapter.6}% 32
-\BOOKMARK [1][-]{section.6.2}{Handling Gestures in cocos2d}{chapter.6}% 33
-\BOOKMARK [1][-]{section.6.3}{Handling Accelerometer input in cocos2d}{chapter.6}% 34
-\BOOKMARK [0][-]{chapter.7}{User Interfaces in cocos2d}{}% 35
-\BOOKMARK [1][-]{section.7.1}{Positioning and Layouting in cocos2d}{chapter.7}% 36
-\BOOKMARK [2][-]{subsection.7.1.1}{Positioning}{section.7.1}% 37
-\BOOKMARK [2][-]{subsection.7.1.2}{Layouting}{section.7.1}% 38
-\BOOKMARK [0][-]{chapter.8}{Physics}{}% 39
-\BOOKMARK [0][-]{chapter.9}{Particle Effects}{}% 40
-\BOOKMARK [1][-]{section.9.1}{Art for particle effects}{chapter.9}% 41
-\BOOKMARK [1][-]{section.9.2}{Particle Effect Basics}{chapter.9}% 42
-\BOOKMARK [1][-]{section.9.3}{Particle Effects in cocos2d}{chapter.9}% 43
-\BOOKMARK [2][-]{subsection.9.3.1}{Configuring particle effects in code}{section.9.3}% 44
-\BOOKMARK [2][-]{subsection.9.3.2}{Particle Effects with plists}{section.9.3}% 45
-\BOOKMARK [2][-]{subsection.9.3.3}{Particle Effects in Particle Designer}{section.9.3}% 46
-\BOOKMARK [2][-]{subsection.9.3.4}{Including particle effects in your gameplay}{section.9.3}% 47
-\BOOKMARK [1][-]{section.9.4}{Particle Effects in Spritebuilder}{chapter.9}% 48
-\BOOKMARK [2][-]{subsection.9.4.1}{Adding the particle effect to your scene}{section.9.4}% 49
-\BOOKMARK [2][-]{subsection.9.4.2}{Including particle effects in your gameplay}{section.9.4}% 50
-\BOOKMARK [1][-]{section.9.5}{Q and A: Let's solve some problems}{chapter.9}% 51
-\BOOKMARK [2][-]{subsection.9.5.1}{Q: I want to add multiple particle effects of the same type to my scene}{section.9.5}% 52
-\BOOKMARK [0][-]{chapter.10}{Audio}{}% 53
-\BOOKMARK [0][-]{chapter.11}{Tilemaps}{}% 54
-\BOOKMARK [0][-]{chapter.12}{Appendix A: Writing your own SpriteBuilder Plugins}{}% 55
-\BOOKMARK [0][-]{chapter.13}{Appendix B: Particle Parameters}{}% 56
+\BOOKMARK [1][-]{section.1.3}{What is a 2D game engine?}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{Introduction to SpriteBuilder and Cocos2d}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Introduction to Cocos2d}{chapter.2}% 6
+\BOOKMARK [2][-]{subsection.2.1.1}{Scenes}{section.2.1}% 7
+\BOOKMARK [2][-]{subsection.2.1.2}{Nodes}{section.2.1}% 8
+\BOOKMARK [2][-]{subsection.2.1.3}{Scene Graphs}{section.2.1}% 9
+\BOOKMARK [1][-]{section.2.2}{Introduction to SpriteBuilder}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.2.1}{The Editor}{section.2.2}% 11
+\BOOKMARK [2][-]{subsection.2.2.2}{CCB Files}{section.2.2}% 12
+\BOOKMARK [2][-]{subsection.2.2.3}{Publishing - How SpriteBuilder and Xcodework together}{section.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.2.4}{How SpriteBuilder and Cocos2d}{section.2.2}% 14
+\BOOKMARK [2][-]{subsection.2.2.5}{Code Connections}{section.2.2}% 15
+\BOOKMARK [1][-]{section.2.3}{A first SpriteBuilderproject}{chapter.2}% 16

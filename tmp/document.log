@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  25 MAY 2014 17:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  26 MAY 2014 15:53
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -7,8 +7,8 @@ entering extended mode
 (./document.tex
 LaTeX2e <2011/06/27>
 Babel <3.9f> and hyphenation patterns for 78 languages loaded.
-(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrreprt.cls
-Document Class: scrreprt 2012/07/29 v3.11b KOMA-Script document class (report)
+(/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrbook.cls
+Document Class: scrbook 2012/07/29 v3.11b KOMA-Script document class (book)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrkbase.sty
 Package: scrkbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-dependent 
 basics and keyval usage)
@@ -39,9 +39,13 @@ Package tocbasic Info: omitting babel extension for `lof'
 Package tocbasic Info: omitting babel extension for `lot'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `lot' on input line 119.
-Class scrreprt Info: File `scrsize11pt.clo' used instead of
-(scrreprt)           file `scrsize11.clo' to setup font sizes on input line 136
-7.
+Package scrbook Info: You've used obsolete option `11pt'.
+(scrbook)             \KOMAExecuteOptions{fontsize=11pt} will be
+(scrbook)             used instead.
+(scrbook)             You may simply replace `11pt'
+(scrbook)             by `fontsize=11pt'.
+Class scrbook Info: File `scrsize11pt.clo' used to setup font sizes on input li
+ne 1368.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 File: scrsize11pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (11p
@@ -56,20 +60,33 @@ Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
 
 \ta@bcor=\skip41
 \ta@div=\count79
+Package typearea Info: You've used standard option `a5paper'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `paper=a5'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `paper=a5' there
+(typearea)             instead of `a5paper', too.
 \ta@hblk=\skip42
 \ta@vblk=\skip43
 \ta@temp=\skip44
+
+Package typearea Warning: Maybe no optimal type area settings!
+(typearea)                The maximum limit of line width is about 18%
+(typearea)                larger than the heuristically detected line width.
+(typearea)                You may e.g. increase DIV, decrease fontsize
+(typearea)                or change the papersize.
+
 Package typearea Info: These are the values describing the layout:
 (typearea)             DIV  = 10
 (typearea)             BCOR = 0.0pt
-(typearea)             \paperwidth      = 597.50793pt
-(typearea)              \textwidth      = 418.25555pt
-(typearea)              DIV departure   = -6%
-(typearea)              \evensidemargin = 17.3562pt
-(typearea)              \oddsidemargin  = 17.3562pt
-(typearea)             \paperheight     = 845.04694pt
-(typearea)              \textheight     = 595.80026pt
-(typearea)              \topmargin      = -25.16531pt
+(typearea)             \paperwidth      = 421.10083pt
+(typearea)              \textwidth      = 294.7706pt
+(typearea)              DIV departure   = 18%
+(typearea)              \evensidemargin = 11.95016pt
+(typearea)              \oddsidemargin  = -30.15991pt
+(typearea)             \paperheight     = 597.50793pt
+(typearea)              \textheight     = 337.40015pt
+(typearea)              \topmargin      = -12.5192pt
 (typearea)              \headheight     = 17.0pt
 (typearea)              \headsep        = 20.40001pt
 (typearea)              \topskip        = 11.0pt
@@ -163,6 +180,13 @@ File: listings.cfg 2007/02/22 1.4 listings configuration
 ))
 Package: listings 2007/02/22 1.4 (Carsten Heinz)
 
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+))
 (/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/color.sty
 Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 
@@ -934,20 +958,20 @@ Package: dingbat 2001/04/27 v1.00 Hands and other dingbats
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux))
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 128.
-LaTeX Font Info:    ... okay on input line 128.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 143.
+LaTeX Font Info:    ... okay on input line 143.
 
 (/usr/local/texlive/2013/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
@@ -979,7 +1003,7 @@ e
 ))
 \c@lstlisting=\count179
 \AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring ON on input line 128.
+Package hyperref Info: Link coloring ON on input line 143.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -989,40 +1013,48 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count180
 )
-LaTeX Info: Redefining \ref on input line 128.
-LaTeX Info: Redefining \pageref on input line 128.
-LaTeX Info: Redefining \nameref on input line 128.
+LaTeX Info: Redefining \ref on input line 143.
+LaTeX Info: Redefining \pageref on input line 143.
+LaTeX Info: Redefining \nameref on input line 143.
 
 (./document.out) (./document.out)
 \@outlinefile=\write4
 \openout4 = `document.out'.
 
  ABD: EveryShipout initializing macros
-(./document.toc
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 145.
+
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmss.fd
+File: t1cmss.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+) (./document.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 2.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
-)
+
+[1
+
+
+
+{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
 \tf@toc=\write5
 \openout5 = `document.toc'.
 
- [1
 
-
-{/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2]
 \openout2 = `Chapters/Preamble.aux'.
 
  (./Chapters/Preamble.tex
 Chapter 1.
 
-Class scrreprt Warning: \float@addtolists detected!
-(scrreprt)              You should use the features of package `tocbasic'
-(scrreprt)              instead of \float@addtolists.
-(scrreprt)              Support for \float@addtolists may be removed from
-(scrreprt)              `scrreprt' soon .
+Class scrbook Warning: \float@addtolists detected!
+(scrbook)              You should use the features of package `tocbasic'
+(scrbook)              instead of \float@addtolists.
+(scrbook)              Support for \float@addtolists may be removed from
+(scrbook)              `scrbook' soon .
 
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 14.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/omscmr.fd
@@ -1030,54 +1062,245 @@ File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
- [2
+ [3
 
 
-]) [3]
+
+]
+Overfull \hbox (3.30598pt too wide) in paragraph at lines 31--38
+\T1/cmr/m/n/10.95 book. There-fore most ex-am-ples will be small and self-conta
+ined.
+ []
+
+[4]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [5])
+[6]
 \openout2 = `Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux'.
 
-
-(./Chapters/3_Introduction_SpriteBuilder_Cocos2D.tex
+ (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.tex
 Chapter 2.
-[4
+[7
 
 
 
-] <images/cocos2d/TechnologyStack.png, id=125, 229.8186pt x 211.7511pt>
+
+]
+<images/cocos2d/setup/mac_appstore_install.png, id=147, 1244.65pt x 823.075pt>
+File: images/cocos2d/setup/mac_appstore_install.png Graphic file (type png)
+
+<use images/cocos2d/setup/mac_appstore_install.png>
+Package pdftex.def Info: images/cocos2d/setup/mac_appstore_install.png used on 
+input line 17.
+(pdftex.def)             Requested size: 200.0pt x 132.24728pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [8 <./images/cocos2d/setup/mac_appstore_install.png>] [9]
+Overfull \hbox (9.41702pt too wide) in paragraph at lines 41--43
+[][]\T1/cmr/m/n/10.95 automatically cal-cu-lates move-ments
+ []
+
+<images/cocos2d/TechnologyStack.png, id=158, 229.8186pt x 211.7511pt>
 File: images/cocos2d/TechnologyStack.png Graphic file (type png)
 
 <use images/cocos2d/TechnologyStack.png>
 Package pdftex.def Info: images/cocos2d/TechnologyStack.png used on input line 
-37.
+56.
 (pdftex.def)             Requested size: 120.0pt x 110.56677pt.
- [5 <./images/cocos2d/TechnologyStack.png>]) [6]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 183.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 183.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [10]
+[11 <./images/cocos2d/TechnologyStack.png>] [12] [13]
+<images/cocos2d/SceneGraph.png, id=183, 1013.58675pt x 536.9661pt>
+File: images/cocos2d/SceneGraph.png Graphic file (type png)
+
+<use images/cocos2d/SceneGraph.png>
+Package pdftex.def Info: images/cocos2d/SceneGraph.png used on input line 131.
+(pdftex.def)             Requested size: 290.0pt x 153.63504pt.
+ [14]
+Underfull \vbox (badness 3679) has occurred while \output is active []
+
+ [15 <./images/cocos2d/SceneGraph.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 146.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 146.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 146.
+LaTeX Font Info:    Try loading font information for U+ark on input line 149.
+
+(/usr/local/texlive/2013/texmf-dist/tex/latex/dingbat/uark.fd
+File: uark.fd 2001/04/27 v1.00 Font definitions for the ark10 font
+) [16]
+<images/cocos2d/setup/spritebuilder_new_project.png, id=201, 556.0775pt x 351.3
+125pt>
+File: images/cocos2d/setup/spritebuilder_new_project.png Graphic file (type png
+)
+ <use images/cocos2d/setup/spritebuilder_new_project.png>
+Package pdftex.def Info: images/cocos2d/setup/spritebuilder_new_project.png use
+d on input line 184.
+(pdftex.def)             Requested size: 290.0pt x 183.21423pt.
+ [17]
+<images/cocos2d/setup/project_structure.png, id=207, 523.9575pt x 106.3975pt>
+File: images/cocos2d/setup/project_structure.png Graphic file (type png)
+
+<use images/cocos2d/setup/project_structure.png>
+Package pdftex.def Info: images/cocos2d/setup/project_structure.png used on inp
+ut line 191.
+(pdftex.def)             Requested size: 250.0pt x 50.765pt.
+ [18 <./images/cocos2d/setup/spritebuilder_new_project.png (PNG copy)>]
+Package mdframed Info: mdframed works in twoside mode on input line 199.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 199.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 199.
+
+Overfull \hbox (0.48195pt too wide) in paragraph at lines 200--203
+\T1/cmr/m/n/10.95 ev-ery new project you cre-ate! The Xcode project
+ []
+
+[19 <./images/cocos2d/setup/project_structure.png>]
+<images/spritebuilder/spritebuilder_ui.png, id=218, 963.6pt x 550.055pt>
+File: images/spritebuilder/spritebuilder_ui.png Graphic file (type png)
+
+<use images/spritebuilder/spritebuilder_ui.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_ui.png used on inpu
+t line 217.
+(pdftex.def)             Requested size: 290.0pt x 165.53815pt.
+ [20 <./images/spritebuilder/spritebuilder_ui.png>]
+Overfull \hbox (5.79433pt too wide) in paragraph at lines 224--226
+[][]\T1/cmr/m/it/10.95 Timeline: \T1/cmr/m/n/10.95 The time-line is used to cre
+-ate an-i-ma-tions within
+ []
+
+
+<images/spritebuilder/spritebuilder_fileview.png, id=225, 1149.29375pt x 678.53
+5pt>
+File: images/spritebuilder/spritebuilder_fileview.png Graphic file (type png)
+ <use images/spritebuilder/spritebuilder_fileview.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_fileview.png used o
+n input line 238.
+(pdftex.def)             Requested size: 290.0pt x 171.20708pt.
+ [21]
+<images/spritebuilder/spritebuilder_nodeview.png, id=234, 1148.29pt x 682.55pt>
+File: images/spritebuilder/spritebuilder_nodeview.png Graphic file (type png)
+<use images/spritebuilder/spritebuilder_nodeview.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_nodeview.png used o
+n input line 246.
+(pdftex.def)             Requested size: 290.0pt x 172.37636pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22 <./images/spritebuilder/spritebuilder_fileview.png>]
+<images/spritebuilder/spritebuilder_inspector.png, id=241, 1167.36125pt x 597.2
+3125pt>
+File: images/spritebuilder/spritebuilder_inspector.png Graphic file (type png)
+ <use images/spritebuilder/spritebuilder_inspector.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_inspector.png used 
+on input line 257.
+(pdftex.def)             Requested size: 290.0pt x 148.35968pt.
+ [23 <./images/spritebuilder/spritebuilder_nodeview.png>]
+<images/spritebuilder/spritebuilder_codeconnections.png, id=248, 1168.365pt x 5
+96.2275pt>
+File: images/spritebuilder/spritebuilder_codeconnections.png Graphic file (type
+ png)
+ <use images/spritebuilder/spritebuilder_codeconnections.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_codeconnections.png
+ used on input line 269.
+(pdftex.def)             Requested size: 290.0pt x 147.98297pt.
+
+[24 <./images/spritebuilder/spritebuilder_inspector.png>]
+<images/spritebuilder/new-ccb.png, id=255, 534.99875pt x 256.96pt>
+File: images/spritebuilder/new-ccb.png Graphic file (type png)
+
+<use images/spritebuilder/new-ccb.png>
+Package pdftex.def Info: images/spritebuilder/new-ccb.png used on input line 28
+3.
+(pdftex.def)             Requested size: 240.0pt x 115.27412pt.
+ [25 <./images/spritebuilder/spritebuilder_codeconnections.png>] [26 <./images/
+spritebuilder/new-ccb.png (PNG copy)>]
+<images/spritebuilder/spritebuilder_publish_button.png, id=266, 1437.37pt x 821
+.0675pt>
+File: images/spritebuilder/spritebuilder_publish_button.png Graphic file (type 
+png)
+ <use images/spritebuilder/spritebuilder_publish_button.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_publish_button.png 
+used on input line 317.
+(pdftex.def)             Requested size: 290.0pt x 165.65137pt.
+ [27]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [28 <./images/spritebuilder/spritebuilder_publish_button.png>]
+<images/spritebuilder/spritebuilder_publishing.png, id=277, 1806.38866pt x 787.
+743pt>
+File: images/spritebuilder/spritebuilder_publishing.png Graphic file (type png)
+
+ <use images/spritebuilder/spritebuilder_publishing.png>
+Package pdftex.def Info: images/spritebuilder/spritebuilder_publishing.png used
+ on input line 330.
+(pdftex.def)             Requested size: 290.0pt x 126.46214pt.
+
+Underfull \hbox (badness 3396) in paragraph at lines 332--332
+[][]\T1/cmr/m/n/10.95 SpriteBuilder cre-ates and or-ga-nizes a Xcode
+ []
+
+
+Overfull \hbox (3.18388pt too wide) in paragraph at lines 327--334
+[][]\T1/cmr/m/n/10.95 Here's a di-a-gram that vi-su-al-izes how Sprite-Builder 
+and Xcode
+ []
+
+[29 <./images/spritebuilder/spritebuilder_publishing.png>] [30]
+Overfull \hbox (20.54033pt too wide) in paragraph at lines 356--366
+[][]\T1/cmr/m/n/10.95 are an im-por-tant in-for-ma-tion for the CCBReader.
+ []
+
+
+Overfull \hbox (0.21643pt too wide) in paragraph at lines 356--366
+\T1/cmr/m/n/10.95 As men-tioned pre-vi-ously the CCBReader builds the scene
+ []
+
+[31]) [32]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 198.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 198.
  (./document.aux (./Chapters/Preamble.aux)
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 183.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 183.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 198.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 198.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 72AA9BB4EB9347D823307EAE3660B94C;1124.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 183.
+(rerunfilecheck)             Checksum: B4471867A55F53E6C44B9C7F88F81D71;1178.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 198.
  ) 
 Here is how much of TeX's memory you used:
- 23395 strings out of 493315
- 427580 string characters out of 6137903
- 874172 words of memory out of 5000000
- 26404 multiletter control sequences out of 15000+600000
- 8514 words of font info for 30 fonts, out of 8000000 for 9000
+ 23895 strings out of 493315
+ 437065 string characters out of 6137903
+ 873573 words of memory out of 5000000
+ 26829 multiletter control sequences out of 15000+600000
+ 13387 words of font info for 33 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
- 74i,7n,99p,948b,323s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb
-></usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb>
-</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb><
-/usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on document.pdf (6 pages, 90339 bytes).
+ 74i,10n,99p,948b,909s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </Users/benjaminencz/Library/texlive/2013/texmf-var/fonts/pk/ljfour/public/d
+ingbat/ark10.657pk>{/usr/local/texlive/2013/texmf-dist/fonts/enc/dvips/cm-super
+/cm-super-t1.enc}</usr/local/texlive/2013/texmf-dist/fonts/type1/public/amsfont
+s/cm/cmsy10.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super
+/sfbx1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/s
+frm1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfs
+l1095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1
+095.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx120
+0.pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.
+pfb></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx2074.pf
+b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb>
+
+Output written on document.pdf (32 pages, 3930474 bytes).
 PDF statistics:
- 164 PDF objects out of 1000 (max. 8388607)
- 131 compressed objects within 2 object streams
- 25 named destinations out of 1000 (max. 500000)
- 242 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 350 PDF objects out of 1000 (max. 8388607)
+ 265 compressed objects within 3 object streams
+ 70 named destinations out of 1000 (max. 500000)
+ 310 words of extra memory for PDF output out of 10000 (max. 10000000)
 

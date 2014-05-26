@@ -1,9 +1,9 @@
 
 %%This is a very basic article template.
 %%There is just one section and two subsections.
-%\documentclass[11pt,a5paper,footinclude=true,headinclude=true]{scrbook} %
+\documentclass[11pt,a5paper,footinclude=true,headinclude=true]{scrbook} 
 %\documentclass[10pt,a4paper,footinclude=true,headinclude=true]{scrreprt} 
-\documentclass{scrreprt}
+%\documentclass{scrreprt}
 % KOMA-Script book
 \usepackage{graphicx} 
 \usepackage{float}
@@ -13,21 +13,24 @@
 %\usepackage[osf]{libertine}
 \usepackage{amsthm}
 
-\linespread{1.4}
+\linespread{1.2}
 %%Variables
  
-\newcommand{\cocos}{Cocos2d}
+\newcommand{\cocos}{Cocos2D}
 \newcommand{\spriteb}{SpriteBuilder}
 \newcommand{\SB}{SpriteBuilder}
 \newcommand{\xcode}{Xcode}
 \newcommand{\ccnode}{CCNode}
+\newcommand{\ccsprite}{CCSprite}
 \newcommand{\ccscene}{CCScene}
 \newcommand{\ccdirector}{CCDirector}
+\newcommand{\cclabel}{CCLabel}
+\newcommand{\ccbfile}{CCB File}
 \newcommand{\inlinecode}{\texttt}
 
 %% Setup code highlighting
 \usepackage{listings} 
-%\usepackage[T1]{fontenc}
+\usepackage[T1]{fontenc}
 %\usepackage[scaled]{beramono}
 %\usepackage{tgadventor}
 \usepackage[usenames,dvipsnames]{color}
@@ -124,6 +127,18 @@ errorsymbol/.style={%
                           \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
     },%
 ]{lamp}
+
+
+
+\newmdenv[nobreak,middlelinewidth=.8pt,
+ frametitlefont=\bfseries,
+ leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
+ skipabove=\topsep,skipbelow=\topsep,
+ singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[ lampsymbol] {\leftpointright};
+                          \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$) -- ($(P)-(.2cm,0)$); 
+                          \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
+    },%
+]{bestpractice}
 
 \begin{document}
 

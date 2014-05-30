@@ -19,3 +19,4 @@
 \contentsline {subsection}{\numberline {2.3.4}How SpriteBuilder{} and Xcode{} work together}{27}{subsection.2.3.4}
 \contentsline {subsection}{\numberline {2.3.5}Code Connections}{30}{subsection.2.3.5}
 \contentsline {section}{\numberline {2.4}A first SpriteBuilder{} project}{32}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Setting up the first scene}{34}{subsection.2.4.1}

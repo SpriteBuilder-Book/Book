@@ -140,6 +140,16 @@ errorsymbol/.style={%
     },%
 ]{bestpractice}
 
+\newmdenv[nobreak,middlelinewidth=.8pt,
+ frametitlefont=\bfseries,
+ leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
+ skipabove=\topsep,skipbelow=\topsep,
+ singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[ lampsymbol] {\leftpointright};
+                          \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$) -- ($(P)-(.2cm,0)$); 
+                          \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
+    },%
+]{details}
+
 \begin{document}
 
 \tableofcontents{}

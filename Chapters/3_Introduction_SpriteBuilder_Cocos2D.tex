@@ -397,3 +397,56 @@ By creating this project you will learn all of the following:
   \item Use the \cocos{} action system to create animations
   \item Use the \cocos{} touch handling system to capture touches
 \end{itemize}
+
+\subsection{Setting up the first scene}
+%explain code connections in detail here
+Now it is time to open the \textit{HelloSB} \SB{} project. We want to add a
+\textit{Start Button} to the first scene. When this button is tapped we want to
+switch to the second scene. Start by adding a button to the first scene:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=300pt]{images/firstproject/add_button.png}
+		\caption{The project build throughout this chapter}
+		%\label{labelstruct} 
+\end{figure}
+
+One simple button, but since this is your first action in \SB{} there's
+\textit{lots} to explain about it. Let's look at the three steps highlighted in
+the image above, step by step.
+
+\begin{description}
+\item[(1)] Open \textit{MainScene.ccb} by double clicking it in the left
+resource pane. Then open the third tab in the left pane, the \textit{Node
+Library}. Remember, this section shows you all the different node types
+supported by \SB{}. Select the \textit{Button} and drag it over to the stage,
+dropping it below the existing label. Dropping it on the stage will add this
+node to your scene. Another way of adding a node to a scene is dropping it to
+the timeline at the bottom of the screen - we will look at this later.
+\item[(2)] Make sure the button is selected, because we want to change some
+properties of it. Whenever you have selected a node the right pane will display
+all the properties you can edit. Navigate to the \textit{Title} textfield in the
+property pane and change the title of the button to \textit{Start Game}.
+\item[(3)] So far - so simple. Step number three will expose you to a very
+interesting feature of \SB{}: the positioning system. 
+\end{description}
+
+\begin{details}[frametitle={Positioning System in \cocos{} and \SB{}}] 
+The positioning system in \cocos{} is designed from the ground up to make it
+easy to design scenes and user interfaces for different screen sizes and
+resolutions. The comfortable days where the 3.5-inch iPhone was the only 
+available iOS device and defining layouts with absolute positions was acceptable
+are finally over. Today app and game developers face a variety of different
+devices and customers justifiably expect your software to work great on all of
+them. \cocos{} offers the following properties on \ccnode{}s to allow developers
+to design their interfaces with great flexibility:
+
+\begin{itemize}
+  \item Anchor Point
+  \item Reference Corner
+  \item Position Type
+  \item Size Type
+\end{itemize}
+
+\end{details}
+

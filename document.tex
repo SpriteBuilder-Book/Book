@@ -1,12 +1,25 @@
 
 %%This is a very basic article template.
 %%There is just one section and two subsections.
-\documentclass[11pt,a5paper,footinclude=true,headinclude=true]{scrbook} 
+\documentclass[11pt,footinclude=true,headinclude=true]{scrbook}
+\usepackage[paperwidth=7.50in, paperheight=9.25in, top=1.6cm, bottom=1.6cm,
+outer=2cm, inner=2.1cm,includefoot, includehead]{geometry} 
+%7.50 x 9.25
+%235 x 191mm
+%margins:
+
 %\documentclass[10pt,a4paper,footinclude=true,headinclude=true]{scrreprt} 
 %\documentclass{scrreprt}
 % KOMA-Script book
-\usepackage{graphicx} 
+\usepackage{graphicx}  
 \usepackage{float}
+
+%create an index
+\usepackage{makeidx}
+\makeindex
+
+\usepackage{hyperref}
+
 %\usepackage[T1]{fontenc}                
 %\usepackage{lipsum}
 %\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters
@@ -27,6 +40,7 @@
 \newcommand{\cclabel}{CCLabel}
 \newcommand{\ccbfile}{CCB File}
 \newcommand{\inlinecode}{\texttt}
+\newcommand{\imagesize}{width=0.9\linewidth}
 
 %% Setup code highlighting
 \usepackage{listings} 
@@ -88,7 +102,7 @@
 \makeatother
 %%
 
-
+ 
 
 
 
@@ -205,4 +219,7 @@ errorsymbol/.style={%
 %     ~                        & Blending function       & a           \\
 %     \end{tabular}
 % \end{table}
+
+\printindex
+
 \end{document}

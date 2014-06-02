@@ -128,7 +128,7 @@ Let's take a look at simple example of a scene graph:
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/cocos2d/SceneGraph.png}     
+		\includegraphics[width=0.9\linewidth]{images/cocos2d/SceneGraph.png}     
 		\caption{\cocos{} Scene Graph}
 \end{figure}
 
@@ -181,7 +181,7 @@ Create a new project by opening SpriteBuilder and selecting \textit{File > New >
 Project...}:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/cocos2d/setup/spritebuilder_new_project.png}     
+		\includegraphics[width=0.9\linewidth]{images/cocos2d/setup/spritebuilder_new_project.png}     
 \end{figure}
 
 \SB{} will ask for a name and a location for the new project. Name it
@@ -214,7 +214,7 @@ better understanding of \SB{}.
 The \SB{} interface is divided into 4 main sections:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_ui.png}     
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_ui.png}     
 \end{figure} 
 \begin{enumerate}
   \item \textit{Resource/Component Browser:} Here you can see the different
@@ -235,7 +235,7 @@ It lists all the \textit{.ccb} files and resources that are part of the \SB{}
 project:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_fileview.png}     
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_fileview.png}     
 \end{figure} 
 In this view you can add new resources and restructure your project's folder
 hierarchy.
@@ -243,7 +243,7 @@ hierarchy.
 The third tab in the left view is the {Node Library}:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_nodeview.png}     
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
 \end{figure} 
 This panel shows you all available node types you can use to construct your
 gameplay scenes and menus. You will drag these nodes from this view to the stage
@@ -254,10 +254,10 @@ The first tab of the Detail View (the right panel) is
 the Inspector. Once you have selected an object on your stage you can use this panel to modify many of its properties, like position and color:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_inspector.png}     
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_inspector.png}     
 \end{figure} 
 
-\subsubsection{Code Connections}
+\subsubsection{Code Connections}\index{Code Connections} 
 The second tab on the right panel let's you manage code connections for your
 selected node. As mentioned previously the entire code for your games will be
 written as part of the \xcode{} project. This view allows you to create
@@ -266,7 +266,7 @@ a method in your code that shall be called once a button in your scene is tapped
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_codeconnections.png}     
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
 \end{figure} 
 Code connections will be discussed in detail later on.
 
@@ -297,6 +297,7 @@ used by \SB{} to store an entire scene graph including size, positions and many
 other properties of all the nodes that you have added.
 
 \subsection{How \SB{} and \xcode{} work together}
+\label{Publish}
 I have mentioned how \SB{} and \xcode{} integrate a couple of times briefly. In
 order to be a well versed and efficient \SB{} game developer it is very
 important to understand the details of this cooperation.
@@ -310,11 +311,11 @@ your project and where you run the actual game.
 
 Since \xcode{} is the tool that actually compiles and runs your game it needs
 to know about all the scenes and resources that are part of your \SB{} project.
-Therefore \SB{} has a \textbf{publish} functionality, provided by a button in
-the top left corner of the interface:
+Therefore \SB{} has a \textbf{publish}\index{publish} functionality, provided by
+a button in the top left corner of the interface:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_publish_button.png}
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_publish_button.png}
 		\caption{Use the publish button to update your \xcode{} project with the
 		latest changes in your \SB{} project.}
 		%\label{labelstruct} 
@@ -327,7 +328,7 @@ project.
 Here's a diagram that visualizes how \SB{} and \xcode{} work together:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/spritebuilder/spritebuilder_publishing.png}
+		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_publishing.png}
 		\caption{\SB{} creates and organizes a \xcode{} project for you. Adding
 		all the resources and scenes you have created.}
 		%\label{labelstruct} 
@@ -350,6 +351,7 @@ Another important part of information contained in \ccbfile{}s that we have not
 discussed in detail yet are \textit{Code Connections}.
 
 \subsection{Code Connections}
+\label{CodeConnections}
 Code connections are used to create links between your scenes in \SB{} and your
 code in \xcode{}. There are three basic types of code connections:
 \begin{description}
@@ -382,7 +384,7 @@ of two scenes one start screen and one game screen. In the game screen the user 
 colored squares by tapping on the screen.
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=290pt]{images/firstproject/first_project.png}
+		\includegraphics[width=0.9\linewidth]{images/firstproject/first_project.png}
 		\caption{The project build throughout this chapter}
 		%\label{labelstruct} 
 \end{figure}
@@ -402,18 +404,21 @@ By creating this project you will learn all of the following:
 %explain code connections in detail here
 Now it is time to open the \textit{HelloSB} \SB{} project. We want to add a
 \textit{Start Button} to the first scene. When this button is tapped we want to
-switch to the second scene. Start by adding a button to the first scene:
+switch to the second scene. 
+
+\subsubsection{Positioning the first button}
+Start by adding a button to the first scene:
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=300pt]{images/firstproject/add_button.png}
+		\includegraphics[width=0.9\linewidth]{images/firstproject/add_button.png}
 		\caption{The project build throughout this chapter}
 		%\label{labelstruct} 
 \end{figure}
 
 One simple button, but since this is your first action in \SB{} there's
 \textit{lots} to explain about it. Let's look at the three steps highlighted in
-the image above, step by step.
+the image above, one by one.
 
 \begin{description}
 \item[(1)] Open \textit{MainScene.ccb} by double clicking it in the left
@@ -428,7 +433,14 @@ properties of it. Whenever you have selected a node the right pane will display
 all the properties you can edit. Navigate to the \textit{Title} textfield in the
 property pane and change the title of the button to \textit{Start Game}.
 \item[(3)] So far - so simple. Step number three will expose you to a very
-interesting feature of \SB{}: the positioning system. 
+interesting feature of \SB{}: the positioning system. It will allow you to not
+only use absolute positions but also positions that are relative to the size of
+the parent node. We want to center the button horizontally so we choose the
+position type for the X component to be \textit{in percent of parent
+container} by selecting that option from the dropdown menu. Now we assign
+\textit{50} as value, because that expresses the horizontal center of the parent
+container. Whichever screen this button will be displayed on, it will always be
+vertically centered (yes, even on an iPad)!
 \end{description}
 
 \begin{details}[frametitle={Positioning System in \cocos{} and \SB{}}] 
@@ -452,3 +464,132 @@ Check the extra chapter on dynamic layouts in \SB{}. %TODO: Add reference, etc.
 
 \end{details}
 
+Now the button is placed correctly. Next, we want to assign an action to it.
+When the button is tapped we want to transition to our second scene.
+
+\subsubsection{Setting up a code connection}
+
+Earlier you learned that \SB{} has three types of code connections 
+(\ref{CodeConnections}). Now we will use one of them in our project -
+\textit{Callbacks}\index{Code Connections!Callbacks}. Callbacks are only
+available to nodes that allow for some sort of user interaction (this means they need to be subclasses of
+\inlinecode{CCControl}). Buttons, next to Sliders and Text Fields are one of
+these types of nodes. Select the button we have added to the scene earlier and
+select the third tab of the right pane:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/firstproject/button_callback.png}
+		\caption{Nodes that allow user interaction can use callback methods to
+		connect to the code base}
+		%\label{labelstruct} 
+\end{figure}
+
+Inside the CCControll section you can see two options called \textit{selector}
+and \textit{target}. Here you can choose which method (selector) shall be
+called on which object (target) when this button is tapped by a user. As
+selector enter \inlinecode{startGame}. As target choose \textit{Document Root}.
+
+\begin{details}[frametitle={Targets and Selectors}] 
+The concept of targets and selectors is part of design pattern widely used
+throughout the Cocoa framework (Target/Action pattern). A \textit{selector} is
+a method name and a \textit{target} is the object that shall receive this method.
+Further reading:
+\url{https://developer.apple.com/library/ios/documentation/general/conceptual/Devpedia-CocoaApp/TargetAction.html}
+\end{details}
+
+As you can see you cannot choose an arbitrary object to be the target of this
+callback, you can only choose between two different ones:
+\begin{description}
+\item[Document Root] The document root\index{Document Root} is the highest node
+within the current \ccbfile{}. The hierarchy of the \ccbfile{} is shown in the
+\SB{} timeline: \begin{figure}[H]
+		\centering
+		\includegraphics[width=150pt]{images/firstproject/documentroot_node.png}
+		%\label{labelstruct} 
+\end{figure}
+If you select the document root as target, the \inlinecode{startGame} method
+will be called on the top level \ccnode{}. 
+\item[Owner] if you want the callback to call an object that is not part of your
+\ccbfile{} you can use the \textit{owner} option. Later in this book you will
+learn how to set up an owner object for a \ccbfile{}.
+\end{description}
+
+For our button we have decided that the \inlinecode{startGame} method should be
+called on the document root when the button is tapped. Next, we will have to
+implement this \inlinecode{startGame} method within our document root. But to
+which \textit{class} could we add this method? In order to find that out we need to understand the
+concept of \textit{Custom Classes} \index{Code Connections!Custom Classes}.
+Think about it - by default our document root is an instance of a plain
+\ccnode{} class.
+Now we want to call a method called \inlinecode{startGame} on this object. Our
+problem: the \ccnode{} class does not have a \inlinecode{startGame} method! This
+is where custom classes come to rescue us, they allow us to tell \SB{} that our
+document root node should \textbf{not} be a plain \ccnode{} but should be an
+instance of a class that we have created and that knows about our
+\inlinecode{startGame} method. To define a custom class for the document root
+you need to select the document root (the top-level \ccnode{}) from the timeline
+and open the third tab in the right pane:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/firstproject/custom_class.png}
+		%\label{labelstruct} 
+\end{figure}
+
+In the \textit{Custom class} textfield a developer can enter a class name. The
+class entered here needs to be part of the \xcode{} project related to this
+\SB{} project. As you can see every new \SB{} project already comes with a
+custom class set up for the root node of \textit{MainScene.ccb}. When the
+CCBReader loads this \ccbfile{} it will create an instance of \inlinecode{MainScene} instead of an instance of
+\inlinecode{CCNode}.
+Now our document root object is a \inlinecode{MainScene} object! That also means
+that we have saved the puzzle of where to add the code for the
+\inlinecode{startGame} method - it needs to be part of the
+\inlinecode{MainScene} class.
+
+\begin{details}[frametitle={Requirements for Custom Classes}] \index{Code
+Connections!Custom Classes}
+Every custom class has to be a subclass of the default class for a given node.
+For example, the default class for the \textit{Sprite} node in \SB{} is
+\ccsprite{}. If a developer wants to set a custom class for a Sprite node, that
+class has to be a subclass of \ccsprite{}. \textbf{Why?} \SB{} expects custom
+classes to only \textbf{add} behaviour to a default class. All the functionality
+of the default class should remain available. If your custom class for a Sprite
+node doesn't allow \SB{} to set an image, because it is a subclass of \ccnode{}
+the CCBReader and finally also you will run into big problems!
+\end{details}
+
+\subsubsection{Adding Code to a \SB{} project}
+When creating games with \SB{} we are always working with two tools. \SB{} to
+create interfaces and scenes (our game content) and \xcode{} to add code (game
+mechanics, etc.). Now we will add our first few lines of code to the
+\inlinecode{MainScene} class. Now it's time to publish the changes in our \SB{}
+project, so that they are available in our \xcode{} project. Use the publish
+button in the top left corner of the \SB{} interface (\ref{Publish}). 
+
+Now open the \xcode{} project (it's called \textit{HelloSB.xcodeproj} and is
+located inside the \textit{HelloSB.spritebuilder} folder). You will see that
+project contains two classes, \inlinecode{AppDelegate} and
+\inlinecode{MainScene}. As part of the template for new \SB{} projects the
+\inlinecode{MainScene} class has already been created for you. For any
+subsequent custom classes you link in your \SB{} project you will need to create
+the according class in \xcode{} on your own. 
+
+Now it's finally time to implement the \inlinecode{startGame} method. Open the
+\textit{MainScene.m} and file and add the following method:
+
+\begin{lstlisting}
+- (void)startGame {
+  CCLOG(@"Start Button Pressed!");
+}
+\end{lstlisting} 
+
+For now we will simply use the \inlinecode{CCLog} macro to log a text to the
+console once the button is pressed, this is an easy way to check if our code
+connection is set up correctly.
+
+\begin{lamp}[frametitle={Displaying the console in \xcode{}}] 
+To display the console in \xcode{} select \textit{View -> Debug Area ->
+Activate Console}.
+\end{lamp}

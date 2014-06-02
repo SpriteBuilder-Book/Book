@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  1 JUN 2014 18:26
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  1 JUN 2014 20:54
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -229,6 +229,7 @@ File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
 (/usr/local/texlive/2013/texmf-dist/tex/latex/latexconfig/hyperref.cfg
 File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
 Package hyperref Info: Hyper figures OFF on input line 4443.
 Package hyperref Info: Link nesting OFF on input line 4448.
 Package hyperref Info: Hyper index ON on input line 4451.
@@ -251,7 +252,7 @@ Package hyperref Info: Hyper figures OFF on input line 6295.
 Package hyperref Info: Link nesting OFF on input line 6300.
 Package hyperref Info: Hyper index ON on input line 6303.
 Package hyperref Info: backreferencing OFF on input line 6310.
-Package hyperref Info: Link coloring OFF on input line 6315.
+Package hyperref Info: Link coloring ON on input line 6313.
 Package hyperref Info: Link coloring with OCG OFF on input line 6320.
 Package hyperref Info: PDF/A mode OFF on input line 6325.
 LaTeX Info: Redefining \ref on input line 6365.
@@ -330,24 +331,6 @@ Package color Info: Driver file: pdftex.def on input line 130.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/graphics/dvipsnam.def
 File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-
-! LaTeX Error: Option clash for package hyperref.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.52 \usepackage
-                [colorinlistoftodos, textwidth=4cm, shadow]{todonotes}
-The package hyperref has already been loaded with options:
-  []
-There has now been an attempt to load it with options
-  [colorlinks=true]
-Adding the global options:
-  ,colorlinks=true
-to your \documentclass declaration may fix this.
-Try typing  <return>  to proceed.
-
 (/usr/local/texlive/2013/texmf-dist/tex/latex/todonotes/todonotes.sty
 Package: todonotes 2012/07/25 .dtx Todonotes source and documentation.
 Package: todonotes 2012/07/25
@@ -992,20 +975,20 @@ Package: dingbat 2001/04/27 v1.00 Hands and other dingbats
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux))
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 167.
-LaTeX Font Info:    ... okay on input line 167.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 168.
+LaTeX Font Info:    ... okay on input line 168.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -1070,7 +1053,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box61
-Package hyperref Info: Link coloring OFF on input line 167.
+Package hyperref Info: Link coloring ON on input line 168.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -1080,9 +1063,9 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count182
 )
-LaTeX Info: Redefining \ref on input line 167.
-LaTeX Info: Redefining \pageref on input line 167.
-LaTeX Info: Redefining \nameref on input line 167.
+LaTeX Info: Redefining \ref on input line 168.
+LaTeX Info: Redefining \pageref on input line 168.
+LaTeX Info: Redefining \nameref on input line 168.
 
 (./document.out) (./document.out)
 \@outlinefile=\write5
@@ -1090,7 +1073,7 @@ LaTeX Info: Redefining \nameref on input line 167.
 
 \c@lstlisting=\count183
  ABD: EveryShipout initializing macros
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 169.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 170.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmss.fd
@@ -1141,39 +1124,36 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.tex
 Chapter 2.
 
-<images/cocos2d/setup/mac_appstore_install.png, id=138, 1244.65pt x 823.075pt>
+<images/cocos2d/setup/mac_appstore_install.png, id=153, 1244.65pt x 823.075pt>
 File: images/cocos2d/setup/mac_appstore_install.png Graphic file (type png)
 
 <use images/cocos2d/setup/mac_appstore_install.png>
 Package pdftex.def Info: images/cocos2d/setup/mac_appstore_install.png used on 
 input line 17.
 (pdftex.def)             Requested size: 200.0pt x 132.24728pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [5
 
 
 
 
 ]
-[6 <./images/cocos2d/setup/mac_appstore_install.png>]
-<images/cocos2d/TechnologyStack.png, id=149, 229.8186pt x 211.7511pt>
+<images/cocos2d/TechnologyStack.png, id=159, 229.8186pt x 211.7511pt>
 File: images/cocos2d/TechnologyStack.png Graphic file (type png)
 
 <use images/cocos2d/TechnologyStack.png>
 Package pdftex.def Info: images/cocos2d/TechnologyStack.png used on input line 
 56.
 (pdftex.def)             Requested size: 120.0pt x 110.56677pt.
- [7 <./images/cocos2d/TechnologyStack.png>] [8] <images/cocos2d/SceneGraph.png,
- id=165, 1013.58675pt x 536.9661pt>
+ [6 <./images/cocos2d/setup/mac_appstore_install.png>] [7 <./images/cocos2d/Tec
+hnologyStack.png>] [8]
+<images/cocos2d/SceneGraph.png, id=181, 1013.58675pt x 536.9661pt>
 File: images/cocos2d/SceneGraph.png Graphic file (type png)
 
 <use images/cocos2d/SceneGraph.png>
 Package pdftex.def Info: images/cocos2d/SceneGraph.png used on input line 131.
 (pdftex.def)             Requested size: 382.82909pt x 202.81203pt.
- [9 <./images/cocos2d/SceneGraph.png>]
 Package mdframed Info: mdframed works in twoside mode on input line 146.
+ [9 <./images/cocos2d/SceneGraph.png>]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 146.
@@ -1184,8 +1164,8 @@ LaTeX Font Info:    Try loading font information for U+ark on input line 149.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/dingbat/uark.fd
 File: uark.fd 2001/04/27 v1.00 Font definitions for the ark10 font
-) [10]
-<images/cocos2d/setup/spritebuilder_new_project.png, id=181, 556.0775pt x 351.3
+)
+<images/cocos2d/setup/spritebuilder_new_project.png, id=188, 556.0775pt x 351.3
 125pt>
 File: images/cocos2d/setup/spritebuilder_new_project.png Graphic file (type png
 )
@@ -1193,18 +1173,14 @@ File: images/cocos2d/setup/spritebuilder_new_project.png Graphic file (type png
 Package pdftex.def Info: images/cocos2d/setup/spritebuilder_new_project.png use
 d on input line 184.
 (pdftex.def)             Requested size: 382.82909pt x 241.86446pt.
-
-<images/cocos2d/setup/project_structure.png, id=182, 523.9575pt x 106.3975pt>
+ [10]
+<images/cocos2d/setup/project_structure.png, id=197, 523.9575pt x 106.3975pt>
 File: images/cocos2d/setup/project_structure.png Graphic file (type png)
 
 <use images/cocos2d/setup/project_structure.png>
 Package pdftex.def Info: images/cocos2d/setup/project_structure.png used on inp
 ut line 191.
 (pdftex.def)             Requested size: 250.0pt x 50.765pt.
-
-Underfull \vbox (badness 3838) has occurred while \output is active []
-
- [11 <./images/cocos2d/setup/spritebuilder_new_project.png (PNG copy)>]
 Package mdframed Info: mdframed works in twoside mode on input line 199.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1212,27 +1188,28 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 199.
-
-<images/spritebuilder/spritebuilder_ui.png, id=187, 963.6pt x 550.055pt>
+ [11 <./images/cocos2d/setup/spritebuilder_new_project.png (PNG copy)> <./image
+s/cocos2d/setup/project_structure.png>]
+<images/spritebuilder/spritebuilder_ui.png, id=203, 963.6pt x 550.055pt>
 File: images/spritebuilder/spritebuilder_ui.png Graphic file (type png)
 
 <use images/spritebuilder/spritebuilder_ui.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_ui.png used on inpu
 t line 217.
 (pdftex.def)             Requested size: 382.82909pt x 218.52411pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [12 <./images/cocos2d/setup/project_structure.png>]
-<images/spritebuilder/spritebuilder_fileview.png, id=193, 1149.29375pt x 678.53
+ [12 <./images/spritebuilder/spritebuilder_ui.png>]
+<images/spritebuilder/spritebuilder_fileview.png, id=209, 1149.29375pt x 678.53
 5pt>
 File: images/spritebuilder/spritebuilder_fileview.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_fileview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_fileview.png used o
 n input line 238.
 (pdftex.def)             Requested size: 382.82909pt x 226.01901pt.
- [13 <./images/spritebuilder/spritebuilder_ui.png>]
-<images/spritebuilder/spritebuilder_nodeview.png, id=205, 1148.29pt x 682.55pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [13]
+<images/spritebuilder/spritebuilder_nodeview.png, id=220, 1148.29pt x 682.55pt>
 File: images/spritebuilder/spritebuilder_nodeview.png Graphic file (type png)
 <use images/spritebuilder/spritebuilder_nodeview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_nodeview.png used o
@@ -1242,7 +1219,7 @@ n input line 246.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [14 <./images/spritebuilder/spritebuilder_fileview.png>]
-<images/spritebuilder/spritebuilder_inspector.png, id=212, 1167.36125pt x 597.2
+<images/spritebuilder/spritebuilder_inspector.png, id=227, 1167.36125pt x 597.2
 3125pt>
 File: images/spritebuilder/spritebuilder_inspector.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_inspector.png>
@@ -1253,7 +1230,7 @@ on input line 257.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [15 <./images/spritebuilder/spritebuilder_nodeview.png>]
-<images/spritebuilder/spritebuilder_codeconnections.png, id=219, 1168.365pt x 5
+<images/spritebuilder/spritebuilder_codeconnections.png, id=234, 1168.365pt x 5
 96.2275pt>
 File: images/spritebuilder/spritebuilder_codeconnections.png Graphic file (type
  png)
@@ -1265,7 +1242,7 @@ Package pdftex.def Info: images/spritebuilder/spritebuilder_codeconnections.png
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16 <./images/spritebuilder/spritebuilder_inspector.png>]
-<images/spritebuilder/new-ccb.png, id=226, 534.99875pt x 256.96pt>
+<images/spritebuilder/new-ccb.png, id=241, 534.99875pt x 256.96pt>
 File: images/spritebuilder/new-ccb.png Graphic file (type png)
 
 <use images/spritebuilder/new-ccb.png>
@@ -1277,7 +1254,7 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17 <./images/spritebuilder/spritebuilder_codeconnections.png>] [18 <./images/
 spritebuilder/new-ccb.png (PNG copy)>]
-<images/spritebuilder/spritebuilder_publish_button.png, id=236, 1437.37pt x 821
+<images/spritebuilder/spritebuilder_publish_button.png, id=251, 1437.37pt x 821
 .0675pt>
 File: images/spritebuilder/spritebuilder_publish_button.png Graphic file (type 
 png)
@@ -1286,7 +1263,7 @@ Package pdftex.def Info: images/spritebuilder/spritebuilder_publish_button.png
 used on input line 318.
 (pdftex.def)             Requested size: 382.82909pt x 218.68436pt.
 
-<images/spritebuilder/spritebuilder_publishing.png, id=237, 1806.38866pt x 787.
+<images/spritebuilder/spritebuilder_publishing.png, id=252, 1806.38866pt x 787.
 743pt>
 File: images/spritebuilder/spritebuilder_publishing.png Graphic file (type png)
 
@@ -1299,7 +1276,7 @@ Underfull \vbox (badness 5741) has occurred while \output is active []
 
  [19 <./images/spritebuilder/spritebuilder_publish_button.png>] [20 <./images/s
 pritebuilder/spritebuilder_publishing.png>]
-<images/firstproject/first_project.png, id=251, 2307.5811pt x 723.4227pt>
+<images/firstproject/first_project.png, id=266, 2307.5811pt x 723.4227pt>
 File: images/firstproject/first_project.png Graphic file (type png)
 
 <use images/firstproject/first_project.png>
@@ -1310,7 +1287,7 @@ ne 387.
 Underfull \vbox (badness 1320) has occurred while \output is active []
 
  [21]
-<images/firstproject/add_button.png, id=256, 1444.39626pt x 821.0675pt>
+<images/firstproject/add_button.png, id=271, 1444.39626pt x 821.0675pt>
 File: images/firstproject/add_button.png Graphic file (type png)
 
 <use images/firstproject/add_button.png>
@@ -1332,7 +1309,7 @@ LaTeX Font Info:    Try loading font information for T1+cmtt on input line 476.
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 ) [24]
-<images/firstproject/button_callback.png, id=275, 1149.29375pt x 427.5975pt>
+<images/firstproject/button_callback.png, id=290, 1149.29375pt x 427.5975pt>
 File: images/firstproject/button_callback.png Graphic file (type png)
 
 <use images/firstproject/button_callback.png>
@@ -1348,27 +1325,26 @@ Package mdframed Info: mdframed detected package amsthm
 (mdframed)              on input line 493.
 
 Overfull \hbox (12.81487pt too wide) in paragraph at lines 494--499
-\T1/cmr/m/n/10.95 ther read-ing: []$\T1/cmtt/m/n/10.95 https : / / developer . 
-apple . com / library / ios / documentation /
+\T1/cmr/m/n/10.95 ther read-ing: [][]$\T1/cmtt/m/n/10.95 https : / / developer 
+. apple . com / library / ios / documentation /
  []
 
 [25 <./images/firstproject/button_callback.png>]
-<images/firstproject/documentroot_node.png, id=286, 296.10625pt x 171.64125pt>
+<images/firstproject/documentroot_node.png, id=301, 296.10625pt x 171.64125pt>
 File: images/firstproject/documentroot_node.png Graphic file (type png)
 
 <use images/firstproject/documentroot_node.png>
 Package pdftex.def Info: images/firstproject/documentroot_node.png used on inpu
 t line 508.
 (pdftex.def)             Requested size: 150.0pt x 86.95181pt.
-
-<images/firstproject/custom_class.png, id=287, 1189.44376pt x 724.7075pt>
+ [26 <./images/firstproject/documentroot_node.png>]
+<images/firstproject/custom_class.png, id=308, 1189.44376pt x 724.7075pt>
 File: images/firstproject/custom_class.png Graphic file (type png)
 
 <use images/firstproject/custom_class.png>
 Package pdftex.def Info: images/firstproject/custom_class.png used on input lin
 e 536.
 (pdftex.def)             Requested size: 382.82909pt x 233.24918pt.
- [26 <./images/firstproject/documentroot_node.png>]
 Package mdframed Info: mdframed works in twoside mode on input line 551.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
@@ -1384,37 +1360,65 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 583.
 Package mdframed Info: mdframed works in twoside mode on input line 592.
+ [28]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 592.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 592.
-) [28]
-(./document.ind [29
+
+<images/firstproject/run_app.png, id=328, 361.35pt x 35.13126pt>
+File: images/firstproject/run_app.png Graphic file (type png)
+
+<use images/firstproject/run_app.png>
+Package pdftex.def Info: images/firstproject/run_app.png used on input line 603
+.
+(pdftex.def)             Requested size: 200.0pt x 19.44446pt.
+
+<images/firstproject/button_success_log.png, id=329, 756.8275pt x 498.86375pt>
+File: images/firstproject/button_success_log.png Graphic file (type png)
+
+<use images/firstproject/button_success_log.png>
+Package pdftex.def Info: images/firstproject/button_success_log.png used on inp
+ut line 611.
+(pdftex.def)             Requested size: 382.82909pt x 252.33905pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [29 <./images/firstproject/run_app.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 623.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 623.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 623.
+ [30 <./images/firstproject/button_success_log.png>]) [31] (./document.ind [32
 
 
 
+] [33
 
 
 
 
 ])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 225.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 225.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 226.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 226.
  (./document.aux (./Chapters/Preamble.aux)
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 225.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 225.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 226.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 226.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 106D8E7C9FBAD99B4785833F48FDC06D;1258.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 225.
+(rerunfilecheck)             Checksum: 2F9E0BD01A26F9C070442D6578508477;1497.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 226.
  ) 
 Here is how much of TeX's memory you used:
- 24561 strings out of 493315
- 447776 string characters out of 6137903
- 894191 words of memory out of 5000000
- 27454 multiletter control sequences out of 15000+600000
+ 24563 strings out of 493315
+ 447868 string characters out of 6137903
+ 893206 words of memory out of 5000000
+ 27447 multiletter control sequences out of 15000+600000
  16612 words of font info for 39 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  74i,10n,99p,948b,1093s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1433,10 +1437,10 @@ b></usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
 usr/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></us
 r/local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb></usr/
 local/texlive/2013/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on document.pdf (29 pages, 4859281 bytes).
+Output written on document.pdf (33 pages, 4946507 bytes).
 PDF statistics:
- 391 PDF objects out of 1000 (max. 8388607)
- 295 compressed objects within 3 object streams
- 79 named destinations out of 1000 (max. 500000)
- 343 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 429 PDF objects out of 1000 (max. 8388607)
+ 324 compressed objects within 4 object streams
+ 86 named destinations out of 1000 (max. 500000)
+ 377 words of extra memory for PDF output out of 10000 (max. 10000000)
 

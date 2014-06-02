@@ -10,12 +10,12 @@ of our projects, therefore we will only install \SB{} which will come bundled
 with the latest version of \cocos{}. 
 
 Installing \SB{} is easy, simply open the \textit{App Store} app on your Mac and
-search for \textit{SpriteBuilder}:
+search for \textit{SpriteBuilder}.
 
-\begin{figure}[H]
+\begin{figure}
 		\centering
 		\includegraphics[width=200pt]{images/cocos2d/setup/mac_appstore_install.png}     
-		\caption{\cocos{} Technology Stack}
+		\caption{\SB{} is available on the Mac AppStore}
 \end{figure}
 
 Well done! Later throughout this chapter you will learn how to set up your first
@@ -585,7 +585,7 @@ Now it's finally time to implement the \inlinecode{startGame} method. Open the
 }
 \end{lstlisting} 
 
-For now we will simply use the \inlinecode{CCLog} macro to log a text to the
+For now we will simply use the \inlinecode{CCLOG} macro to log a text to the
 console once the button is pressed, this is an easy way to check if our code
 connection is set up correctly.
 
@@ -593,3 +593,46 @@ connection is set up correctly.
 To display the console in \xcode{} select \textit{View -> Debug Area ->
 Activate Console}.
 \end{lamp}
+
+Now, run the \xcode{} project by hitting the play button in the top left corner.
+You should check that you have selected \textit{HelloSB} as target and are set
+up to run the app on a simulator (indicated by a device description instead of
+a device name):
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200pt]{images/firstproject/run_app.png}
+\end{figure}
+Hitting the run button will compile your app and launch it on an iOS simulator.
+Once your app is launched, click on the start button and check the console for
+the log message. You should see something similar to this:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/firstproject/button_success_log.png}
+		%\label{labelstruct} 
+\end{figure}
+
+You have successfully set up your first \SB{} scene and have created a working
+code connection! Later on this button shall trigger a transition to the second
+scene in the game. Before we can implement that we need to create the second
+scene in our \SB{} project!
+
+%TODO: potentially ad recap of how custom class works?
+
+\begin{error}
+If you are not getting the expected result, check for all of these common
+errors:
+\begin{itemize}
+  \item Have you published your \SB{} before running in \xcode{}?
+  \item Is the custom class of the root node of \textit{MainScene.ccb} set to
+  \inlinecode{MainScene}
+  \item Does the button in \textit{MainScene.ccb} have the correct target and
+  selector?
+\end{itemize}
+\end{error}
+
+\subsection{Creating the Gameplay Scene}
+Now it's time to create your first scene using \SB{} from scratch. Our first
+scene is set up, now we need to add the Gameplay scene. 
+\subsection{Adding a Scene Transition}
+\subsection{Implementing the Gameplay}

@@ -2,6 +2,8 @@
 %%This is a very basic article template.
 %%There is just one section and two subsections.
 \documentclass[11pt,footinclude=true,headinclude=true]{scrbook}
+% raggedbottom avoids page content to get stretched
+%\raggedbottom
 \usepackage[paperwidth=7.50in, paperheight=9.25in, top=1.6cm, bottom=1.6cm,
 outer=2cm, inner=2.1cm,includefoot, includehead]{geometry} 
 %7.50 x 9.25
@@ -18,7 +20,7 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 \usepackage{makeidx}
 \makeindex
 
-\usepackage{hyperref}
+\usepackage[colorlinks=true]{hyperref}
 
 %\usepackage[T1]{fontenc}                
 %\usepackage{lipsum}
@@ -48,7 +50,6 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 %\usepackage[scaled]{beramono}
 %\usepackage{tgadventor}
 \usepackage[usenames,dvipsnames]{color}
-\usepackage[colorlinks=true]{hyperref}
 \usepackage[colorinlistoftodos, textwidth=4cm, shadow]{todonotes}
 
 \definecolor{lineno}{rgb}{0.5,0.5,0.5}
@@ -123,8 +124,8 @@ errorsymbol/.style={%
  lampsymbol/.style={%
    ,scale=2,overlay}}
 
-\newmdenv[hidealllines=true,backgroundcolor=blue!5,%
- frametitle={\stepcounter{error}Comman~Programming~Error~\theerror},
+\newmdenv[nobreak=true, hidealllines=true,backgroundcolor=blue!5,%
+ frametitle={\stepcounter{error}Common~Error~\theerror},
  frametitlefont=\color{blue!80!black}\bfseries,
  skipabove=\topsep,skipbelow=\topsep,nobreak,
  leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
@@ -132,7 +133,7 @@ errorsymbol/.style={%
 ]{error}
 
 
-\newmdenv[nobreak,middlelinewidth=.8pt,
+\newmdenv[nobreak=true,middlelinewidth=.8pt,
  frametitlefont=\bfseries,
  leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
  skipabove=\topsep,skipbelow=\topsep,
@@ -144,7 +145,7 @@ errorsymbol/.style={%
 
 
 
-\newmdenv[nobreak,middlelinewidth=.8pt,
+\newmdenv[nobreak=true,middlelinewidth=.8pt,
  frametitlefont=\bfseries,
  leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
  skipabove=\topsep,skipbelow=\topsep,
@@ -154,7 +155,7 @@ errorsymbol/.style={%
     },%
 ]{bestpractice}
 
-\newmdenv[nobreak,middlelinewidth=.8pt,
+\newmdenv[nobreak=true,middlelinewidth=.8pt,
  frametitlefont=\bfseries,
  leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
  skipabove=\topsep,skipbelow=\topsep,

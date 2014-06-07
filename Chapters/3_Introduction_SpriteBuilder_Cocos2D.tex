@@ -12,10 +12,10 @@ with the latest version of \cocos{}.
 Installing \SB{} is easy, simply open the \textit{App Store} app on your Mac and
 search for \textit{SpriteBuilder}.
 
-\begin{figure}
+\begin{figure}[H] 
 		\centering
 		\includegraphics[width=200pt]{images/cocos2d/setup/mac_appstore_install.png}     
-		\caption{\SB{} is available on the Mac AppStore}
+		\caption{\cocos{} Technology Stack}
 \end{figure}
 
 Well done! Later throughout this chapter you will learn how to set up your first
@@ -36,12 +36,12 @@ development a lot easier:
   of the code for your game, making most design decisions simple
   \item[Scene Graph and Sprites] loading an image for a character and adding it
   to the gameplay scene can happen in two lines of code
-  \item[Action System] a sophisticated action system allows to define movements
-  of objects and animations
+  \item[Action System] a sophisticated action system allows you to define
+  movements of objects and animations
   \item[Integrated Physics Engine] automatically calculates movements of
   objects, collisions and more.
 \end{description}
-There are a whole bunch of more features - but this brief outline shows the most
+There are many more features - but this brief outline shows the most
 important ones and should give you an idea why almost all game developers these
 days use game engines. 
 
@@ -336,6 +336,7 @@ Here's a diagram that visualizes how \SB{} and \xcode{} work together:
 \ccbfile{}s created in \SB{} store a scene graph; the hierarchy and positions of
 your nodes. When publishing a \SB{} project the \ccbfile{}s and all other
 project resources are copied to your \xcode{} project.
+\label{CCBReader}
 When running the project in \xcode{} a class called CCBReader will parse your
 \ccbfile{}s and create the according \ccnode{} subclasses to reconstruct the scene
 graph you have designed in \spriteb{}.
@@ -632,7 +633,175 @@ errors:
 \end{error}
 
 \subsection{Creating the Gameplay Scene}
-Now it's time to create your first scene using \SB{} from scratch. Our first
-scene is set up, now we need to add the Gameplay scene. 
+Now it's time to create your first scene using \SB{} from scratch. The scene we
+are going to create is the Gameplay scene. To create a new scene (or any
+other \ccbfile{}) select: \textit{File -> New -> File\ldots} from the \SB{} menu.
+Then you will see the following dialog appear:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=250pt]{images/firstproject/new_scene.png}
+		%\label{labelstruct} 
+\end{figure}
+
+The dialog will ask you for a name for the \ccbfile{} and a template type. For
+now we are going to use the name \textit{Gameplay.ccb} and the type
+\textit{Scene}. Once you hit the create button you will see the new, blank
+scene appear.
+
+Our Gameplay scene will remain empty. As you have seen in the outline
+of the project, we want to dynamically add colored objects to the game, whenever
+the user taps into our Gameplay scene - initially however, the scene will be
+blank. Now that we have created the Gameplay scene, we can add the transition
+from the Main scene to the Gameplay scene.
+
 \subsection{Adding a Scene Transition}
+Transitions \index{Scene Transition} are essential for any game. We use them
+whenever we want to switch from one scene to another. Transitions cannot be configured in
+\SB{}, they always need to be implemented in code. To implement this step,
+you need to open your \xcode{} project again.
+
+\cocos{} has one central class that is responsible for displaying the active
+scene and generating transitions between different scenes:
+\inlinecode{CCDirector}\index{CCDirector}. CCDirector is implemented as a
+singleton - thus there's only one CCDirector per \cocos{} game. The instance can be accessed
+through the class method \inlinecode{[CCDirector sharedInstance]}.
+
+\begin{lamp}[frametitle={CCDirector is versatile!}] 
+CCDirector is responsible for a lot more than only handling active scenes and
+scene transitions. It is basically a collection of different global \cocos{}
+settings. The scene handling methods however are the most frequently used
+CCDirector methods.
+\end{lamp}
+
+CCDirector provides a large collection of methods to present scenes with and
+without transitions, here are the most important ones:
+
+\begin{lstlisting}
+- (void)presentScene:(CCScene *)scene;
+- (void)presentScene:(CCScene *)scene withTransition:(CCTransition *)transition;
+- (void)pushScene:(CCScene*) scene;
+- (void)pushScene:(CCScene *)scene withTransition:(CCTransition *)transition;
+- (void)popScene;
+- (void)popSceneWithTransition:(CCTransition *)transition;
+- (void)popToRootScene;
+- (void)popToRootSceneWithTransition:(CCTransition *)transition;
+\end{lstlisting}
+
+\cocos{} has two different approaches for displaying a new scene.
+\textbf{Replacing} the current scene with a new one, using the
+\inlinecode{presentScene:} methods, or \textbf{Pushing} the new scene on top of
+the currently active one using the \inlinecode{pushScene:} methods. Whichever
+type you choose, you always have the option to provide a transition effect for
+presenting a scene, or not to provide a transition effect and display the new
+scene instantaneously. If you want to provide an effect you need to create an
+instance of \inlinecode{CCTransition}.
+
+Before we look into using transition effects, let's take a look at the
+differences between pushing and replacing a scene.
+
+\subsubsection{Replacing scenes vs. pushing scenes}
+When you simply want to replace the current scene with a new one you should use
+the \inlinecode{presentScene:} method. Here's an example:
+\begin{lstlisting}
+[[CCDirector sharedDirector] presentScene:myNewScene];
+\end{lstlisting}
+Very simple! So why would one use the \inlinecode{pushScene:} method?
+Let's assume the following scenario where we want to implement a menu with
+multiple submenus. Whenever a player hits the back button, he wants to return
+to the previous menu:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=250pt]{images/firstproject/navigation_stack.png}
+		%\label{labelstruct} 
+\end{figure}
+This is a case where it is a lot easier to use \inlinecode{pushScene:} and
+\inlinecode{popScene:} instead of simply replacing the currently running scene.
+Whenever a player selects a button that opens a sub-menu, we call:
+\begin{lstlisting}
+[[CCDirector sharedDirector] pushScene:submenu];
+\end{lstlisting}
+And whenever a player hits the \textit{back} button in one of the sub-menus, we
+simply call:
+\begin{lstlisting}
+[[CCDirector sharedDirector] popScene];
+\end{lstlisting}
+This works, because CCDirector will remember the scene that we pushed before the
+current one and can easily return to it. This concept is called a
+\textit{Navigation Stack}.
+
+If you would try to implement the menu hierarchy using
+\inlinecode{presentScene:} you would have to explicitly define which scene each
+back button will present. The code for the back button of \textit{SubMenu}
+would look like this:
+\begin{lstlisting}
+[[CCDirector sharedDirector] presentScene:mainMenu];
+\end{lstlisting}
+If you would ever change the menu hierarchy in your game, you would have to
+change the code for each back button.
+
+\begin{bestpractice}[frametitle={Scene transitions - the right way}] 
+For \textbf{one time transitions} for example from a splash screen to the
+gameplay of a game, use \inlinecode{presentScene:}. Whenever a user can navigate
+between your scenes, e.g. by using a back button to return to the previous
+scene, make use of the navigation stack by using the \inlinecode{pushScene:} and
+\inlinecode{popScene:} methods.
+\end{bestpractice}
+
+\subsubsection{Adding transition effects}
+For every scene replacement method there's one variation that takes an instance
+of \inlinecode{CCTransition}. The CCTransition instance provides an animation
+for transitions between different scenes. CCTransition provides multiple class
+methods to easily create them. Here's an example of how to provide an animated
+transition:
+\begin{lstlisting}
+CCTransition *transition = [CCTransition transitionCrossFadeWithDuration:1.f];
+[[CCDirector sharedDirector] presentScene:gameplayScene
+withTransition:transition];
+\end{lstlisting}
+
+\subsubsection{Implementing a scene transition for our game}
+Now that you know the most important details about scene transitions, let's add
+the transition from our start scene to our gameplay scene. Open
+\textit{MainScene.m} in \xcode{}. Earlier we have already implemented a test
+version of the \inlinecode{startGame} method, where we printed a log message to
+the console. Now replace the current implementation of \inlinecode{startGame}
+with this one:
+\begin{lstlisting}
+- (void)startGame {
+  CCScene *gameplayScene = [CCBReader loadAsScene:@"Gameplay"];
+  CCTransition *transition = [CCTransition transitionFadeWithDuration:1.0];
+  [[CCDirector sharedDirector] presentScene:gameplayScene withTransition:transition];
+}
+\end{lstlisting}
+Now that you are familiar with scene transitions, the only interesting line
+should be the one where we use the \inlinecode{CCBReader}\index{CCBReader} to
+load a \ccbfile{}. The CCBReader class was briefly introduced at the beginning
+of this chapter (\ref{CCBReader}). It is capable of reading \SB{}s
+\textit{.ccbi} files and creating the according \cocos{} classes from the
+information stored in them. Whenever we want to load a scene or any
+other type of node that we created in \SB{} into code we use the CCBReader
+class. In the lines shown above, we load the content of our
+\textit{Gameplay.ccb} into a variable called \inlinecode{gameplayScene}. Then we
+create a simple fade transition and store that object in the
+\inlinecode{transition} variable. Finally we use the \inlinecode{CCDirector} to
+present our loaded scene with the transition we just created. 
+
+You are now ready to run this version of the game from \xcode{}! When you tap
+the \textit{Start} button on the first scene, you should see a transition to our
+black gameplay scene that lasts for one second.
+
+\textbf{Well done!} You have learned how to create a new scene in \SB{} and how
+to implement transition between different scenes in a game. Now let's implement
+the actual gameplay of our first example game!
+
+\begin{details}[frametitle={.ccb and .ccbi}] 
+The files with the file extension \textit{.ccb} are in XML-format and are used
+by \SB{} to store and read information about a scene or node created in \SB{}.
+When a \SB{} project gets published, \SB{} generates a binary version of
+each \textit{.ccb} file. The file extension for these binary files is
+\textit{.ccbi} and they are a lot smaller than their corresponding
+\textit{.ccb} files. The CCBReader reads these smaller binary files.
+\end{details}
+
 \subsection{Implementing the Gameplay}

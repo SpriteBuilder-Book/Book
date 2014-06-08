@@ -501,7 +501,7 @@ Further reading:
 
 As you can see you cannot choose an arbitrary object to be the target of this
 callback, you can only choose between two different ones:
-\begin{description}
+\begin{description}\label{DocumentRoot_Owner}
 \item[Document Root] The document root\index{Document Root} is the highest node
 within the current \ccbfile{}. The hierarchy of the \ccbfile{} is shown in the
 \SB{} timeline: \begin{figure}[H]
@@ -782,10 +782,12 @@ of this chapter (\ref{CCBReader}). It is capable of reading \SB{}s
 information stored in them. Whenever we want to load a scene or any
 other type of node that we created in \SB{} into code we use the CCBReader
 class. In the lines shown above, we load the content of our
-\textit{Gameplay.ccb} into a variable called \inlinecode{gameplayScene}. Then we
-create a simple fade transition and store that object in the
-\inlinecode{transition} variable. Finally we use the \inlinecode{CCDirector} to
-present our loaded scene with the transition we just created. 
+\textit{Gameplay.ccb} into a variable called \inlinecode{gameplayScene}. The
+\inlinecode{loadAsScene:} method wraps whatever scene graph you load into an
+instance of \inlinecode{CCScene}, use it whenever you want to load a \ccbfile{}
+as a scene. %TODO: needs more explanation
+Then we create a simple fade transition and store that object in
+the \inlinecode{transition} variable. Finally we use the \inlinecode{CCDirector} to present our loaded scene with the transition we just created.
 
 You are now ready to run this version of the game from \xcode{}! When you tap
 the \textit{Start} button on the first scene, you should see a transition to our
@@ -805,3 +807,114 @@ each \textit{.ccb} file. The file extension for these binary files is
 \end{details}
 
 \subsection{Implementing the Gameplay}
+Now it's time to implement the actual gameplay. For our first project we want to
+keep that fairly simple. Whenever a user touches the screen, we want to add a
+rotating square with a random color to the gameplay scene. We position the
+square at the location of the touch. 
+
+\subsubsection{Creating the Square \ccbfile{}}
+
+Let's start by creating the square we want
+to spawn during the game in \SB{}. Create a new \ccbfile{} of type
+\textit{Node}: 
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=250pt]{images/firstproject/square_ccb.png}
+		%\label{labelstruct} 
+\end{figure}
+The squares we generate in the game shall have a color. A default \ccnode{}
+cannot display a color. In order to display a color we need to use a
+\inlinecode{CCNodeColor}. The \SB{} node for a CCNodeColor is called
+\textit{Color Node}. The root node of every \ccbfile{} is a plain \ccnode{},
+that cannot be changed. This means we need to add the \textit{Color Node} as a
+child of the root node of \textit{Square.ccb}:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/firstproject/square_add_colornode.png}
+		%\label{labelstruct} 
+\end{figure}
+\begin{description}
+\item[(1)] Open the \textit{Node Library} and drag a \textit{Color Node} to the
+stage or the timeline in order to add it to the root node of of
+\textit{Square.ccb}.
+\item[(2)] Center the new \textit{Color Node} on the root node by selecting an
+\textit{Anchor Point} of (0.5, 0.5). Change the \textit{Content Size} of the
+node to (50, 50).
+\end{description}
+
+Now the basic square is set up. Next, we need to set up a code connection. Earlier you have seen
+the use of \textit{Custom Classes} and \textit{Callbacks}, now we will use the
+third type of code connections supported by \SB{} a \textit{Variable
+Assignment}.\index{Code Connections!Variable Assignment}. Variable assignments
+are generally used when we want to access a part of our scene graph in code. In
+our game, whenever a new square is created we want to set a random color for
+this square. Generating a random color is something we need to do in code and
+cannot do in \SB{}. This also means that we need a way to \textit{apply} the random color we
+generate in code to our square that we have set up in \SB{}. The displayed color
+is defined in the \textit{Color Node} that we just added. We will need a
+reference to this \textit{Color Node} to change the color of our square from
+code. \textbf{Select CCNodeColor from the timeline} (and make sure that you
+have selected the Color Node and not the Root Node!) and open the connection tab
+(the second tab on the right pane):
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=250pt]{images/firstproject/square_code_connection.png}
+\end{figure}
+As the variable name (entered in the text field), choose \textit{\_colorNode}.
+As the second option you need to choose the object to which this variable will be
+assigned to. Just as for callbacks you can choose between the \textit{Document
+Root} and the \textit{Owner} (\ref{DocumentRoot_Owner}). We choose the
+\textit{Document Root}, which means that \SB{} will attempt to store a reference
+to the \textit{Color Node} in an instance variable called \textit{\_colorNode}
+ on the root node object of this \ccbfile{}. We now face the same 'problem' as earlier when we set up a
+\textit{Callback}. The root node of \textit{Square.ccb} is a plain \ccnode{} and
+a plain \ccnode{} does not have an instance variable called
+\textit{\_colorNode}! We once again need to define a custom class for the root
+node of this \ccbfile{}.
+
+\begin{lamp}[frametitle={Variable Assignments, Callbacks and Custom Classes}] 
+Always remember that you practically cannot set up a \textit{Variable
+assignment} or a \textit{Callback} for the \textit{Document Root} without also
+setting a custom class for the root node of the corresponding \ccbfile{}. %TODO:
+%flesh out?
+\end{lamp}
+
+\textbf{Select the root CCNode node} from the timeline and set the custom class
+for this node to \textit{Square}:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=350pt]{images/firstproject/square_custom_class.png}
+\end{figure}
+When the \textit{CCBReader} reads this \ccbfile{} it will create instance of the
+class \textit{Square} as the root node and it will assign a reference to the
+\textit{Color Node} to an instance variable of \textit{Square} called
+\textit{\_colorNode}. This way we will be able to access the \textit{Color Node}
+and change the color of our square programmatically!
+
+\subsubsection{Setting up a custom class for the Gameplay}
+In our \textit{Gameplay} scene we want to respond to touches and spawn squares.
+All of that functionality needs to be implemented in code. Therefore we need to
+define a custom class for the root node of our \textit{Gameplay.ccb} (if you
+struggle with the following instructions you can double check how we set up a
+custom class for \textit{Square.ccb}).
+
+\begin{enumerate}
+  \item Open \textit{Gameplay.ccb}
+  \item Select the root \ccnode{} from the timeline
+  \item Open the code connections tab (the second tab on the right pane)
+  \item Define the \textit{Custom Class} to be \textit{Gameplay}
+\end{enumerate}
+
+We've set up multiple code connections throughout this chapter. In order for all
+of them to work, we need to \textbf{publish the \SB{} project} and switch to the
+\xcode{} project and create the classes and instance variables that we are referencing in the \SB{} project.
+
+\subsubsection{Creating the Square class}
+Open \xcode{} and create a new Objective-C class by selecting \textit{File ->
+New File\ldots} and choosing \textit{Objective-C class}. As class name choose
+\textit{Square} and define it to be a subclass of \ccnode{}. Remember, a custom
+class always has to be a subclass of the default class. The default class for
+the root node of \textit{Square.ccb} is a \ccnode{} therefore
+\inlinecode{Square} needs to be a subclass of \ccnode{}.
+\subsubsection{Creating the Gameplay class}
+ 

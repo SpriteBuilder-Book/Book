@@ -28,4 +28,8 @@
 \contentsline {subsubsection}{Replacing scenes vs. pushing scenes}{33}{section*.9}
 \contentsline {subsubsection}{Adding transition effects}{34}{section*.10}
 \contentsline {subsubsection}{Implementing a scene transition for our game}{34}{section*.11}
-\contentsline {subsection}{\numberline {2.4.4}Implementing the Gameplay}{35}{subsection.2.4.4}
+\contentsline {subsection}{\numberline {2.4.4}Implementing the Gameplay}{36}{subsection.2.4.4}
+\contentsline {subsubsection}{Creating the Square CCB File{}}{36}{section*.12}
+\contentsline {subsubsection}{Setting up a custom class for the Gameplay}{39}{section*.13}
+\contentsline {subsubsection}{Creating the Square class}{39}{section*.14}
+\contentsline {subsubsection}{Creating the Gameplay class}{39}{section*.15}

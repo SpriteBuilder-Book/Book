@@ -32,4 +32,4 @@
 \contentsline {subsubsection}{Creating the Square CCB File{}}{36}{section*.12}
 \contentsline {subsubsection}{Setting up a custom class for the Gameplay}{39}{section*.13}
 \contentsline {subsubsection}{Creating the Square class}{39}{section*.14}
-\contentsline {subsubsection}{Creating the Gameplay class}{39}{section*.15}
+\contentsline {subsubsection}{Creating the Gameplay class}{43}{section*.15}

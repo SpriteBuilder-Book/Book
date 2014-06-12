@@ -35,7 +35,7 @@ development a lot easier:
   \item[Structure] like most game engines \cocos{} demands a specific structure
   of the code for your game, making most design decisions simple
   \item[Scene Graph and Sprites] loading an image for a character and adding it
-  to the gameplay scene can happen in two lines of code
+  to the Gameplay scene can happen in two lines of code
   \item[Action System] a sophisticated action system allows you to define
   movements of objects and animations
   \item[Integrated Physics Engine] automatically calculates movements of
@@ -79,7 +79,7 @@ one scene.
 
 Here's an example from the MakeGamesWithUs game \textit{Deep Sea Fury}:
 % add image
-You can see that the game consists of the start scene, the gameplay scene and
+You can see that the game consists of the start scene, the Gameplay scene and
 the game over scene.
 
 A \cocos{} developer creates scenes by using the \ccscene{} class. Another
@@ -246,7 +246,7 @@ The third tab in the left view is the {Node Library}:
 		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
 \end{figure} 
 This panel shows you all available node types you can use to construct your
-gameplay scenes and menus. You will drag these nodes from this view to the stage
+Gameplay scenes and menus. You will drag these nodes from this view to the stage
 in the center to add them to your scenes.
 
 \subsubsection{Inspector}
@@ -382,7 +382,7 @@ of our example projects.
 You have already created the \SB{} project called \textit{HelloSB}. Now we will
 start adding some content to it. The project built in this chapter will consist
 of two scenes one start screen and one game screen. In the game screen the user will be able to spawn randomly
-colored squares by tapping on the screen.
+colored squares that rotate by tapping on the screen.
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{images/firstproject/first_project.png}
@@ -762,7 +762,7 @@ withTransition:transition];
 
 \subsubsection{Implementing a scene transition for our game}
 Now that you know the most important details about scene transitions, let's add
-the transition from our start scene to our gameplay scene. Open
+the transition from our start scene to our Gameplay scene. Open
 \textit{MainScene.m} in \xcode{}. Earlier we have already implemented a test
 version of the \inlinecode{startGame} method, where we printed a log message to
 the console. Now replace the current implementation of \inlinecode{startGame}
@@ -791,7 +791,7 @@ the \inlinecode{transition} variable. Finally we use the \inlinecode{CCDirector}
 
 You are now ready to run this version of the game from \xcode{}! When you tap
 the \textit{Start} button on the first scene, you should see a transition to our
-black gameplay scene that lasts for one second.
+black Gameplay scene that lasts for one second.
 
 \textbf{Well done!} You have learned how to create a new scene in \SB{} and how
 to implement transition between different scenes in a game. Now let's implement
@@ -913,8 +913,132 @@ of them to work, we need to \textbf{publish the \SB{} project} and switch to the
 Open \xcode{} and create a new Objective-C class by selecting \textit{File ->
 New File\ldots} and choosing \textit{Objective-C class}. As class name choose
 \textit{Square} and define it to be a subclass of \ccnode{}. Remember, a custom
-class always has to be a subclass of the default class. The default class for
-the root node of \textit{Square.ccb} is a \ccnode{} therefore
+class always has to be a subclass of the node type you have selected in \SB{}.
+The node type of the root node of \textit{Square.ccb} is a \ccnode{} therefore
 \inlinecode{Square} needs to be a subclass of \ccnode{}.
+
+Now open \textit{Square.m} and add the instance variable
+\inlinecode{\_colorNode} to the \inlinecode{Square} class. This variable is the
+one that we defined in \SB{} to store the reference to the
+\inlinecode{CCNodeColor} that displays the color of our square:
+
+\begin{lstlisting}
+#import "Square.h"
+
+@implementation Square {
+  CCNodeColor *_colorNode;
+}
+
+@end
+\end{lstlisting} 
+After adding the instance variable the code for \textit{Square.m} should look as
+shown above. Now that we have a reference to the \inlinecode{CCNodeColor} we
+need a position in code where we can set a random color for that node.
+
+The requirements for this projects state that we need to choose a random color
+for our Square as soon as it is added to the Gameplay scene. \textbf{How can we
+be informed about the square being added to the Gameplay scene?} Therefore we
+need to take a closer look at what we call the \textbf{Node
+Lifecycle}\index{Node Lifecycle}.
+
+We have five important methods that inform us about certain lifecycle events on
+\ccnode{} subclasses. All of the methods below are called on all nodes that are
+part of the scene that is being loaded/presented/hidden:
+
+\begin{description}
+  \item[didLoadFromCCB] this method is called when the \inlinecode{CCBReader}
+  has created the complete node graph from a CCB file and all code connections
+  are set up. You implement this method to access and manipulate the content of
+  a node. You cannot access child nodes of the node or code connection
+  variables before this method is called. Note that this method is only called
+  on nodes that are loaded from \ccbfile{}s.
+  \item[onEnter/onEnterTransitionDidFinish] are called as soon as a node enters
+  the stage. If you are presenting a scene with an animated transition,
+  \inlinecode{onEnter} will be called on that scene as soon as the transition
+  starts and \inlinecode{onEnterTransitionDidFinish} will be called when the transition
+  completes. If a scene or node is being presented/added without an animated
+  transition both methods are called directly after each other.
+  \item[onExitTransitionDidStart/onExit] are called as soon as a node leaves the
+  stage. If you are hiding a scene with an animated transition,
+  \inlinecode{onExitTransitionDidStart} will be called on that scene as soon as
+  the transition starts and \inlinecode{onExit} will be called when the
+  transition completes. If a scene or node is being hidden/removed without an
+  animated transition both methods are called directly after each other.
+\end{description}
+
+You will get to see lots of examples of how to use the lifecycle methods
+throughout this book, for now we know that we need to implement
+\inlinecode{onEnter} to pick and apply a random color for our square as soon as
+it gets added to the Gameplay scene.
+Add this implementation of \inlinecode{onEnter} to \textit{Square.m}:
+\begin{lstlisting}
+- (void)onEnter {
+  [super onEnter];
+  
+  // arc4random_uniform(N) generates a random number between 0 and N-1
+  float red =   arc4random_uniform(256) / 255.f;
+  float green = arc4random_uniform(256) / 255.f;
+  float blue =  arc4random_uniform(256) / 255.f;
+  
+  _colorNode.color = [CCColor colorWithRed:red green:green blue:blue];
+}
+\end{lstlisting}
+The lines above generate three random numbers, one for each color component
+with a value between 0.0 and 1.0. These three numbers are used to create an
+instance of \inlinecode{CCColor} and set it as the color of our node. 
+
+Now the square will appear in a random color as soon as we add it to a scene.
+The second requirement for our square is that it shall rotate while on the
+screen. One of the ways to move and/or animate a node in \cocos{} is using the
+\cocos{} Action System\index{Action System}. The Action System provides a simple
+and expressive way for developers to implement animated changes like:
+\textit{Move the main character to the top left corner in 2 seconds}. 
+
+The Action System consists of
+dozens of subclasses of \inlinecode{\ccaction{}} - a majority of these actions represent some type of animated movement or
+transformation. \inlinecode{CCActionMoveTo} for example moves a node to a
+target position within a provided time interval. This is how to use it:
+\begin{lstlisting}
+CCAction *move = [CCActionMoveTo actionWithDuration:2.f position:ccp(20, 100)];
+[aSimpleNode runAction:move];
+\end{lstlisting}
+All actions can be run by calling the \inlinecode{runAction} method and
+providing the action as an argument. 
+
+\begin{details}[frametitle={More about the
+\cocos{} Action System}] The \cocos{} Action System is one of the most
+important building blocks for most games and we will discuss it in detail
+throughout this book. If you want to learn more about the \cocos{} action system
+right away, you can check the according chapter in the \cocos{} documentation:
+\url{https://www.makegameswith.us/docs/#!/cocos2d/1.0/animations-movements}
+\end{details}
+
+The Action System also provides several actions that take other actions as
+arguments. One example is \inlinecode{CCActionReverse} that reverses the action
+it is initialized with - for example moving a node backwards instead of
+forwards. Another example is \inlinecode{CCActionRepeatForever} that takes
+another action and - exactly, repeats it forever!
+
+Add the following lines to the \inlinecode{onEnter} method of \textit{Square.m}
+to make the square rotate endlessly:
+\begin{lstlisting}
+CCActionRotateBy *rotate = [CCActionRotateBy actionWithDuration:2.f angle:360.f];
+CCActionRepeatForever *repeatRotation = [CCActionRepeatForever actionWithAction:rotate];
+[self runAction:repeatRotation];
+\end{lstlisting}
+One of the nicest aspects of the Action System is that it produces very readable
+code, just as the one shown above. We rotate our square by 360 degrees in 2
+seconds and repeat that forever!
+
+Finally our implementation of \inlinecode{Square} is complete. Along the way you
+have learned about code connections, generating random numbers and using the
+action system. Now let's move on to implement the \inlinecode{Gameplay} class so
+that we can see our delightfully colored and rotating squares in action.
+
 \subsubsection{Creating the Gameplay class}
- 
+
+In \SB{} we have already created \textit{Gameplay.ccb} and set up the custom
+class for the root node to be \inlinecode{Gameplay}. Now we need to add the
+\inlinecode{Gameplay} class in \xcode{} and implement touch handling code that
+creates a square and adds it to the Gameplay scene as soon as a player touches
+the screen.

@@ -17,10 +17,10 @@
 \contentsline {subsubsection}{Code Connections}{16}{section*.5}
 \contentsline {subsection}{\numberline {2.3.3}CCB File{}s}{17}{subsection.2.3.3}
 \contentsline {subsection}{\numberline {2.3.4}How SpriteBuilder{} and Xcode{} work together}{18}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Code Connections}{20}{subsection.2.3.5}
+\contentsline {subsection}{\numberline {2.3.5}Code Connections}{21}{subsection.2.3.5}
 \contentsline {section}{\numberline {2.4}A first SpriteBuilder{} project}{21}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Setting up the first scene}{22}{subsection.2.4.1}
-\contentsline {subsubsection}{Positioning the first button}{22}{section*.6}
+\contentsline {subsubsection}{Positioning the first button}{23}{section*.6}
 \contentsline {subsubsection}{Setting up a code connection}{25}{section*.7}
 \contentsline {subsubsection}{Adding Code to a SpriteBuilder{} project}{28}{section*.8}
 \contentsline {subsection}{\numberline {2.4.2}Creating the Gameplay Scene}{31}{subsection.2.4.2}
@@ -33,3 +33,4 @@
 \contentsline {subsubsection}{Setting up a custom class for the Gameplay}{39}{section*.13}
 \contentsline {subsubsection}{Creating the Square class}{39}{section*.14}
 \contentsline {subsubsection}{Creating the Gameplay class}{43}{section*.15}
+\contentsline {subsubsection}{Adding Touch Handling to the Gameplay}{43}{section*.16}

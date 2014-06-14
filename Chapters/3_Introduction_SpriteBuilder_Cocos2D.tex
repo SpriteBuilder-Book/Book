@@ -1037,8 +1037,56 @@ that we can see our delightfully colored and rotating squares in action.
 
 \subsubsection{Creating the Gameplay class}
 
-In \SB{} we have already created \textit{Gameplay.ccb} and set up the custom
-class for the root node to be \inlinecode{Gameplay}. Now we need to add the
+After we have set up all the code for the square it's now time to implement the
+gameplay. In \SB{} we have already created the \ccbfile{} \textit{Gameplay.ccb}
+and set up the custom class for the root node to be \inlinecode{Gameplay}. Now we need to add the
 \inlinecode{Gameplay} class in \xcode{} and implement touch handling code that
-creates a square and adds it to the Gameplay scene as soon as a player touches
+creates a square and adds it to the gameplay scene as soon as a player touches
 the screen.
+
+Create the new class just as you have created the \inlinecode{Square} class. In
+\xcode{} select \textit{File -> New -> File\ldots} and select
+\textit{Objective-C} class. Again, this class needs to be a subclass of
+\ccnode{} since the root node of \textit{Gameplay.ccb} is a \ccnode{}.
+
+\subsubsection{Adding Touch Handling to the Gameplay}
+Now we need to add touch handling to the Gameplay scene. This will be the first
+time you will add User Interaction to a \cocos{} game! 
+
+The \cocos{} touch handling system works on a \textit{per node
+basis}\index{Touch Handling}.
+This means that every \ccnode{} instance can choose to receive touches or not. You
+can activate touch handling on any node using the
+\inlinecode{userInteractionEnabled} property. If
+\inlinecode{userInteractionEnabled} is set to \inlinecode{YES}, \cocos{} will
+automatically check if your node is touched by the user. In \cocos{} the front
+most node receives touch events first.
+
+Each touch in \cocos{} has a lifecycle. That lifecycle consists of four
+different states and four corresponding methods that are called on your
+\ccnode{}:
+
+\begin{description}
+\item[touchBegan:] called when a touch begins
+\item[touchMoved:] called when the touch position of a touch changes
+\item[touchEnded:] called when a touch ends because the user stops touching the
+screen
+\item[touchCancelled:] called when a touch is cancelled because user moves touch
+outside of the touch area of a node
+\end{description}
+
+You can override all of these methods in any \ccnode{} subclass in order to
+respond to these lifecycle events. For our simple example now, we only need to
+respond to the \inlinecode{touchBegan:} method.
+
+\begin{details}[frametitle={The \cocos{} Touch System}]
+We will see more complicated use cases of the \cocos{} touch system throughout
+other examples in this book. If you are interested in more details right away
+you should
+read:\url{https://www.makegameswith.us/docs/#!/cocos2d/1.1/user-interaction} and
+\url{https://www.makegameswith.us/gamernews/366/touch-handling-in-cocos2d-30}.
+\end{details}
+
+Now that you know the basics, let's implement touch handling for the
+\inlinecode{Gameplay} class. First, we need to enable user interaction. A great
+place to do this is in the \inlinecode{onEnterTransitionDidFinish} method:

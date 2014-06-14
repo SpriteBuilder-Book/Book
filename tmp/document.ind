@@ -5,7 +5,7 @@
   \indexspace
 
   \item CCBReader, \hyperpage{35}
-  \item CCDirector, \hyperpage{31}
+  \item CCDirector, \hyperpage{32}
   \item Code Connections, \hyperpage{16}
     \subitem Callbacks, \hyperpage{25}
     \subitem Custom Classes, \hyperpage{26}, \hyperpage{28}
@@ -26,5 +26,9 @@
   \indexspace
 
   \item Scene Transition, \hyperpage{31}
+
+  \indexspace
+
+  \item Touch Handling, \hyperpage{43}
 
 \end{theindex}

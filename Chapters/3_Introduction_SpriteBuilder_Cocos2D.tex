@@ -133,8 +133,8 @@ Let's take a look at simple example of a scene graph:
 \end{figure}
 
 On the left side of the image you can see the node hierarchy. On the first level
-you have the \ccscene{}. Then we have a \ccnode{} with to children of type
-\cclabel{}. This \ccnode{} is the first example of a grouping node. Instances of
+you have the \ccscene{}. As the first child we have a \ccnode{} with two
+children of type \cclabel{}. This \ccnode{} is the first example of a grouping node. Instances of
 \ccnode{} don't have any appearance they are solely used to group other nodes.
 Throughout this book you will learn that it often makes sense to group nodes
 under certain parent nodes. The main reason is that all children are placed
@@ -967,10 +967,28 @@ part of the scene that is being loaded/presented/hidden:
 \end{description}
 
 You will get to see lots of examples of how to use the lifecycle methods
-throughout this book, for now we know that we need to implement
+throughout this book, for now we know that we need to override
 \inlinecode{onEnter} to pick and apply a random color for our square as soon as
-it gets added to the Gameplay scene.
-Add this implementation of \inlinecode{onEnter} to \textit{Square.m}:
+it gets added to the Gameplay scene. It is also important to know that you need
+to call the \inlinecode{super} implementation if you override any of the 
+\inlinecode{onEnter\ldots} or \inlinecode{onExit\ldots} methods. \ccnode{}
+has its own implementation of these methods and they are important for the
+functionality of the framework - if you do not call them this will result in
+unexpected behaviour throughout your game. 
+\begin{details}[frametitle={Overriding \cocos{} lifecycle methods}]
+As of \cocos{} 3.1 not calling \inlinecode{super} when overriding one of these
+lifecycle methods will result in a compiler warning - this can save a lot of
+debugging time. You are interested in how that can be done? \cocos{} makes use
+of a nice compiler feature to implement this requirement. You simply need to
+add an according \inlinecode{\_\_attribute\_\_} to the method definition:
+
+\begin{lstlisting}
+ -(void) onEnter __attribute__((objc_requires_super));
+\end{lstlisting}
+
+\end{details}
+Add this implementation of
+\inlinecode{onEnter} to \textit{Square.m}:
 \begin{lstlisting}
 - (void)onEnter {
   [super onEnter];
@@ -1089,4 +1107,60 @@ read:\url{https://www.makegameswith.us/docs/#!/cocos2d/1.1/user-interaction} and
 
 Now that you know the basics, let's implement touch handling for the
 \inlinecode{Gameplay} class. First, we need to enable user interaction. A great
-place to do this is in the \inlinecode{onEnterTransitionDidFinish} method:
+place to do this is in the \inlinecode{onEnterTransitionDidFinish} method. Why?
+If you have an animated transition that presents your gameplay scene you will
+likely not want to the player to interact with your game before this transition
+has finished entirely. Add the following method to \textit{Gameplay.m}:
+\begin{lstlisting}
+- (void)onEnterTransitionDidFinish {
+    [super onEnterTransitionDidFinish];
+    
+    self.userInteractionEnabled = YES;
+}
+\end{lstlisting}
+As discussed earlier you need to call the \inlinecode{super} implementation of
+the lifecycle method you are overriding. In the second step we are setting
+\inlinecode{userInteractionEnabled} to \inlinecode{YES}. Now \cocos{} knows that
+this node wants to receive touch events. 
+
+In the next step we need to decide to which touch events we
+want to subscribe and implement the corresponding method. For this simple game
+we only need to know when a touch begins, because we will add a square to the
+screen immediately. This means we only need to implement the
+\inlinecode{touchBegan:} method. Add the following implementation to
+\inlinecode{Gameplay.m}:
+\begin{lstlisting}
+- (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
+    CGPoint touchPosition = [touch locationInNode:self];
+    CCNode *square = [CCBReader load:@"Square"];
+    [self addChild:square];
+    square.position = touchPosition;
+}
+\end{lstlisting}
+We have now implemented the \inlinecode{touchBegan:} method. It will be called
+every time the user taps onto the gameplay scene. As one parameter of this
+method we receive a \inlinecode{UITouch}. The \inlinecode{UITouch} stores all
+information about the touch. \cocos{} adds a method called
+\inlinecode{locationInNode:}. This method returns the touch position
+relative to the provided node. In the first line we call this method to receive
+the touch location within the gameplay scene (referred to by \inlinecode{self}).
+In the next line we load one \inlinecode{Square} node using the
+\inlinecode{CCBReader}. Then we add that loaded square as a child to the
+gameplay scene. The \inlinecode{addChild:} method of \ccnode{} will add the
+square to the node hierarchy of the gameplay scene. As soon as node becomes part
+of the node hierarchy of the currently active scene it will be displayed on the
+screen. Finally we choose a position for the square.
+We provide the touch position that we determined in the first line - this way the square will be spawned exactly at the position touched by
+the player. Now it's time to run your project again. Once the game started,
+select the \textit{Start} button to go to the gameplay scene then click onto the
+screen multiple times to simulate touches. Every time you simulate a touch you
+should see a new square spawn at the touch position:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=350pt]{images/firstproject/spinning_squares.png}
+\end{figure}
+\textbf{Well done!} You have come a very long way from the blank project to a
+first simple game that uses scene transitions, actions and the \cocos{} touch
+system. But this is only the very beginning. In the next chapter we will start
+working on a much more complex game that will teach you many more important
+concepts of \SB{} and \cocos{}. 

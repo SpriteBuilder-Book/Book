@@ -1,16 +1,19 @@
 \chapter{Introduction to \SB{} and \cocos{} }
 Now it's time to dive into 2D Game Development! For this chapter I will assume
-that you haven't written a game with a game engine so I will explain the
-relevant concepts fairly detailed.
+that you haven't written a game with a game engine yet. We will be discussing
+all the relevant concepts throughout this chapter.
 
 \section{Installing the software}
+First things first. Let's install the software used throughout this book.
 In general there are two ways to install \cocos{} depending on whether you want
-to use \SB{} or not. Throughout this book we will be using \SB{} to set up all
+to use \SB{} or not. In this book we will be using \SB{} to set up all
 of our projects, therefore we will only install \SB{} which will come bundled
 with the latest version of \cocos{}. 
 
 Installing \SB{} is easy, simply open the \textit{App Store} app on your Mac and
-search for \textit{SpriteBuilder}.
+search for \textit{SpriteBuilder}. Note that you should always use the latest
+version of Mac OS X and \xcode{} together with \SB{} (as of this writing Mac
+OS X 10.9 and \xcode{} 6.0).
 
 \begin{figure}[H] 
 		\centering
@@ -18,38 +21,58 @@ search for \textit{SpriteBuilder}.
 		\caption{\cocos{} Technology Stack}
 \end{figure}
 
-Well done! Later throughout this chapter you will learn how to set up your first
-project!
+After a couple of minutes the \SB{} installation should be completed. Later
+throughout this chapter you will learn how to set up your first project.
+
+\section{Why \cocos{}}
+Well, now you have already installed \cocos{}. I still want to spend a moment on
+discussing why we are using this tool. The main goal of \cocos{} is to make
+mobile game development \textit{easier}. Earlier we have discussed the basic
+concepts and benefits of game engines. You should now know that there are many
+problems developers have faced while developing games, animations, physics, etc.
+- and most of them have been solved and put into frameworks. You should not
+spend your precious time trying to solve them again. So now that you know that
+you definitely should use a framework - \textbf{which ones are available and why
+should you choose \cocos{}}?
+
+\textit{Add brief discussion on different frameworks}
 
 \section{Introduction to \cocos{}}
-To understand what \cocos{} is, it is helpful to look at the history of game
-development. The first video games were written in assembler (a very low level
-programming language) and images were drawn to the screen by manually setting
-colors for certain pixels. Since then a wealth of frameworks and libraries has been written to make the life of a game
-developer easier. Throughout this book you will learn how powerful \cocos{} is
-and how little code you will need for the basic building blocks of your games.
-
-Here are some of the most important features of \cocos{} that make 2D game
-development a lot easier:
+First let us take a look at the features of \cocos{}. That will give you a basic
+understanding of which tasks you will hand off to the framework, later on we
+will be discussing all of these features in detail:
 \begin{description}
-  \item[Structure] like most game engines \cocos{} demands a specific structure
-  of the code for your game, making most design decisions simple
-  \item[Scene Graph and Sprites] loading an image for a character and adding it
-  to the Gameplay scene can happen in two lines of code
-  \item[Action System] a sophisticated action system allows you to define
-  movements of objects and animations
-  \item[Integrated Physics Engine] automatically calculates movements of
-  objects, collisions and more.
+  \item[Scene Graphs] \cocos{} provides the concepts of scenes and nodes.
+  Everything that is rendered to the screen is part of a hierarchical
+  \textit{scene graph}. Instead of performing custom drawing code you define
+  what your scene looks like by providing a scene graph and \cocos{} will render
+  it for you.
+  \item[Rendering Engine] When using \cocos{} you don't need to write your own
+  rendering code. \cocos{} provides a rendering engine built on top of OpenGL
+  ES.
+  \item[Action System] A sophisticated action system allows you to define
+  movements of objects and animations instead of writing a lot of custom code.
+  \item[Physics Engine] The \cocos{} physics engine automatically
+  calculates movements of objects, collisions and more.
+  \item[Node Library] \cocos{} provides a large set of nodes as part of the
+  framework. Nodes can be used to represent images, UI elements, solid colors,
+  etc.
 \end{description}
+
 There are many more features - but this brief outline shows the most
 important ones and should give you an idea why almost all game developers these
-days use game engines. 
+days use game engines.  Let's take a closer look at how \cocos{} works.
+
+\subsection{The \cocos{} technology stack}
 
 \cocos{} is built on top of OpenGL ES 2.0. If you have ever written OpenGL code
-before you know that it takes many lines of code to draw a textured rectangle on
-the screen. \cocos{} abstracts all of these tasks for you, you can go a very
-long way without writing any OpenGL code. The following diagram shows which
-technologies are used by \cocos{}:
+before, you know that it takes a lot of code even to render the most primitive
+scenes.	OpenGL is a fairly low level framework that gives the graphics
+programmer a lot of control over how and when certain tasks are performed -
+more control then you need for most 2D games. \cocos{} abstracts all of these
+tasks for you. Many \cocos{} developers write entire games without writing any
+OpenGL code at all. The following diagram shows which technologies are used by
+\cocos{}:
 
 \begin{figure}[H]
 		\centering
@@ -57,32 +80,32 @@ technologies are used by \cocos{}:
 		\caption{\cocos{} Technology Stack}
 \end{figure}
 
-As a \cocos{} developer you define which scenes exist in your game, which
-objects are part of these scenes and which size, position and appearance these
-objects have and \cocos{} will use OpenGL to render the scene you have
-described. In order to provide this functionality \cocos{} consists of many
-classes - some important ones will be discussed in this chapter. All \cocos{}
-classes use the \textit{CC} prefix (\ccscene{}, \ccnode{}, etc.).
+The goal of a game engine like \cocos{} is that the game developer doesn't have
+to get in touch with rendering at all. Instead a developer defines which scenes
+exist in a game, which objects are part of these scenes and which size, position and appearance these objects have and \cocos{} 
+will use OpenGL to render these scenes for him. 
 
-You have probably realized this already - when working with a 2D game engine for
-the first time you will be introduced to a whole set of new terminology. Just as a framework to write desktop
-applications knows the concept of windows, buttons and mouse clicks a 2D game
-engine comes with its own set of terms and techniques. We will spent the next
-sections discussing the important terms in detail.
+In order to provide this functionality \cocos{} consists of variety of classes -
+some important ones will be discussed in this chapter. All \cocos{} classes use the \textit{CC} prefix (\ccscene{}, \ccnode{}, etc.).
+
+When working with a 2D game engine for the first time you will be introduced to
+a whole set of new terminology. We have already talked about nodes and scenes
+but we haven't discussed what these terms mean. We will now start discussing the
+most important terms and get to know how the concepts behind them are
+implemented in \cocos{}.
 
 \subsection{Scenes}
-For explaining the important terms and concepts of \cocos{} I will use a top
-down approach. First we will learn how games that use \cocos{} are structured.
-On the highest level of structure we have a concept called \textit{scenes}. By default every scene in
-\cocos{} is full-screen. This means for every screen in your game you will use
-one scene.
+Scenes are the basic building blocks of all \cocos{} games, they are the
+highest level on which game content can be structured. Each scene in \cocos{} is
+a full-screen canvas. For every full-screen section of your game you will use
+\textit{one} scene.
 
 Here's an example from the MakeGamesWithUs game \textit{Deep Sea Fury}:
 % add image
-You can see that the game consists of the start scene, the Gameplay scene and
+You can see that the game consists of the start scene, the gameplay scene and
 the game over scene.
 
-A \cocos{} developer creates scenes by using the \ccscene{} class. Another
+Scenes are represented by the \ccscene{} class. Another
 important \cocos{} class for scene handling is \ccdirector{}. The \ccdirector{}
 class is responsible for deciding which scene is currently active in the game
 (\cocos{} only allows one active scene at a time). Whenever a developer wants to
@@ -151,7 +174,7 @@ will save you a lot of time when you change the layout of your scene.
 The other two objects in the scene graph are simpler. One represents the
 background image the other one the main character.
 
-For some games scene graphs can get very complex and include hundreds of
+For some games, scene graphs can get very complex and include hundreds of
 different nodes. The key takeaways for now are:
 
 \begin{enumerate}
@@ -171,7 +194,7 @@ take a look at a tool called \SB{} which we will use to create the majority of
 our game content. The main purpose of \SB{} is to provide a visual editor for
 the creation of scenes, animations and more. For most games you will create some
 basic mechanics in code (enemy movement, score mechanism, etc.) but you will create
-the most of your game content in \SB{} since it is a lot easier to create
+ most of your game content in \SB{} since it is a lot easier to create
 levels, menus and other scenes in an editor that provides you with a live
 preview instead of putting these scenes together in code.
 
@@ -220,7 +243,7 @@ The \SB{} interface is divided into 4 main sections:
   \item \textit{Resource/Component Browser:} Here you can see the different
   resources and scenes you have created or added to your project. You can also select different types of Nodes and drag them into your scene.
   \item \textit{Stage:} The stage will preview your current scene. Here you can
-  arrange all of the Nodes that belong to a scene. 
+  arrange all of the nodes that belong to a scene. 
   \item \textit{Timeline:} The timeline is used to create animations within
   SpriteBuilder.
   \item \textit{Detail View:} Once you select a node in your scene, this detail
@@ -382,7 +405,7 @@ of our example projects.
 You have already created the \SB{} project called \textit{HelloSB}. Now we will
 start adding some content to it. The project built in this chapter will consist
 of two scenes one start screen and one game screen. In the game screen the user will be able to spawn randomly
-colored squares that rotate by tapping on the screen.
+colored squares that rotate, by tapping on the screen.
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{images/firstproject/first_project.png}

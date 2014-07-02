@@ -1,34 +1,34 @@
 \begin{theindex}
 
-  \item Action System, \hyperpage{41}
+  \item Action System, \hyperpage{43}
 
   \indexspace
 
-  \item CCBReader, \hyperpage{34}
-  \item CCDirector, \hyperpage{31}
-  \item Code Connections, \hyperpage{15}
-    \subitem Callbacks, \hyperpage{24}
-    \subitem Custom Classes, \hyperpage{25}, \hyperpage{27}
-    \subitem Variable Assignment, \hyperpage{36}
+  \item CCBReader, \hyperpage{36}
+  \item CCDirector, \hyperpage{33}
+  \item Code Connections, \hyperpage{17}
+    \subitem Callbacks, \hyperpage{26}
+    \subitem Custom Classes, \hyperpage{27}, \hyperpage{29}
+    \subitem Variable Assignment, \hyperpage{38}
 
   \indexspace
 
-  \item Document Root, \hyperpage{25}
+  \item Document Root, \hyperpage{27}
 
   \indexspace
 
-  \item Node Lifecycle, \hyperpage{39}
+  \item Node Lifecycle, \hyperpage{41}
 
   \indexspace
 
-  \item publish, \hyperpage{18}
+  \item publish, \hyperpage{19}
 
   \indexspace
 
-  \item Scene Transition, \hyperpage{30}
+  \item Scene Transition, \hyperpage{32}
 
   \indexspace
 
-  \item Touch Handling, \hyperpage{43}
+  \item Touch Handling, \hyperpage{45}
 
 \end{theindex}

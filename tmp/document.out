@@ -6,14 +6,15 @@
 \BOOKMARK [2][-]{subsection.1.3.2}{Scenes}{section.1.3}% 6
 \BOOKMARK [2][-]{subsection.1.3.3}{Nodes}{section.1.3}% 7
 \BOOKMARK [2][-]{subsection.1.3.4}{Scene Graphs}{section.1.3}% 8
-\BOOKMARK [1][-]{section.1.4}{Introduction to SpriteBuilder}{chapter.1}% 9
-\BOOKMARK [2][-]{subsection.1.4.1}{Creating a first project}{section.1.4}% 10
-\BOOKMARK [2][-]{subsection.1.4.2}{The Editor}{section.1.4}% 11
-\BOOKMARK [2][-]{subsection.1.4.3}{CCB Files}{section.1.4}% 12
-\BOOKMARK [2][-]{subsection.1.4.4}{How SpriteBuilder and Xcode work together}{section.1.4}% 13
-\BOOKMARK [2][-]{subsection.1.4.5}{Code Connections}{section.1.4}% 14
-\BOOKMARK [1][-]{section.1.5}{A first SpriteBuilder project}{chapter.1}% 15
-\BOOKMARK [2][-]{subsection.1.5.1}{Setting up the first scene}{section.1.5}% 16
-\BOOKMARK [2][-]{subsection.1.5.2}{Creating the Gameplay Scene}{section.1.5}% 17
-\BOOKMARK [2][-]{subsection.1.5.3}{Adding a Scene Transition}{section.1.5}% 18
-\BOOKMARK [2][-]{subsection.1.5.4}{Implementing the Gameplay}{section.1.5}% 19
+\BOOKMARK [2][-]{subsection.1.3.5}{An Introduction to CCNode}{section.1.3}% 9
+\BOOKMARK [1][-]{section.1.4}{Introduction to SpriteBuilder}{chapter.1}% 10
+\BOOKMARK [2][-]{subsection.1.4.1}{Creating a first project}{section.1.4}% 11
+\BOOKMARK [2][-]{subsection.1.4.2}{The Editor}{section.1.4}% 12
+\BOOKMARK [2][-]{subsection.1.4.3}{CCB Files}{section.1.4}% 13
+\BOOKMARK [2][-]{subsection.1.4.4}{How SpriteBuilder and Xcode work together}{section.1.4}% 14
+\BOOKMARK [2][-]{subsection.1.4.5}{Code Connections}{section.1.4}% 15
+\BOOKMARK [1][-]{section.1.5}{A first SpriteBuilder project}{chapter.1}% 16
+\BOOKMARK [2][-]{subsection.1.5.1}{Setting up the first scene}{section.1.5}% 17
+\BOOKMARK [2][-]{subsection.1.5.2}{Creating the Gameplay Scene}{section.1.5}% 18
+\BOOKMARK [2][-]{subsection.1.5.3}{Adding a Scene Transition}{section.1.5}% 19
+\BOOKMARK [2][-]{subsection.1.5.4}{Implementing the Gameplay}{section.1.5}% 20

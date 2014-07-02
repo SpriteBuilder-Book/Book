@@ -99,7 +99,7 @@ Scenes are the basic building blocks of all \cocos{} games, they are the
 highest level on which game content can be structured. Each scene in \cocos{} is
 a full-screen canvas. For every full-screen section of your game you will use
 \textit{one} scene.
-
+\textbf{Add screenshots here}
 Here's an example from the MakeGamesWithUs game \textit{Deep Sea Fury}:
 % add image
 You can see that the game consists of the start scene, the gameplay scene and
@@ -157,10 +157,11 @@ Let's take a look at simple example of a scene graph:
 
 On the left side of the image you can see the node hierarchy. On the first level
 you have the \ccscene{}. As the first child we have a \ccnode{} with two
-children of type \cclabel{}. This \ccnode{} is the first example of a grouping node. Instances of
-\ccnode{} don't have any appearance they are solely used to group other nodes.
-Throughout this book you will learn that it often makes sense to group nodes
-under certain parent nodes. The main reason is that all children are placed
+children of type \cclabel{}. This \ccnode{} is the first example of a grouping
+node, it groups the score caption label and the label displaying the actual
+score. Instances of \ccnode{} don't have any appearance they are solely used to
+group other nodes. Throughout this book you will learn that it often makes sense
+to group nodes under certain parent nodes. The main reason is that all children are placed
 \textit{relative} to their parents. So if we would want to move the scoreboard
 of the example above to the top right corner we would only have to move the
 parent node instead of both child nodes. As you can imagine this becomes
@@ -184,9 +185,83 @@ different nodes. The key takeaways for now are:
   useful to group nodes that are moved together under one parent
 \end{enumerate}
 
-Now that you have a basic understanding of how games are structured in \cocos{}
-we will take a look at a second tool which we will be using throughout this
-book: \SB{}.
+As you can see nodes are the most important building block of \cocos{} games -
+they are used to build everything that is visible in your game. Because it
+is so important to understand how nodes work in \cocos{} we will take a look at
+the most important properties and methods that \ccnode{} provides.
+
+\subsection{An Introduction to CCNode}
+Every visible object in your game will be a subclass of \ccnode{}. Because
+you use nodes to build and arrange your scenes it is important to understand
+how nodes are positioned and how positions of nodes can be accessed. Let's
+discuss the most relevant properties and methods to access and change
+size and position of a \ccnode{}:
+
+\begin{description}
+\item[contentSizeInPoints] the size of this node in points
+\item[positionInPoints] the position of this node in points, expressed relative
+to the parent of this node
+\item[anchor point] the anchor point is the center point for rotations and the reference point for positioning this node
+\item[boundingBox] the bounding box is a rectangle that encloses a node. You can
+only read it but not set it
+\end{description}
+
+The \textit{contentSizeInPoints} and \textit{positionInPoints} properties
+express the size and the position of a \ccnode{} and should be fairly easy to
+understand. The \textit{bounding box} and the \textit{anchor point} however, are
+concepts related to game development and these may be new to you. The bounding
+box is a rectangle that encloses the entire node, you will see an example of a
+bounding box in the next diagram. The anchor point is relevant for positioning
+and rotating nodes.
+
+Let's take a look at how anchor points influence positioning first. We know that
+the position of a node is expressed relative to its parent. More specifically every node position in
+\cocos{} is expressed from the \textit{position reference corner} of the parent
+to the anchor point of the \ccnode{}. Here's a visual example in which a bear
+node is placed relative to a background node:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/cocos2d/ccnode/NodePositioning.png}     
+		\caption{\ccnode{} positioning example}
+\end{figure}
+
+As you can see, the \textit{anchor point} and the \textit{position reference
+corner} influence the position of a node. The anchor point can have any value
+between (0, 0), representing the bottom left corner of a node and (1,1),
+representing the top right corner of a node. In the example above, the bear has
+a anchor point of (0.5, 0.5) which is at the center of the bear. By choosing an
+anchor point of (0.5, 0.5), the \textit{center} of the bear will be positioned
+at (215, 285). If we would choose an anchor point of (0,0) the \textit{bottom
+left} corner of the bear would be positioned at (215, 285).
+
+The \textit{position reference
+corner} lets us define from which of the four corners of the parent node we are
+expressing the position of a node. In the example above the top left corner is
+the \textit{position reference corner}. We will discuss how to use position reference corners when we start 
+creating games that shall work on multiple screen sizes.
+
+The anchor point is not only important for the positioning of a node. It has a
+second important function - it represents the center of rotation for a
+\ccnode{}. Every \ccnode{} rotates around its own anchor point. Here's an
+example of rotating the bear node with two different anchor points:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/cocos2d/ccnode/Rotation.png}     
+		\caption{\ccnode{} positioning example}
+\end{figure}
+
+There is a lot more to learn about \ccnode{}, but for now our only goal is to
+get a basic understanding of how \cocos{} games are structured and what the most
+important parts of \cocos{} are.
+
+You now know that \cocos{} game are structured into scenes. You know that
+everything visible in your game is a \ccnode{} and that every \ccnode{} can have
+multiple children. You also got a basic understanding of how nodes are
+positioned in \cocos{}.
+
+Now that you have that basic understanding, we will take a look at a second tool which we will be using throughout this book: \SB{}.
 
 \section{Introduction to \SB{}}
 You have learned the fundamentals of the game engine we will use. Now we will
@@ -197,6 +272,11 @@ basic mechanics in code (enemy movement, score mechanism, etc.) but you will cre
  most of your game content in \SB{} since it is a lot easier to create
 levels, menus and other scenes in an editor that provides you with a live
 preview instead of putting these scenes together in code.
+
+If you have never used \SB{} before, it is very important to understand that
+everything that can be implemented in \SB{} can also be implemented in code.
+\SB{} is not part of the game engine, it just allows you to configure \cocos{}
+scenes and nodes in an editor instead of configuring them in code.
 
 \subsection{Creating a first project}
 To dive into the features of \SB{} we will create our first project! 
@@ -246,7 +326,7 @@ The \SB{} interface is divided into 4 main sections:
   arrange all of the nodes that belong to a scene. 
   \item \textit{Timeline:} The timeline is used to create animations within
   SpriteBuilder.
-  \item \textit{Detail View:} Once you select a node in your scene, this detail
+  \item \textit{Inspector:} Once you select a node in your scene, this detail
   view will display a lot of editable information about that node. You can modify positions, content (the text of a label, for example) and physics properties.
 \end{enumerate}
 Let's take a closer look at some of the most important views.
@@ -258,7 +338,7 @@ It lists all the \textit{.ccb} files and resources that are part of the \SB{}
 project:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_fileview.png}     
+		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_fileview.png}     
 \end{figure} 
 In this view you can add new resources and restructure your project's folder
 hierarchy.
@@ -266,7 +346,7 @@ hierarchy.
 The third tab in the left view is the {Node Library}:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
+		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
 \end{figure} 
 This panel shows you all available node types you can use to construct your
 Gameplay scenes and menus. You will drag these nodes from this view to the stage
@@ -277,7 +357,7 @@ The first tab of the Detail View (the right panel) is
 the Inspector. Once you have selected an object on your stage you can use this panel to modify many of its properties, like position and color:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_inspector.png}     
+		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_inspector.png}     
 \end{figure} 
 
 \subsubsection{Code Connections}\index{Code Connections} 
@@ -289,7 +369,7 @@ a method in your code that shall be called once a button in your scene is tapped
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.9\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
+		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
 \end{figure} 
 Code connections will be discussed in detail later on.
 

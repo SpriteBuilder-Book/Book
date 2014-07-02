@@ -6,29 +6,30 @@
 \contentsline {subsection}{\numberline {1.3.2}Scenes}{6}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Nodes}{7}{subsection.1.3.3}
 \contentsline {subsection}{\numberline {1.3.4}Scene Graphs}{8}{subsection.1.3.4}
-\contentsline {section}{\numberline {1.4}Introduction to SpriteBuilder{}}{9}{section.1.4}
-\contentsline {subsection}{\numberline {1.4.1}Creating a first project}{10}{subsection.1.4.1}
-\contentsline {subsection}{\numberline {1.4.2}The Editor}{11}{subsection.1.4.2}
-\contentsline {subsubsection}{File View}{12}{section*.2}
-\contentsline {subsubsection}{Node Library}{13}{section*.3}
-\contentsline {subsubsection}{Inspector}{14}{section*.4}
-\contentsline {subsubsection}{Code Connections}{15}{section*.5}
-\contentsline {subsection}{\numberline {1.4.3}CCB File{}s}{16}{subsection.1.4.3}
-\contentsline {subsection}{\numberline {1.4.4}How SpriteBuilder{} and Xcode{} work together}{17}{subsection.1.4.4}
-\contentsline {subsection}{\numberline {1.4.5}Code Connections}{20}{subsection.1.4.5}
-\contentsline {section}{\numberline {1.5}A first SpriteBuilder{} project}{20}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}Setting up the first scene}{21}{subsection.1.5.1}
-\contentsline {subsubsection}{Positioning the first button}{22}{section*.6}
-\contentsline {subsubsection}{Setting up a code connection}{24}{section*.7}
-\contentsline {subsubsection}{Adding Code to a SpriteBuilder{} project}{27}{section*.8}
-\contentsline {subsection}{\numberline {1.5.2}Creating the Gameplay Scene}{30}{subsection.1.5.2}
-\contentsline {subsection}{\numberline {1.5.3}Adding a Scene Transition}{30}{subsection.1.5.3}
-\contentsline {subsubsection}{Replacing scenes vs. pushing scenes}{32}{section*.9}
-\contentsline {subsubsection}{Adding transition effects}{33}{section*.10}
-\contentsline {subsubsection}{Implementing a scene transition for our game}{33}{section*.11}
-\contentsline {subsection}{\numberline {1.5.4}Implementing the Gameplay}{35}{subsection.1.5.4}
-\contentsline {subsubsection}{Creating the Square CCB File{}}{35}{section*.12}
-\contentsline {subsubsection}{Setting up a custom class for the Gameplay}{38}{section*.13}
-\contentsline {subsubsection}{Creating the Square class}{38}{section*.14}
-\contentsline {subsubsection}{Creating the Gameplay class}{42}{section*.15}
-\contentsline {subsubsection}{Adding Touch Handling to the Gameplay}{43}{section*.16}
+\contentsline {subsection}{\numberline {1.3.5}An Introduction to CCNode}{9}{subsection.1.3.5}
+\contentsline {section}{\numberline {1.4}Introduction to SpriteBuilder{}}{12}{section.1.4}
+\contentsline {subsection}{\numberline {1.4.1}Creating a first project}{12}{subsection.1.4.1}
+\contentsline {subsection}{\numberline {1.4.2}The Editor}{14}{subsection.1.4.2}
+\contentsline {subsubsection}{File View}{15}{section*.2}
+\contentsline {subsubsection}{Node Library}{16}{section*.3}
+\contentsline {subsubsection}{Inspector}{16}{section*.4}
+\contentsline {subsubsection}{Code Connections}{17}{section*.5}
+\contentsline {subsection}{\numberline {1.4.3}CCB File{}s}{18}{subsection.1.4.3}
+\contentsline {subsection}{\numberline {1.4.4}How SpriteBuilder{} and Xcode{} work together}{19}{subsection.1.4.4}
+\contentsline {subsection}{\numberline {1.4.5}Code Connections}{22}{subsection.1.4.5}
+\contentsline {section}{\numberline {1.5}A first SpriteBuilder{} project}{22}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Setting up the first scene}{23}{subsection.1.5.1}
+\contentsline {subsubsection}{Positioning the first button}{24}{section*.6}
+\contentsline {subsubsection}{Setting up a code connection}{26}{section*.7}
+\contentsline {subsubsection}{Adding Code to a SpriteBuilder{} project}{29}{section*.8}
+\contentsline {subsection}{\numberline {1.5.2}Creating the Gameplay Scene}{32}{subsection.1.5.2}
+\contentsline {subsection}{\numberline {1.5.3}Adding a Scene Transition}{32}{subsection.1.5.3}
+\contentsline {subsubsection}{Replacing scenes vs. pushing scenes}{34}{section*.9}
+\contentsline {subsubsection}{Adding transition effects}{35}{section*.10}
+\contentsline {subsubsection}{Implementing a scene transition for our game}{35}{section*.11}
+\contentsline {subsection}{\numberline {1.5.4}Implementing the Gameplay}{37}{subsection.1.5.4}
+\contentsline {subsubsection}{Creating the Square CCB File{}}{37}{section*.12}
+\contentsline {subsubsection}{Setting up a custom class for the Gameplay}{40}{section*.13}
+\contentsline {subsubsection}{Creating the Square class}{40}{section*.14}
+\contentsline {subsubsection}{Creating the Gameplay class}{44}{section*.15}
+\contentsline {subsubsection}{Adding Touch Handling to the Gameplay}{45}{section*.16}

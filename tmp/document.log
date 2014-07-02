@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  17 JUN 2014 23:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  1 JUL 2014 21:47
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1115,7 +1115,7 @@ Class scrbook Warning: \float@addtolists detected!
 (scrbook)              `scrbook' soon .
 
 
-<images/cocos2d/setup/mac_appstore_install.png, id=131, 1244.65pt x 823.075pt>
+<images/cocos2d/setup/mac_appstore_install.png, id=136, 1244.65pt x 823.075pt>
 File: images/cocos2d/setup/mac_appstore_install.png Graphic file (type png)
 
 <use images/cocos2d/setup/mac_appstore_install.png>
@@ -1126,7 +1126,7 @@ input line 20.
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 36.
  [4 <./images/cocos2d/setup/mac_appstore_install.png>]
-<images/cocos2d/TechnologyStack.png, id=145, 229.8186pt x 211.7511pt>
+<images/cocos2d/TechnologyStack.png, id=150, 229.8186pt x 211.7511pt>
 File: images/cocos2d/TechnologyStack.png Graphic file (type png)
 
 <use images/cocos2d/TechnologyStack.png>
@@ -1134,407 +1134,423 @@ Package pdftex.def Info: images/cocos2d/TechnologyStack.png used on input line
 79.
 (pdftex.def)             Requested size: 120.0pt x 110.56677pt.
  [5] [6 <./images/cocos2d/TechnologyStack.png>] <images/cocos2d/SceneGraph.png,
- id=158, 1013.58675pt x 536.9661pt>
+ id=163, 1013.58675pt x 536.9661pt>
 File: images/cocos2d/SceneGraph.png Graphic file (type png)
 
 <use images/cocos2d/SceneGraph.png>
 Package pdftex.def Info: images/cocos2d/SceneGraph.png used on input line 154.
 (pdftex.def)             Requested size: 382.82909pt x 202.81203pt.
  [7]
-Package mdframed Info: mdframed works in twoside mode on input line 169.
+Package mdframed Info: mdframed works in twoside mode on input line 170.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 169.
+(mdframed)              on input line 170.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 169.
-LaTeX Font Info:    Try loading font information for U+ark on input line 172.
+(mdframed)              on input line 170.
+LaTeX Font Info:    Try loading font information for U+ark on input line 173.
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/dingbat/uark.fd
 File: uark.fd 2001/04/27 v1.00 Font definitions for the ark10 font
-) [8 <./images/cocos2d/SceneGraph.png>]
-<images/cocos2d/setup/spritebuilder_new_project.png, id=172, 556.0775pt x 351.3
+) [8 <./images/cocos2d/SceneGraph.png>] [9]
+<images/cocos2d/ccnode/NodePositioning.png, id=186, 501.875pt x 386.44376pt>
+File: images/cocos2d/ccnode/NodePositioning.png Graphic file (type png)
+
+<use images/cocos2d/ccnode/NodePositioning.png>
+Package pdftex.def Info: images/cocos2d/ccnode/NodePositioning.png used on inpu
+t line 225.
+(pdftex.def)             Requested size: 212.68427pt x 163.76764pt.
+ [10 <./images/cocos2d/ccnode/NodePositioning.png>]
+<images/cocos2d/ccnode/Rotation.png, id=193, 501.875pt x 373.395pt>
+File: images/cocos2d/ccnode/Rotation.png Graphic file (type png)
+
+<use images/cocos2d/ccnode/Rotation.png>
+Package pdftex.def Info: images/cocos2d/ccnode/Rotation.png used on input line 
+251.
+(pdftex.def)             Requested size: 255.22371pt x 189.88766pt.
+ [11 <./images/cocos2d/ccnode/Rotation.png>]
+<images/cocos2d/setup/spritebuilder_new_project.png, id=200, 556.0775pt x 351.3
 125pt>
 File: images/cocos2d/setup/spritebuilder_new_project.png Graphic file (type png
 )
  <use images/cocos2d/setup/spritebuilder_new_project.png>
 Package pdftex.def Info: images/cocos2d/setup/spritebuilder_new_project.png use
-d on input line 207.
+d on input line 287.
 (pdftex.def)             Requested size: 382.82909pt x 241.86446pt.
- [9]
-<images/cocos2d/setup/project_structure.png, id=182, 523.9575pt x 106.3975pt>
+ [12]
+<images/cocos2d/setup/project_structure.png, id=205, 523.9575pt x 106.3975pt>
 File: images/cocos2d/setup/project_structure.png Graphic file (type png)
 
 <use images/cocos2d/setup/project_structure.png>
 Package pdftex.def Info: images/cocos2d/setup/project_structure.png used on inp
-ut line 214.
+ut line 294.
 (pdftex.def)             Requested size: 250.0pt x 50.765pt.
-Package mdframed Info: mdframed works in twoside mode on input line 222.
+Package mdframed Info: mdframed works in twoside mode on input line 302.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 222.
+(mdframed)              on input line 302.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 222.
- [10 <./images/cocos2d/setup/spritebuilder_new_project.png (PNG copy)> <./image
+(mdframed)              on input line 302.
+ [13 <./images/cocos2d/setup/spritebuilder_new_project.png (PNG copy)> <./image
 s/cocos2d/setup/project_structure.png>]
-<images/spritebuilder/spritebuilder_ui.png, id=188, 963.6pt x 550.055pt>
+<images/spritebuilder/spritebuilder_ui.png, id=212, 963.6pt x 550.055pt>
 File: images/spritebuilder/spritebuilder_ui.png Graphic file (type png)
 
 <use images/spritebuilder/spritebuilder_ui.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_ui.png used on inpu
-t line 240.
+t line 320.
 (pdftex.def)             Requested size: 382.82909pt x 218.52411pt.
- [11 <./images/spritebuilder/spritebuilder_ui.png>]
-<images/spritebuilder/spritebuilder_fileview.png, id=194, 1149.29375pt x 678.53
+ [14 <./images/spritebuilder/spritebuilder_ui.png>]
+<images/spritebuilder/spritebuilder_fileview.png, id=218, 1149.29375pt x 678.53
 5pt>
 File: images/spritebuilder/spritebuilder_fileview.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_fileview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_fileview.png used o
-n input line 261.
-(pdftex.def)             Requested size: 382.82909pt x 226.01901pt.
- [12]
-<images/spritebuilder/spritebuilder_nodeview.png, id=204, 1148.29pt x 682.55pt>
+n input line 341.
+(pdftex.def)             Requested size: 340.29613pt x 200.90118pt.
+ [15 <./images/spritebuilder/spritebuilder_fileview.png>]
+<images/spritebuilder/spritebuilder_nodeview.png, id=229, 1148.29pt x 682.55pt>
 File: images/spritebuilder/spritebuilder_nodeview.png Graphic file (type png)
 <use images/spritebuilder/spritebuilder_nodeview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_nodeview.png used o
-n input line 269.
-(pdftex.def)             Requested size: 382.82909pt x 227.55429pt.
- [13 <./images/spritebuilder/spritebuilder_fileview.png>]
-<images/spritebuilder/spritebuilder_inspector.png, id=212, 1167.36125pt x 597.2
+n input line 349.
+(pdftex.def)             Requested size: 340.29613pt x 202.26701pt.
+
+<images/spritebuilder/spritebuilder_inspector.png, id=230, 1167.36125pt x 597.2
 3125pt>
 File: images/spritebuilder/spritebuilder_inspector.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_inspector.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_inspector.png used 
-on input line 280.
-(pdftex.def)             Requested size: 382.82909pt x 195.85666pt.
- [14 <./images/spritebuilder/spritebuilder_nodeview.png>]
-<images/spritebuilder/spritebuilder_codeconnections.png, id=219, 1168.365pt x 5
+on input line 360.
+(pdftex.def)             Requested size: 340.29613pt x 174.0948pt.
+ [16 <./images/spritebuilder/spritebuilder_nodeview.png>]
+<images/spritebuilder/spritebuilder_codeconnections.png, id=238, 1168.365pt x 5
 96.2275pt>
 File: images/spritebuilder/spritebuilder_codeconnections.png Graphic file (type
  png)
  <use images/spritebuilder/spritebuilder_codeconnections.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_codeconnections.png
- used on input line 292.
-(pdftex.def)             Requested size: 382.82909pt x 195.36374pt.
+ used on input line 372.
+(pdftex.def)             Requested size: 340.29613pt x 173.65665pt.
 
-[15 <./images/spritebuilder/spritebuilder_inspector.png>]
-<images/spritebuilder/new-ccb.png, id=226, 534.99875pt x 256.96pt>
+[17 <./images/spritebuilder/spritebuilder_inspector.png>]
+<images/spritebuilder/new-ccb.png, id=245, 534.99875pt x 256.96pt>
 File: images/spritebuilder/new-ccb.png Graphic file (type png)
 
 <use images/spritebuilder/new-ccb.png>
-Package pdftex.def Info: images/spritebuilder/new-ccb.png used on input line 30
+Package pdftex.def Info: images/spritebuilder/new-ccb.png used on input line 38
 6.
 (pdftex.def)             Requested size: 240.0pt x 115.27412pt.
- [16 <./images/spritebuilder/spritebuilder_codeconnections.png>] [17 <./images/
-spritebuilder/new-ccb.png (PNG copy)>]
-<images/spritebuilder/spritebuilder_publish_button.png, id=236, 1437.37pt x 821
+ [18 <./images/spritebuilder/spritebuilder_codeconnections.png> <./images/sprit
+ebuilder/new-ccb.png (PNG copy)>]
+<images/spritebuilder/spritebuilder_publish_button.png, id=251, 1437.37pt x 821
 .0675pt>
 File: images/spritebuilder/spritebuilder_publish_button.png Graphic file (type 
 png)
  <use images/spritebuilder/spritebuilder_publish_button.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_publish_button.png 
-used on input line 341.
+used on input line 421.
 (pdftex.def)             Requested size: 382.82909pt x 218.68436pt.
-
-<images/spritebuilder/spritebuilder_publishing.png, id=237, 1806.38866pt x 787.
+ [19]
+<images/spritebuilder/spritebuilder_publishing.png, id=257, 1806.38866pt x 787.
 743pt>
 File: images/spritebuilder/spritebuilder_publishing.png Graphic file (type png)
 
  <use images/spritebuilder/spritebuilder_publishing.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_publishing.png used
- on input line 354.
+ on input line 434.
 (pdftex.def)             Requested size: 382.82909pt x 166.94542pt.
- [18 <./images/spritebuilder/spritebuilder_publish_button.png>] [19 <./images/s
+ [20 <./images/spritebuilder/spritebuilder_publish_button.png>] [21 <./images/s
 pritebuilder/spritebuilder_publishing.png>]
-<images/firstproject/first_project.png, id=251, 2307.5811pt x 723.4227pt>
+<images/firstproject/first_project.png, id=270, 2307.5811pt x 723.4227pt>
 File: images/firstproject/first_project.png Graphic file (type png)
 
 <use images/firstproject/first_project.png>
 Package pdftex.def Info: images/firstproject/first_project.png used on input li
-ne 411.
+ne 491.
 (pdftex.def)             Requested size: 382.82909pt x 120.01086pt.
- [20]
-LaTeX Font Info:    Try loading font information for OMS+ppl on input line 417.
+ [22]
+LaTeX Font Info:    Try loading font information for OMS+ppl on input line 497.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/psnfss/omsppl.fd
 File: omsppl.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 417.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 497.
 
-<images/firstproject/add_button.png, id=256, 1444.39626pt x 821.0675pt>
+<images/firstproject/add_button.png, id=275, 1444.39626pt x 821.0675pt>
 File: images/firstproject/add_button.png Graphic file (type png)
 
 <use images/firstproject/add_button.png>
 Package pdftex.def Info: images/firstproject/add_button.png used on input line 
-438.
+518.
 (pdftex.def)             Requested size: 382.82909pt x 217.61943pt.
- [21 <./images/firstproject/first_project.png>] [22 <./images/firstproject/add_
+ [23 <./images/firstproject/first_project.png>] [24 <./images/firstproject/add_
 button.png>]
-Package mdframed Info: mdframed works in twoside mode on input line 470.
+Package mdframed Info: mdframed works in twoside mode on input line 550.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 470.
+(mdframed)              on input line 550.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 470.
- [23]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 500.
+(mdframed)              on input line 550.
+ [25]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 580.
 
 
 (/usr/local/texlive/2013/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-<images/firstproject/button_callback.png, id=276, 1149.29375pt x 427.5975pt>
+<images/firstproject/button_callback.png, id=296, 1149.29375pt x 427.5975pt>
 File: images/firstproject/button_callback.png Graphic file (type png)
 
 <use images/firstproject/button_callback.png>
 Package pdftex.def Info: images/firstproject/button_callback.png used on input 
-line 506.
+line 586.
 (pdftex.def)             Requested size: 382.82909pt x 142.4321pt.
-Package mdframed Info: mdframed works in twoside mode on input line 517.
+Package mdframed Info: mdframed works in twoside mode on input line 597.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 517.
+(mdframed)              on input line 597.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 517.
+(mdframed)              on input line 597.
 
-Overfull \hbox (13.27133pt too wide) in paragraph at lines 518--523
+Overfull \hbox (13.27133pt too wide) in paragraph at lines 598--603
 \T1/ppl/m/n/10.95 ther read-ing: [][]$\T1/cmtt/m/n/10.95 https : / / developer 
 . apple . com / library / ios / documentation /
  []
 
-[24 <./images/firstproject/button_callback.png>]
-<images/firstproject/documentroot_node.png, id=286, 296.10625pt x 171.64125pt>
+[26 <./images/firstproject/button_callback.png>]
+<images/firstproject/documentroot_node.png, id=306, 296.10625pt x 171.64125pt>
 File: images/firstproject/documentroot_node.png Graphic file (type png)
 
 <use images/firstproject/documentroot_node.png>
 Package pdftex.def Info: images/firstproject/documentroot_node.png used on inpu
-t line 532.
+t line 612.
 (pdftex.def)             Requested size: 150.0pt x 86.95181pt.
 
-Overfull \hbox (6.41446pt too wide) in paragraph at lines 542--557
+Overfull \hbox (6.41446pt too wide) in paragraph at lines 622--637
 \T1/ppl/m/n/10.95 doc-u-ment root when the but-ton is tapped. Next, we will hav
 e to im-ple-ment this \T1/cmtt/m/n/10.95 startGame
  []
 
-[25 <./images/firstproject/documentroot_node.png>]
-<images/firstproject/custom_class.png, id=294, 1189.44376pt x 724.7075pt>
+[27 <./images/firstproject/documentroot_node.png>]
+<images/firstproject/custom_class.png, id=313, 1189.44376pt x 724.7075pt>
 File: images/firstproject/custom_class.png Graphic file (type png)
 
 <use images/firstproject/custom_class.png>
 Package pdftex.def Info: images/firstproject/custom_class.png used on input lin
-e 560.
+e 640.
 (pdftex.def)             Requested size: 382.82909pt x 233.24918pt.
-Package mdframed Info: mdframed works in twoside mode on input line 575.
+Package mdframed Info: mdframed works in twoside mode on input line 655.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 575.
+(mdframed)              on input line 655.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 575.
- [26 <./images/firstproject/custom_class.png>]
+(mdframed)              on input line 655.
+ [28 <./images/firstproject/custom_class.png>]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 607.
+(Font)              <7> on input line 687.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 607.
+(Font)              <5> on input line 687.
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 607.
-Package mdframed Info: mdframed works in twoside mode on input line 616.
- [27]
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 687.
+Package mdframed Info: mdframed works in twoside mode on input line 696.
+ [29]
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 616.
+(mdframed)              on input line 696.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 616.
+(mdframed)              on input line 696.
 
-<images/firstproject/run_app.png, id=313, 361.35pt x 35.13126pt>
+<images/firstproject/run_app.png, id=333, 361.35pt x 35.13126pt>
 File: images/firstproject/run_app.png Graphic file (type png)
 
 <use images/firstproject/run_app.png>
-Package pdftex.def Info: images/firstproject/run_app.png used on input line 627
+Package pdftex.def Info: images/firstproject/run_app.png used on input line 707
 .
 (pdftex.def)             Requested size: 200.0pt x 19.44446pt.
 
-<images/firstproject/button_success_log.png, id=314, 756.8275pt x 498.86375pt>
+<images/firstproject/button_success_log.png, id=334, 756.8275pt x 498.86375pt>
 File: images/firstproject/button_success_log.png Graphic file (type png)
 
 <use images/firstproject/button_success_log.png>
 Package pdftex.def Info: images/firstproject/button_success_log.png used on inp
-ut line 635.
+ut line 715.
 (pdftex.def)             Requested size: 382.82909pt x 252.33905pt.
- [28 <./images/firstproject/run_app.png>]
-Package mdframed Info: mdframed works in twoside mode on input line 647.
+ [30 <./images/firstproject/run_app.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 727.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 647.
+(mdframed)              on input line 727.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 647.
- [29 <./images/firstproject/button_success_log.png>]
-<images/firstproject/new_scene.png, id=324, 539.01375pt x 257.96375pt>
+(mdframed)              on input line 727.
+ [31 <./images/firstproject/button_success_log.png>]
+<images/firstproject/new_scene.png, id=345, 539.01375pt x 257.96375pt>
 File: images/firstproject/new_scene.png Graphic file (type png)
 
 <use images/firstproject/new_scene.png>
-Package pdftex.def Info: images/firstproject/new_scene.png used on input line 6
-66.
+Package pdftex.def Info: images/firstproject/new_scene.png used on input line 7
+46.
 (pdftex.def)             Requested size: 250.0pt x 119.6488pt.
- [30 <./images/firstproject/new_scene.png>]
-Package mdframed Info: mdframed works in twoside mode on input line 693.
+ [32 <./images/firstproject/new_scene.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 773.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 693.
+(mdframed)              on input line 773.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 693.
- [31]
-<images/firstproject/navigation_stack.png, id=345, 452.4102pt x 158.2713pt>
+(mdframed)              on input line 773.
+ [33]
+<images/firstproject/navigation_stack.png, id=364, 452.4102pt x 158.2713pt>
 File: images/firstproject/navigation_stack.png Graphic file (type png)
 
 <use images/firstproject/navigation_stack.png>
 Package pdftex.def Info: images/firstproject/navigation_stack.png used on input
- line 738.
+ line 818.
 (pdftex.def)             Requested size: 250.0pt x 87.46002pt.
-Package mdframed Info: mdframed works in twoside mode on input line 766.
+Package mdframed Info: mdframed works in twoside mode on input line 846.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 766.
+(mdframed)              on input line 846.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 766.
- [32 <./images/firstproject/navigation_stack.png>]
-Overfull \hbox (38.0737pt too wide) in paragraph at lines 775--780
+(mdframed)              on input line 846.
+ [34 <./images/firstproject/navigation_stack.png>]
+Overfull \hbox (38.0737pt too wide) in paragraph at lines 855--860
 []\T1/ppl/m/n/10.95 For ev-ery scene re-place-ment method there's one vari-a-ti
 on that takes an in-stance of \T1/cmtt/m/n/10.95 CCTransition\T1/ppl/m/n/10.95 
 .
  []
 
 
-Overfull \hbox (3.04485pt too wide) in paragraph at lines 775--780
+Overfull \hbox (3.04485pt too wide) in paragraph at lines 855--860
 \T1/ppl/m/n/10.95 The CC-Tran-si-tion in-stance pro-vides an an-i-ma-tion for t
 ran-si-tions be-tween dif-fer-ent scenes.
  []
 
-[33]
-Package mdframed Info: mdframed works in twoside mode on input line 823.
+[35]
+Package mdframed Info: mdframed works in twoside mode on input line 903.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 823.
+(mdframed)              on input line 903.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 823.
- [34] <images/firstproject/square_ccb.png, id=381, 538.01pt x 260.975pt>
+(mdframed)              on input line 903.
+ [36] <images/firstproject/square_ccb.png, id=400, 538.01pt x 260.975pt>
 File: images/firstproject/square_ccb.png Graphic file (type png)
 
 <use images/firstproject/square_ccb.png>
 Package pdftex.def Info: images/firstproject/square_ccb.png used on input line 
-845.
+925.
 (pdftex.def)             Requested size: 250.0pt x 121.2685pt.
 
-<images/firstproject/square_add_colornode.png, id=382, 1438.37375pt x 822.07124
+<images/firstproject/square_add_colornode.png, id=401, 1438.37375pt x 822.07124
 pt>
 File: images/firstproject/square_add_colornode.png Graphic file (type png)
  <use images/firstproject/square_add_colornode.png>
 Package pdftex.def Info: images/firstproject/square_add_colornode.png used on i
-nput line 856.
+nput line 936.
 (pdftex.def)             Requested size: 382.82909pt x 218.80116pt.
- [35 <./images/firstproject/square_ccb.png>]
-<images/firstproject/square_code_connection.png, id=388, 298.11375pt x 99.37125
+ [37 <./images/firstproject/square_ccb.png>]
+<images/firstproject/square_code_connection.png, id=408, 298.11375pt x 99.37125
 pt>
 File: images/firstproject/square_code_connection.png Graphic file (type png)
  <use images/firstproject/square_code_connection.png>
 Package pdftex.def Info: images/firstproject/square_code_connection.png used on
- input line 884.
+ input line 964.
 (pdftex.def)             Requested size: 250.0pt x 83.33328pt.
- [36 <./images/firstproject/square_add_colornode.png>]
-Package mdframed Info: mdframed works in twoside mode on input line 898.
+ [38 <./images/firstproject/square_add_colornode.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 978.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 898.
+(mdframed)              on input line 978.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 898.
+(mdframed)              on input line 978.
 
-<images/firstproject/square_custom_class.png, id=395, 625.1355pt x 96.1191pt>
+<images/firstproject/square_custom_class.png, id=415, 625.1355pt x 96.1191pt>
 File: images/firstproject/square_custom_class.png Graphic file (type png)
 
 <use images/firstproject/square_custom_class.png>
 Package pdftex.def Info: images/firstproject/square_custom_class.png used on in
-put line 909.
+put line 989.
 (pdftex.def)             Requested size: 350.0pt x 53.81458pt.
- [37 <./images/firstproject/square_code_connection.png> <./images/firstproject/
+ [39 <./images/firstproject/square_code_connection.png> <./images/firstproject/
 square_custom_class.png>]
-[38] [39]
-Package mdframed Info: mdframed works in twoside mode on input line 1001.
+[40] [41]
+Package mdframed Info: mdframed works in twoside mode on input line 1081.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1001.
+(mdframed)              on input line 1081.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1001.
- [40]
-Package mdframed Info: mdframed works in twoside mode on input line 1050.
+(mdframed)              on input line 1081.
+ [42]
+Package mdframed Info: mdframed works in twoside mode on input line 1130.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1050.
+(mdframed)              on input line 1130.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1050.
+(mdframed)              on input line 1130.
 
-Overfull \hbox (33.0679pt too wide) in paragraph at lines 1057--1062
+Overfull \hbox (33.0679pt too wide) in paragraph at lines 1137--1142
 \T1/ppl/m/n/10.95 ple mov-ing a node back-wards in-stead of for-wards. An-other
  ex-am-ple is \T1/cmtt/m/n/10.95 CCActionRepeatForever
  []
 
-[41] [42]
-Package mdframed Info: mdframed works in twoside mode on input line 1123.
+[43] [44]
+Package mdframed Info: mdframed works in twoside mode on input line 1203.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1123.
+(mdframed)              on input line 1203.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 1123.
+(mdframed)              on input line 1203.
 
-Overfull \hbox (14.78609pt too wide) in paragraph at lines 1124--1129
+Overfull \hbox (14.78609pt too wide) in paragraph at lines 1204--1209
 []\T1/ppl/m/n/10.95 We will see more com-pli-cated use cases of the Co-cos2D to
 uch sys-tem through-
  []
 
 
-Overfull \hbox (6.59479pt too wide) in paragraph at lines 1124--1129
+Overfull \hbox (6.59479pt too wide) in paragraph at lines 1204--1209
 \T1/ppl/m/n/10.95 away you should read:[][]$\T1/cmtt/m/n/10.95 https : / / www 
 . makegameswith . us / docs / # ! /cocos2d /
  []
 
 
-Overfull \hbox (0.18011pt too wide) in paragraph at lines 1124--1129
+Overfull \hbox (0.18011pt too wide) in paragraph at lines 1204--1209
 \T1/cmtt/m/n/10.95 1 . 1 / user-[]interaction$[][] \T1/ppl/m/n/10.95 and [][]$\
 T1/cmtt/m/n/10.95 https : / / www . makegameswith . us / gamernews /
  []
 
 
-Overfull \hbox (66.50449pt too wide) in paragraph at lines 1131--1137
+Overfull \hbox (66.50449pt too wide) in paragraph at lines 1211--1217
 \T1/ppl/m/n/10.95 First, we need to en-able user in-ter-ac-tion. A great place 
 to do this is in the \T1/cmtt/m/n/10.95 onEnterTransitionDidFinish
  []
 
-[43] <images/firstproject/spinning_squares.png, id=470, 1140.26pt x 642.4pt>
+[45] <images/firstproject/spinning_squares.png, id=489, 1140.26pt x 642.4pt>
 File: images/firstproject/spinning_squares.png Graphic file (type png)
 
 <use images/firstproject/spinning_squares.png>
 Package pdftex.def Info: images/firstproject/spinning_squares.png used on input
- line 1183.
+ line 1263.
 (pdftex.def)             Requested size: 350.0pt x 197.18149pt.
- [44]) [45 <./images/firstproject/spinning_squares.png (PNG copy)>] (./document
-.ind [46
+ [46]) [47 <./images/firstproject/spinning_squares.png (PNG copy)>] (./document
+.ind [48
 
 
 
-] [47
+] [49
 
 
 
@@ -1547,14 +1563,14 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 228.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 228.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 228.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: 83ADFBB0DF61772EC05A60F650C13CAF;1374.
+(rerunfilecheck)             Checksum: F537A8A2E7A509AC4FF0A4E27299C7AC;1453.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 228.
  ) 
 Here is how much of TeX's memory you used:
- 24863 strings out of 493315
- 453142 string characters out of 6137903
+ 24880 strings out of 493315
+ 453603 string characters out of 6137903
  918232 words of memory out of 5000000
- 27647 multiletter control sequences out of 15000+600000
+ 27656 multiletter control sequences out of 15000+600000
  20767 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  74i,10n,99p,948b,1694s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1575,10 +1591,10 @@ ive/2013/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/201
 3/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/f
 onts/type1/urw/palatino/uplri8a.pfb>
-Output written on document.pdf (47 pages, 5335452 bytes).
+Output written on document.pdf (49 pages, 5494385 bytes).
 PDF statistics:
- 607 PDF objects out of 1000 (max. 8388607)
- 476 compressed objects within 5 object streams
- 178 named destinations out of 1000 (max. 500000)
- 396 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 629 PDF objects out of 1000 (max. 8388607)
+ 492 compressed objects within 5 object streams
+ 183 named destinations out of 1000 (max. 500000)
+ 414 words of extra memory for PDF output out of 10000 (max. 10000000)
 

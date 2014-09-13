@@ -382,15 +382,16 @@ Code connections will be discussed in detail later on.
 \ccbfile{}s are the basic building blocks of your \SB{} project. Every scene in
 your game that is created with \SB{} is represented by one \ccbfile{}. However
 \ccbfile{}s are not only used to create entire scenes - they are used to create
-any kind of scene graph. \SB{} provides different kinds of templates depending
-on which type of scene graph you want to create. You get an overview of the
-available \ccbfile{} templates when you create a new one, by selecting
+any kind of scene graph. \SB{} provides different kinds of document types
+depending on which type of scene graph you want to create. You get an overview of the
+available \ccbfile{} types when you create a new one, by selecting
 \textit{New > File... } from the \textit{File} menu in \SB{}:
+\index{Document Types}\label{DocumentTypes}
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=240pt]{images/spritebuilder/new-ccb.png}     
 \end{figure} 
-These are the different templates briefly explained:
+These are the different document types briefly explained:
 \begin{description}
 \item[Scenes] will fill the full screen size of the device.
 \item[Nodes] used primarily for grouping functionality, don't have a size.
@@ -552,7 +553,8 @@ container. Whichever screen this button will be displayed on, it will always be
 vertically centered (yes, even on an iPad)!
 \end{description}
 
-\begin{details}[frametitle={Positioning System in \cocos{} and \SB{}}] 
+\begin{details}[frametitle={Positioning System in \cocos{} and \SB{}}]
+\index{Positioning System} \label{PositioningSystem}
 The positioning system in \cocos{} is designed from the ground up to make it
 easy to design scenes and user interfaces for different screen sizes and
 resolutions. The comfortable days where the 3.5-inch iPhone was the only 

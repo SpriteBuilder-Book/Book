@@ -94,12 +94,32 @@ certain asset should not be scaled up on retina tablets by choosing a
 \textit{2x} resolution for \textit{tablethd} - however, the default settings
 work best most of the time.
 
+For future reference, this is an example that shows you which sizes your assets
+will have on the different devices by default:
+
+\begin{table}[H]
+\begin{tabular}{llll}
+\textbf{Device} & \textbf{Default Resolution Type} & \textbf{Size on Screen (points)} & \textbf{Size in Pixels} \\
+iPhone          & 1x                               & 50x50                            & 50x50                   \\
+iPhone Retina   & 2x                               & 50x50                            & 100x100                 \\
+iPad            & 2x                               & 100x100                          & 100x100                 \\
+iPad Retina     & 4x                               & 100x100                          & 200x200                
+\end{tabular}
+\end{table}
+
+You can see, if you have a size in mind for a certain asset on an iPhone you
+should provide the asset in four times larger resolution.
+
+A last interesting case are background images that you want to work for
+all 4 resolutions. A solution is discussed in
+the Q\&A section (\ref{background_all_resolutions}).
+
 \begin{details}[frametitle={Different images for different devices}] 
 You can not only change the scaling option for an asset on different devices,
 you can even use an entirely different image for a certain resolution. You can
 do that by dragging an image \textbf{that is currently not part of the \SB{}
 project} from Finder into one of the four boxes below the asset preview:
-
+%TODO: note this fact in docs as well
 %TODO: ask viktor why this displays the image for tablet and not for phone in SB
 \begin{figure}[H]
 		\centering
@@ -110,3 +130,37 @@ Note that images you add this way will be displayed in exactly the size you have
 added them and will not be downscaled.
 
 \end{details}
+
+\begin{details}[frametitle={Behind the scenes}] 
+If you are interested in how \SB{} and \cocos{} organize assets you can take a
+look at the resource package
+(\textit{/Packages/\allowbreak{}SpriteBuilder Resources\allowbreak{}.sbpack}) by
+right-clicking and selecting \textit{Show Package Contents}:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=280pt]{images/Chapter2/behindscenes_resourcepack.png}
+\end{figure}
+You will see that \SB{} groups images inside the assets folder into a
+\textit{resources-auto} folder, all images in that folder are subject to
+automatic downscaling. If you explicitly add images for a certain resolution as
+shown with the carrot in the above example, a new folder for that resolution
+(e.g. \textit{resources-phonehd}) is created.
+
+In \cocos{} a class called \inlinecode{CCFileUtils} is responsible for loading
+the correct images for the current device during runtime. \SB{} uses a special
+configuration of \inlinecode{CCFileUtils} that is set up in
+\inlinecode{[CCBReader configureCCFileUtils]}. \index{Framework
+Classes!CCFileUtils}
+\end{details}
+
+\section{Adding the background image}
+Now that we have a basic understanding of how asset management works, lets get
+started working on our game. For now our game will only consist of one scene, so
+we can start working in the \textit{MainScene.ccb} that is part of the \SB{}
+template. First, remove the existing content so that we can start with a blank
+scene. Now we can add the background image. To add a sprite to a scene we can
+simply drag the asset to the stage, \SB{} will automatically create an instance
+of \ccsprite{}. Add the \textit{background.png} image to the stage.
+
+%mention document types
+%mention position type

@@ -1,5 +1,7 @@
 \indexentry{Code Connections|hyperpage}{18}
+\indexentry{Document Types|hyperpage}{19}
 \indexentry{Publish|hyperpage}{20}
+\indexentry{Positioning System|hyperpage}{26}
 \indexentry{Code Connections!Callbacks|hyperpage}{27}
 \indexentry{Document Root|hyperpage}{28}
 \indexentry{Code Connections!Custom Classes|hyperpage}{28}
@@ -13,3 +15,4 @@
 \indexentry{Touch Handling|hyperpage}{46}
 \indexentry{Assets!Adding Assets|hyperpage}{51}
 \indexentry{Assets!Automatic Downscaling|hyperpage}{52}
+\indexentry{Framework Classes!CCFileUtils|hyperpage}{57}

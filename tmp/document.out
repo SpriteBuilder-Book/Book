@@ -18,3 +18,7 @@
 \BOOKMARK [2][-]{subsection.1.5.2}{Creating the Gameplay Scene}{section.1.5}% 18
 \BOOKMARK [2][-]{subsection.1.5.3}{Adding a Scene Transition}{section.1.5}% 19
 \BOOKMARK [2][-]{subsection.1.5.4}{Implementing the Gameplay}{section.1.5}% 20
+\BOOKMARK [2][-]{subsection.1.5.5}{Exercises}{section.1.5}% 21
+\BOOKMARK [0][-]{chapter.2}{A Game with Assets in SpriteBuilder}{}% 22
+\BOOKMARK [1][-]{section.2.1}{Adding Assets to a SpriteBuilder project}{chapter.2}% 23
+\BOOKMARK [1][-]{section.2.2}{Asset Handling in SpriteBuilder and Cocos2D}{chapter.2}% 24

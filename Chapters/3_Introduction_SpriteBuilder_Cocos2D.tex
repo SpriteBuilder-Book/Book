@@ -82,8 +82,9 @@ OpenGL code at all. The following diagram shows which technologies are used by
 
 The goal of a game engine like \cocos{} is that the game developer doesn't have
 to get in touch with rendering at all. Instead a developer defines which scenes
-exist in a game, which objects are part of these scenes and which size, position and appearance these objects have and \cocos{} 
-will use OpenGL to render these scenes for him. 
+exist in a game, which nodes are part of these scenes and which size, position
+and appearance these nodes have and \cocos{} will use OpenGL to render these
+scenes for him.
 
 In order to provide this functionality \cocos{} consists of variety of classes -
 some important ones will be discussed in this chapter. All \cocos{} classes use the \textit{CC} prefix (\ccscene{}, \ccnode{}, etc.).
@@ -93,6 +94,10 @@ a whole set of new terminology. We have already talked about nodes and scenes
 but we haven't discussed what these terms mean. We will now start discussing the
 most important terms and get to know how the concepts behind them are
 implemented in \cocos{}.
+
+\subsubsection{How are games rendered in \cocos{}?}
+The most important aspect of \cocos{} is that it
+\ldots \textbf{addmore}
 
 \subsection{Scenes}
 Scenes are the basic building blocks of all \cocos{} games, they are the
@@ -414,7 +419,7 @@ your project and where you run the actual game.
 
 Since \xcode{} is the tool that actually compiles and runs your game it needs
 to know about all the scenes and resources that are part of your \SB{} project.
-Therefore \SB{} has a \textbf{publish}\index{publish} functionality, provided by
+Therefore \SB{} has a \textbf{publish}\index{Publish} functionality, provided by
 a button in the top left corner of the interface:
 \begin{figure}[H]
 		\centering
@@ -1267,3 +1272,14 @@ first simple game that uses scene transitions, actions and the \cocos{} touch
 system. But this is only the very beginning. In the next chapter we will start
 working on a much more complex game that will teach you many more important
 concepts of \SB{} and \cocos{}. 
+
+\subsection{Exercises}
+Now it's time form some exercises. Note that you can't find all the knowledge
+for these exercises in this chapter - for some exercise you may will have to use
+the help of the internet (that is another exercise right there).
+\begin{description}
+\item[1.0] Add a label to the top right corner of the gameplay scene. This label
+shall display the amount of squares that are currently on the screen.
+\item[1.1] Make each square disappear after it has been on the screen for 2
+seconds. 
+\end{description}

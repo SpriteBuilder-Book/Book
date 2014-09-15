@@ -1,5 +1,15 @@
 \chapter{Q\&A}
 
+\section{Core \cocos{} and \SB{}}
+
+\subsection{How can I programmatically change the texture of an existing
+\ccsprite{}}
+\ccsprite{} provides a \inlinecode{spriteFrame} property. You can initialize a
+\inlinecode{CCSpriteFrame} with a new image and use it to set the
+\inlinecode{spriteFrame} property.
+%TODO: complete
+
+
 \section{Designing for multiple devices}
 
 \subsection{Which size does a background image for all four resolutions need to
@@ -39,3 +49,5 @@ And it is pretty simple to use, here's the outline:
     [renderTexture end];
     [renderTexture saveToFile:@"Screenshot.jpeg"];
 \end{lstlisting} 
+\index{Framework
+Classes!CCRenderTexture}

@@ -123,7 +123,7 @@ project} from Finder into one of the four boxes below the asset preview:
 %TODO: ask viktor why this displays the image for tablet and not for phone in SB
 \begin{figure}[H]
 		\centering
-		\includegraphics[height=200pt]{images/Chapter2/DifferentImageDevice.png}
+		\includegraphics[height=140pt]{images/Chapter2/DifferentImageDevice.png}
 \end{figure}
 
 Note that images you add this way will be displayed in exactly the size you have
@@ -323,11 +323,11 @@ Then implement the \inlinecode{initialize} method to create two arrays and
 assign them to these variables:
 \begin{lstlisting}
 + (void)initialize {
-    // load possible images from plist
-    NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"SBBFallingObjectImages" withExtension:@"plist"];
-    NSDictionary *fallingObjectImageNames = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-    fallingObjectTypeGoodImageNames = fallingObjectImageNames[@"FallingObjectTypeGoodImages"];
-    fallingObjectTypeBadImageNames = fallingObjectImageNames[@"FallingObjectTypeBadImages"];
+  // load possible images from plist
+  NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"SBBFallingObjectImages" withExtension:@"plist"];
+  NSDictionary *fallingObjectImageNames = [NSDictionary dictionaryWithContentsOfURL:plistURL];
+  fallingObjectTypeGoodImageNames = fallingObjectImageNames[@"FallingObjectTypeGoodImages"];
+  fallingObjectTypeBadImageNames = fallingObjectImageNames[@"FallingObjectTypeBadImages"];
 }
 \end{lstlisting}
 First we need to get the path to the \textit{plist}. Then we can load the
@@ -339,5 +339,56 @@ and bad objects and assign them to our \inlinecode{static} variables. When the
 and set up the two arrays for us!
 
 Now that we have access to the image names we can implement the actual
-initializer of \inlinecode{SBBFallingObject}.\index{Framework
-Classes!CCRenderTexture}
+initializer of \inlinecode{SBBFallingObject}. We need to:
+\begin{itemize}
+  \item Pick a random image based on the object type
+  \item Call the \inlinecode{initWithImageNamed:} of \ccsprite{}
+\end{itemize}
+
+This is what the initializer should look like:
+\begin{lstlisting}
+- (id)initWithType:(SBBFallingObjectType)fallingObjectType {
+  // pick a random image name based on the FallingObjectType chosen
+  NSString *imageName = nil;
+  
+  if (fallingObjectType == SBBFallingObjectTypeGood) {
+    int randomImageIndex = arc4random_uniform((int)[fallingObjectTypeGoodImageNames count]);
+    imageName = fallingObjectTypeGoodImageNames[randomImageIndex];
+  } else if (fallingObjectType == SBBFallingObjectTypeBad) {
+    int randomImageIndex = arc4random_uniform((int)[fallingObjectTypeBadImageNames count]);
+    imageName = fallingObjectTypeBadImageNames[randomImageIndex];
+  }
+  
+  // call super initializer with selected image
+  self = [super initWithImageNamed:imageName];
+  
+  if (self) {
+    self.anchorPoint = ccp(0, 0);
+    _type = fallingObjectType;
+  }
+  
+  return self;
+}
+\end{lstlisting}
+Overall a prety straightforward method. We first check which type of object we
+are initializing. Based on the type we pick one of the arrays that have been
+populated with the content from the \textit{plist}. Then we pick a random
+element from that array. That random element is our file name, we pass that on
+to the \ccsprite{} initializer \inlinecode{initWithImageNamed:}. The we
+initialize two values. We set the \inlinecode{anchorPoint} of the
+\inlinecode{SBBFallingObject} to the bottom left corner, that will make it
+easier to determine the spawn position later on. Additionally we store the
+object type that has been passed in as a parameter to the initializer.
+That's all we need in order to use \inlinecode{SBBFallingObject}! Now we can
+move on and spawn some objects.
+
+\begin{details}[frametitle={Accessing properties
+in initializers}] In Objective-C it is common to access properties in initializers through their
+instance variables. The goal is to avoid potential side effects that could
+occur by calling setter/getter methods in the class itself or in subclasses
+while the object is not entirely initialized yet.
+\end{details}
+
+\section{Spawn falling objects}
+Now it's time to implement one of the core mechanics of the game: Spawning
+objects and make them fall from the top of the screen to the bottom.

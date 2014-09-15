@@ -47,7 +47,7 @@ types:
 \begin{description}
 \item[1x] non-retina images
 \item[2x] retina images
-\item[4x] tablet retina images
+\item[4x] double sized retina images
 \end{description}
 
 By default \SB{} maps these resolution types to the different devices in a way
@@ -162,5 +162,182 @@ scene. Now we can add the background image. To add a sprite to a scene we can
 simply drag the asset to the stage, \SB{} will automatically create an instance
 of \ccsprite{}. Add the \textit{background.png} image to the stage.
 
-%mention document types
-%mention position type
+How should we position this background image? We already have briefly discussed
+the \SB{} positioning system (\ref{PositioningSystem}). Using the positioning
+system correctly is especially important when we create games for phones and tablets -
+which we always should try to do. In most cases - like in this game it is the
+best to center the background image. That way phones and tablets will display a
+very similar portion of the background image. You can center the image by
+choosing a \textit{normalized} position type (\textit{in \% of parent
+container}) and setting the position to (50, 50).
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/Chapter2/center_background.png}
+\end{figure}
+
+You can preview what your game will look like on different device types directly
+in \SB{}, without the need to compile and run the game - you should do this as
+often as possible! The option is available from the menu \textit{Document ->
+Resolution}. You can also use the CMD+1, CMD+2 and CMD+3 shortcuts. This feature
+will allow you to preview the game on a 3.5-inch iPhone, a 4-inch iPhone and an
+iPad.
+
+\section{Create falling objects}
+Now let's dive into the implementation of the actual game. The next step should
+be adding falling objects. Our game will have two categories of objects, ones
+that should be caught (food) and ones that shouldn't (electronic devices).
+
+In total we have over ten different objects in our game but these just exist as
+visual enhancement, actually we are only differing between two types of objects.
+One way to implement the falling objects would be creating a \ccbfile{} for each
+object but that isn't actually necessary for this game. We need to create all
+falling objects dynamically, while the game is running, and for each object we
+only need to store if it should be caught or not. That can be best accomplished
+by a subclass of \ccsprite{} that we create in code. This way you will also
+learn how to use assets you added in \SB{} to create \ccsprite{}s in code.
+Open the \xcode{} project of the game to get started.
+
+\subsection{Create a falling object class}
+In general we have two ways to differentiate objects a player should catch and
+ones he shouldn't catch. We could:
+\begin{itemize}
+  \item Create two distinct subclasses of \ccsprite{}, each representing one
+  type of object
+  \item Only have one subclass and add a \inlinecode{type} property to it
+\end{itemize}
+Since our falling objects won't have any type-specific behaviour, creating two
+distinct subclasses is not necessary in this case. Instead, as of now, one
+subclass with a \inlinecode{type} property is the better solution.
+
+Create a new class called \inlinecode{SBBFallingObject} and make it a subclass
+of \ccsprite{}. The best way to represent different types in Objective-C is
+using enumerations. Add this enum definition to \textit{SSBFallingObject.h},
+above the \inlinecode{@interface} block:
+
+\begin{lstlisting}
+typedef NS_ENUM(NSInteger, SBBFallingObjectType) {
+    SBBFallingObjectTypeGood,
+    SBBFallingObjectTypeBad
+};
+\end{lstlisting}
+
+%TODO: figure out if ther is any decent way to force other classes to only use
+% the initializer of this subclass
+Additionally we add a property to store the type and an initializer that allows
+us to create falling objects with a certain type. Your complete \textit{.h} file
+should look similar to this:
+
+\begin{lstlisting}
+#import "CCSprite.h"
+
+typedef NS_ENUM(NSInteger, SBBFallingObjectType) {
+    SBBFallingObjectTypeGood,
+    SBBFallingObjectTypeBad
+};
+
+@interface SBBFallingObject : CCSprite
+
+@property (nonatomic, readonly) SBBFallingObjectType type;
+
+- (id)initWithType:(SBBFallingObjectType)fallingObjectType;
+
+@end
+\end{lstlisting}
+
+We define the property to be \textit{readonly} because will not support changing
+the type of a falling object after it has been created.
+
+\subsection{Choose an asset for a falling object}
+We want the game to spawn entirely random falling objects. As you remember we
+have a couple of assets for both types of objects. Whenever we spawn an object
+we will need to choose a random asset, based on the object type. A good place to
+implement this functionality is directly in the \inlinecode{SBBFallingObject}
+class. When \inlinecode{initWithType:} gets called we choose a random asset and
+apply it as a texture to the \inlinecode{SBBFallingObject}.
+
+How can we know which assets we have available and which of them represent
+objects that we should catch and that we shouldn't? One way of implementing this
+would be creating two arrays, one for each object type, and storing filenames
+for different assets in these arrays. As good game developers however, we try to
+keep game content and code as separated as possible. That makes it easier to
+update the list of assets later on and it keeps our codebase small and well
+structured. So instead of creating these arrays in code we could use some sort
+of resources file that stores information on available images. A very common format for storing such type of information in Cocoa Touch is a \textit{plist} (Property List). You can create a
+\textit{plist} by selecting \textit{File -> New -> File\ldots} from \xcode{}s
+menu. Then you need to select \textit{Resource} from the left panel and choose
+\textit{Property List} on the right:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=300pt]{images/Chapter2/create_plist.png}
+\end{figure}
+
+As the name choose \textit{SBBFallingObjectImages}. Now fill the \textit{plist}
+with two arrays that contain the filenames of the assets that we added in \SB{}.
+When accessing assets from a \SB{} project you always need to include folder
+names. Instead of referencing the tomato with \inlinecode{tomato.png} you need
+to use \inlinecode{assets/tomato.png} since the asset is in the
+\inlinecode{assets} folder in the \SB{} project:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/Chapter2/plist_setup.png}
+\end{figure}
+Now we have a list of all asset names grouped into the two object type
+categories. Time to implement the \inlinecode{SBBFallingObject} class.
+
+When a falling object is initialized we want to
+choose random image from the \textit{plist} that we just created.
+The first step is loading the \textit{plist} in code. Luckily \textit{plists}
+consist of Dictionaries, Arrays, Strings, etc. and all of these types exist in
+Objective-C as well - there are some very convenient methods to load
+\textit{plists} in code. During each game the player plays we are going to create hundreds of
+falling objects. Since the images that represent these objects won't change it
+would be a waste of resources to load the \textit{plist} every time we create a
+new instance of \inlinecode{SBBFallingObject}. Instead we should only load it
+once and then keep a reference to it for future use. We can create
+\inlinecode{static} variables to hold the content of the \textit{plist} once it
+is loaded. 
+
+\begin{details}[frametitle={Static variables in Objective-C}] 
+In Objective-C the concept of class variables does not exist but the C-keyword
+\inlinecode{static} makes a variable only accessible from the file it is
+defined in. Therefore defining a \inlinecode{static} variable in a \textit{.m}
+file is very similar to a class variable.
+\end{details}
+
+We can then override the class method \inlinecode{initialize} to load the
+\textit{plist} and store the results in the \inlinecode{static} variables. The
+\inlinecode{initialize} method is only called once per class and is guaranteed
+to be called before the class is used, so this is the perfect place to do some
+class level preparation work.
+
+Open \textit{SBBFallingObject.m} to start implementing
+this. First, define to \inlinecode{static} array references:
+\begin{lstlisting}
+static NSArray *fallingObjectTypeGoodImageNames;
+static NSArray *fallingObjectTypeBadImageNames;
+\end{lstlisting}
+Then implement the \inlinecode{initialize} method to create two arrays and
+assign them to these variables:
+\begin{lstlisting}
++ (void)initialize {
+    // load possible images from plist
+    NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"SBBFallingObjectImages" withExtension:@"plist"];
+    NSDictionary *fallingObjectImageNames = [NSDictionary dictionaryWithContentsOfURL:plistURL];
+    fallingObjectTypeGoodImageNames = fallingObjectImageNames[@"FallingObjectTypeGoodImages"];
+    fallingObjectTypeBadImageNames = fallingObjectImageNames[@"FallingObjectTypeBadImages"];
+}
+\end{lstlisting}
+First we need to get the path to the \textit{plist}. Then we can load the
+\textit{plist} using a convenience method of \inlinecode{NSDictionary}, this is
+possible because the root object in our \textit{plist} is a dictionary. From
+that dictionary we can extract the two arrays with the images for good objects
+and bad objects and assign them to our \inlinecode{static} variables. When the
+\inlinecode{SBBFallingObject} class is used the first them this code will run
+and set up the two arrays for us!
+
+Now that we have access to the image names we can implement the actual
+initializer of \inlinecode{SBBFallingObject}.\index{Framework
+Classes!CCRenderTexture}

@@ -24,3 +24,18 @@ resolution, to get to a \textit{4x} resolution we need to multiply the values by
 4, resulting in a required resolution of 2272px x 1280px. You can see, the
 iPhone requires a wider image, the iPad a higher one. A resolution of 2272px X
 1536px satisfies both requirements. 
+
+\section{Advance Techniques}
+\subsection{Can I take a screenshot in code or even generate a level preview?}
+Yes you can! \cocos{} has a awesome class called \inlinecode{CCRenderTexture}
+that allows you to render a node graph into an image instead of directly to the
+screen. You can use this for all kinds of features. Taking screenshots,
+generating level previews or even rendering screen-in-screen!
+And it is pretty simple to use, here's the outline:
+\begin{lstlisting}
+    CCRenderTexture *renderTexture = [CCRenderTexture renderTextureWithWidth:2048 height:self.level.contentSizeInPoints.height];
+    [renderTexture beginWithClear:0 g:0 b:0 a:1.f];
+    [self visit];
+    [renderTexture end];
+    [renderTexture saveToFile:@"Screenshot.jpeg"];
+\end{lstlisting} 

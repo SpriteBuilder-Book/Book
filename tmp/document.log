@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  14 SEP 2014 21:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013) (format=pdflatex 2013.12.16)  21 SEP 2014 20:47
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1886,14 +1886,22 @@ Package mdframed Info: mdframed detected package amsthm
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 386.
-) [63] [64]
+ [63]
+Package mdframed Info: mdframed works in twoside mode on input line 428.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 428.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 428.
+) [64]
 \openout2 = `Chapters/B_QandA.aux'.
 
 
 (./Chapters/B_QandA.tex
 Chapter 3.
 
-<images/Q_A/FullScreen_AllResolutions.png, id=739, 2294.21115pt x 1557.77985pt>
+<images/Q_A/FullScreen_AllResolutions.png, id=750, 2294.21115pt x 1557.77985pt>
 File: images/Q_A/FullScreen_AllResolutions.png Graphic file (type png)
 <use images/Q_A/FullScreen_AllResolutions.png>
 Package pdftex.def Info: images/Q_A/FullScreen_AllResolutions.png used on input
@@ -1925,10 +1933,10 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 232.
  ) 
 Here is how much of TeX's memory you used:
- 25811 strings out of 493315
- 465203 string characters out of 6137903
+ 25838 strings out of 493315
+ 465641 string characters out of 6137903
  947834 words of memory out of 5000000
- 28448 multiletter control sequences out of 15000+600000
+ 28464 multiletter control sequences out of 15000+600000
  20767 words of font info for 44 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  74i,10n,99p,948b,1821s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1949,10 +1957,10 @@ ive/2013/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/201
 3/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2013/texmf-dist/f
 onts/type1/urw/palatino/uplri8a.pfb>
-Output written on document.pdf (69 pages, 11810360 bytes).
+Output written on document.pdf (69 pages, 11809089 bytes).
 PDF statistics:
- 904 PDF objects out of 1000 (max. 8388607)
- 729 compressed objects within 8 object streams
- 281 named destinations out of 1000 (max. 500000)
+ 918 PDF objects out of 1000 (max. 8388607)
+ 743 compressed objects within 8 object streams
+ 292 named destinations out of 1000 (max. 500000)
  592 words of extra memory for PDF output out of 10000 (max. 10000000)
 

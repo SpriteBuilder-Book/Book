@@ -391,4 +391,47 @@ while the object is not entirely initialized yet.
 
 \section{Spawn falling objects}
 Now it's time to implement one of the core mechanics of the game: Spawning
-objects and make them fall from the top of the screen to the bottom.
+objects and make them fall from the top of the screen to the bottom. We are
+going to implement this in \textit{SBBMainScene.m}. Since we will be using the
+\inlinecode{SBBFallingObject} class, start by adding an \inlinecode{import}
+statement:
+
+\begin{lstlisting}
+#import "SBBFallingObject.h"
+\end{lstlisting}
+
+We will spawn objects after a certain time period. The spawning objects will
+start at the top of the screen and fall to the bottom. To not use an
+increasingly amount of memory we will need to take care to remove objects that
+have fallen below the bottom edge of the screen. A good way to do this is
+creating an array to store all the objects we spawn. Add the array definition to
+the private interface of the class in \textit{SBBMainScene.m}:
+
+\begin{lstlisting}
+@interface SBBMainScene()
+
+@property (nonatomic, strong) NSMutableArray *fallingObjects;
+
+@end
+\end{lstlisting}
+
+We need to define a falling speed and an interval at which we want to spawn
+objects. A good way to do this is by defining constants - we want to avoid to
+have these numbers all over our code. Let's create two constants at the top of
+the file:
+
+\begin{lstlisting}
+static const CGFloat kFallingSpeed = 100.f;
+static const CGFloat kSpawnFrequency = 0.5f;
+\end{lstlisting}
+
+\begin{details}[frametitle={Naming constants in Objective-C}] A common way to
+name constants in Objective-C is using a leading small \textit{k}
+for private constants (e.g. \inlinecode{kFallingSpeed}) and using the class name
+as prefix for public constants which are declared in the \textit{.h} file (e.g.
+\inlinecode{SBBFalling\allowbreak{}Object\allowbreak{}Falling\allowbreak{}Speed}.
+\end{details}
+
+
+
+

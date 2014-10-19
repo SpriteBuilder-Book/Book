@@ -21,9 +21,10 @@
 
   \indexspace
 
-  \item Framework Classes
+  \item Fixed Update, \hyperpage{69}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{68}
     \subitem CCFileUtils, \hyperpage{56}
-    \subitem CCRenderTexture, \hyperpage{67}
+    \subitem CCRenderTexture, \hyperpage{73}
 
   \indexspace
 
@@ -41,5 +42,9 @@
   \indexspace
 
   \item Touch Handling, \hyperpage{46}
+
+  \indexspace
+
+  \item Update Loop, \hyperpage{67}
 
 \end{theindex}

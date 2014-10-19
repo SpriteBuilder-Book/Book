@@ -432,6 +432,171 @@ as prefix for public constants which are declared in the \textit{.h} file (e.g.
 \inlinecode{SBBFalling\allowbreak{}Object\allowbreak{}Falling\allowbreak{}Speed}.
 \end{details}
 
+In the \inlinecode{init} method we need to initialize our array of falling
+objects:
 
+\begin{lstlisting}
+- (id)init {
+    self = [super init];
+    
+    if (self) {
+        _fallingObjects = [NSMutableArray array];
+    }
+    
+    return self;
+}
+\end{lstlisting}
 
+We are going to spawn falling objects with the frequency that we have defined in
+the constant \inlinecode{kSpawnFrequency}. Through the \inlinecode{CCNode} class
+\cocos{} provides convenient methods for scheduling repeating events without the
+need to instantiate a timer. We schedule that timer in the
+\inlinecode{onEnterTransitionDidFinish} method:
 
+\begin{lstlisting}
+- (void)onEnterTransitionDidFinish {
+    [super onEnterTransitionDidFinish];
+    
+    // spawn objects with defined frequency
+    [self schedule:@selector(spawnObject) interval:kSpawnFrequency];
+}
+\end{lstlisting}
+
+All we need to provide is a \textit{selector}, which simply means a method
+name, and a frequency at which it shall be called. Now, as soon as the
+\inlinecode{SBBMainScene} is presented on the stage, the
+\inlinecode{spawnObject} method will be called twice a second.
+To complete the spawning functionality we will have to implement the
+\inlinecode{spawnObject} method and additionally move the spawned objects from
+the top of the screen to the bottom.
+
+We want to randomly spawn either positive objects that should be caught or
+negative ones that should not, for that we will generate a random number. Based
+on the random number we will generate a falling object. We will place that
+spawning object just above the screen at a random X position. Here is how we can
+implement that:
+
+\begin{lstlisting}
+- (void)spawnObject {
+    // generate a random number to decide wether to spawn a positive or a negative object
+    NSInteger randomNumber = arc4random_uniform(2);
+
+    SBBFallingObject *fallingObject = nil;
+    
+    if (randomNumber == 0) {
+        fallingObject = [[SBBFallingObject alloc] initWithType:SBBFallingObjectTypeBad];
+    } else if (randomNumber == 1) {
+        fallingObject = [[SBBFallingObject alloc] initWithType:SBBFallingObjectTypeGood];
+    }
+    
+    // add all spawning objects to an array
+    [self.fallingObjects addObject:fallingObject];
+    // spawn all obejcts at top of screen and at a random x position with scene bounds
+    CGFloat xSpawnRange = ( (CGFloat) self.contentSizeInPoints.width) - CGRectGetMaxX(fallingObject.boundingBox);
+    CGPoint spawnPosition = ccp(arc4random_uniform(xSpawnRange), self.contentSizeInPoints.height);
+    fallingObject.position = spawnPosition;
+    [self addChild:fallingObject];
+}
+\end{lstlisting}
+
+This is a schematic diagram of where we are spawning objects with the code shown
+above:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200pt]{images/Chapter2/SpawnObjects.png}
+\end{figure}
+
+Our current version of the game spawns new objects twice a second at the top of
+the screen and at a random X position. However, these objects don't move yet so
+you won't be able to see them falling down. Let's implement the falling code to
+complete the entire spawning functionality!
+
+\section{Move falling objects}
+The last step for this chapter will be moving the objects we are spawning to the
+bottom of the screen. While building your very first \SB{} game you have learned
+to use the \cocos{} action system to move nodes. The action system lets us
+describe changes over time, e.g. \textit{move 100 points to the right over 2
+seconds}. Another option to move nodes that we haven't
+discussed yet is using the \cocos{} \textit{update loop}\index{Update Loop}.
+
+\subsection{Update Loop}
+When we build games with \cocos{} the engine attempts to render 60 frames a
+second and draws theses rendered frames to the screen of the device. When we
+move objects between rendering frames, they will appear as moving objects to the
+user. \cocos{} provides a method that is called directly before a frame is
+rendered, the \inlinecode{update} method.
+
+The \inlinecode{update} method is defined as part of the
+\inlinecode{CCSchedulerTarget}\index{Framework Classes|CCSchedulerTarget}
+protocol. \inlinecode{CCNode} implements this protocol, that means any subclass
+of \inlinecode{CCNode} can override the method. This is the signature of the
+\inlinecode{update} method:
+\begin{lstlisting}
+- (void)update:(CCTime)delta
+\end{lstlisting}
+We receive one parameter called \inlinecode{delta} from the \cocos{} framework.
+The delta parameter contains the milliseconds since the \inlinecode{update}
+method was called last. Most of the time this value will be \textit{0.0167}
+milliseconds, which is 1/60 of a second. If the performance of our game drops
+below 60 FPS this value will be higher, because the time between two rendered
+frames will increase. If we want our objects to move at the same speed,
+independent of the current framerate, we can use this delta parameter to
+calculate how far we need to move nodes between two given frames.
+
+Enough of the theory - let's implement our update method, that will help you
+understand the details.
+
+\subsection{Implementing the update method}
+Here is what we want to do in the update method:
+
+\begin{itemize}
+  \item Iterate over all falling objects
+  \item For each object check if it is within the screen boundaries
+  \item If the object is outside of the screen, remove it
+  \item If the object is inside of the screen boundary, let it fall to the
+  bottom
+\end{itemize}
+
+And here is how we can implement it:
+
+\begin{lstlisting}
+- (void)update:(CCTime)delta {
+    // use classic for loop so that we can remove objects while iterating over the array    
+    for (int i=0; i < [self.fallingObjects count]; i++) {
+        SBBFallingObject *fallingObject = self.fallingObjects[i];
+        
+        // check if falling object is below the screen boundary
+        if (CGRectGetMaxY(fallingObject.boundingBox) < CGRectGetMinY(self.boundingBox)) {
+            // if object is below screen, remove it
+            [fallingObject removeFromParent];
+            [self.fallingObjects removeObject:fallingObject];
+        } else {
+            // else, let the object fall with a constant speed
+            fallingObject.position = ccp(fallingObject.position.x, fallingObject.position.y - (kFallingSpeed * delta));
+        }
+    }
+}
+\end{lstlisting}
+
+The interesting aspects of the code snippet above are how we check if the
+falling object is out of bounds and how we move the falling object. Note that we
+are using the \inlinecode{CGRectGetMaxY} and \inlinecode{CGRectGetMinY} methods
+to determine\ldots
+
+\begin{details}[frametitle={Update vs. Fixed Update}] 
+This chapter discusses the \inlinecode{update:} method of \cocos{} in detail.
+\cocos{} provides a second similar method called
+\inlinecode{fixedUpdate:}\index{Fixed Update}.
+Unlike the \inlinecode{update:} method, the \inlinecode{fixedUpdate:} method is
+\textbf{guaranteed} to be called at a specified interval (per default 1/60) and
+is not dependent on the framerate the game is running at. The physics engine
+integrated in \cocos{} uses the
+\inlinecode{fixedUpdate:} method to perform all of its calculations. For you as
+developer that means that you should implement code that changes physical
+attributes in the \inlinecode{fixedUpdate:} method and \textbf{not} in the
+\inlinecode{update:} method. We will discuss the physics engine of \cocos{} in
+later chapters in detail. A nice blog post about the \inlinecode{fixedUpdate}
+method is available here:
+\url{http://kirillmuzykov.com/update-vs-fixedupdate-in-cocos2d/}.
+\end{details}

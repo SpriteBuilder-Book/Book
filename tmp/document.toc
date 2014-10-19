@@ -43,10 +43,13 @@
 \contentsline {subsection}{\numberline {2.4.1}Create a falling object class}{58}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Choose an asset for a falling object}{59}{subsection.2.4.2}
 \contentsline {section}{\numberline {2.5}Spawn falling objects}{64}{section.2.5}
-\contentsline {chapter}{\numberline {3}Q\&A}{65}{chapter.3}
-\contentsline {section}{\numberline {3.1}Core Cocos2D{} and SpriteBuilder{}}{65}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}How can I programmatically change the texture of an existing CCSprite{}}{65}{subsection.3.1.1}
-\contentsline {section}{\numberline {3.2}Designing for multiple devices}{65}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Which size does a background image for all four resolutions need to have?}{65}{subsection.3.2.1}
-\contentsline {section}{\numberline {3.3}Advance Techniques}{66}{section.3.3}
-\contentsline {subsection}{\numberline {3.3.1}Can I take a screenshot in code or even generate a level preview?}{66}{subsection.3.3.1}
+\contentsline {section}{\numberline {2.6}Move falling objects}{67}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Update Loop}{67}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Implementing the update method}{68}{subsection.2.6.2}
+\contentsline {chapter}{\numberline {3}Q\&A}{71}{chapter.3}
+\contentsline {section}{\numberline {3.1}Core Cocos2D{} and SpriteBuilder{}}{71}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}How can I programmatically change the texture of an existing CCSprite{}}{71}{subsection.3.1.1}
+\contentsline {section}{\numberline {3.2}Designing for multiple devices}{71}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Which size does a background image for all four resolutions need to have?}{71}{subsection.3.2.1}
+\contentsline {section}{\numberline {3.3}Advance Techniques}{72}{section.3.3}
+\contentsline {subsection}{\numberline {3.3.1}Can I take a screenshot in code or even generate a level preview?}{72}{subsection.3.3.1}

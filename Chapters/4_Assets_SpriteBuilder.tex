@@ -579,10 +579,23 @@ And here is how we can implement it:
 }
 \end{lstlisting}
 
-The interesting aspects of the code snippet above are how we check if the
+The interesting aspect of the code snippet above is how we check if the
 falling object is out of bounds and how we move the falling object. Note that we
-are using the \inlinecode{CGRectGetMaxY} and \inlinecode{CGRectGetMinY} methods
-to determine\ldots
+are using the \inlinecode{CGRectGetMaxY} and \inlinecode{CGRectGetMinY}
+functions to determine the top and the bottom of the bounding boxes of the
+falling object and the gameplay scene. The \inlinecode{CGRectGetMaxY} function
+returns the largest Y value of the bounding box. Using these functions is preferred over accessing values
+directly (e.g. \inlinecode{fallingObject.boundingBox.origin.y}) because they
+also work for rectangles with negative sizes.
+
+If we detect that the top border of the falling object is below the bottom
+border of the screen, we remove the falling object from the scene.
+
+If the falling object is within the screen boundary we move it to the bottom
+with the constant speed that we defined earlier.
+
+Now the falling mechanic is entirely implemented! In the next and last
+subchapter you will learn how to add sound assets to the game.
 
 \begin{details}[frametitle={Update vs. Fixed Update}] 
 This chapter discusses the \inlinecode{update:} method of \cocos{} in detail.

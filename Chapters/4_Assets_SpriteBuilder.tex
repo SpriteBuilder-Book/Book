@@ -614,10 +614,10 @@ method is available here:
 \url{http://kirillmuzykov.com/update-vs-fixedupdate-in-cocos2d/}.
 \end{details}
 
-\section{Play sound}
-The goal of this chapter is that you learn how to use assets with \SB{} and
+\section{Adding sound effects}
+The goal of this chapter is for you to learn how to use assets with \SB{} and
 \cocos{}. Obviously images are the most important assets in games, but sound
-effects also play a big role in creating game that your players enjoy. In this
+effects also play a big role in creating games that your players enjoy. In this
 section you will learn how to add a sound effect that gets played whenever one
 of the falling objects drops out of the screen.
 
@@ -626,8 +626,108 @@ Start by downloading the sound file here:
 
 All sound files need to be added to your \SB{} project in the \textit{Wave}
 format. \SB{} will then generate compressed versions of that sound in different
-formats for the iOS and the Android app.
+formats for the iOS and the Android app. You can add the sound effect - just
+like any other asset - by dragging it from Finder to the resource pane (in the
+bottom left) of \SB{}.
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/Chapter2/new_timeline_audio.png}
+		\caption{WAV files can be added by dragging them to the resource
+		pane}\label{fig:audio_new_timeline}
+\end{figure}
+
+There are different ways to play sound effects added to your \SB{} project: you
+can add a sound effect to a \SB{} timeline or you can play a sound effect
+directly from code. We will first look at the timeline approach, implementing the code
+approach will be an exercise at the end of this chapter.
+
+Start by creating a new timeline for the sound effect as show in figure
+\ref{fig:audio_new_timeline}. Once the timeline is created you can drag the
+sound effect from the asset library in the left panel to the \textit{Sound
+effects} row of \SB{}'s timeline (the second row from the top).
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.9\linewidth]{images/Chapter2/audio_timeline.png}
+		\caption{(1) Audio file added to timeline\newline{} (2)
+		Button to change timeline duration\newline{} (3) Timeline
+		duration dialog\newline{}}\label{fig:change_timeline_duration}
+\end{figure}
+
+When the sound is added to the timeline it will be displayed in wave form. You
+should adjust the duration of the timeline to match the duration of the sound
+effect. Figure \ref{fig:change_timeline_duration} shows how you can change the
+duration. You should set it to 10 frames.
+
+Now the sound is ready to play! The last step is assigning a unique name to this
+timeline which we can reference from code. You can rename a timeline by either
+choosing \textit{Animation -> Edit Timelines\ldots} or selecting the dropdown
+button next to the timeline name:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200pt]{images/Chapter2/edit_timeline.png}
+		\caption{\textit{Edit Timelines\ldots} allows you to change the name of a
+		timeline}
+\end{figure}
+
+I have chosen \textit{DropSound} for the name of this timeline. Now everything
+is set up and you can hit the publish button in \SB{}.
+
+\subsection{Triggering a Sound Effect}
+Now we have set up the sound effect in \SB{} and published the project, all that
+is left to do is to open the \xcode{} project and play the sound effect as soon
+as an object falls below the screen boundary.
+
+We are going to implement this in \textit{SBBMainScene.m}. \cocos{} provides a
+very interface to run a timeline animation from code. The following line added
+to \inlinecode{SBBMainScene} will run the timeline animation and thus play the
+sound we added to the project:
+\begin{lstlisting}
+[self.animationManager runAnimationsForSequenceNamed:@"DropSound"];
+\end{lstlisting}
+The animation manager of the root node of a \ccbfile{} provides us access to the
+different timelines and allows us to run, pause them and to react to their
+completion - we will use these capabilities extensively throughout this book.
+
+As mentioned earlier we want to play the sound effect when an object falls off
+the screen. We already have code that checks for that condition in our
+\inlinecode{update} method, all we need to do this to add the line that runs the
+timeline. Extend the relevant part of the \inlinecode{update} method to look as
+following:
+\begin{lstlisting}
+        // check if falling object is below the screen boundary
+        if (CGRectGetMaxY(fallingObject.boundingBox) < CGRectGetMinY(self.boundingBox)) {
+            // if object is below screen, remove it
+            [fallingObject removeFromParent];
+            [self.fallingObjects removeObject:fallingObject];
+            // play sound effect
+            [self.animationManager runAnimationsForSequenceNamed:@"DropSound"];
+        } else {...}
+\end{lstlisting}
+Now you can compile and test the project. Every time an object falls of the
+screen you should hear the drop sound play!
+\section{Wrapping up}
+In this chapter you have learned how to work with an essential component of all
+video games - image and audio assets. You have learned how to design scenes with
+sprites in \SB{}, how to load and change sprite textures in code. You got to
+know how \SB{} handles different asset resolutions for different screen and
+device types and you have played your first sound effect. You have learned some
+of the most important essentials of game development with \SB{} and \cocos{}.
+
+The focus of the next chapter is \textit{User Interaction}. You will learn how
+to implement Drag and Drop functionality, how to use the Accelerometer as an
+alternative control scheme and how to use gestures to make your games more
+enjoyable. Before you move on you should complete the exercise for this chapter.
 
 \section{Exercises}
-\subsection{Play the 'drop' sound from Code instead of using a timeline
-animation}
+Now it's time for an exercise. For this exercise you will have to use internet
+research.
+\begin{description}
+\item[2.0] Play the 'drop' sound without using a \SB{} timeline. Tips: you will
+have to use \inlinecode{OALSimpleAudio} to play the sound and
+\inlinecode{CCFileUtils} to find the location of the sound file. Note that this
+approach that avoids using a \SB{} can often be the more convenient approach to
+playing sound effects in your game!
+\end{description}

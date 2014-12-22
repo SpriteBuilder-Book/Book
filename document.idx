@@ -1,22 +1,23 @@
-\indexentry{Code Connections|hyperpage}{18}
-\indexentry{Document Types|hyperpage}{19}
-\indexentry{Publish|hyperpage}{20}
-\indexentry{Positioning System|hyperpage}{26}
-\indexentry{Code Connections!Callbacks|hyperpage}{27}
-\indexentry{Document Root|hyperpage}{28}
-\indexentry{Code Connections!Custom Classes|hyperpage}{28}
+\indexentry{Code Connections|hyperpage}{20}
+\indexentry{Document Types|hyperpage}{21}
+\indexentry{Publish|hyperpage}{22}
+\indexentry{Positioning System|hyperpage}{28}
+\indexentry{Code Connections!Callbacks|hyperpage}{29}
+\indexentry{Document Root|hyperpage}{30}
 \indexentry{Code Connections!Custom Classes|hyperpage}{30}
-\indexentry{Scene Transition|hyperpage}{33}
-\indexentry{CCDirector|hyperpage}{34}
-\indexentry{CCBReader|hyperpage}{37}
-\indexentry{Code Connections!Variable Assignment|hyperpage}{39}
-\indexentry{Node Lifecycle|hyperpage}{42}
-\indexentry{Action System|hyperpage}{44}
-\indexentry{Touch Handling|hyperpage}{46}
-\indexentry{Assets!Adding Assets|hyperpage}{51}
-\indexentry{Assets!Automatic Downscaling|hyperpage}{52}
-\indexentry{Framework Classes!CCFileUtils|hyperpage}{56}
-\indexentry{Update Loop|hyperpage}{67}
-\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{68}
-\indexentry{Fixed Update|hyperpage}{70}
-\indexentry{Framework Classes!CCRenderTexture|hyperpage}{77}
+\indexentry{Code Connections!Custom Classes|hyperpage}{32}
+\indexentry{Scene Transition|hyperpage}{35}
+\indexentry{CCDirector|hyperpage}{36}
+\indexentry{CCBReader|hyperpage}{39}
+\indexentry{Code Connections!Variable Assignment|hyperpage}{41}
+\indexentry{Node Lifecycle|hyperpage}{44}
+\indexentry{Action System|hyperpage}{46}
+\indexentry{Touch Handling|hyperpage}{48}
+\indexentry{Assets!Adding Assets|hyperpage}{53}
+\indexentry{Assets!Automatic Downscaling|hyperpage}{54}
+\indexentry{Framework Classes!CCFileUtils|hyperpage}{58}
+\indexentry{Update Loop|hyperpage}{69}
+\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{70}
+\indexentry{Fixed Update|hyperpage}{72}
+\indexentry{Z-Order|hyperpage}{78}
+\indexentry{Framework Classes!CCRenderTexture|hyperpage}{85}

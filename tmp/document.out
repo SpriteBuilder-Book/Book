@@ -34,10 +34,15 @@
 \BOOKMARK [2][-]{subsection.2.7.1}{Triggering a Sound Effect}{section.2.7}% 34
 \BOOKMARK [1][-]{section.2.8}{Wrapping up}{chapter.2}% 35
 \BOOKMARK [1][-]{section.2.9}{Exercises}{chapter.2}% 36
-\BOOKMARK [0][-]{chapter.3}{Q\046A}{}% 37
-\BOOKMARK [1][-]{section.3.1}{Core Cocos2D and SpriteBuilder}{chapter.3}% 38
-\BOOKMARK [2][-]{subsection.3.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.3.1}% 39
-\BOOKMARK [1][-]{section.3.2}{Designing for multiple devices}{chapter.3}% 40
-\BOOKMARK [2][-]{subsection.3.2.1}{Which size does a background image for all four resolutions need to have?}{section.3.2}% 41
-\BOOKMARK [1][-]{section.3.3}{Advance Techniques}{chapter.3}% 42
-\BOOKMARK [2][-]{subsection.3.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.3.3}% 43
+\BOOKMARK [0][-]{chapter.3}{User Interaction and Collision Detection}{}% 37
+\BOOKMARK [1][-]{section.3.1}{Add the pot to the game}{chapter.3}% 38
+\BOOKMARK [2][-]{subsection.3.1.1}{Working with the z-order}{section.3.1}% 39
+\BOOKMARK [2][-]{subsection.3.1.2}{Setting up the pot assets}{section.3.1}% 40
+\BOOKMARK [1][-]{section.3.2}{Implement a Drag and Drop mechanism}{chapter.3}% 41
+\BOOKMARK [0][-]{chapter.4}{Q\046A}{}% 42
+\BOOKMARK [1][-]{section.4.1}{Core Cocos2D and SpriteBuilder}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.4.1}% 44
+\BOOKMARK [1][-]{section.4.2}{Designing for multiple devices}{chapter.4}% 45
+\BOOKMARK [2][-]{subsection.4.2.1}{Which size does a background image for all four resolutions need to have?}{section.4.2}% 46
+\BOOKMARK [1][-]{section.4.3}{Advance Techniques}{chapter.4}% 47
+\BOOKMARK [2][-]{subsection.4.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.4.3}% 48

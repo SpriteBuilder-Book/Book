@@ -55,10 +55,11 @@
 \contentsline {subsection}{\numberline {3.1.1}Working with the z-order}{78}{subsection.3.1.1}
 \contentsline {subsection}{\numberline {3.1.2}Setting up the pot assets}{79}{subsection.3.1.2}
 \contentsline {section}{\numberline {3.2}Implement a Drag and Drop mechanism}{81}{section.3.2}
-\contentsline {chapter}{\numberline {4}Q\&A}{83}{chapter.4}
-\contentsline {section}{\numberline {4.1}Core Cocos2D{} and SpriteBuilder{}}{83}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}How can I programmatically change the texture of an existing CCSprite{}}{83}{subsection.4.1.1}
-\contentsline {section}{\numberline {4.2}Designing for multiple devices}{83}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Which size does a background image for all four resolutions need to have?}{83}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Advance Techniques}{84}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Can I take a screenshot in code or even generate a level preview?}{84}{subsection.4.3.1}
+\contentsline {subsection}{\numberline {3.2.1}Picking up an Object}{81}{subsection.3.2.1}
+\contentsline {chapter}{\numberline {4}Q\&A}{85}{chapter.4}
+\contentsline {section}{\numberline {4.1}Core Cocos2D{} and SpriteBuilder{}}{85}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}How can I programmatically change the texture of an existing CCSprite{}}{85}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}Designing for multiple devices}{85}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Which size does a background image for all four resolutions need to have?}{85}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Advance Techniques}{86}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Can I take a screenshot in code or even generate a level preview?}{86}{subsection.4.3.1}

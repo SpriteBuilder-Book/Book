@@ -1,54 +1,54 @@
 \begin{theindex}
 
-  \item Action System, \hyperpage{44}
+  \item Action System, \hyperpage{46}
   \item Assets
-    \subitem Adding Assets, \hyperpage{51}
-    \subitem Automatic Downscaling, \hyperpage{52}
+    \subitem Adding Assets, \hyperpage{53}
+    \subitem Automatic Downscaling, \hyperpage{54}
 
   \indexspace
 
-  \item CCBReader, \hyperpage{37}
-  \item CCDirector, \hyperpage{34}
-  \item Code Connections, \hyperpage{18}
-    \subitem Callbacks, \hyperpage{27}
-    \subitem Custom Classes, \hyperpage{28}, \hyperpage{30}
-    \subitem Variable Assignment, \hyperpage{39}
+  \item CCBReader, \hyperpage{39}
+  \item CCDirector, \hyperpage{36}
+  \item Code Connections, \hyperpage{20}
+    \subitem Callbacks, \hyperpage{29}
+    \subitem Custom Classes, \hyperpage{30}, \hyperpage{32}
+    \subitem Variable Assignment, \hyperpage{41}
 
   \indexspace
 
-  \item Document Root, \hyperpage{28}
-  \item Document Types, \hyperpage{19}
+  \item Document Root, \hyperpage{30}
+  \item Document Types, \hyperpage{21}
 
   \indexspace
 
-  \item Fixed Update, \hyperpage{70}
-  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{68}
-    \subitem CCFileUtils, \hyperpage{56}
-    \subitem CCRenderTexture, \hyperpage{83}
+  \item Fixed Update, \hyperpage{72}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{70}
+    \subitem CCFileUtils, \hyperpage{58}
+    \subitem CCRenderTexture, \hyperpage{87}
 
   \indexspace
 
-  \item Node Lifecycle, \hyperpage{42}
+  \item Node Lifecycle, \hyperpage{44}
 
   \indexspace
 
-  \item Positioning System, \hyperpage{26}
-  \item Publish, \hyperpage{20}
+  \item Positioning System, \hyperpage{28}
+  \item Publish, \hyperpage{22}
 
   \indexspace
 
-  \item Scene Transition, \hyperpage{33}
+  \item Scene Transition, \hyperpage{35}
 
   \indexspace
 
-  \item Touch Handling, \hyperpage{46}
+  \item Touch Handling, \hyperpage{48}
 
   \indexspace
 
-  \item Update Loop, \hyperpage{67}
+  \item Update Loop, \hyperpage{69}
 
   \indexspace
 
-  \item Z-Order, \hyperpage{76}
+  \item Z-Order, \hyperpage{78}
 
 \end{theindex}

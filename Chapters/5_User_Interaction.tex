@@ -108,3 +108,119 @@ Okay, now we have the basics set up and are ready to dive into the details of
 implementing a drag and drop mechanism!
 
 \section{Implement a Drag and Drop mechanism}
+For the very first project in this book we have already implemented a basic
+touch mechanism. You should remember that \inlinecode{userInteractionEnabled} is
+the property that activates/deactivates touch handling for a node and that
+\cocos{} provides four different callbacks for different state transitions in
+the lifecycle of a touch. Here's the recap:
+
+\begin{description}
+\item[touchBegan:] called when a touch begins
+\item[touchMoved:] called when the touch position of a touch changes
+\item[touchEnded:] called when a touch ends because the user stops touching the
+screen
+\item[touchCancelled:] called when a touch is cancelled because user moves touch
+outside of the touch area of a node
+\end{description}
+
+Knowing that, how can we implement a drag and drop control scheme for our game?
+Dragging and dropping includes three different steps:
+\begin{enumerate}
+  \item Pick up object
+  \item Drag object
+  \item Drop object
+\end{enumerate}
+
+\subsection{Picking up an Object}
+In order to pick up an object we need to detect a user's touch and determine if
+the touch is within the boundaries of our object, if that is the case,
+we start dragging the object.
+
+First of all, let's turn on user interaction for the \inlinecode{SBBMainScene}
+class, so that we receive touch events.
+
+\begin{leftbar}
+Add the required line to the \inlinecode{onEnterTransitionDidFinish} method:
+\begin{lstlisting}
+- (void)onEnterTransitionDidFinish {
+    [super onEnterTransitionDidFinish];
+    
+    self.userInteractionEnabled = YES;
+    
+    // spawn objects with defined frequency
+    [self schedule:@selector(spawnObject) interval:kSpawnFrequency];
+}
+\end{lstlisting}
+\end{leftbar}
+
+Next, we need to add the touch handling method. The touch handling method will
+need to check if the touch is within our pot. If that is the case, the method
+will need to set a state variable that remembers that we are currently dragging
+this object. If the user moves a finger across the screen and we are currently
+in object dragging mode, it is important that the object follows the finger of
+the user; therefore we need this state variable to remember whether we are
+dragging the pot or not.
+
+\begin{leftbar}
+Add this implementation to \inlinecode{SBBMainScene.m}:
+\begin{lstlisting}
+- (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
+    // if touch is within the pot area, start dragging it
+    if (CGRectContainsPoint([_potBottom boundingBox], [touch locationInNode:self])) {
+        _isDraggingPot = YES;
+        _dragTouchOffset = ccpSub([_potBottom anchorPointInPoints], [touch locationInNode:_potBottom]);
+    }
+}
+\end{lstlisting}
+\end{leftbar}
+
+Let's discuss this implementation briefly. You already have seen the usage of 
+\inlinecode{[touch locationInNode:self]} in the first chapter of this book,
+where we briefly discussed touch handling
+(\ref{Introduction_FirstTouchHandling}). This method returns the touch position
+within a given node. In this specific case we are receiving the touch position
+within \inlinecode{SBBMainScene}.
+
+Next, we are using a utility function, \inlinecode{CGRectContainsPoint}, to
+check if this touch is within the pot. Remember,
+that \inlinecode{\_potBottom} and \inlinecode{\_potTop} are placed at exactly
+the same position, so we can choose either of them for this check.
+\inlinecode{CGRectContainsPoint} takes a rectangle as its first argument and a
+point as its second. It returns true if the point is within the rectangle.
+
+If the touch position is inside of the pot, we set our state variable,
+\inlinecode{\_isDraggingPot}, to \inlinecode{YES}. 
+
+There is one last line that we didn't discuss upfront:
+\begin{lstlisting}
+_dragTouchOffset = ccpSub([_potBottom anchorPointInPoints], [touch locationInNode:_potBottom]);
+\end{lstlisting}
+
+In order to drag an object smoothly we need to remember where we touched that
+object when starting dragging. Take a look at the following diagram:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.4\linewidth]{images/Chapter3/dragging_offset.png}
+		\caption{\textit{Top Image:} incorrect implementation, object jumps to touch
+		position. \textit{Bottom Image:} correct implementation, touch offset is
+		maintained while dragging the object.}
+\end{figure}
+As the user moves the finger, we move the object along. However, the position of
+the object is not exactly the touch position. Instead it is the touch position
+\textit{plus} the touch offset determined when we started dragging. No we know
+why it is important to store the touch offset!
+
+\begin{leftbar}
+To wrap up the implementation of \inlinecode{touchBegan} let's add the two
+iVars we have referenced: \inlinecode{\_isDraggingPot} and
+\inlinecode{\_dragTouchOffset}. Your list of iVars should now look like this:
+\begin{lstlisting}
+@implementation SBBMainScene {
+    __weak CCSprite *_potTop;
+    __weak CCSprite *_potBottom;
+    __weak CCNode *_catchContainer;
+    CGPoint _dragTouchOffset;
+    BOOL _isDraggingPot;
+}
+\end{lstlisting}
+\end{leftbar}

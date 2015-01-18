@@ -213,7 +213,7 @@ subclass with a \inlinecode{type} property is the better solution.
 Create a new class called \inlinecode{FallingObject} and make it a subclass
 of \ccsprite{}. The best way to represent different types in Swift is
 using enumerations. Add this enum definition to \textit{FallingObject.swift},
-above the \inlinecode{class} block:
+inside of the \inlinecode{class} block:
 
 \begin{lstlisting}
 enum FallingObjectType: Int {
@@ -238,12 +238,6 @@ You can read everything about the different ways of creating enumerations in
 Swift in the official documentation
 (\url{https://developer.apple.com/library/ios/documentation/
 Swift/Conceptual/Swift_Programming_Language/Enumerations.html}).
-
-Note, in this example we are defining the enumeration outside of the class scope
-of the \inlinecode{FallingObject} class. This is not the recommended way.
-Usually you should define the enum inside of the class, since the enum belongs
-to the class. A bug in the Swift Compiler in Xcode version 6.1.1 makes this
-workaround necessary.
 \end{details}
 
 Additionally we add an instance variable to store the object type. Later we will
@@ -253,12 +247,12 @@ should look as follows:
 \begin{lstlisting}
 import Foundation
 
-enum FallingObjectType: Int {
-  case Good
-  case Bad
-}
-
 class FallingObject: CCSprite {
+
+  enum FallingObjectType: Int {
+    case Good
+	case Bad
+  }
     
   private(set) var type:FallingObjectType
   
@@ -326,50 +320,83 @@ During each session the player plays we are going to create hundreds of
 falling objects. Since the images that represent these objects won't change it
 would be a waste of resources to load the \textit{plist} every time we create a
 new instance of \inlinecode{SBBFallingObject}. Instead we should only load it
-once and then keep a reference to it for future use. We can create
-\inlinecode{static} variables to hold the content of the \textit{plist} once it
-is loaded. 
+once and then keep a reference to it for future use. A good way of doing this is
+using a class constant to store the \textit{plist} reference once it is loaded.
 
-\begin{details}[frametitle={Static variables in Objective-C}] 
-In Objective-C the concept of class variables does not exist but the C-keyword
-\inlinecode{static} makes a variable only accessible from the file it is
-defined in. Therefore defining a \inlinecode{static} variable in a \textit{.m}
-file is very similar to a class variable.
+\begin{details}[frametitle={Class variables in Swift}] 
+While class constants and non-computed class variables are already specified as
+part of the Swift language they aren't implemented in the Swift compiler yet 
+(as of Xcode version 6.1.1), therefore we need to use a workaround. 
 \end{details}
 
-We can then override the class method \inlinecode{initialize} to load the
-\textit{plist} and store the results in the \inlinecode{static} variables. The
-\inlinecode{initialize} method is only called once per class and is guaranteed
-to be called before the class is used, so this is the perfect place to do some
-class level preparation work.
+As described in the detail box above, Swift does not yet support class
+constants, therefore we need to use a workaround. Here is the code that loads
+the plist and stores the content in a class variable. You should place it within
+the class definition of \inlinecode{FallingObject} (no worries, we will discuss
+the code in detail right away):
 
-Open \textit{SBBFallingObject.m} to start implementing
-this. First, define to \inlinecode{static} array references:
 \begin{lstlisting}
-static NSArray *fallingObjectTypeGoodImageNames;
-static NSArray *fallingObjectTypeBadImageNames;
+  private class var imageNames:ImageNames {
+    struct ClassConstantWrapper {
+      static let instance = ImageNames()
+    }
+    return ClassConstantWrapper.instance
+  }
+  
+  private struct ImageNames {
+    var good: [String]
+    var bad: [String]
+    
+    init () {
+      let path = NSBundle.mainBundle().pathForResource("FallingObjectImages", ofType: "plist")!
+      let imageDictionary:Dictionary = NSDictionary(contentsOfFile: path)!
+      good = imageDictionary["FallingObjectTypeGoodImages"] as [String]
+      bad = imageDictionary["FallingObjectTypeBadImages"] as [String]
+    }
+  }
 \end{lstlisting}
-Then implement the \inlinecode{initialize} method to create two arrays and
-assign them to these variables:
-\begin{lstlisting}
-+ (void)initialize {
-  // load possible images from plist
-  NSURL *plistURL = [[NSBundle mainBundle] URLForResource:@"SBBFallingObjectImages" withExtension:@"plist"];
-  NSDictionary *fallingObjectImageNames = [NSDictionary dictionaryWithContentsOfURL:plistURL];
-  fallingObjectTypeGoodImageNames = fallingObjectImageNames[@"FallingObjectTypeGoodImages"];
-  fallingObjectTypeBadImageNames = fallingObjectImageNames[@"FallingObjectTypeBadImages"];
-}
-\end{lstlisting}
-First we need to get the path to the \textit{plist}. Then we can load the
-\textit{plist} using a convenience method of \inlinecode{NSDictionary}, this is
-possible because the root object in our \textit{plist} is a dictionary. From
-that dictionary we can extract the two arrays with the images for good objects
-and bad objects and assign them to our \inlinecode{static} variables. When the
-\inlinecode{SBBFallingObject} class is used the first them this code will run
-and set up the two arrays for us!
 
+First, we are defining a private class variable. Currently Swift only supports
+computed class variables, that means we need to provide a getter that will
+return a value. We provide that getter through the closure that is placed
+directly after the variable declaration. Whenever the class variable is accessed
+this closure is called. Inside of this closure we place the workaround mentioned
+earlier. We declare a struct called \inlinecode{ClassConstantWrapper} with a
+static constant called \inlinecode{instance}. This static constant is initialized with an instance of
+the structure \inlinecode{ImageNames} which we declare a few lines later. Since
+\inlinecode{instance} this is a static constant, the expression will only be
+evaluated once and only one instance of \inlinecode{ImageNames} will ever be
+created, independently of how often the class variable is accessed.
+
+Inside of the \inlinecode{ImageNames} struct, the actual work happens. First we
+declare two array variables that store strings. They store the filenames of the
+\textit{good} object assets and the \textit{bad} object assets. Inside of the
+initializer we fill these variables.
+
+First, we get the path of the \textit{FallingObjectImages.plist} file. Then we
+use a convenience initializer on \inlinecode{NSDictionary} called
+\textit{contentsOfFile:}. That initializer creates a dictionary from a provided
+plist, this only works because the root element of our plist is a dictionary!
+Earlier we've set up our plist to contain two arrays of strings,
+\textit{FallingObjectTypeGoodImages} and \texit{FallingObjectTypeBadImages}
+below the root element.
+We can now extract these two arrays from our dictionary and assign them to the 
+\inlinecode{good} variable and \inlinecode{bad} variable, respectively. During
+this assignment we need to cast the arrays into \inlinecode{[String]} arrays
+using the \inlinecode{as} operator. This is necessary because we are receiving
+an Objective-C Array (\inlinecode{NSArray}) that cannot store type information
+about the elements it contains.
+
+Due to the necessary workaround this is quite a bit of code, but things will
+improve as Swift matures. 
+
+Now we have successfully set up a class constant that will load the required
+image names when it is accessed the fist time and store these images on a class
+level. That will avoid reloading the plist for every instance of
+\inlinecode{FallingObject}.
+  
 Now that we have access to the image names we can implement the actual
-initializer of \inlinecode{SBBFallingObject}. We need to:
+initializer of \inlinecode{FallingObject}. We need to:
 \begin{itemize}
   \item Pick a random image based on the object type
   \item Call the \inlinecode{initWithImageNamed:} of \ccsprite{}

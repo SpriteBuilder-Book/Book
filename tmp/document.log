@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 JAN 2015 09:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  18 JAN 2015 12:52
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -1860,96 +1860,116 @@ Package pdftex.def Info: images/Chapter2/center_background.png used on input li
 ne 176.
 (pdftex.def)             Requested size: 382.82909pt x 131.97836pt.
  [59 <./images/Chapter2/center_background.png>] [60]
-<images/Chapter2/create_plist.png, id=755, 731.73375pt x 429.605pt>
+Package mdframed Info: mdframed works in twoside mode on input line 236.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 236.
+
+Overfull \hbox (39.22293pt too wide) in paragraph at lines 237--241
+\T1/cmtt/m/n/10.95 library / ios / documentation / Swift / Conceptual / Swift _
+ Programming _ Language /
+ []
+
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 247.
+[61] <images/Chapter2/create_plist.png, id=770, 731.73375pt x 429.605pt>
 File: images/Chapter2/create_plist.png Graphic file (type png)
 
 <use images/Chapter2/create_plist.png>
-Package pdftex.def Info: images/Chapter2/create_plist.png used on input line 27
-3.
+Package pdftex.def Info: images/Chapter2/create_plist.png used on input line 30
+2.
 (pdftex.def)             Requested size: 300.0pt x 176.13263pt.
- [61]
-<images/Chapter2/plist_setup.png, id=770, 543.02875pt x 372.39125pt>
+ [62]
+<images/Chapter2/plist_setup.png, id=775, 543.02875pt x 372.39125pt>
 File: images/Chapter2/plist_setup.png Graphic file (type png)
 
 <use images/Chapter2/plist_setup.png>
-Package pdftex.def Info: images/Chapter2/plist_setup.png used on input line 285
+Package pdftex.def Info: images/Chapter2/plist_setup.png used on input line 314
 .
 (pdftex.def)             Requested size: 297.75668pt x 204.19646pt.
- [62 <./images/Chapter2/create_plist.png> <./images/Chapter2/plist_setup.png>]
-Package mdframed Info: mdframed works in twoside mode on input line 303.
+ [63 <./images/Chapter2/create_plist.png> <./images/Chapter2/plist_setup.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 332.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 303.
+(mdframed)              on input line 332.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 308.
- [63] [64]
-Package mdframed Info: mdframed works in twoside mode on input line 386.
+(mdframed)              on input line 337.
+ [64] [65]
+Package mdframed Info: mdframed works in twoside mode on input line 415.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 386.
+(mdframed)              on input line 415.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 390.
- [65]
-Package mdframed Info: mdframed works in twoside mode on input line 428.
+(mdframed)              on input line 419.
+ [66]
+Package mdframed Info: mdframed works in twoside mode on input line 457.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 428.
+(mdframed)              on input line 457.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 433.
- [66] [67]
-<images/Chapter2/SpawnObjects.png, id=861, 1073.9322pt x 917.1063pt>
+(mdframed)              on input line 462.
+ [67] [68]
+<images/Chapter2/SpawnObjects.png, id=866, 1073.9322pt x 917.1063pt>
 File: images/Chapter2/SpawnObjects.png Graphic file (type png)
 
 <use images/Chapter2/SpawnObjects.png>
-Package pdftex.def Info: images/Chapter2/SpawnObjects.png used on input line 50
-7.
+Package pdftex.def Info: images/Chapter2/SpawnObjects.png used on input line 53
+6.
 (pdftex.def)             Requested size: 200.0pt x 170.78151pt.
- [68] [69 <./images/Chapter2/SpawnObjects.png>] [70]
-Package mdframed Info: mdframed works in twoside mode on input line 600.
+ [69] [70 <./images/Chapter2/SpawnObjects.png>] [71]
+Package mdframed Info: mdframed works in twoside mode on input line 629.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 600.
+(mdframed)              on input line 629.
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
-(mdframed)              on input line 615.
- [71]
-<images/Chapter2/new_timeline_audio.png, id=919, 1077.02374pt x 763.85374pt>
+(mdframed)              on input line 644.
+ [72]
+<images/Chapter2/new_timeline_audio.png, id=924, 1077.02374pt x 763.85374pt>
 File: images/Chapter2/new_timeline_audio.png Graphic file (type png)
 
 <use images/Chapter2/new_timeline_audio.png>
 Package pdftex.def Info: images/Chapter2/new_timeline_audio.png used on input l
-ine 635.
+ine 664.
 (pdftex.def)             Requested size: 382.82909pt x 271.51381pt.
- [72] [73 <./images/Chapter2/new_timeline_audio.png>]
-<images/Chapter2/audio_timeline.png, id=933, 905.3825pt x 450.68375pt>
+ [73] [74 <./images/Chapter2/new_timeline_audio.png>]
+<images/Chapter2/audio_timeline.png, id=938, 905.3825pt x 450.68375pt>
 File: images/Chapter2/audio_timeline.png Graphic file (type png)
 
 <use images/Chapter2/audio_timeline.png>
 Package pdftex.def Info: images/Chapter2/audio_timeline.png used on input line 
-664.
+697.
 (pdftex.def)             Requested size: 382.82909pt x 190.56497pt.
- [74 <./images/Chapter2/audio_timeline.png>] <images/Chapter2/edit_timeline.png
-, id=942, 347.2975pt x 156.585pt>
+ [75 <./images/Chapter2/audio_timeline.png>] <images/Chapter2/edit_timeline.png
+, id=947, 347.2975pt x 156.585pt>
 File: images/Chapter2/edit_timeline.png Graphic file (type png)
 
 <use images/Chapter2/edit_timeline.png>
-Package pdftex.def Info: images/Chapter2/edit_timeline.png used on input line 6
-85.
+Package pdftex.def Info: images/Chapter2/edit_timeline.png used on input line 7
+15.
 (pdftex.def)             Requested size: 200.0pt x 90.17664pt.
- [75 <./images/Chapter2/edit_timeline.png>] [76]) [77]
+
+Overfull \hbox (1.81824pt too wide) in paragraph at lines 728--732
+\T1/ppl/m/n/10.95 API call to run a time-line an-i-ma-tion from code. The fol-l
+ow-ing line added to \T1/cmtt/m/n/10.95 SBBMainScene
+ []
+
+[76 <./images/Chapter2/edit_timeline.png>] [77]) [78]
 \openout2 = `Chapters/5_User_Interaction.aux'.
 
- (./Chapters/5_User_Interaction.tex [78
 
-
-
-
-]
+(./Chapters/5_User_Interaction.tex
 Chapter 3.
-[79] <images/Chapter3/drawing_order.png, id=978, 1467.44235pt x 516.7305pt>
+[79
+
+
+
+
+] <images/Chapter3/drawing_order.png, id=979, 1467.44235pt x 516.7305pt>
 File: images/Chapter3/drawing_order.png Graphic file (type png)
 
 <use images/Chapter3/drawing_order.png>
@@ -1970,7 +1990,7 @@ ttps : / / github . com / cocos2d / cocos2d-[]swift /
 Package mdframed Info: mdframed detected package amsthm 
  changed the theorem header of amsthm
 (mdframed)              on input line 73.
-<images/Chapter3/add_pot.png, id=987, 1178.4025pt x 650.43pt>
+<images/Chapter3/add_pot.png, id=988, 1178.4025pt x 650.43pt>
 File: images/Chapter3/add_pot.png Graphic file (type png)
 
 <use images/Chapter3/add_pot.png>
@@ -1978,7 +1998,7 @@ Package pdftex.def Info: images/Chapter3/add_pot.png used on input line 81.
 (pdftex.def)             Requested size: 382.82909pt x 211.30785pt.
  [81 <./images/Chapter3/drawing_order.png>]
 [82 <./images/Chapter3/add_pot.png>] [83] [84]
-<images/Chapter3/dragging_offset.png, id=1035, 873.0216pt x 959.38425pt>
+<images/Chapter3/dragging_offset.png, id=1036, 873.0216pt x 959.38425pt>
 File: images/Chapter3/dragging_offset.png Graphic file (type png)
 
 <use images/Chapter3/dragging_offset.png>
@@ -1991,7 +2011,7 @@ Package pdftex.def Info: images/Chapter3/dragging_offset.png used on input line
  (./Chapters/B_QandA.tex
 Chapter 4.
 
-<images/Q_A/FullScreen_AllResolutions.png, id=1057, 2294.21115pt x 1557.77985pt
+<images/Q_A/FullScreen_AllResolutions.png, id=1058, 2294.21115pt x 1557.77985pt
 >
 File: images/Q_A/FullScreen_AllResolutions.png Graphic file (type png)
  <use images/Q_A/FullScreen_AllResolutions.png>
@@ -2011,7 +2031,7 @@ Package pdftex.def Info: images/Q_A/FullScreen_AllResolutions.png used on input
 ! Undefined control sequence.
 <argument> \CCSchedulerTarget 
                               
-l.25 ... \hyperindexformat{\CCSchedulerTarget}{70}
+l.29 ... \hyperindexformat{\CCSchedulerTarget}{71}
                                                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -2036,10 +2056,10 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 235.
  ) 
 Here is how much of TeX's memory you used:
- 27988 strings out of 493117
- 528774 string characters out of 6135433
- 1019493 words of memory out of 5000000
- 30502 multiletter control sequences out of 15000+600000
+ 28005 strings out of 493117
+ 528982 string characters out of 6135433
+ 1020493 words of memory out of 5000000
+ 30521 multiletter control sequences out of 15000+600000
  20767 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,10n,108p,10423b,1821s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -2060,10 +2080,10 @@ ive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/201
 4/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf
 -dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/f
 onts/type1/urw/palatino/uplri8a.pfb>
-Output written on document.pdf (91 pages, 13715037 bytes).
+Output written on document.pdf (91 pages, 13728110 bytes).
 PDF statistics:
- 1261 PDF objects out of 1440 (max. 8388607)
- 1047 compressed objects within 11 object streams
- 441 named destinations out of 1000 (max. 500000)
+ 1263 PDF objects out of 1440 (max. 8388607)
+ 1049 compressed objects within 11 object streams
+ 439 named destinations out of 1000 (max. 500000)
  739 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -210,62 +210,90 @@ Since our falling objects won't have any type-specific behaviour, creating two
 distinct subclasses is not necessary in this case. Instead, as of now, one
 subclass with a \inlinecode{type} property is the better solution.
 
-Create a new class called \inlinecode{SBBFallingObject} and make it a subclass
-of \ccsprite{}. The best way to represent different types in Objective-C is
-using enumerations. Add this enum definition to \textit{SSBFallingObject.h},
-above the \inlinecode{@interface} block:
+Create a new class called \inlinecode{FallingObject} and make it a subclass
+of \ccsprite{}. The best way to represent different types in Swift is
+using enumerations. Add this enum definition to \textit{FallingObject.swift},
+above the \inlinecode{class} block:
 
 \begin{lstlisting}
-typedef NS_ENUM(NSInteger, SBBFallingObjectType) {
-    SBBFallingObjectTypeGood,
-    SBBFallingObjectTypeBad
-};
+enum FallingObjectType: Int {
+  case Good
+  case Bad
+}
 \end{lstlisting}
 
-%TODO: figure out if ther is any decent way to force other classes to only use
-% the initializer of this subclass
-Additionally we add a property to store the type and an initializer that allows
-us to create falling objects with a certain type. Your complete \textit{.h} file
-should look similar to this:
+Swift supports multiple types of enumerations and enumeration values.
+In the example above we are creating an enumeration with \textit{Raw Values}.
+When we use an enumeration with raw values we need to assign a type as part of
+the enum definition, as shown in the first line (\inlinecode{enum
+FallingObjectType: Int}). Each enum value will be mapped to one value of this
+provided type. In the example shown above, the raw value for
+\inlinecode{FallingObjectType.Good} will be 0 and the value for
+\inlinecode{FallingObjectType.Bad} will be 1. Thanks to auto-increment we do not
+need to map entries to numbers explicitly. Associating enum values with raw values is optional,
+throughout this chapter you will see why this feature is useful to us.
+
+\begin{details}[frametitle={Enumerations in Swift}] 
+You can read everything about the different ways of creating enumerations in
+Swift in the official documentation
+(\url{https://developer.apple.com/library/ios/documentation/
+Swift/Conceptual/Swift_Programming_Language/Enumerations.html}).
+
+Note, in this example we are defining the enumeration outside of the class scope
+of the \inlinecode{FallingObject} class. This is not the recommended way.
+Usually you should define the enum inside of the class, since the enum belongs
+to the class. A bug in the Swift Compiler in Xcode version 6.1.1 makes this
+workaround necessary.
+\end{details}
+
+Additionally we add an instance variable to store the object type. Later we will
+add an initializer to set the type of the falling object. For now your class
+should look as follows:
 
 \begin{lstlisting}
-#import "CCSprite.h"
+import Foundation
 
-typedef NS_ENUM(NSInteger, SBBFallingObjectType) {
-    SBBFallingObjectTypeGood,
-    SBBFallingObjectTypeBad
-};
+enum FallingObjectType: Int {
+  case Good
+  case Bad
+}
 
-@interface SBBFallingObject : CCSprite
-
-@property (nonatomic, readonly) SBBFallingObjectType type;
-
-- (id)initWithType:(SBBFallingObjectType)fallingObjectType;
-
-@end
+class FallingObject: CCSprite {
+    
+  private(set) var type:FallingObjectType
+  
+}
 \end{lstlisting}
 
-We define the property to be \textit{readonly} because will not support changing
-the type of a falling object after it has been created.
+We define the instance variable to be \textit{readonly} because will not support
+changing the type of a falling object after it has been created. In Swift we can 
+define variables as \textit{readonly} by marking the \textit{setter} as private.
+
+Note that the code will not compile at this point. Since \inlinecode{type} isn't
+declared as an optional value, Swift requires us to provide an initializer that
+sets this value. We will fix this in the next chapter.
 
 \subsection{Choose an asset for a falling object}
 We want the game to spawn entirely random falling objects. As you remember we
 have a couple of assets for both types of objects. Whenever we spawn an object
 we will need to choose a random asset, based on the object type. A good place to
-implement this functionality is directly in the \inlinecode{SBBFallingObject}
-class. When \inlinecode{initWithType:} gets called we choose a random asset and
-apply it as a texture to the \inlinecode{SBBFallingObject}.
+implement this functionality is directly in the \inlinecode{FallingObject}
+class. We can provide a custom initializer that allows the class to be initalized with an object type.
+When this initializer gets called we choose a random asset and apply it as a
+texture to the \inlinecode{FallingObject}.
 
-How can we know which assets we have available and which of them represent
-objects that we should catch and that we shouldn't? One way of implementing this
-would be creating two arrays, one for each object type, and storing filenames
-for different assets in these arrays. As good game developers however, we try to
+How can we create a list of images for objects that should be caught (e.g.
+food) and ones that shouldn't (e.g. radios)? One way of implementing this would
+be creating two arrays, one for each object type, and storing filenames for 
+different assets in these arrays. As good game developers however, we try to
 keep game content and code as separated as possible. That makes it easier to
 update the list of assets later on and it keeps our codebase small and well
 structured. So instead of creating these arrays in code we could use some sort
-of resources file that stores information on available images. A very common format for storing such type of information in Cocoa Touch is a \textit{plist} (Property List). You can create a
-\textit{plist} by selecting \textit{File -> New -> File\ldots} from \xcode{}s
-menu. Then you need to select \textit{Resource} from the left panel and choose
+of resources file that stores information on available images. A very common 
+format for storing such type of information in Cocoa Touch is a \textit{plist} 
+(Property List). You can create a \textit{plist} by selecting \textit{File ->
+New -> File\ldots} from \xcode{}'s menu. 
+Then you need to select \textit{Resource} from the left panel and choose
 \textit{Property List} on the right:
 
 \begin{figure}[H]
@@ -273,7 +301,7 @@ menu. Then you need to select \textit{Resource} from the left panel and choose
 		\includegraphics[width=300pt]{images/Chapter2/create_plist.png}
 \end{figure}
 
-As the name choose \textit{SBBFallingObjectImages}. Now fill the \textit{plist}
+As the name choose \textit{FallingObjectImages}. Now fill the \textit{plist}
 with two arrays that contain the filenames of the assets that we added in \SB{}.
 When accessing assets from a \SB{} project you always need to include folder
 names. Instead of referencing the tomato with \inlinecode{tomato.png} you need
@@ -285,14 +313,16 @@ to use \inlinecode{assets/tomato.png} since the asset is in the
 		\includegraphics[width=0.7\linewidth]{images/Chapter2/plist_setup.png}
 \end{figure}
 Now we have a list of all asset names grouped into the two object type
-categories. Time to implement the \inlinecode{SBBFallingObject} class.
+categories. Time to implement the \inlinecode{FallingObject} class.
 
 When a falling object is initialized we want to
 choose random image from the \textit{plist} that we just created.
 The first step is loading the \textit{plist} in code. Luckily \textit{plists}
 consist of Dictionaries, Arrays, Strings, etc. and all of these types exist in
-Objective-C as well - there are some very convenient methods to load
-\textit{plists} in code. During each game the player plays we are going to create hundreds of
+Swift as well - there are some very convenient methods to load
+\textit{plists} in code. 
+
+During each session the player plays we are going to create hundreds of
 falling objects. Since the images that represent these objects won't change it
 would be a waste of resources to load the \textit{plist} every time we create a
 new instance of \inlinecode{SBBFallingObject}. Instead we should only load it

@@ -1,5 +1,9 @@
 \begin{theindex}
 
+  \item \SB{} timeline, \hyperpage{74}
+
+  \indexspace
+
   \item Action System, \hyperpage{46}
   \item Assets
     \subitem Adding Assets, \hyperpage{53}
@@ -21,8 +25,8 @@
 
   \indexspace
 
-  \item Fixed Update, \hyperpage{72}
-  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{70}
+  \item Fixed Update, \hyperpage{73}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{71}
     \subitem CCFileUtils, \hyperpage{58}
     \subitem CCRenderTexture, \hyperpage{89}
 
@@ -45,7 +49,7 @@
 
   \indexspace
 
-  \item Update Loop, \hyperpage{69}
+  \item Update Loop, \hyperpage{70}
 
   \indexspace
 

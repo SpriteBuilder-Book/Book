@@ -1,0 +1,13 @@
+\expandafter\ifx\csname doTocEntry\endcsname\relax \expandafter\endinput\fi
+\doTocEntry\toclikechapter{}{\csname a:TocLink\endcsname{1}{x1-1000}{QQ2-1-1}{Contents}}{3}\relax 
+\doTocEntry\tocchapter{1}{\csname a:TocLink\endcsname{1}{x1-20001}{QQ2-1-2}{Introduction to SpriteBuilder{} and Cocos2D{} }}{7}\relax 
+\doTocEntry\tocsection{1.1}{\csname a:TocLink\endcsname{1}{x1-30001.1}{QQ2-1-3}{Installing the software}}{7}\relax 
+\doTocEntry\toclof{1.1}{\csname a:TocLink\endcsname{1}{x1-3001r1}{}{\ignorespaces Cocos2D{} Technology Stack}}{figure}\relax 
+\doTocEntry\tocsection{1.2}{\csname a:TocLink\endcsname{1}{x1-40001.2}{QQ2-1-5}{Why Cocos2D{}}}{10}\relax 
+\doTocEntry\tocsection{1.3}{\csname a:TocLink\endcsname{1}{x1-50001.3}{QQ2-1-6}{Introduction to Cocos2D{}}}{10}\relax 
+\doTocEntry\tocsubsection{1.3.1}{\csname a:TocLink\endcsname{1}{x1-60001.3.1}{QQ2-1-7}{The Cocos2D{} technology stack}}{11}\relax 
+\doTocEntry\toclof{1.2}{\csname a:TocLink\endcsname{1}{x1-6001r2}{}{\ignorespaces Cocos2D{} Technology Stack}}{figure}\relax 
+\doTocEntry\tocsubsubsection{}{\csname a:TocLink\endcsname{1}{x1-70001.3.1}{QQ2-1-9}{How are games rendered in Cocos2D{}?}}{12}\relax 
+\doTocEntry\tocsubsection{1.3.2}{\csname a:TocLink\endcsname{1}{x1-80001.3.2}{QQ2-1-10}{Scenes}}{13}\relax 
+\doTocEntry\tocsubsection{1.3.3}{\csname a:TocLink\endcsname{1}{x1-90001.3.3}{QQ2-1-11}{Nodes}}{13}\relax 
+\doTocEntry\tocsubsection{1.3.4}{\csname a:TocLink\endcsname{1}{x1-100001.3.4}{QQ2-1-12}{Scene Graphs}}{14}\relax 

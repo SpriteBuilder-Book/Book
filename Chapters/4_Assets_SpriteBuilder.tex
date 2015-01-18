@@ -1,11 +1,11 @@
 \chapter{A Game with Assets in SpriteBuilder}
 
-Graphics and Sounds are the essence of every good game. In the first chapter you
-have learned the very basics of \SB{} and \cocos{} by building a game that only
+Graphics and Sounds are the essence of every good game. In the first chapter
+you have learned the very basics of \SB{} and \cocos{} by building a game that only
 uses plain colored shapes. In this chapter you will learn how \SB{} helps you to
 integrate assets into your game. Learning by example is the most fun, so we will
 build a small game throughout this chapter that uses all aspects of asset
-management. 
+management.
 
 \section{Adding Assets to a SpriteBuilder project}
 Start by creating a new \SB{} project for this game. I have called the
@@ -640,7 +640,23 @@ bottom left) of \SB{}.
 There are different ways to play sound effects added to your \SB{} project: you
 can add a sound effect to a \SB{} timeline or you can play a sound effect
 directly from code. We will first look at the timeline approach, implementing the code
-approach will be an exercise at the end of this chapter.
+approach will be an exercise at the end of this chapter. Before we set up the
+sound effect I want to give you a basic introduction to the timeline feature
+of \SB{} since it is one of the most important ones!
+
+\subsection{\SB{}'s timeline feature}\index{\SB{} timeline}
+The \SB{} timeline is a tool that allows developers to create animations and
+sequences of sound effects without writing code. Every \ccbfile{} has one
+\textit{Default Timeline} associated with it as soon as it is created. However,
+a \ccbfile{} can, and often will, have multiple different timelines. Each
+timeline is a sequence of sound effects, callbacks and most importantly
+keyframes.
+
+\ldots
+
+%TODO: discuss keyframes, sound effects, callbacks, autoplay, etc.
+
+\subsubsection{Adding the sound effect to a timeline}
 
 Start by creating a new timeline for the sound effect as show in figure
 \ref{fig:audio_new_timeline}. Once the timeline is created you can drag the
@@ -681,8 +697,8 @@ is left to do is to open the \xcode{} project and play the sound effect as soon
 as an object falls below the screen boundary.
 
 We are going to implement this in \textit{SBBMainScene.m}. \cocos{} provides a
-very interface to run a timeline animation from code. The following line added
-to \inlinecode{SBBMainScene} will run the timeline animation and thus play the
+very simple API call to run a timeline animation from code. The following line
+added to \inlinecode{SBBMainScene} will run the timeline animation and thus play the
 sound we added to the project:
 \begin{lstlisting}
 [self.animationManager runAnimationsForSequenceNamed:@"DropSound"];

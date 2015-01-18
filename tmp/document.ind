@@ -24,7 +24,7 @@
   \item Fixed Update, \hyperpage{72}
   \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{70}
     \subitem CCFileUtils, \hyperpage{58}
-    \subitem CCRenderTexture, \hyperpage{87}
+    \subitem CCRenderTexture, \hyperpage{89}
 
   \indexspace
 
@@ -49,6 +49,6 @@
 
   \indexspace
 
-  \item Z-Order, \hyperpage{78}
+  \item Z-Order, \hyperpage{80}
 
 \end{theindex}

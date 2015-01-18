@@ -3,7 +3,7 @@
 \contentsline {section}{\numberline {1.2}Why Cocos2D{}}{6}{section.1.2}
 \contentsline {section}{\numberline {1.3}Introduction to Cocos2D{}}{6}{section.1.3}
 \contentsline {subsection}{\numberline {1.3.1}The Cocos2D{} technology stack}{7}{subsection.1.3.1}
-\contentsline {subsubsection}{How are games rendered in Cocos2D{}?}{8}{section*.2}
+\contentsline {subsubsection}{\nonumberline How are games rendered in Cocos2D{}?}{8}{section*.2}
 \contentsline {subsection}{\numberline {1.3.2}Scenes}{8}{subsection.1.3.2}
 \contentsline {subsection}{\numberline {1.3.3}Nodes}{9}{subsection.1.3.3}
 \contentsline {subsection}{\numberline {1.3.4}Scene Graphs}{10}{subsection.1.3.4}
@@ -11,29 +11,29 @@
 \contentsline {section}{\numberline {1.4}Introduction to SpriteBuilder{}}{14}{section.1.4}
 \contentsline {subsection}{\numberline {1.4.1}Creating a first project}{15}{subsection.1.4.1}
 \contentsline {subsection}{\numberline {1.4.2}The Editor}{16}{subsection.1.4.2}
-\contentsline {subsubsection}{File View}{17}{section*.3}
-\contentsline {subsubsection}{Node Library}{18}{section*.4}
-\contentsline {subsubsection}{Inspector}{19}{section*.5}
-\contentsline {subsubsection}{Code Connections}{20}{section*.6}
+\contentsline {subsubsection}{\nonumberline File View}{17}{section*.3}
+\contentsline {subsubsection}{\nonumberline Node Library}{18}{section*.4}
+\contentsline {subsubsection}{\nonumberline Inspector}{19}{section*.5}
+\contentsline {subsubsection}{\nonumberline Code Connections}{20}{section*.6}
 \contentsline {subsection}{\numberline {1.4.3}CCB File{}s}{21}{subsection.1.4.3}
 \contentsline {subsection}{\numberline {1.4.4}How SpriteBuilder{} and Xcode{} work together}{22}{subsection.1.4.4}
 \contentsline {subsection}{\numberline {1.4.5}Code Connections}{25}{subsection.1.4.5}
 \contentsline {section}{\numberline {1.5}A first SpriteBuilder{} project}{25}{section.1.5}
 \contentsline {subsection}{\numberline {1.5.1}Setting up the first scene}{26}{subsection.1.5.1}
-\contentsline {subsubsection}{Positioning the first button}{27}{section*.7}
-\contentsline {subsubsection}{Setting up a code connection}{29}{section*.8}
-\contentsline {subsubsection}{Adding Code to a SpriteBuilder{} project}{32}{section*.9}
+\contentsline {subsubsection}{\nonumberline Positioning the first button}{27}{section*.7}
+\contentsline {subsubsection}{\nonumberline Setting up a code connection}{29}{section*.8}
+\contentsline {subsubsection}{\nonumberline Adding Code to a SpriteBuilder{} project}{32}{section*.9}
 \contentsline {subsection}{\numberline {1.5.2}Creating the Gameplay Scene}{35}{subsection.1.5.2}
 \contentsline {subsection}{\numberline {1.5.3}Adding a Scene Transition}{35}{subsection.1.5.3}
-\contentsline {subsubsection}{Replacing scenes vs. pushing scenes}{37}{section*.10}
-\contentsline {subsubsection}{Adding transition effects}{38}{section*.11}
-\contentsline {subsubsection}{Implementing a scene transition for our game}{38}{section*.12}
+\contentsline {subsubsection}{\nonumberline Replacing scenes vs. pushing scenes}{37}{section*.10}
+\contentsline {subsubsection}{\nonumberline Adding transition effects}{38}{section*.11}
+\contentsline {subsubsection}{\nonumberline Implementing a scene transition for our game}{38}{section*.12}
 \contentsline {subsection}{\numberline {1.5.4}Implementing the Gameplay}{40}{subsection.1.5.4}
-\contentsline {subsubsection}{Creating the Square CCB File{}}{40}{section*.13}
-\contentsline {subsubsection}{Setting up a custom class for the Gameplay}{43}{section*.14}
-\contentsline {subsubsection}{Creating the Square class}{43}{section*.15}
-\contentsline {subsubsection}{Creating the Gameplay class}{47}{section*.16}
-\contentsline {subsubsection}{Adding Touch Handling to the Gameplay}{48}{section*.17}
+\contentsline {subsubsection}{\nonumberline Creating the Square CCB File{}}{40}{section*.13}
+\contentsline {subsubsection}{\nonumberline Setting up a custom class for the Gameplay}{43}{section*.14}
+\contentsline {subsubsection}{\nonumberline Creating the Square class}{43}{section*.15}
+\contentsline {subsubsection}{\nonumberline Creating the Gameplay class}{47}{section*.16}
+\contentsline {subsubsection}{\nonumberline Adding Touch Handling to the Gameplay}{48}{section*.17}
 \contentsline {section}{\numberline {1.6}Exercises}{51}{section.1.6}
 \contentsline {chapter}{\numberline {2}A Game with Assets in SpriteBuilder}{53}{chapter.2}
 \contentsline {section}{\numberline {2.1}Adding Assets to a SpriteBuilder project}{53}{section.2.1}
@@ -47,19 +47,21 @@
 \contentsline {subsection}{\numberline {2.6.1}Update Loop}{69}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Implementing the update method}{70}{subsection.2.6.2}
 \contentsline {section}{\numberline {2.7}Adding sound effects}{72}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}Triggering a Sound Effect}{75}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.1}SpriteBuilder{}'s timeline feature}{73}{subsection.2.7.1}
+\contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{74}{section*.18}
+\contentsline {subsection}{\numberline {2.7.2}Triggering a Sound Effect}{75}{subsection.2.7.2}
 \contentsline {section}{\numberline {2.8}Wrapping up}{76}{section.2.8}
-\contentsline {section}{\numberline {2.9}Exercises}{76}{section.2.9}
-\contentsline {chapter}{\numberline {3}User Interaction and Collision Detection}{77}{chapter.3}
-\contentsline {section}{\numberline {3.1}Add the pot to the game}{77}{section.3.1}
-\contentsline {subsection}{\numberline {3.1.1}Working with the z-order}{78}{subsection.3.1.1}
-\contentsline {subsection}{\numberline {3.1.2}Setting up the pot assets}{79}{subsection.3.1.2}
-\contentsline {section}{\numberline {3.2}Implement a Drag and Drop mechanism}{81}{section.3.2}
-\contentsline {subsection}{\numberline {3.2.1}Picking up an Object}{81}{subsection.3.2.1}
-\contentsline {chapter}{\numberline {4}Q\&A}{85}{chapter.4}
-\contentsline {section}{\numberline {4.1}Core Cocos2D{} and SpriteBuilder{}}{85}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}How can I programmatically change the texture of an existing CCSprite{}}{85}{subsection.4.1.1}
-\contentsline {section}{\numberline {4.2}Designing for multiple devices}{85}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Which size does a background image for all four resolutions need to have?}{85}{subsection.4.2.1}
-\contentsline {section}{\numberline {4.3}Advance Techniques}{86}{section.4.3}
-\contentsline {subsection}{\numberline {4.3.1}Can I take a screenshot in code or even generate a level preview?}{86}{subsection.4.3.1}
+\contentsline {section}{\numberline {2.9}Exercises}{77}{section.2.9}
+\contentsline {chapter}{\numberline {3}User Interaction and Collision Detection}{79}{chapter.3}
+\contentsline {section}{\numberline {3.1}Add the pot to the game}{79}{section.3.1}
+\contentsline {subsection}{\numberline {3.1.1}Working with the z-order}{80}{subsection.3.1.1}
+\contentsline {subsection}{\numberline {3.1.2}Setting up the pot assets}{81}{subsection.3.1.2}
+\contentsline {section}{\numberline {3.2}Implement a Drag and Drop mechanism}{83}{section.3.2}
+\contentsline {subsection}{\numberline {3.2.1}Picking up an Object}{83}{subsection.3.2.1}
+\contentsline {chapter}{\numberline {4}Q\&A}{87}{chapter.4}
+\contentsline {section}{\numberline {4.1}Core Cocos2D{} and SpriteBuilder{}}{87}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}How can I programmatically change the texture of an existing CCSprite{}}{87}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}Designing for multiple devices}{87}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Which size does a background image for all four resolutions need to have?}{87}{subsection.4.2.1}
+\contentsline {section}{\numberline {4.3}Advance Techniques}{88}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Can I take a screenshot in code or even generate a level preview?}{88}{subsection.4.3.1}

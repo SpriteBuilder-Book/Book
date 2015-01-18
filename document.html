@@ -1,0 +1,407 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title></title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.tug.org/tex4ht/)"> 
+<!-- html --> 
+<meta name="src" content="document.tex"> 
+<meta name="date" content="2015-01-18 09:13:00"> 
+<link rel="stylesheet" type="text/css" href="document.css"> 
+</head><body 
+>
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+  <h2 class="likechapterHead"><a 
+ id="x1-1000"></a>Contents</h2>
+  <div class="tableofcontents">
+  <span class="chapterToc" >1&#x00A0;&#x00A0;<a 
+href="#x1-20001" id="QQ2-1-2">Introduction to SpriteBuilder and Cocos2D </a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.1&#x00A0;&#x00A0;<a 
+href="#x1-30001.1" id="QQ2-1-3">Installing the software</a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.2&#x00A0;&#x00A0;<a 
+href="#x1-40001.2" id="QQ2-1-5">Why Cocos2D</a></span>
+<br />  &#x00A0;<span class="sectionToc" >1.3&#x00A0;&#x00A0;<a 
+href="#x1-50001.3" id="QQ2-1-6">Introduction to Cocos2D</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.1&#x00A0;&#x00A0;<a 
+href="#x1-60001.3.1" id="QQ2-1-7">The Cocos2D technology stack</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.2&#x00A0;&#x00A0;<a 
+href="#x1-80001.3.2" id="QQ2-1-10">Scenes</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.3&#x00A0;&#x00A0;<a 
+href="#x1-90001.3.3" id="QQ2-1-11">Nodes</a></span>
+<br />  &#x00A0;&#x00A0;<span class="subsectionToc" >1.3.4&#x00A0;&#x00A0;<a 
+href="#x1-100001.3.4" id="QQ2-1-12">Scene Graphs</a></span>
+  </div>
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+                                                                                 
+<!--l. 1--><p class="indent" >
+                                                                                 
+                                                                                 
+  <h2 class="chapterHead"><span class="titlemark">1</span>&#x00A0;&#x00A0;<a 
+ id="x1-20001"></a>Introduction to SpriteBuilder and Cocos2D </h2>
+<!--l. 2--><p class="noindent" >Now it&#8217;s time to dive into 2D Game Development! For this chapter I will assume that you
+haven&#8217;t written a game with a game engine yet. We will be discussing all the relevant concepts
+throughout this chapter.
+  <h3 class="sectionHead"><span class="titlemark">1.1</span>&#x00A0;&#x00A0;<a 
+ id="x1-30001.1"></a>Installing the software</h3>
+<!--l. 7--><p class="noindent" >First things first. Let&#8217;s install the software used throughout this book. In general there are two
+ways to install Cocos2D depending on whether you want to use SpriteBuilder or not. In
+this book we will be using SpriteBuilder to set up all of our projects, therefore we
+will only install SpriteBuilder which will come bundled with the latest version of
+Cocos2D.
+<!--l. 13--><p class="indent" >  Installing SpriteBuilder is easy, simply open the <span 
+class="pplri8t-x-x-109">App Store </span>app on your Mac and search
+for <span 
+class="pplri8t-x-x-109">SpriteBuilder</span>. Note that you should always use the latest version of Mac OS X
+and Xcode together with SpriteBuilder (as of this writing Mac OS X 10.9 and Xcode
+6.0).
+<!--l. 18--><p class="indent" >  <hr class="figure"><div class="figure" 
+>
+                                                                                 
+                                                                                 
+<a 
+ id="x1-3001r1"></a>
+                                                                                 
+                                                                                 
+
+<!--l. 20--><p class="noindent" ><img 
+src="images/cocos2d/setup/mac_appstore_install.png" alt="PIC"  
+>
+<br /> <div class="caption"><table class="caption" 
+><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure&#x00A0;1.1: </td><td  
+class="content">Cocos2D Technology Stack</td></tr></table></div><!--tex4ht:label?: x1-3001r1 -->
+                                                                                 
+                                                                                 
+<!--l. 22--><p class="indent" >  </div><hr class="endfigure">
+<!--l. 24--><p class="indent" >  After a couple of minutes the SpriteBuilder installation should be completed. Later
+throughout this chapter you will learn how to set up your first project.
+  <h3 class="sectionHead"><span class="titlemark">1.2</span>&#x00A0;&#x00A0;<a 
+ id="x1-40001.2"></a>Why Cocos2D</h3>
+<!--l. 28--><p class="noindent" >Well, now you have already installed Cocos2D. I still want to spend a moment on discussing
+why we are using this tool. The main goal of Cocos2D is to make mobile game development
+<span 
+class="pplri8t-x-x-109">easier</span>. Earlier we have discussed the basic concepts and benefits of game engines. You should
+now know that there are many problems developers have faced while developing games,
+animations, physics, etc. - and most of them have been solved and put into frameworks. You
+should not spend your precious time trying to solve them again. So now that you know that
+you definitely should use a framework - <span 
+class="pplb8t-x-x-109">which ones are available and why should you choose</span>
+<span 
+class="pplb8t-x-x-109">Cocos2D</span>?
+<!--l. 38--><p class="indent" >  <span 
+class="pplri8t-x-x-109">Add brief discussion on different frameworks</span>
+<!--l. 40--><p class="noindent" >
+  <h3 class="sectionHead"><span class="titlemark">1.3</span>&#x00A0;&#x00A0;<a 
+ id="x1-50001.3"></a>Introduction to Cocos2D</h3>
+<!--l. 41--><p class="noindent" >First let us take a look at the features of Cocos2D. That will give you a basic understanding of
+which tasks you will hand off to the framework, later on we will be discussing all of these
+features in detail:
+     <dl class="description"><dt class="description"><span 
+class="pplb8t-x-x-109">edefYou&#8217;re in trouble here.  Try typing  &#x003C;return&#x003E;  to proceed.&#x02D9;If that doesn&#8217;t work,</span>
+     <span 
+class="pplb8t-x-x-109">type  X &#x003C;return&#x003E;  to quit.</span>
+<span 
+class="ecsx-1095">Scene Graphs</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">Cocos2D provides the concepts of scenes and nodes. Everything that</span>
+     <span 
+class="pplb8t-x-x-109">is  rendered  to  the  screen  is  part  of  a  hierarchical  \\\\\</span><span 
+class="pplbi8t-x-x-109">scene  graph</span><span 
+class="pplb8t-x-x-109">.  Instead</span>
+     <span 
+class="pplb8t-x-x-109">of performing custom drawing code you define what your scene looks like by</span>
+     <span 
+class="pplb8t-x-x-109">providing a scene graph and Cocos2D will render it for you.</span>
+                                                                                 
+                                                                                 
+     </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re   in   trouble   here.      Try   typing      &#x003C;return&#x003E;      to</span>
+     <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+<span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\Rendering Engine</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">When using Cocos2D you don&#8217;t need to write your own</span>
+     <span 
+class="pplb8t-x-x-109">rendering code. Cocos2D provides a rendering engine built on top of OpenGL</span>
+     <span 
+class="pplb8t-x-x-109">ES.</span>
+     </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re   in   trouble   here.      Try   typing      &#x003C;return&#x003E;      to</span>
+     <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+<span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\Action System</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">A    sophisticated    action    system    allows    you    to    define</span>
+     <span 
+class="pplb8t-x-x-109">movements of objects and animations instead of writing a lot of custom code.</span>
+     </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re   in   trouble   here.      Try   typing      &#x003C;return&#x003E;      to</span>
+     <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+<span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\Physics Engine</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">The    Cocos2D    physics    engine    automatically    calculates</span>
+     <span 
+class="pplb8t-x-x-109">movements of objects, collisions and more.</span>
+     </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re   in   trouble   here.      Try   typing      &#x003C;return&#x003E;      to</span>
+     <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+<span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\Node Library</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">Cocos2D provides a large set of nodes as part of the framework.</span>
+     <span 
+class="pplb8t-x-x-109">Nodes can be used to represent images, UI elements, solid colors, etc.</span></dd></dl>
+     <!--l. 62--><p class="noindent" ><span 
+class="pplb8t-x-x-109">There are many more features - but this brief outline shows the most important ones</span>
+     <span 
+class="pplb8t-x-x-109">and should give you an idea why almost all game developers these days use game</span>
+     <span 
+class="pplb8t-x-x-109">engines. Let&#8217;s take a closer look at how Cocos2D works.</span>
+     <!--l. 66--><p class="noindent" ><span 
+class="pplb8t-x-x-109">\\\\\\\</span>\\\<span 
+class="ecss-1095">\\\</span><span 
+class="ecsx-1095">\\</span>
+     <h4 class="subsectionHead"><span class="titlemark"><span 
+class="pplb8t-x-x-109">1.3.1</span></span><span 
+class="pplb8t-x-x-109">\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\\\\</span><a 
+ id="x1-60001.3.1"></a><span 
+class="pplb8t-x-x-109">The Cocos2D technology stack</span></h4>
+     <!--l. 68--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Cocos2D is built on top of OpenGL ES 2.0. If you have ever written OpenGL code</span>
+     <span 
+class="pplb8t-x-x-109">before, you know that it takes a lot of code even to render the most primitive scenes.</span>
+     <span 
+class="pplb8t-x-x-109">OpenGL is a fairly low level framework that gives the graphics programmer a lot of</span>
+                                                                                 
+                                                                                 
+     <span 
+class="pplb8t-x-x-109">control over how and when certain tasks are performed - more control then</span>
+     <span 
+class="pplb8t-x-x-109">you need for most 2D games. Cocos2D abstracts all of these tasks for you.</span>
+     <span 
+class="pplb8t-x-x-109">Many Cocos2D developers write entire games without writing any OpenGL</span>
+     <span 
+class="pplb8t-x-x-109">code at all. The following diagram shows which technologies are used by</span>
+     <span 
+class="pplb8t-x-x-109">Cocos2D:</span>
+     <!--l. 77--><p class="noindent" ><hr class="figure"><div class="figure" 
+><a 
+ id="x1-6001r2"></a><span 
+class="pplb8t-x-x-109">\\\\\\</span>\\ \\\\\<img 
+src="images/cocos2d/TechnologyStack.png" alt="PIC"  
+>
+<!--l. 80--><p class="noindent" >\\\\\<br /> <div class="caption"><table class="caption" 
+><tr style="vertical-align:baseline;" class="caption"><td class="id">Figure\&#x00A0;1.2: </td><td  
+class="content">Cocos2D Technology Stack</td></tr></table></div><!--tex4ht:label?: x1-6001r2 -->
+     <!--l. 81--><p class="noindent" ></div><hr class="endfigure">
+     <!--l. 83--><p class="noindent" ><span 
+class="pplb8t-x-x-109">The goal of a game engine like Cocos2D is that the game developer doesn&#8217;t have to get</span>
+     <span 
+class="pplb8t-x-x-109">in touch with rendering at all. Instead a developer defines which scenes exist in a</span>
+     <span 
+class="pplb8t-x-x-109">game, which nodes are part of these scenes and which size, position and appearance</span>
+     <span 
+class="pplb8t-x-x-109">these nodes have and Cocos2D will use OpenGL to render these scenes for</span>
+     <span 
+class="pplb8t-x-x-109">him.</span>
+     <!--l. 89--><p class="noindent" ><span 
+class="pplb8t-x-x-109">In order to provide this functionality Cocos2D consists of variety of classes - some</span>
+     <span 
+class="pplb8t-x-x-109">important ones will be discussed in this chapter. All Cocos2D classes use the \\\\</span><span 
+class="pplbi8t-x-x-109">CC</span>
+     <span 
+class="pplb8t-x-x-109">prefix (CCScene, CCNode, etc.).</span>
+     <!--l. 92--><p class="noindent" ><span 
+class="pplb8t-x-x-109">When working with a 2D game engine for the first time you will be introduced to a</span>
+     <span 
+class="pplb8t-x-x-109">whole set of new terminology. We have already talked about nodes and scenes but we</span>
+     <span 
+class="pplb8t-x-x-109">haven&#8217;t discussed what these terms mean. We will now start discussing the most</span>
+     <span 
+class="pplb8t-x-x-109">important terms and get to know how the concepts behind them are implemented in</span>
+     <span 
+class="pplb8t-x-x-109">Cocos2D.</span>
+     <!--l. 98--><p class="noindent" ><span 
+class="pplb8t-x-x-109">\\\\\\\</span>\\\<span 
+class="ecss-1095">\\\</span><span 
+class="ecsx-1095">\\</span>
+     <h5 class="subsubsectionHead"><span 
+class="pplb8t-x-x-109">\\\</span><a 
+ id="x1-70001.3.1"></a><span 
+class="pplb8t-x-x-109">How are games rendered in Cocos2D?</span></h5>
+     <!--l. 99--><p class="noindent" ><span 
+class="pplb8t-x-x-109">The most important aspect of Cocos2D is that it \\\\\addmore</span>
+                                                                                 
+                                                                                 
+     <!--l. 102--><p class="noindent" ><span 
+class="pplb8t-x-x-109">\\\\\\\</span>\\\<span 
+class="ecss-1095">\\\</span><span 
+class="ecsx-1095">\\</span>
+     <h4 class="subsectionHead"><span class="titlemark"><span 
+class="pplb8t-x-x-109">1.3.2</span></span><span 
+class="pplb8t-x-x-109">\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\\\</span><a 
+ id="x1-80001.3.2"></a><span 
+class="pplb8t-x-x-109">Scenes</span></h4>
+     <!--l. 103--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Scenes are the basic building blocks of all Cocos2D games, they are the highest level</span>
+     <span 
+class="pplb8t-x-x-109">on which game content can be structured. Each scene in Cocos2D is a full-screen</span>
+     <span 
+class="pplb8t-x-x-109">canvas. For every full-screen section of your game you will use \\\\</span><span 
+class="pplbi8t-x-x-109">one </span><span 
+class="pplb8t-x-x-109">scene.</span>
+     <span 
+class="pplb8t-x-x-109">\\\\Add screenshots here Here&#8217;s an example from the MakeGamesWithUs game</span>
+     <span 
+class="pplb8t-x-x-109">\\\\</span><span 
+class="pplbi8t-x-x-109">Deep Sea Fury</span><span 
+class="pplb8t-x-x-109">: You can see that the game consists of the start scene, the gameplay</span>
+     <span 
+class="pplb8t-x-x-109">scene and the game over scene.</span>
+     <!--l. 113--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Scenes are represented by the CCScene class. Another important Cocos2D class for</span>
+     <span 
+class="pplb8t-x-x-109">scene handling is CCDirector. The CCDirector class is responsible for deciding which</span>
+     <span 
+class="pplb8t-x-x-109">scene is currently active in the game (Cocos2D only allows one active scene at a time).</span>
+     <span 
+class="pplb8t-x-x-109">Whenever a developer wants to display a scene or transition between two scenes he</span>
+     <span 
+class="pplb8t-x-x-109">needs to use the CCDirector class.</span>
+     <!--l. 120--><p class="noindent" ><span 
+class="pplb8t-x-x-109">This means creating and displaying a new scene is a two step process:</span>
+          <ol  class="enumerate1" >
+          <li 
+  class="enumerate" id="x1-8002x1"><span 
+class="pplb8t-x-x-109">Create a new instance of CCScene</span>
+          </li>
+          <li 
+  class="enumerate" id="x1-8004x2"><span 
+class="pplb8t-x-x-109">Tell the CCDirector to display this new scene</span></li></ol>
+     <!--l. 126--><p class="noindent" ><span 
+class="pplb8t-x-x-109">You will learn a lot more about this down the road, but the important bottom line is:</span>
+     <span 
+class="pplb8t-x-x-109">\\\\</span><span 
+class="pplbi8t-x-x-109">Scenes are the highest level of structure in your game and a class called CCDirector</span>
+     <span 
+class="pplbi8t-x-x-109">decides which scene is currently displayed</span><span 
+class="pplb8t-x-x-109">.</span>
+     <!--l. 130--><p class="noindent" ><span 
+class="pplb8t-x-x-109">\\\\\\\</span>\\\<span 
+class="ecss-1095">\\\</span><span 
+class="ecsx-1095">\\</span>
+     <h4 class="subsectionHead"><span class="titlemark"><span 
+class="pplb8t-x-x-109">1.3.3</span></span><span 
+class="pplb8t-x-x-109">\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\\\</span><a 
+ id="x1-90001.3.3"></a><span 
+class="pplb8t-x-x-109">Nodes</span></h4>
+     <!--l. 131--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Everything that is visible in your Cocos2D game (and a couple of invisible objects) are</span>
+     <span 
+class="pplb8t-x-x-109">\\\\</span><span 
+class="pplbi8t-x-x-109">nodes</span><span 
+class="pplb8t-x-x-109">. Nodes are used to structure the content of a scene. Every node can have</span>
+                                                                                 
+                                                                                 
+     <span 
+class="pplb8t-x-x-109">other nodes as its children. Cocos2D provides a huge amount of different node types.</span>
+     <span 
+class="pplb8t-x-x-109">Every node type is a subclass of CCNode.</span>
+     <!--l. 136--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Most nodes are used to represent an object on the screen (an image, a solid color, an UI</span>
+     <span 
+class="pplb8t-x-x-109">element, etc.), a few other nodes are only used to group other nodes. All nodes</span>
+     <span 
+class="pplb8t-x-x-109">have a size, positions and children (and many other properties which are</span>
+     <span 
+class="pplb8t-x-x-109">less important for us right now). Here are some of the popular node types of</span>
+     <span 
+class="pplb8t-x-x-109">Cocos2D:</span>
+          <dl class="description"><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re  in  trouble  here.    Try  typing    &#x003C;return&#x003E;    to</span>
+          <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+    <span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\CCSprite</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">represents   an   image   or   an   animated   image.   Used   for</span>
+          <span 
+class="pplb8t-x-x-109">characters, enemies, etc.</span>
+          </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re  in  trouble  here.    Try  typing    &#x003C;return&#x003E;    to</span>
+          <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+    <span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\CCColorNode</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">a node being displayed in one plain color.</span>
+          </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re  in  trouble  here.    Try  typing    &#x003C;return&#x003E;    to</span>
+          <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+    <span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\CCLabelTTF</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">a node that can represent text in any TTF font.</span>
+          </dd><dt class="description"><span 
+class="pplb8t-x-x-109">\\\\\\\\</span>\\\<span 
+class="pplb8t-x-x-109">\\\edefYou&#8217;re  in  trouble  here.    Try  typing    &#x003C;return&#x003E;    to</span>
+          <span 
+class="pplb8t-x-x-109">proceed.&#x02D9;If that doesn&#8217;t work, type  X &#x003C;return&#x003E;  to quit.</span>
+    <span 
+class="pplb8t-x-x-109">\  \\\</span><span 
+class="ecsx-1095">\\\CCButton</span> </dt><dd 
+class="description"><span 
+class="pplb8t-x-x-109">a interactive node that can receive touches.</span></dd></dl>
+          <!--l. 150--><p class="noindent" ><span 
+class="pplb8t-x-x-109">Nodes and their children form a scene graph. The concept of a scene graph isn&#8217;t</span>
+          <span 
+class="pplb8t-x-x-109">unique to Cocos2D it is a common concept of 2D and 3D graphics. A scene graph</span>
+          <span 
+class="pplb8t-x-x-109">is a hierarchy of many different nodes.</span>
+          <!--l. 154--><p class="noindent" ><span 
+class="pplb8t-x-x-109">\\\\\\\</span>\\\<span 
+class="ecss-1095">\\\</span><span 
+class="ecsx-1095">\\</span>
+          <h4 class="subsectionHead"><span class="titlemark"><span 
+class="pplb8t-x-x-109">1.3.4</span></span><span 
+class="pplb8t-x-x-109">\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\</span><span 
+class="pplb8t-x-x-109">&#x00A0;\\\</span><a 
+ id="x1-100001.3.4"></a><span 
+class="pplb8t-x-x-109">Scene Graphs</span></h4>
+                                                                                 
+
+

@@ -456,80 +456,61 @@ can move on and spawn some objects.
 \section{Spawn falling objects}
 Now it's time to implement one of the core mechanics of the game: Spawning
 objects and make them fall from the top of the screen to the bottom. We are
-going to implement this in \textit{SBBMainScene.m}. Since we will be using the
-\inlinecode{SBBFallingObject} class, start by adding an \inlinecode{import}
-statement:
-
-\begin{lstlisting}
-#import "SBBFallingObject.h"
-\end{lstlisting}
+going to implement this in \textit{MainScene.swift}. 
 
 We will spawn objects after a certain time period. The spawning objects will
 start at the top of the screen and fall to the bottom. To not use an
-increasingly amount of memory we will need to take care to remove objects that
+increasing amount of memory we will need to take care of removing objects that
 have fallen below the bottom edge of the screen. A good way to do this is
-creating an array to store all the objects we spawn. Add the array definition to
-the private interface of the class in \textit{SBBMainScene.m}:
+creating an array to store all the objects we spawn. Swift lets us define a
+private instance variable and initialize the array stored in it in a single line
+of code:
 
 \begin{lstlisting}
-@interface SBBMainScene()
+class MainScene: CCNode {
 
-@property (nonatomic, strong) NSMutableArray *fallingObjects;
+  private var fallingObjects = [CCNode]()
 
-@end
+}
 \end{lstlisting}
 
-We need to define a falling speed and an interval at which we want to spawn
+We also need to define a falling speed and an interval at which we want to spawn
 objects. A good way to do this is by defining constants - we want to avoid to
-have these numbers all over our code. Let's create two constants at the top of
-the file:
+have these numbers all over our code. Add the two constants so that your class
+definition looks as following:
 
 \begin{lstlisting}
-static const CGFloat kFallingSpeed = 100.f;
-static const CGFloat kSpawnFrequency = 0.5f;
-\end{lstlisting}
+class MainScene: CCNode {
 
-\begin{details}[frametitle={Naming constants in Objective-C}] A common way to
-name constants in Objective-C is using a leading small \textit{k}
-for private constants (e.g. \inlinecode{kFallingSpeed}) and using the class name
-as prefix for public constants which are declared in the \textit{.h} file (e.g.
-\inlinecode{SBBFalling\allowbreak{}Object\allowbreak{}Falling\allowbreak{}Speed}.
-\end{details}
+  private var fallingObjects = [CCNode]()
 
-In the \inlinecode{init} method we need to initialize our array of falling
-objects:
-
-\begin{lstlisting}
-- (id)init {
-    self = [super init];
-    
-    if (self) {
-        _fallingObjects = [NSMutableArray array];
-    }
-    
-    return self;
+  private let fallingSpeed = 100.0
+  private let spawnFrequency = 0.5
 }
 \end{lstlisting}
 
 We are going to spawn falling objects with the frequency that we have defined in
-the constant \inlinecode{kSpawnFrequency}. Through the \inlinecode{CCNode} class
+the constant \inlinecode{spawnFrequency}. Through the \inlinecode{CCNode} class
 \cocos{} provides convenient methods for scheduling repeating events without the
 need to instantiate a timer. We schedule that timer in the
 \inlinecode{onEnterTransitionDidFinish} method:
 
 \begin{lstlisting}
-- (void)onEnterTransitionDidFinish {
-    [super onEnterTransitionDidFinish];
+  override func onEnterTransitionDidFinish() {
+    super.onEnterTransitionDidFinish()
     
     // spawn objects with defined frequency
-    [self schedule:@selector(spawnObject) interval:kSpawnFrequency];
-}
+    schedule("spawnObject", interval: spawnFrequency)
+  }
 \end{lstlisting}
 
-All we need to provide is a \textit{selector}, which simply means a method
-name, and a frequency at which it shall be called. Now, as soon as the
-\inlinecode{SBBMainScene} is presented on the stage, the
-\inlinecode{spawnObject} method will be called twice a second.
+Remember, \textit{onEnterTransitionDidFinish} is called as soon as the
+presentation transition is completed and the current scene is fully visible.
+This is when we want to kick of the spawning mechanism. 
+All we need to provide is a \textit{selector}, which simply means a method name
+as a string, and a frequency at which it shall be called. Now, as soon as the
+\inlinecode{MainScene} is presented on the stage, the \inlinecode{spawnObject}
+method will be called twice a second.
 To complete the spawning functionality we will have to implement the
 \inlinecode{spawnObject} method and additionally move the spawned objects from
 the top of the screen to the bottom.
@@ -541,30 +522,31 @@ spawning object just above the screen at a random X position. Here is how we can
 implement that:
 
 \begin{lstlisting}
-- (void)spawnObject {
-    // generate a random number to decide wether to spawn a positive or a negative object
-    NSInteger randomNumber = arc4random_uniform(2);
-
-    SBBFallingObject *fallingObject = nil;
+  func spawnObject() {
+    let randomNumber = randomInteger(2)
     
-    if (randomNumber == 0) {
-        fallingObject = [[SBBFallingObject alloc] initWithType:SBBFallingObjectTypeBad];
-    } else if (randomNumber == 1) {
-        fallingObject = [[SBBFallingObject alloc] initWithType:SBBFallingObjectTypeGood];
-    }
+    let fallingObjectType = FallingObject.FallingObjectType(rawValue:randomNumber)!
+    let fallingObject = FallingObject(type:fallingObjectType)
     
     // add all spawning objects to an array
-    [self.fallingObjects addObject:fallingObject];
-    // spawn all obejcts at top of screen and at a random x position with scene bounds
-    CGFloat xSpawnRange = ( (CGFloat) self.contentSizeInPoints.width) - CGRectGetMaxX(fallingObject.boundingBox);
-    CGPoint spawnPosition = ccp(arc4random_uniform(xSpawnRange), self.contentSizeInPoints.height);
-    fallingObject.position = spawnPosition;
-    [self addChild:fallingObject];
-}
+    fallingObjects.append(fallingObject)
+    
+    // spawn all objects at top of screen and at a random x position within scene bounds
+    let xSpawnRange = Int(contentSizeInPoints.width - CGRectGetMaxX(fallingObject.boundingBox()))
+    let spawnPosition = ccp(CGFloat(randomInteger(xSpawnRange)), contentSizeInPoints.height)
+    fallingObject.position = spawnPosition
+    
+    addChild(fallingObject)
+  }
 \end{lstlisting}
 
-This is a schematic diagram of where we are spawning objects with the code shown
-above:
+As you can see here, defining the \inlinecode{FallingObjectType} enumeration
+with a raw integer value allows us to create a type directly from a number.
+Here that comes very handy. Besides that the spawning code is not too exciting,
+it primarily consists of a little math and type conversions.
+
+This is a schematic diagram of where we are spawning
+objects with the code shown above:
 
 \begin{figure}[H]
 		\centering
@@ -597,7 +579,7 @@ protocol. \inlinecode{CCNode} implements this protocol, that means any subclass
 of \inlinecode{CCNode} can override the method. This is the signature of the
 \inlinecode{update} method:
 \begin{lstlisting}
-- (void)update:(CCTime)delta
+func update(delta: CCTime)
 \end{lstlisting}
 We receive one parameter called \inlinecode{delta} from the \cocos{} framework.
 The delta parameter contains the milliseconds since the \inlinecode{update}
@@ -625,22 +607,25 @@ Here is what we want to do in the update method:
 And here is how we can implement it:
 
 \begin{lstlisting}
-- (void)update:(CCTime)delta {
-    // use classic for loop so that we can remove objects while iterating over the array    
-    for (int i=0; i < [self.fallingObjects count]; i++) {
-        SBBFallingObject *fallingObject = self.fallingObjects[i];
-        
-        // check if falling object is below the screen boundary
-        if (CGRectGetMaxY(fallingObject.boundingBox) < CGRectGetMinY(self.boundingBox)) {
-            // if object is below screen, remove it
-            [fallingObject removeFromParent];
-            [self.fallingObjects removeObject:fallingObject];
-        } else {
-            // else, let the object fall with a constant speed
-            fallingObject.position = ccp(fallingObject.position.x, fallingObject.position.y - (kFallingSpeed * delta));
-        }
+  override func update(delta: CCTime) {
+    // use classic for loop so that we can remove objects while iterating over the array
+    for (var i = 0; i < fallingObjects.count; i++) {
+      let fallingObject = fallingObjects[i]
+      
+      // check if falling object is below the screen boundary
+      if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
+        // if object is below screen, remove it
+        fallingObject.removeFromParent()
+        fallingObjects.removeAtIndex(i)
+      } else {
+        // else, let the object fall with a constant speed
+        fallingObject.position = ccp(
+          fallingObject.position.x,
+          fallingObject.position.y - CGFloat(fallingSpeed * delta)
+        )
+      }
     }
-}
+  }
 \end{lstlisting}
 
 The interesting aspect of the code snippet above is how we check if the
@@ -765,7 +750,7 @@ very simple API call to run a timeline animation from code. The following line
 added to \inlinecode{SBBMainScene} will run the timeline animation and thus play the
 sound we added to the project:
 \begin{lstlisting}
-[self.animationManager runAnimationsForSequenceNamed:@"DropSound"];
+animationManager.runAnimationsForSequenceNamed("DropSound")
 \end{lstlisting}
 The animation manager of the root node of a \ccbfile{} provides us access to the
 different timelines and allows us to run, pause them and to react to their
@@ -777,14 +762,14 @@ the screen. We already have code that checks for that condition in our
 timeline. Extend the relevant part of the \inlinecode{update} method to look as
 following:
 \begin{lstlisting}
-        // check if falling object is below the screen boundary
-        if (CGRectGetMaxY(fallingObject.boundingBox) < CGRectGetMinY(self.boundingBox)) {
-            // if object is below screen, remove it
-            [fallingObject removeFromParent];
-            [self.fallingObjects removeObject:fallingObject];
-            // play sound effect
-            [self.animationManager runAnimationsForSequenceNamed:@"DropSound"];
-        } else {...}
+// check if falling object is below the screen boundary
+if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
+	// if object is below screen, remove it
+    fallingObject.removeFromParent()
+    fallingObjects.removeAtIndex(i)
+    // play sound effect
+    animationManager.runAnimationsForSequenceNamed("DropSound")
+} else {...}
 \end{lstlisting}
 Now you can compile and test the project. Every time an object falls of the
 screen you should hear the drop sound play!

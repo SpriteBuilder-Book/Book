@@ -250,7 +250,7 @@ import Foundation
 class FallingObject: CCSprite {
 
   enum FallingObjectType: Int {
-    case Good
+	case Good
 	case Bad
   }
     
@@ -259,8 +259,8 @@ class FallingObject: CCSprite {
 }
 \end{lstlisting}
 
-We define the instance variable to be \textit{readonly} because will not support
-changing the type of a falling object after it has been created. In Swift we can 
+We define the instance variable to be \textit{readonly} because we will not
+support changing the type of a falling object after it has been created. In Swift we can 
 define variables as \textit{readonly} by marking the \textit{setter} as private.
 
 Note that the code will not compile at this point. Since \inlinecode{type} isn't
@@ -314,12 +314,12 @@ choose random image from the \textit{plist} that we just created.
 The first step is loading the \textit{plist} in code. Luckily \textit{plists}
 consist of Dictionaries, Arrays, Strings, etc. and all of these types exist in
 Swift as well - there are some very convenient methods to load
-\textit{plists} in code. 
+\textit{plists}. 
 
-During each session the player plays we are going to create hundreds of
+During each playing session we are going to create hundreds of
 falling objects. Since the images that represent these objects won't change it
 would be a waste of resources to load the \textit{plist} every time we create a
-new instance of \inlinecode{SBBFallingObject}. Instead we should only load it
+new instance of \inlinecode{FallingObject}. Instead we should only load it
 once and then keep a reference to it for future use. A good way of doing this is
 using a class constant to store the \textit{plist} reference once it is loaded.
 
@@ -358,13 +358,14 @@ the code in detail right away):
 
 First, we are defining a private class variable. Currently Swift only supports
 computed class variables, that means we need to provide a getter that will
-return a value. We provide that getter through the closure that is placed
-directly after the variable declaration. Whenever the class variable is accessed
+return a generated value and does not rely on a class storage variable. We
+provide that getter through the closure that is placed directly after the 
+variable declaration. Whenever the class variable is accessed
 this closure is called. Inside of this closure we place the workaround mentioned
 earlier. We declare a struct called \inlinecode{ClassConstantWrapper} with a
 static constant called \inlinecode{instance}. This static constant is initialized with an instance of
 the structure \inlinecode{ImageNames} which we declare a few lines later. Since
-\inlinecode{instance} this is a static constant, the expression will only be
+\inlinecode{instance} is a static constant, the expression will only be
 evaluated once and only one instance of \inlinecode{ImageNames} will ever be
 created, independently of how often the class variable is accessed.
 
@@ -373,19 +374,21 @@ declare two array variables that store strings. They store the filenames of the
 \textit{good} object assets and the \textit{bad} object assets. Inside of the
 initializer we fill these variables.
 
-First, we get the path of the \textit{FallingObjectImages.plist} file. Then we
-use a convenience initializer on \inlinecode{NSDictionary} called
-\textit{contentsOfFile:}. That initializer creates a dictionary from a provided
-plist, this only works because the root element of our plist is a dictionary!
+The initializer takes no parameters. The first line gets the path of the
+\textit{FallingObjectImages.plist} file. Then we use a convenience initializer
+on \inlinecode{NSDictionary} called \inlinecode{contentsOfFile:}. That
+initializer creates a dictionary from a provided plist. This only works because
+the root element of our plist is a dictionary! 
 Earlier we've set up our plist to contain two arrays of strings,
-\textit{FallingObjectTypeGoodImages} and \texit{FallingObjectTypeBadImages}
+\textit{FallingObjectTypeGoodImages} and \textit{FallingObjectTypeBadImages}
 below the root element.
 We can now extract these two arrays from our dictionary and assign them to the 
 \inlinecode{good} variable and \inlinecode{bad} variable, respectively. During
 this assignment we need to cast the arrays into \inlinecode{[String]} arrays
 using the \inlinecode{as} operator. This is necessary because we are receiving
 an Objective-C Array (\inlinecode{NSArray}) that cannot store type information
-about the elements it contains.
+about the elements it contains. We however know that this array only contains
+strings so we want to treat it as a \inlinecode{[String]} array in Swift.
 
 Due to the necessary workaround this is quite a bit of code, but things will
 improve as Swift matures. 
@@ -393,58 +396,62 @@ improve as Swift matures.
 Now we have successfully set up a class constant that will load the required
 image names when it is accessed the fist time and store these images on a class
 level. That will avoid reloading the plist for every instance of
-\inlinecode{FallingObject}.
+\inlinecode{FallingObject} that we create.
   
 Now that we have access to the image names we can implement the actual
 initializer of \inlinecode{FallingObject}. We need to:
 \begin{itemize}
   \item Pick a random image based on the object type
-  \item Call the \inlinecode{initWithImageNamed:} of \ccsprite{}
+  \item Call the designated initializer of our superclass \ccsprite{}
 \end{itemize}
 
 This is what the initializer should look like:
 \begin{lstlisting}
-- (id)initWithType:(SBBFallingObjectType)fallingObjectType {
-  // pick a random image name based on the FallingObjectType chosen
-  NSString *imageName = nil;
-  
-  if (fallingObjectType == SBBFallingObjectTypeGood) {
-    int randomImageIndex = arc4random_uniform((int)[fallingObjectTypeGoodImageNames count]);
-    imageName = fallingObjectTypeGoodImageNames[randomImageIndex];
-  } else if (fallingObjectType == SBBFallingObjectTypeBad) {
-    int randomImageIndex = arc4random_uniform((int)[fallingObjectTypeBadImageNames count]);
-    imageName = fallingObjectTypeBadImageNames[randomImageIndex];
+  init(type: FallingObjectType) {
+    self.type = type
+    
+    var imageName:String? = nil
+    
+    if (type == .Good) {
+      let randomIndex = randomInteger(FallingObject.imageNames.good.count)
+      imageName = FallingObject.imageNames.good[randomIndex]
+    } else if (type == .Bad) {
+      let randomIndex = randomInteger(FallingObject.imageNames.bad.count)
+      imageName = FallingObject.imageNames.good[randomIndex]
+    }
+    
+    let spriteFrame = CCSpriteFrame.frameWithImageNamed(imageName) as CCSpriteFrame
+    super.init(texture: spriteFrame.texture, rect: spriteFrame.rect, rotated: false)
+    
+    anchorPoint = ccp(0,0)
   }
-  
-  // call super initializer with selected image
-  self = [super initWithImageNamed:imageName];
-  
-  if (self) {
-    self.anchorPoint = ccp(0, 0);
-    _type = fallingObjectType;
-  }
-  
-  return self;
-}
 \end{lstlisting}
-Overall a prety straightforward method. We first check which type of object we
-are initializing. Based on the type we pick one of the arrays that have been
-populated with the content from the \textit{plist}. Then we pick a random
-element from that array. That random element is our file name, we pass that on
-to the \ccsprite{} initializer \inlinecode{initWithImageNamed:}. The we
-initialize two values. We set the \inlinecode{anchorPoint} of the
-\inlinecode{SBBFallingObject} to the bottom left corner, that will make it
-easier to determine the spawn position later on. Additionally we store the
-object type that has been passed in as a parameter to the initializer.
-That's all we need in order to use \inlinecode{SBBFallingObject}! Now we can
-move on and spawn some objects.
+We start of by storing the type we receive in an instance variable.
+Then we create a local variable called \inlinecode{imageName} that we will use
+to load the correct texture for this object type. Next, we check whether we are
+initializing a good or a bad object. In each case we generate a random number,
+using our helper function \inlinecode{randomInteger}, that picks one image name
+from the set of available image names in the arrays. %TODO: mention how to add
+% helper functions
+Next, we need to call an initializer of our superclass \ccsprite{}. Here we run
+into another limitation of the current version of Swift: we can only call
+\textit{designated} initializers of our superclass, but not any
+\textit{convenience} initializers. This means instead of calling:
+\begin{lstlisting}
+CCSprite(imageNamed: String!)
+\end{lstlisting}
+We have to call the designated initializer:
+\begin{lstlisting}
+CCSprite(texture: CCTexture!, rect: CGRect, rotated: Bool)
+\end{lstlisting}
+This unfortunately means some extra code! We create a \inlinecode{CCSpriteFrame}
+with the image name that we have selected from one of our lists, then we use
+that sprite frame to call \ccsprite{}'s designated initializer. Finally, we set
+the anchor point of our object to the bottom left corner, that will make it
+easier to determine the spawn position later on.
 
-\begin{details}[frametitle={Accessing properties
-in initializers}] In Objective-C it is common to access properties in initializers through their
-instance variables. The goal is to avoid potential side effects that could
-occur by calling setter/getter methods in the class itself or in subclasses
-while the object is not entirely initialized yet.
-\end{details}
+That's all we need in order to create a \inlinecode{FallingObject}! Now we
+can move on and spawn some objects.
 
 \section{Spawn falling objects}
 Now it's time to implement one of the core mechanics of the game: Spawning

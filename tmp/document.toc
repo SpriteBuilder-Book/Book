@@ -43,15 +43,15 @@
 \contentsline {subsection}{\numberline {2.4.1}Create a falling object class}{60}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Choose an asset for a falling object}{62}{subsection.2.4.2}
 \contentsline {section}{\numberline {2.5}Spawn falling objects}{67}{section.2.5}
-\contentsline {section}{\numberline {2.6}Move falling objects}{70}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Update Loop}{70}{subsection.2.6.1}
+\contentsline {section}{\numberline {2.6}Move falling objects}{71}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Update Loop}{71}{subsection.2.6.1}
 \contentsline {subsection}{\numberline {2.6.2}Implementing the update method}{71}{subsection.2.6.2}
 \contentsline {section}{\numberline {2.7}Adding sound effects}{73}{section.2.7}
-\contentsline {subsection}{\numberline {2.7.1}SpriteBuilder{}'s timeline feature}{74}{subsection.2.7.1}
+\contentsline {subsection}{\numberline {2.7.1}SpriteBuilder{}'s timeline feature}{75}{subsection.2.7.1}
 \contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{75}{section*.18}
-\contentsline {subsection}{\numberline {2.7.2}Triggering a Sound Effect}{76}{subsection.2.7.2}
-\contentsline {section}{\numberline {2.8}Wrapping up}{77}{section.2.8}
-\contentsline {section}{\numberline {2.9}Exercises}{77}{section.2.9}
+\contentsline {subsection}{\numberline {2.7.2}Triggering a Sound Effect}{77}{subsection.2.7.2}
+\contentsline {section}{\numberline {2.8}Wrapping up}{78}{section.2.8}
+\contentsline {section}{\numberline {2.9}Exercises}{78}{section.2.9}
 \contentsline {chapter}{\numberline {3}User Interaction and Collision Detection}{79}{chapter.3}
 \contentsline {section}{\numberline {3.1}Add the pot to the game}{79}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Working with the z-order}{80}{subsection.3.1.1}

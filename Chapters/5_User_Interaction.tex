@@ -493,8 +493,8 @@ Add the method stub for the falling step to \filemention{MainScene.swift}:
 \end{lstlisting}
 \end{leftbar}
 Before we can dive into collision detection we will have to take a little detour
-and talk about node transformations.\index{Node transformations} As part of the
-introduction to \cocos{} we have discussed that nodes are always positioned
+and talk about node transformations.\index{Node transformation!Bounding Box} As
+part of the introduction to \cocos{} we have discussed that nodes are always positioned
 relative to their parent node (chapter: \ref{Introduction_CCNode}). The catch
 container that we just added in \SB{} is a child of the \inlinecode{potBottom}
 node. We chose that setup so that the catch container always moves together
@@ -514,7 +514,142 @@ example:
 		their position values are entirely different, since they are placed relative
 		to different parents}
 \end{figure}
-\label{Introduction_CCNode}
+How can we work around this? Luckily \cocos{} exposes a couple of variables and
+methods that allows us to transform positions and frames between different
+\textit{node spaces}. Each node lives in the \textit{node space} of its parent.
+In our example the catch container is in the node space of the pot and the pot is
+in the node space of the main scene.
+
+If we want to know the position and size of the catching container in the main
+scene node space, we need to apply the following transform:
+\begin{lstlisting}
+let containerWorldBoundingBox = CGRectApplyAffineTransform(
+  catchContainer.boundingBox(), catchContainer.parent.nodeToParentTransform()
+);
+\end{lstlisting}
+We are transforming the bounding box of the catch container using the
+\inlinecode{nodeToParentTransform} of the catch container's parent node (the
+pot). The \cocos{} documentation describes the
+\inlinecode{nodeToParentTransform} as following: \textit{Returns the matrix that
+transform the node's (local) space coordinates into the parent's space coordinates.}
+
+This means after applying the transform we know the position of the catch
+container in the main scene space. 
+
+If you are new to graphics programming this concept will likely seem a little
+confusing; frankly you won't need it too often when working with \cocos{}. If
+you aren't getting a hold of transforms yet, don't worry too much!
+
+\begin{details}[frametitle={The role of transforms in graphics programming}]
+Transforms are an essential part of all graphics engines - also of \cocos{}.
+When determining the positions for all nodes in a scene, \cocos{} starts with
+the root node. After the root node is laid out, the engine moves to the children
+of the root node, calculates their position and places them \textit{relative to
+the root node}. This is repeated all the way down the node hierarchy:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/Chapter3/parent_transform_rendering.png}
+\end{figure}
+\end{details}
+
+Now that we have a solution for the transformation issue, the rest of the
+code that we need for the falling step is not too complicated.
+\begin{leftbar}
+Here's the entire function that implements the stub that you added earlier:
+\begin{lstlisting}
+  func performFallingStep(fallingObject:FallingObject) {
+    let containerWorldBoundingBox = CGRectApplyAffineTransform(
+      catchContainer.boundingBox(), catchContainer.parent.nodeToParentTransform()
+    );
+    
+    let yPositionInCatchContainer = CGRectGetMinY(fallingObject.boundingBox()) < CGRectGetMaxY(containerWorldBoundingBox)
+    let xPositionLargerThanLeftEdge = CGRectGetMinX(fallingObject.boundingBox()) > CGRectGetMinX(containerWorldBoundingBox)
+    let xPositionSmallerThanRightEdge = CGRectGetMaxX(fallingObject.boundingBox()) < CGRectGetMaxX(containerWorldBoundingBox)
+    
+    // check if falling object is inside catching pot, trigger this when object reaches top of pot
+    if (yPositionInCatchContainer) {
+      if (xPositionLargerThanLeftEdge && xPositionSmallerThanRightEdge) {
+          // caught the object
+          let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
+          fallingObject.removeFromParent()
+          fallingObject.positionInPoints = potTop.convertToNodeSpace(fallingObjectWorldPosition)
+          potTop.addChild(fallingObject)
+          fallingObject.fallingState = .Caught
+      } else {
+        fallingObject.fallingState = .Missed
+      }
+    }
+  }
+\end{lstlisting}
+\end{leftbar}
+
+We have already discussed the first statement extensively, we transform the
+bounding box of our catch container. That allows us to compare its position to
+the position of falling objects. 
+
+The next three lines are each used to
+determine if the falling object is within the relevant boundaries of our transformed catch container. The
+\inlinecode{CGRectGetMin\ldots} utility functions are used to get the
+lowest/highest value on a certain axis from the bounding box. These three
+statements check for the conditions outlined in figure
+\ref{CaughtMissedDefinition}. If all three are true the player has caught the
+object.
+
+Next, we have an if statement that combines the three boolean variables. The
+first if statement checks if the falling object is in the
+\textit{critical area} using the \inlinecode{yPositionInCatchContainer}
+constant. Here the y position of the falling object is the only relevant metric.
+If we aren't in the critical area we do nothing at all - the object is still too
+far above the pot for us to decide whether the player caught it or not.
+
+If the object is in the critical area we now need to determine if it has
+been caught or missed. This is where we need the two x position variables. If
+the object is outside of the bounds we set the \inlinecode{fallingState} to
+\inlinecode{.Missed}.
+
+If the object is inside of the bounds we set the \inlinecode{fallingState} to
+\inlinecode{.Caught}. Additionally we need to ensure that once the object is
+caught it stays within the pot. Without additional code the caught objects are
+not attached to the pot. The player could move the pot left or right and the
+objects would fall out to the side of the pot. As soon as an object is caught we
+need to turn it into a child node of the pot, that way they will stick together.
+
+Here we once again need a transform.\index{Node transformation!Position} We
+want to turn the falling object into a child of the pot instead of being a
+child of main scene. That means we are moving the object to a different node
+space. We don't want the player to see this move happen; visually the object
+should stay at exactly the same position. 
+
+In such situations we need to use a two step transform. First, we need to find
+the \textit{world space} position of the node that we are moving to a
+different node space. The position in the world space is expressed relative to
+the world root (in most cases the bottom left corner of the screen) and not
+relative to the parent node. You can think of the position in world space as a
+global or absolute position. We can use the world position to find the
+corresponding relative position in any node space.
+
+Let's take a look at our specific code. First we call:
+\begin{lstlisting}
+let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
+\end{lstlisting}
+This line asks: \textit{What is the global position, independent of the parent
+node, of this falling object?} The node that receives this question needs to be
+the parent node of \inlinecode{fallingObject}, because that is the node
+responsible for placing the \inlinecode{fallingObject} node by applying its
+transform.
+
+Now that we have saved the position, we remove the node from its parent. Next we
+perform the second step of the transformation:
+\begin{lstlisting}
+fallingObject.positionInPoints = potTop.convertToNodeSpace(fallingObjectWorldPosition)
+\end{lstlisting}
+This line asks: \textit{Dear pot, I have a global position for this falling
+object, could you tell me what the relative position to you would need to be? I
+want the falling object to remain at the same global position after adding it to
+you as a child.}
+After we have determined the right position we finally add the falling object to
+the pot. The object has switched to a different node space without that the
+player could realize it!
 \subsection{Implementing the missed state}
 \subsection{Implementing the caught state}
  

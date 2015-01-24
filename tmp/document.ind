@@ -1,6 +1,8 @@
 \begin{theindex}
 
-  \item Node transformations, \hyperpage{19}
+  \item Node transformation
+    \subitem Bounding Box, \hyperpage{19}
+    \subitem Position, \hyperpage{23}
 
   \indexspace
 

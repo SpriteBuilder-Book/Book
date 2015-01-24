@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 JAN 2015 10:59
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.5.25)  24 JAN 2015 12:32
 entering extended mode
  \write18 enabled.
  Source specials enabled.
@@ -1484,17 +1484,54 @@ Package pdftex.def Info: images/Chapter3/frame_pot_falling_object.png used on i
 nput line 464.
 (pdftex.def)             Requested size: 127.61185pt x 130.77925pt.
  [18 <./images/Chapter3/frame_pot_falling_object.png>]
-<images/Chapter3/parent_transform.png, id=310, 1367.1075pt x 780.9175pt>
+
+LaTeX Warning: Reference `Introduction_CCNode' on page 19 undefined on input li
+ne 498.
+
+<images/Chapter3/parent_transform.png, id=309, 1367.1075pt x 780.9175pt>
 File: images/Chapter3/parent_transform.png Graphic file (type png)
 
 <use images/Chapter3/parent_transform.png>
 Package pdftex.def Info: images/Chapter3/parent_transform.png used on input lin
 e 512.
 (pdftex.def)             Requested size: 297.75668pt x 170.07458pt.
- [19]) [20 <./images/Chapter3/parent_transform.png>] (./document.ind [21
+ [19]
+Overfull \hbox (29.74948pt too wide) in paragraph at lines 530--535
+[]\T1/ppl/m/n/10.95 We are trans-form-ing the bound-ing box of the catch con-ta
+iner us-ing the \T1/cmtt/m/n/10.95 nodeToParentTransform
+ []
+
+[20 <./images/Chapter3/parent_transform.png>]
+Package mdframed Info: mdframed works in twoside mode on input line 543.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 543.
+
+<images/Chapter3/parent_transform_rendering.png, id=331, 546.04pt x 431.6125pt>
+File: images/Chapter3/parent_transform_rendering.png Graphic file (type png)
+<use images/Chapter3/parent_transform_rendering.png>
+Package pdftex.def Info: images/Chapter3/parent_transform_rendering.png used on
+ input line 551.
+(pdftex.def)             Requested size: 178.43152pt x 141.03635pt.
+Package mdframed Info: mdframed detected package amsthm 
+ changed the theorem header of amsthm
+(mdframed)              on input line 553.
+ [21 <./images/Chapter3/parent_transform_rendering.png>]
+Overfull \vbox (3.99274pt too high) detected at line 584
+ []
+
+[22]
+Overfull \hbox (5.01295pt too wide) in paragraph at lines 598--604
+\T1/ppl/m/n/10.95 ment checks if the falling ob-ject is in the \T1/ppl/m/it/10.
+95 crit-i-cal area \T1/ppl/m/n/10.95 us-ing the \T1/cmtt/m/n/10.95 yPositionInC
+atchContainer
+ []
+
+[23]) [24] [25] (./document.ind [26
 
 
 
+] [27
 
 
 
@@ -1515,10 +1552,10 @@ LaTeX Warning: There were undefined references.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 255.
  ) 
 Here is how much of TeX's memory you used:
- 27817 strings out of 493117
- 521311 string characters out of 6135433
- 1023038 words of memory out of 5000000
- 30678 multiletter control sequences out of 15000+600000
+ 27894 strings out of 493117
+ 522886 string characters out of 6135433
+ 1033038 words of memory out of 5000000
+ 30716 multiletter control sequences out of 15000+600000
  18316 words of font info for 41 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,10n,108p,10423b,1253s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1538,10 +1575,10 @@ xlive/2014/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2
 014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/tex
 mf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist
 /fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on document.pdf (21 pages, 1647198 bytes).
+Output written on document.pdf (27 pages, 1692599 bytes).
 PDF statistics:
- 415 PDF objects out of 1000 (max. 8388607)
- 344 compressed objects within 4 object streams
- 140 named destinations out of 1000 (max. 500000)
- 264 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 483 PDF objects out of 1000 (max. 8388607)
+ 403 compressed objects within 5 object streams
+ 178 named destinations out of 1000 (max. 500000)
+ 269 words of extra memory for PDF output out of 10000 (max. 10000000)
 

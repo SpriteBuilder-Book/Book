@@ -507,6 +507,13 @@ that means we cannot compare their positions and frames directly.} Since the
 position is relative to the parent node, comparing nodes with different parents
 would resolve in unexpected behavior. Take the following illustration as an
 example:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/Chapter3/parent_transform.png}
+		\caption{Even though the two nodes illustrated above are close to each other,
+		their position values are entirely different, since they are placed relative
+		to different parents}
+\end{figure}
 \label{Introduction_CCNode}
 \subsection{Implementing the missed state}
 \subsection{Implementing the caught state}

@@ -417,7 +417,7 @@ This is what the initializer should look like:
       imageName = FallingObject.imageNames.good[randomIndex]
     } else if (type == .Bad) {
       let randomIndex = randomInteger(FallingObject.imageNames.bad.count)
-      imageName = FallingObject.imageNames.good[randomIndex]
+      imageName = FallingObject.imageNames.bad[randomIndex]
     }
     
     let spriteFrame = CCSpriteFrame.frameWithImageNamed(imageName) as CCSpriteFrame

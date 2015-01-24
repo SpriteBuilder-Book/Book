@@ -97,8 +97,8 @@ implement the touch handling code.
 Open \inlinecode{MainScene.swift} and add instance variables for our code
 connections at the top of the class:
 \begin{lstlisting}
-weak var potTop:CCSprite!
-weak var potBottom:CCSprite!
+weak var potTop: CCSprite!
+weak var potBottom: CCSprite!
 \end{lstlisting}
 \end{leftbar}
 There are three important things to remember about these code connections.
@@ -242,7 +242,7 @@ instance variables we have referenced: \inlinecode{isDraggingPot} and
   weak var potTop:CCSprite!
   weak var potBottom:CCSprite!
   
-  private var fallingObjects = [CCNode]()
+  private var fallingObjects = [FallingObject]()
   private let fallingSpeed = 100.0
   private let spawnFrequency = 0.5
   private var isDraggingPot = false
@@ -354,6 +354,7 @@ object has been caught or missed
 		\centering
 		\includegraphics[width=0.3\linewidth]{images/Chapter3/catch_test.png}
 		\caption{Caught objects fall into the pot, missed objects fall behind}
+		\label{CaughtMissedDefinition}
 \end{figure}
 Since we are building a 2D game we only have limited ways of expressing that a
 player missed a falling object - I suggest that we render missed objects behind
@@ -365,5 +366,148 @@ code for each of these states. Additionally we need to write code that checks if
 we have caught or missed an object so that we can assign the correct states to
 falling objects.
 
-\subsection{Implement states}
+\subsection{Storing state}
+Now we'll start implementing everything described earlier. Let's start by adding
+a \inlinecode{fallingState} to \inlinecode{FallingObject.swift}. That state
+variable will remember whether an object is currently falling, has been caught
+or has been missed.
 
+The best way to represent states in Swift is to use an enumeration!
+\begin{leftbar}
+Add this enum definition to \inlinecode{FallingObject.swift} below the
+\inlinecode{FallingObjectType} enum:
+\begin{lstlisting}
+  enum FallingObjectState {
+    case Falling
+    case Caught
+    case Missed
+  }
+\end{lstlisting}
+\end{leftbar}
+As mentioned earlier, associating enum entries with a type is not
+mandatory. In this case our entries don't need a type (e.g. Int) since the
+entries will only represent a state - they are values in their own right.
+
+\begin{leftbar}
+Next, add an instance variable to store the current state:
+\begin{lstlisting}
+  var fallingState = FallingObjectState.Falling
+\end{lstlisting}
+\end{leftbar}
+This variable should not be private, we want to change the value as
+the object gets caught or missed. Our default state is \inlinecode{.Falling}, we
+assign it as part of the variable declaration.
+
+Now we can store a \inlinecode{fallingState} for each falling object; next,
+let's implement different behaviour based on that state.
+
+\subsection{Implement state specific behaviour}
+The majority of our gameplay code is currently inside of the \inlinecode{update}
+method of \inlinecode{MainScene}. This is fairly common for simple games.
+Currently we are doing to things in the update method: moving the objects down
+the screen and checking whether they have left the stage entirely (in which
+case we delete them). Now however, we are going to add code that will only run
+for falling objects in certain states. That will add quite a lot of complexity.
+Instead of squashing everything into the update method I suggest that we
+create one method for each of the three states. These methods will contain
+all state specific code and will be called from the update method.
+
+\begin{leftbar}
+Replace your existing update method with the following one:
+\begin{lstlisting}
+    override func update(delta: CCTime) {
+    // use classic for loop so that we can remove objects while iterating over the array
+    for (var i = 0; i < fallingObjects.count; i++) {
+      let fallingObject = fallingObjects[i]
+      
+      // let the object fall with a constant speed
+      fallingObject.position = ccp(
+        fallingObject.position.x,
+        fallingObject.position.y - CGFloat(fallingSpeed * delta)
+      )
+      
+      switch fallingObject.fallingState {
+      case .Falling:
+        performFallingStep(fallingObject)
+      case .Missed:
+        performMissedStep(fallingObject)
+      case .Caught:
+        performCaughtStep(fallingObject)
+      }
+    }
+  }
+\end{lstlisting}
+\end{leftbar} 
+Now the update method is really easy to read. We loop over all falling objects.
+In all cases we move the falling object towards the bottom of the screen. After
+that we check in which state an object is and invoke a method that contains code
+specific for that state. We are going to implement these methods throughout the
+remainder of this chapter.
+
+\subsection{Implementing the falling state}
+Let's start implementing the default state: falling. In this state we will need
+check whether an object has been caught, has been missed or simply remains
+falling. 
+
+Later in this book you will learn how to use the \cocos{} physics
+engine and its built in collision detection - for this game however we are not
+using the physics engine and will implement catch detection code ourselves.
+
+In figure \ref{CaughtMissedDefinition} we have illustrated what we consider a
+caught/missed object. So how can we implement this? Basically all we need to do
+is compare the frame of the falling object to the frame of the pot. However,
+there is one small issue. The frame of \ccsprite{} is always a rectangle that
+contains the entire texture, here's what the dimensions of the frames of our pot
+and a falling object looks like:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\linewidth]{images/Chapter3/frame_pot_falling_object.png}
+		\caption{The pot frame is too large to use it for collision detection}
+\end{figure}
+From the illustration above you can see that the frame of the pot is too large
+to use it for collision detection. It could easily happen that an object
+landing on the handle of the pot would still be considered a catch.
+
+Instead of using the pot dimensions we will need to add a separate, smaller,
+node in \SB{} that marks the catch area. 
+\begin{leftbar}
+Open the \SB{} project and open \filemention{MainScene.ccb}.
+\ldots
+Now publish the \SB{} project and switch back to the \xcode{} project.
+\end{leftbar}
+Next, we need to add a variable for the code connection we just set up.
+\begin{leftbar}
+Add the catch container variable to the other code connection variables:
+\begin{lstlisting}
+weak var catchContainer: CCSprite!
+\end{lstlisting}
+\end{leftbar}
+Now we have a reference container set up that will allow us to test if objects
+have been caught. We can start implementing falling step function.
+\begin{leftbar}
+Add the method stub for the falling step to \filemention{MainScene.swift}:
+\begin{lstlisting}
+  func performFallingStep(fallingObject:FallingObject) {
+
+  }
+\end{lstlisting}
+\end{leftbar}
+Before we can dive into collision detection we will have to take a little detour
+and talk about node transformations.\index{Node transformations} As part of the
+introduction to \cocos{} we have discussed that nodes are always positioned
+relative to their parent node (chapter: \ref{Introduction_CCNode}). The catch
+container that we just added in \SB{} is a child of the \inlinecode{potBottom}
+node. We chose that setup so that the catch container always moves together
+with the pot. 
+
+For our collision detection algorithm we want to compare the position of a
+falling object to the position of our catch container. \textbf{Here the problem
+arises: falling objects and the catch container have different parent nodes,
+that means we cannot compare their positions and frames directly.} Since the
+position is relative to the parent node, comparing nodes with different parents
+would resolve in unexpected behavior. Take the following illustration as an
+example:
+\label{Introduction_CCNode}
+\subsection{Implementing the missed state}
+\subsection{Implementing the caught state}
+ 

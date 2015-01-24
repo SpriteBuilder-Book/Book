@@ -45,10 +45,15 @@
 \BOOKMARK [2][-]{subsection.3.2.3}{Dropping an object}{section.3.2}% 45
 \BOOKMARK [1][-]{section.3.3}{Catching objects}{chapter.3}% 46
 \BOOKMARK [2][-]{subsection.3.3.1}{Thinking in states}{section.3.3}% 47
-\BOOKMARK [0][-]{chapter.4}{Q\046A}{}% 48
-\BOOKMARK [1][-]{section.4.1}{Core Cocos2D and SpriteBuilder}{chapter.4}% 49
-\BOOKMARK [2][-]{subsection.4.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.4.1}% 50
-\BOOKMARK [1][-]{section.4.2}{Designing for multiple devices}{chapter.4}% 51
-\BOOKMARK [2][-]{subsection.4.2.1}{Which size does a background image for all four resolutions need to have?}{section.4.2}% 52
-\BOOKMARK [1][-]{section.4.3}{Advance Techniques}{chapter.4}% 53
-\BOOKMARK [2][-]{subsection.4.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.4.3}% 54
+\BOOKMARK [2][-]{subsection.3.3.2}{Storing state}{section.3.3}% 48
+\BOOKMARK [2][-]{subsection.3.3.3}{Implement state specific behaviour}{section.3.3}% 49
+\BOOKMARK [2][-]{subsection.3.3.4}{Implementing the falling state}{section.3.3}% 50
+\BOOKMARK [2][-]{subsection.3.3.5}{Implementing the missed state}{section.3.3}% 51
+\BOOKMARK [2][-]{subsection.3.3.6}{Implementing the caught state}{section.3.3}% 52
+\BOOKMARK [0][-]{chapter.4}{Q\046A}{}% 53
+\BOOKMARK [1][-]{section.4.1}{Core Cocos2D and SpriteBuilder}{chapter.4}% 54
+\BOOKMARK [2][-]{subsection.4.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.4.1}% 55
+\BOOKMARK [1][-]{section.4.2}{Designing for multiple devices}{chapter.4}% 56
+\BOOKMARK [2][-]{subsection.4.2.1}{Which size does a background image for all four resolutions need to have?}{section.4.2}% 57
+\BOOKMARK [1][-]{section.4.3}{Advance Techniques}{chapter.4}% 58
+\BOOKMARK [2][-]{subsection.4.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.4.3}% 59

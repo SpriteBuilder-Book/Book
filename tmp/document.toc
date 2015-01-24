@@ -12,4 +12,5 @@
 \contentsline {subsection}{\numberline {1.3.3}Implement state specific behaviour}{16}{subsection.1.3.3}
 \contentsline {subsection}{\numberline {1.3.4}Implementing the falling state}{18}{subsection.1.3.4}
 \contentsline {subsection}{\numberline {1.3.5}Implementing the missed state}{25}{subsection.1.3.5}
-\contentsline {subsection}{\numberline {1.3.6}Implementing the caught state}{25}{subsection.1.3.6}
+\contentsline {subsection}{\numberline {1.3.6}Implementing the caught state}{26}{subsection.1.3.6}
+\contentsline {subsection}{\numberline {1.3.7}Time to test}{27}{subsection.1.3.7}

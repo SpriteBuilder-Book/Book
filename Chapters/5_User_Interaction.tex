@@ -648,8 +648,81 @@ object, could you tell me what the relative position to you would need to be? I
 want the falling object to remain at the same global position after adding it to
 you as a child.}
 After we have determined the right position we finally add the falling object to
-the pot. The object has switched to a different node space without that the
-player could realize it!
+the pot. The object will now switch to a different node space and become a child
+of the pot without that the player will realize it, awesome!
+
+This was a pretty intense implementation so here's recap what we did to
+implement the code that runs while our object is in the \textit{falling state}:
+\begin{enumerate}
+  \item We added a catch container do define the area in which a player can
+  catch objects. We did this because the frame of the entire pot is too large to
+  serve as catch area
+  \item We transformed this catch container from the pot space into the main
+  scene space. We did that because we need the falling object and the catch
+  container to be in the same space in order to compare their positions
+  \item When determine that an object has been missed we set the state of the
+  falling object to \inlinecode{.Missed}
+  \item When we determine that an object has been caught we set the state of the
+  falling object to \inlinecode{.Caught}. Additionally we add the caught object
+  as a child to the pot, to ensure that the object stays within the pot after it
+  has been caught. Before we add the object as a child to the pot we use a two
+  way transform to figure out the position the object needs to have as a child
+  of the pot node
+\end{enumerate}
+
+This concludes almost all the features we need for the \textit{falling} step.
+Later we will come back for some visual tweaks but for now can move on to the
+missed state. This is also a great time for a break and your favorite hot
+beverage!
 \subsection{Implementing the missed state}
+Good news: the remain two steps are a lot simpler. The missed step only consists
+of code that we have already written.
+\begin{leftbar}
+Add the method for the \textit{missed} step:
+\begin{lstlisting}
+  func performMissedStep(fallingObject:FallingObject) {
+    // check if falling object is below the screen boundary
+    if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
+      // if object is below screen, remove it
+      
+      fallingObject.removeFromParent()
+      let fallingObjectIndex = find(fallingObjects, fallingObject)!
+      fallingObjects.removeAtIndex(fallingObjectIndex)
+      // play sound effect
+      animationManager.runAnimationsForSequenceNamed("DropSound")
+    }
+  }
+\end{lstlisting}
+\end{leftbar}
+All of this code was part of the \inlinecode{update} method earlier. All we do
+here is move it into a separate method. As soon as an object is in the missed
+state we now that it has fallen below the pot opening and can be no longer
+caught. Now all we need to do is to wait until the object falls below the
+screen boundary, then we play our sound and remove it.
+
 \subsection{Implementing the caught state}
- 
+The last state is the simplest of all. When we have caught an object we want to
+create the illusion of the object disappearing into the pot. The first step is
+adding the object as a child to the pot, we've already done that in the
+\textit{falling} step. 
+
+All we need to do in the \textit{caught} state is wait until the object
+disappears into the pot entirely; then we can remove it.
+
+\begin{leftbar}
+Add the method for the \textit{caught} step:
+\begin{lstlisting}
+  func performCaughtStep(fallingObject:FallingObject) {
+    // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
+    if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
+      fallingObject.removeFromParent()
+    }
+  }
+\end{lstlisting}
+As soon as the catch container bounding box fully encloses the caught object we
+can remove it. For the player it will seem that the object disappeared into the
+inner darkness of our bottomless pot.
+\end{leftbar}
+
+\subsection{Time to test}
+Now we're finally back to a state where we can run and test the game.

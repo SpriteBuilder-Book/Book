@@ -287,7 +287,7 @@ we're pretty close to finishing the drag and drop functionality.
 If you test the app in the current state you'll see that there's one simple yet
 important step missing\ldots
 
-\subsection{Dropping an Object}
+\subsection{Dropping an object}
 Right, the user will also want to drop the pot by releasing the finger from the
 screen. Otherwise we stay in dragging mode forever and the pot will keep jumping
 to whichever position the user taps on the screen.
@@ -310,7 +310,60 @@ valuable.
 Now we can move on to the hardest (thus most interesting) part of this chapter
 - catching objects.
 
-\section{Catching Objects}
+\section{Catching objects}
 Implementing drag and drop was a great warm up. In this section we are going to
 solve a bunch of problems that will bring our little project a large step closer
-to being a real game.
+to being a real game. By the end of this section the user will be able to catch
+and miss objects by dragging the pot below objects with the right timing.
+
+Before we dive into coding let's think about what we actually need to implement.
+There are three important aspects that need to be covered through our
+implementation:
+\begin{enumerate}
+  \item detecting if the user has caught an object
+  \item detecting if the user has missed an object
+  \item visualizing catching / missing correctly
+\end{enumerate}
+
+\subsection{Thinking in states}
+Our feature outline describes that objects start out as falling objects,
+directly after they have been spawned. At some later point in time the user can
+catch or miss these objects. In each of these situations we need our falling objects to behave differently. If they are
+falling we want them to move down the screen with a constant speed. If they are
+caught we need some sort of visualisation - ideally the objects move into the
+pot and disappear. If the user tries to catch an object too late and misses it
+closely we want to visualize that, too.
+
+From the paragraph above we can extract three different states in which a
+falling object can be:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\linewidth]{images/Chapter3/falling_object_states.png}
+		\caption{Objects start in falling state, then they end up caught or missed}
+\end{figure}
+As the diagram shows, a falling object can either stay a falling object or turn
+into a caught or missed object. It is up to us developers to decide the criteria
+for a state change. We also need to decide when we want to check for state
+changes.
+
+For our game I suggest that we check whether a player has caught an object or
+not in the \inlinecode{update} method. As soon as that object reaches the y
+position of the top of the pot we decide based on the x position whether the
+object has been caught or missed 
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.3\linewidth]{images/Chapter3/catch_test.png}
+		\caption{Caught objects fall into the pot, missed objects fall behind}
+\end{figure}
+Since we are building a 2D game we only have limited ways of expressing that a
+player missed a falling object - I suggest that we render missed objects behind
+the pot. That way players can quickly see whether they caught an object or not.
+
+Now we have a good starting point for some coding; we need to store
+different states for falling objects and we need to write specific behavior
+code for each of these states. Additionally we need to write code that checks if
+we have caught or missed an object so that we can assign the correct states to
+falling objects.
+
+\subsection{Implement states}
+

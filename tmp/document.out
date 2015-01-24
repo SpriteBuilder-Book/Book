@@ -42,11 +42,13 @@
 \BOOKMARK [1][-]{section.3.2}{Implement a Drag and Drop mechanism}{chapter.3}% 42
 \BOOKMARK [2][-]{subsection.3.2.1}{Picking up an Object}{section.3.2}% 43
 \BOOKMARK [2][-]{subsection.3.2.2}{Moving an Object}{section.3.2}% 44
-\BOOKMARK [2][-]{subsection.3.2.3}{Dropping an Object}{section.3.2}% 45
-\BOOKMARK [0][-]{chapter.4}{Q\046A}{}% 46
-\BOOKMARK [1][-]{section.4.1}{Core Cocos2D and SpriteBuilder}{chapter.4}% 47
-\BOOKMARK [2][-]{subsection.4.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.4.1}% 48
-\BOOKMARK [1][-]{section.4.2}{Designing for multiple devices}{chapter.4}% 49
-\BOOKMARK [2][-]{subsection.4.2.1}{Which size does a background image for all four resolutions need to have?}{section.4.2}% 50
-\BOOKMARK [1][-]{section.4.3}{Advance Techniques}{chapter.4}% 51
-\BOOKMARK [2][-]{subsection.4.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.4.3}% 52
+\BOOKMARK [2][-]{subsection.3.2.3}{Dropping an object}{section.3.2}% 45
+\BOOKMARK [1][-]{section.3.3}{Catching objects}{chapter.3}% 46
+\BOOKMARK [2][-]{subsection.3.3.1}{Thinking in states}{section.3.3}% 47
+\BOOKMARK [0][-]{chapter.4}{Q\046A}{}% 48
+\BOOKMARK [1][-]{section.4.1}{Core Cocos2D and SpriteBuilder}{chapter.4}% 49
+\BOOKMARK [2][-]{subsection.4.1.1}{How can I programmatically change the texture of an existing CCSprite}{section.4.1}% 50
+\BOOKMARK [1][-]{section.4.2}{Designing for multiple devices}{chapter.4}% 51
+\BOOKMARK [2][-]{subsection.4.2.1}{Which size does a background image for all four resolutions need to have?}{section.4.2}% 52
+\BOOKMARK [1][-]{section.4.3}{Advance Techniques}{chapter.4}% 53
+\BOOKMARK [2][-]{subsection.4.3.1}{Can I take a screenshot in code or even generate a level preview?}{section.4.3}% 54

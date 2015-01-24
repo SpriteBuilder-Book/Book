@@ -94,15 +94,37 @@ Next, move to the \xcode{} project to set up the code connection variables and
 implement the touch handling code.
 
 \begin{leftbar}
-Open \inlinecode{SBBMainScene.m} and add instance variables for our code
-connections to the implementation block of \inlinecode{SBBMainScnene}:
+Open \inlinecode{MainScene.swift} and add instance variables for our code
+connections at the top of the class:
 \begin{lstlisting}
-@implementation SBBMainScene {
-    __weak CCSprite *_potTop;
-    __weak CCSprite *_potBottom;
-}
+weak var potTop:CCSprite!
+weak var potBottom:CCSprite!
 \end{lstlisting}
 \end{leftbar}
+There are three important things to remember about these code connections.
+Firstly, all code connections should be marked as \inlinecode{weak}.
+\inlinecode{MainScene} has a reference to the pot sprites but does not
+\textit{own} them. Instead they are owned by their parent node. For any
+references that don't mark an ownership, \inlinecode{weak} should be used. 
+
+Secondly, we always want to declare code connections as \textit{forcefully
+unwrapped optionals} as denoted by the bang (!) after the type. Swift
+requires that all instance variables that aren't optionals are either
+initialized with a default value or get set to a value in one of the
+initializers of the class, that way the compiler can guarantee that these
+variables never contain a \inlinecode{nil} value. Code connections however are
+set up after the object is initialized (they are guaranteed to be set up
+when \inlinecode{didLoadFromCCB} is called on the node), so technically these
+should be optional values. Adding a lot of code for \inlinecode{nil} checking
+would clutter our classes, that's why we prefer using the bang notation which
+basically says: \textit{I am confident that this value will never be nil when I
+am trying to access it}. This is true for code connections as we now that
+\cocos{} guarantees to have set them up by the time \inlinecode{didLoadFromCCB}
+is called.
+
+Lastly, be careful not to mark these variables as \inlinecode{private}.
+Otherwise \cocos{} will not have access to them and won't be able to set up the
+code connections.
 
 Okay, now we have the basics set up and are ready to dive into the details of
 implementing a drag and drop mechanism!
@@ -136,20 +158,20 @@ In order to pick up an object we need to detect a user's touch and determine if
 the touch is within the boundaries of our object, if that is the case,
 we start dragging the object.
 
-First of all, let's turn on user interaction for the \inlinecode{SBBMainScene}
+First of all, let's turn on user interaction for the \inlinecode{MainScene}
 class, so that we receive touch events.
 
 \begin{leftbar}
 Add the required line to the \inlinecode{onEnterTransitionDidFinish} method:
 \begin{lstlisting}
-- (void)onEnterTransitionDidFinish {
-    [super onEnterTransitionDidFinish];
+  override func onEnterTransitionDidFinish() {
+    super.onEnterTransitionDidFinish()
     
-    self.userInteractionEnabled = YES;
+    self.userInteractionEnabled = true
     
     // spawn objects with defined frequency
-    [self schedule:@selector(spawnObject) interval:kSpawnFrequency];
-}
+    schedule("spawnObject", interval: spawnFrequency)
+  }
 \end{lstlisting}
 \end{leftbar}
 
@@ -158,42 +180,40 @@ need to check if the touch is within our pot. If that is the case, the method
 will need to set a state variable that remembers that we are currently dragging
 this object. If the user moves a finger across the screen and we are currently
 in object dragging mode, it is important that the object follows the finger of
-the user; therefore we need this state variable to remember whether we are
-dragging the pot or not.
+the user.
 
 \begin{leftbar}
-Add this implementation to \inlinecode{SBBMainScene.m}:
+Add this implementation to \inlinecode{MainScene.swift}:
 \begin{lstlisting}
-- (void)touchBegan:(CCTouch *)touch withEvent:(CCTouchEvent *)event {
-    // if touch is within the pot area, start dragging it
-    if (CGRectContainsPoint([_potBottom boundingBox], [touch locationInNode:self])) {
-        _isDraggingPot = YES;
-        _dragTouchOffset = ccpSub([_potBottom anchorPointInPoints], [touch locationInNode:_potBottom]);
+  override func touchBegan(touch: CCTouch, withEvent event: CCTouchEvent) {
+    if (CGRectContainsPoint(potBottom.boundingBox(), touch.locationInNode(self))) {
+      isDraggingPot = true
+      dragTouchOffset = ccpSub(potBottom.anchorPointInPoints, touch.locationInNode(potBottom))
     }
-}
+  }
 \end{lstlisting}
 \end{leftbar}
 
 Let's discuss this implementation briefly. You already have seen the usage of 
-\inlinecode{[touch locationInNode:self]} in the first chapter of this book,
+\inlinecode{touch.locationInNode(self)} in the first chapter of this book,
 where we briefly discussed touch handling
 (\ref{Introduction_FirstTouchHandling}). This method returns the touch position
 within a given node. In this specific case we are receiving the touch position
-within \inlinecode{SBBMainScene}.
+within \inlinecode{MainScene}.
 
 Next, we are using a utility function, \inlinecode{CGRectContainsPoint}, to
 check if this touch is within the pot. Remember,
-that \inlinecode{\_potBottom} and \inlinecode{\_potTop} are placed at exactly
+that \inlinecode{potBottom} and \inlinecode{potTop} are placed at exactly
 the same position, so we can choose either of them for this check.
 \inlinecode{CGRectContainsPoint} takes a rectangle as its first argument and a
 point as its second. It returns true if the point is within the rectangle.
 
 If the touch position is inside of the pot, we set our state variable,
-\inlinecode{\_isDraggingPot}, to \inlinecode{YES}. 
+\inlinecode{isDraggingPot}, to \inlinecode{true}. 
 
 There is one last line that we didn't discuss upfront:
 \begin{lstlisting}
-_dragTouchOffset = ccpSub([_potBottom anchorPointInPoints], [touch locationInNode:_potBottom]);
+dragTouchOffset = ccpSub(potBottom.anchorPointInPoints, touch.locationInNode(potBottom))
 \end{lstlisting}
 
 In order to drag an object smoothly we need to remember where we touched that
@@ -204,23 +224,68 @@ object when starting dragging. Take a look at the following diagram:
 		\caption{\textit{Top Image:} incorrect implementation, object jumps to touch
 		position. \textit{Bottom Image:} correct implementation, touch offset is
 		maintained while dragging the object.}
+		\label{user_interaction_touch_offset}
 \end{figure}
 As the user moves the finger, we move the object along. However, the position of
 the object is not exactly the touch position. Instead it is the touch position
-\textit{plus} the touch offset determined when we started dragging. No we know
-why it is important to store the touch offset!
+\textit{plus} the touch offset determined when we started dragging. We determine
+that offset by calculating the distance between the anchor point (that's the
+reference point for positioning a node, typically it's in the center of the
+node) of the touched object and the exact touch position. 
+No we know why it is important to store the touch offset!
 
 \begin{leftbar}
 To wrap up the implementation of \inlinecode{touchBegan} let's add the two
-iVars we have referenced: \inlinecode{\_isDraggingPot} and
-\inlinecode{\_dragTouchOffset}. Your list of iVars should now look like this:
+instance variables we have referenced: \inlinecode{isDraggingPot} and
+\inlinecode{dragTouchOffset}. Your list of iVars should now look like this:
 \begin{lstlisting}
-@implementation SBBMainScene {
-    __weak CCSprite *_potTop;
-    __weak CCSprite *_potBottom;
-    __weak CCNode *_catchContainer;
-    CGPoint _dragTouchOffset;
-    BOOL _isDraggingPot;
-}
+  weak var potTop:CCSprite!
+  weak var potBottom:CCSprite!
+  
+  private var fallingObjects = [CCNode]()
+  private let fallingSpeed = 100.0
+  private let spawnFrequency = 0.5
+  private var isDraggingPot = false
+  private var dragTouchOffset = ccp(0,0)
 \end{lstlisting}
 \end{leftbar}
+
+\subsection{Moving an Object}
+Now we'll implement the code that actually moves the pot. That code needs to run
+whenever a user's finger moves. That means we need to implement the
+\inlinecode{touchMoved} method.
+\begin{leftbar}
+Add the \inlinecode{touchMoved} method below the \inlinecode{touchBegan} method:
+\begin{lstlisting}
+  override func touchMoved(touch: CCTouch, withEvent event: CCTouchEvent) {
+    if (!isDraggingPot) {
+      return
+    }
+    
+    var newPosition = touch.locationInNode(self)
+    // apply touch offset
+    newPosition = ccpAdd(newPosition, dragTouchOffset);
+    // ensure constant y position
+    newPosition = ccp(newPosition.x, potBottom.positionInPoints.y);
+    // apply new position to both pot parts
+    potBottom.positionInPoints = newPosition;
+    potTop.positionInPoints = newPosition;
+  }
+\end{lstlisting}
+\end{leftbar}
+In the first line we check if we are currently in dragging mode. If not, we do
+nothing and return immediately. This prevents the pot from jumping to the latest
+touch position if it has not been picked up beforehand.
+
+If we are in dragging mode we continue. First we get the new touch position.
+Then we apply the offset that we discussed in figure
+\ref{user_interaction_touch_offset} to that new position. The next line ensures
+that the y position of the pot stays constant, we want to allow horizontal
+movement only. Finally, we apply that new position to both pot parts. Great,
+we're pretty close to finishing the drag and drop functionality.
+
+If you test the app in the current state you'll see that there's one simple yet
+important step missing\ldots
+
+\subsection{Dropping an Object}
+

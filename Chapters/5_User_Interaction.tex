@@ -288,4 +288,29 @@ If you test the app in the current state you'll see that there's one simple yet
 important step missing\ldots
 
 \subsection{Dropping an Object}
+Right, the user will also want to drop the pot by releasing the finger from the
+screen. Otherwise we stay in dragging mode forever and the pot will keep jumping
+to whichever position the user taps on the screen.
 
+Luckily this can be easily implemented. All we need to do is to set
+\inlinecode{isDraggingPot} to false as soon as the user stops touching the
+screen.
+\begin{leftbar}
+Add the \inlinecode{touchEnded} method below the \inlinecode{touchMoved} method:
+\begin{lstlisting}
+  override func touchEnded(touch: CCTouch, withEvent event: CCTouchEvent) {
+    isDraggingPot = false
+  }
+\end{lstlisting}
+\end{leftbar}
+Awesome! Our drag and drop code is complete! Drag and drop mechanisms can be
+used in many types of games, so what you have learned in this chapter is very
+valuable.
+
+Now we can move on to the hardest (thus most interesting) part of this chapter
+- catching objects.
+
+\section{Catching Objects}
+Implementing drag and drop was a great warm up. In this section we are going to
+solve a bunch of problems that will bring our little project a large step closer
+to being a real game.

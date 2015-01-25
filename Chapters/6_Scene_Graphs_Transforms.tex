@@ -422,3 +422,78 @@ inner darkness of our bottomless pot.
 Now we're finally back to a state where we can run and test the game. You should
 now be able to catch objects in the game, the illusion of them disappearing in
 the pot should be perfect.
+There's one last thing I'd like to see tweaked before we move on: missed objects
+should be rendered behind the pot instead of in front of it. 
+
+\section{A rendering tweak}\index{Z-Order}
+We have discussed the basics of influencing the z-order in chapter
+\ref{z-order-intro}. Now we will use the \inlinecode{zOrder} property to render
+the falling object behind the pot in case the user missed the object (remember
+that the z-order currently only applies to the ordering of siblings; children
+are always rendered in front of their parents).
+
+There's a neat trick for managing the rendering order in a scene. We can use an
+enum in which each entry represents a different \textit{layer} in the scene.
+
+\begin{leftbar}
+Add this enum definition to the \inlinecode{MainScene} class:
+\begin{lstlisting}
+  enum DrawingOrder: Int {
+    case BehindPot
+    case PotTop
+    case FallingObject
+    case PotBottom
+  }
+\end{lstlisting}
+\end{leftbar}
+Here we are defining four different layers. Each of them haven an associated
+integer value that we can directly apply to the \inlinecode{zOrder}
+variable of our nodes. This enum describes that the \inlinecode{FallingObject}
+layer will be rendered in front of the \inlinecode{PotTop} layer.
+By using this enum technique we can easily change the rendering order in scenes
+without modifying a lot of code.
+
+Next, we need to assign the \inlinecode{zOrder} values to their corresponding
+nodes.
+
+\begin{leftbar}
+Add this implementation of \inlinecode{didLoadFromCCB} that initializes the
+pot's \inlinecode{zOrder} to \inlinecode{MainScene}:
+\begin{lstlisting}
+func didLoadFromCCB() {
+  potTop.zOrder = DrawingOrder.PotTop.rawValue
+  potBottom.zOrder = DrawingOrder.PotBottom.rawValue
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now we need to take care of the falling object. When it is spawned it should be
+rendered on the \inlinecode{DrawingOrder.FallingObject} layer which is between
+the front and back part of the pot.
+
+\begin{leftbar}
+Add the according line to the \inlinecode{spawnObject} method:
+\begin{lstlisting}
+    ...
+    fallingObject.zOrder = DrawingOrder.FallingObject.rawValue}
+    addChild(fallingObject)
+    ...
+\end{lstlisting}
+\end{leftbar}
+
+When the object is missed, we want to render it behind the pot.
+\begin{leftbar}
+Add the relevant line to the else case of the \inlinecode{performFallingStep}
+method:
+\begin{lstlisting}
+    ...
+      } else {
+        fallingObject.fallingState = .Missed
+        fallingObject.zOrder = DrawingOrder.BehindPot.rawValue
+      }
+    ...
+\end{lstlisting}
+\end{leftbar}
+Great! With this tweak we have completed a significant portion of the core
+gameplay.
+

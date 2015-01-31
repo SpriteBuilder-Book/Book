@@ -165,8 +165,21 @@ Instead of using the pot dimensions we will need to add a separate, smaller,
 node in \SB{} that marks the catch area. 
 \begin{leftbar}
 Open the \SB{} project and open \filemention{MainScene.ccb}.
-%TODO: add instructions for adding catch container node
-\ldots
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.8\linewidth]{images/Chapter6/add_catch_container.png}
+		\caption{The size and position of this container will determine when objects
+		are caught / missed}
+\end{figure}
+Add a plain \textit{Node} from the node library and add it as a child to
+\textit{pot-bottom} node, as highlighted in the screenshot above. A short
+reminder: the easiest way to do this, is dragging the node from the node library
+into the timeline and dropping it on top of \textit{pot-bottom} node.
+
+Because we want to reference this catch container in code you will need to set a
+code connection, too. Set the target to \textit{Doc root var} and call the
+variable \inlinecode{catchContainer}.
+
 Now publish the \SB{} project and switch back to the \xcode{} project.
 \end{leftbar}
 Next, we need to add a variable for the code connection we just set up.
@@ -495,5 +508,10 @@ method:
 \end{lstlisting}
 \end{leftbar}
 Great! With this tweak we have completed a significant portion of the core
-gameplay.
+gameplay. We have completed what we call the \textit{core mechanic}. A player
+can drag the catching pot across the screen and collect items. To turn this
+mechanic into a game we will need to add some rules and game modes on top. In
+the next chapter we will make this step and finish our first game. When we're
+done it will include two game modes and highscore system (using Apple's
+GameCenter).
 

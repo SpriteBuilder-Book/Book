@@ -73,3 +73,4 @@
 \contentsline {subsection}{\numberline {4.1.7}Time to test}{116}{subsection.4.1.7}
 \contentsline {section}{\numberline {4.2}A rendering tweak}{116}{section.4.2}
 \contentsline {chapter}{\numberline {5}User Interfaces}{119}{chapter.5}
+\contentsline {section}{\numberline {5.1}Adding a game mode selection scene}{120}{section.5.1}

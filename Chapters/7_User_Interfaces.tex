@@ -190,4 +190,37 @@ is a great example of dynamic layouts; our scroll view could have any
 arbitrary size and this content node would always be exactly twice as wide.
 
 Inside of this root node we are going to place the content for our two different
-pages.
+pages. To provide a clean structure we will create one container node for each
+page.
+
+\begin{leftbar}
+Add a \ccnode{} as a child to the root node. Name this child
+\textit{endless-mode} by selecting the node in the timeline and hitting the
+return key. Set the content type of the node to be in percentage of the parent
+container. Set the width to 50\% and the height to 100\%. The container for the
+left page is set up.
+\end{leftbar}
+
+\begin{leftbar}
+Add a second \ccnode{} as a child to the root node. Name this child
+\textit{timed-mode}. Set the content type of the node to be in percentage of the parent
+container. Set the width to 50\% and the height to 100\%. Additionaly, set the x
+position to be in percentage of the parent container and set the value to 50\%.
+\end{leftbar}
+
+Now we have containers for each page set up. We are going to fill them with
+labels that describe the game mode represented on each page and an arrow
+indicating that there is another game mode available by swiping across the
+screen. This is what the completed content node will look like:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/Chapter7/content_node_completed.png}
+		\caption{The completed content node by the end of this section.}
+\end{figure}
+
+First, let's add the labels for the endless mode.
+
+\begin{leftbar}
+Drag a \cclabel{} from the node library onto the \textit{endless-mode} node.
+\end{leftbar}

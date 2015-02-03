@@ -115,3 +115,79 @@ the font and appearance of this label a little:
   \item Set the outline width to \textit{6}
 \end{enumerate}
 \end{leftbar}
+
+After setting the label up your start scene should look as following:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.7\linewidth]{images/Chapter7/start_scene.png}
+		\caption{UI elements should be placed relative to screen edges to preserve
+		their position on different screen sizes}
+\end{figure}
+
+There's a lot more work left to do! As mentioned earlier we will create a scroll
+view that let's the user swipe between two different game modes. Every scroll
+view has a content node. That content node is larger than the size of the scroll
+view and the scroll view can be used to view different parts of this content
+node. Here's an illustration:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{images/Chapter7/scrollview_concept.png}
+		\caption{The scroll view can present different portions of its larger content
+		node. The user can change the displayed portion by swiping.}
+\end{figure}
+
+Our next step will be creating this content node. In general scroll views allow
+users to scroll to any arbitrary position within the scroll view's content node.
+In our specific example we would like to change this behavior. We only
+want the user to select between two different game modes, each of these game modes will be
+represented by a full screen node. It wouldn't make sense to allow the user to
+scroll half way between the endless and timed game mode. For this specific case
+the scroll view provides an option called \textit{Paging enabled}. If you want
+to use a scroll view with paging your content node needs to have a size that is
+a multiple of the scroll view's size. In our particular example the content node
+for our scroll view will be twice as wide as the scroll view itself, resulting
+in a scroll view with two pages. When paging is enabled, the scroll view will
+always snap to one of the two pages as soon as a user stops scrolling. If this
+sounds a little bit too abstract for you, it should become clearer as we implement and use the scroll view.
+
+First we need to create the content view. We will set it up in a separate
+\ccbfile{} file. 
+\begin{leftbar}
+Create a new \ccbfile{} called \textit{GameModeSelectLayer} and choose its type
+to be a \textit{Layer}.
+\end{leftbar}
+
+\begin{details}[frametitle={Why are we using a Layer to create the scroll view
+content?}]
+A short refresher on the different \ccbfile{} types: Scenes are used to
+represent full screen content. Sprites are used for simple Sprite Images. Nodes
+are used for node compositions that don't have a specific content size. Layers
+are used to create content within a stage that has a fixed size.
+Layers are typically used for popups or scroll view content nodes because we
+want to layout the content based on a container size. We can still use relative
+positioning within layers. When the root node of the layer \ccbfile{} gets added
+to another node its size will be determined and all relative layouts will be
+applied accordingly. We'll use relative positioning for the content node we are
+about to create.
+\end{details}
+
+\begin{leftbar}
+Select the root node of \textit{GameModeSelectLayer.ccb} and choose the width
+and height to be in percentage of the parent container. Choose 100\% for the
+height and 200\% for the width of the node:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.6\linewidth]{images/Chapter7/content_node_width.png}
+\end{figure}
+\end{leftbar}
+We want the scroll view to contain two pages, that means the content node needs
+to be exactly double as wide as the scroll view. Because we are setting up the
+size of the root node of this \ccbfile{} in percentage of the parent container,
+its actual size will only be determined when it is added to a scroll view. This
+is a great example of dynamic layouts; our scroll view could have any
+arbitrary size and this content node would always be exactly twice as wide.
+
+Inside of this root node we are going to place the content for our two different
+pages.

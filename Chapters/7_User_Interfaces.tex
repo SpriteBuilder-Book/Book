@@ -223,4 +223,53 @@ First, let's add the labels for the endless mode.
 
 \begin{leftbar}
 Drag a \cclabel{} from the node library onto the \textit{endless-mode} node.
+Center the label within its parent node by choosing a position type of
+percentage of parent container. Then set x and y position to 50\%. This label
+should look the same as the \textit{Choose your game mode} label on the start
+scene. Apply the following settings:
+\begin{enumerate}
+  \item Set the label text to \textit{Endless}
+  \item As font name choose: \textit{Optima-Bold}
+  \item As font size choose: \textit{40}
+  \item Set the draw color to \textit{black}
+  \item Set the outline color to \textit{white}
+  \item Set the outline width to \textit{6}
+\end{enumerate}
+\end{leftbar}
+
+Next, let's add the arrow on the right side that will indicate that the player
+can switch to the timed game mode.
+
+\begin{leftbar}
+Drag a \cclabel{} from the node library onto the \textit{endless-mode} node.
+Apply the following settings:
+\begin{enumerate}
+  \item Set the label text to \textit{>>}
+  \item As font name choose: \textit{Optima-Bold}
+  \item As font size choose: \textit{40}
+  \item Set the draw color to \textit{black}
+  \item Set the outline color to \textit{white}
+  \item Set the outline width to \textit{6}
+  \item Set the position up as following: \begin{figure}[H]
+										  \centering
+										  \includegraphics[width=150pt]{images/Chapter7/arrow_label_position.png}
+										  \end{figure}
+\end{enumerate}
+\end{leftbar}
+
+Now your stage should look like this:
+\begin{figure}[H]
+\centering
+\includegraphics[width=150pt]{images/Chapter7/endless_mode.png}
+\end{figure}
+We're going to add a little visual detail to this game mode selection layer. The
+arrows indicating the other available shall blink. This can be easily
+accomplished using \SB{}'s timeline feature. 
+
+\begin{leftbar}
+Set the timeline duration to 1 second:
+\begin{figure}[H]
+\centering
+\includegraphics[width=300pt]{images/Chapter7/timeline_duration.png}
+\end{figure}
 \end{leftbar}

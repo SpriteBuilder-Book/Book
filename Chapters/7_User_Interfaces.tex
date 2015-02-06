@@ -340,3 +340,27 @@ the left and the arrow should be positioned from the left edge of the
 you can always check the solution on GitHub if you get stuck. Once you have set
 up the node for the second game mode come back and we'll integrate this game
 mode selection layer into the start scene.
+
+\begin{leftbar}
+Switch to the \textit{StartScene.ccb} file and drag a \textit{CCScrollView} from
+the node library onto the \textit{background} node. Set the position to 0,0. The
+scroll view shall cover the entire screen, so set the size type to
+\textit{percentage of parent container} and choose 100\% for the width and the
+height of the scroll view. Set up the scroll view specific settings in the
+property inspector as follows:
+\begin{figure}[H]
+\centering
+\includegraphics[width=250pt]{images/Chapter7/scrollview_settings.png}
+\end{figure}
+\end{leftbar}
+Let's discuss the scroll view settings briefly. The most important property is
+the \textit{Content node} property. Here you can choose a \ccbfile{} that will
+be displayed inside of the scroll view. We choose the
+\inlinecode{GameModeSelectLayer.cbb} that we just created. We check
+\textit{Horizontal scroll enabled} because the user shall only be able to scroll
+left and right, not up or down. We discussed the option \textit{paging enabled}
+briefly at the beginning of this section. With this setting activated the scroll
+view will always snap to one of the game modes and will not allow the user to
+stop scrolling in the middle of two game modes.
+
+Great! At this point the set up of our start scene is almost complete.

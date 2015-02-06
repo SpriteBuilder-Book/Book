@@ -160,7 +160,7 @@ to be a \textit{Layer}.
 \end{leftbar}
 
 \begin{details}[frametitle={Why are we using a Layer to create the scroll view
-content?}]
+content?}]\index{Document Types}
 A short refresher on the different \ccbfile{} types: Scenes are used to
 represent full screen content. Sprites are used for simple Sprite Images. Nodes
 are used for node compositions that don't have a specific content size. Layers
@@ -273,3 +273,70 @@ Set the timeline duration to 1 second:
 \includegraphics[width=300pt]{images/Chapter7/timeline_duration.png}
 \end{figure}
 \end{leftbar}
+
+Now we are going to use three \textit{opacity} keyframes to create the blinking
+animation. 
+\begin{leftbar}
+Select the label with the arrows in the timeline. Then create three
+keyframes by hitting the \textit{O} (like in opacity) key on your keyboard.
+Alternatively you can create keyframes through the top bar menu:
+\textit{Animation -> Insert Keyframe\ldots -> Opacity}. Place the first keyframe
+at 0 seconds the second one at 0.5 seconds and the third one at 1
+second.
+\end{leftbar}
+
+Now we can set different opacity values for each of these keyframes and \SB{}
+will create smooth animations between them. There are two ways to set a
+specific value for a keyframe. You can select the keyframe and change the
+relevant property in the property inspector in the right panel of \SB{}. The
+easier way however is to double-click onto a keyframe. That will bring up a
+small popup in which you can modify the relevant values:
+\begin{figure}[H]
+\centering
+\includegraphics[width=250pt]{images/Chapter7/edit_keyframe.png}
+\caption{Double-click onto keyframes to modify their values}
+\end{figure}
+
+\begin{leftbar}
+Set the opacity in the first keyframe to 0. Set the opacity to 1 in the second
+keyframe. For the third keyframe set the opacity to 1 again.
+\end{leftbar}
+
+Now the arrow will appear for half a second and then disappear for another half
+a second. We don't want this animation to be over after 1 second. Instead we
+want to loop it forever. We can do so by \textit{chaining}\index{\SB{}
+Timeline!Chaining} the timeline to itself. In \SB{} timelines can be chained to
+each other. That means that you can define that another timeline should run
+after the current timeline is completed. If you use this feature to chain a
+timeline to itself you have an endlessly running timeline animation!
+
+\begin{leftbar}
+Chain the default timeline to itself as shown below:
+\begin{figure}[H]
+\centering
+\includegraphics[width=200pt]{images/Chapter7/chain_timeline.png}
+\caption{Double-click onto keyframes to modify their values}
+\end{figure}
+\end{leftbar}
+
+\begin{details}[frametitle={Looping animations in \SB{}}]
+Animations that are set up with a chained timeline will loop endlessly when your
+game is running on a simulator or phone. In \SB{} itself the animation will only
+run once. If you want to preview what your animation will look like when it is
+looped, you need to use the following control in the timeline playback panel:
+\begin{figure}[H]
+\centering
+\includegraphics[width=100pt]{images/Chapter7/loop_timeline.png}
+\end{figure}
+Note that this control will only affect your previewed animation in \SB{}. Not
+the actual animation running in your game.
+\end{details}
+
+Now we are finished setting up one of the two game modes. Setting up the node
+for the timed game mode involves exactly the same steps as you have seen just
+now. The only difference is the arrow label. The arrows should be pointing to
+the left and the arrow should be positioned from the left edge of the
+\textit{timed-mode} node. I will leave this as an exercise to you. Remember that
+you can always check the solution on GitHub if you get stuck. Once you have set
+up the node for the second game mode come back and we'll integrate this game
+mode selection layer into the start scene.

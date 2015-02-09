@@ -381,7 +381,8 @@ add an animated transition from this game mode selection screen to the gameplay
 scene. That transition will be triggered as soon as the player taps the start
 button.
 
-Let's start by adding a plain button.
+Let's start by adding a plain button. It is going to be positioned towards
+the bottom of the screen, below the label that shows the selected game mode.
 
 \begin{leftbar}
 Open \textit{StartScene.ccb} and drag a \textit{Button} from the node library to
@@ -407,6 +408,12 @@ corner as reference corner (technically we could also choose the
 \textit{Bottom-Right}, since we are centering the button horizontally this
 wouldn't make any difference).
 
+Another interesting property is the \textit{Preferred Size}. Buttons
+automatically resize to be large enough surround their content (in this case
+the button text). If we want a button to appear larger than necessary we can set
+the \textit{Preferred Size} property. In this example we make the button a
+little bit larger than required to fit the text \textit{Start!}.
+
 We also need to set up some code connections. When the user taps the button we
 want to start the transition. And there's another little feature that's
 important. We only want to activate the \textit{Start!} button when the user has
@@ -415,3 +422,11 @@ two screen modes it shouldn't be possible to start the game. Otherwise it could
 be pretty unclear to the user which game mode has been selected. We're going to
 solve this issue by deactivating the button when a user is scrolling between
 game modes.
+
+\begin{leftbar}
+Select the our \textit{Start!} button and open the \textit{Code Connections}
+tab.
+\end{leftbar}
+
+We have discussed how we can set up methods that are called upon button clicks
+in the \cocos{} and \SB{} introduction chapter (\ref{target_selector}).

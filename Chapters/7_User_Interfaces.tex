@@ -37,6 +37,8 @@ endless and timed game mode. Luckily \cocos{} provides a component called
 \inlinecode{CCScrollView}\index{User Interface!CCScrollView} that implements
 most of the functionality that we need for that scene.
 
+\subsection{Setting the up the Start Scene}
+
 \begin{leftbar}
 Open the \SB{} project and create a new File (File -> New -> File\ldots). Name
 the new file \textit{StartScene} and select \texit{Scene} as the type.
@@ -151,6 +153,8 @@ for our scroll view will be twice as wide as the scroll view itself, resulting
 in a scroll view with two pages. When paging is enabled, the scroll view will
 always snap to one of the two pages as soon as a user stops scrolling. If this
 sounds a little bit too abstract for you, it should become clearer as we implement and use the scroll view.
+
+\subsection{Creating the content node for the scroll view}
 
 First we need to create the content view. We will set it up in a separate
 \ccbfile{} file. 
@@ -364,3 +368,50 @@ view will always snap to one of the game modes and will not allow the user to
 stop scrolling in the middle of two game modes.
 
 Great! At this point the set up of our start scene is almost complete.
+
+\subsection{Implementing the game mode selection}
+As a last step we will implement the actual selection of one of the two game
+modes. So far we have a scroll view that will allow users to switch between the
+game modes but we don't have a mechanism to select one of the two and start a
+game.
+
+We will add a \textit{start} button to \textit{StartScene.ccb} that will
+allow users to confirm a selected game mode and start the game. Once we have the button set up we will
+add an animated transition from this game mode selection screen to the gameplay
+scene. That transition will be triggered as soon as the player taps the start
+button.
+
+Let's start by adding a plain button.
+
+\begin{leftbar}
+Open \textit{StartScene.ccb} and drag a \textit{Button} from the node library to
+the stage, make sure it is a child of the \textit{background} node.
+Set the button up as following:
+\begin{enumerate}
+  \item Set the \textit{Position Reference Corner} to \textit{Bottom-left}
+  \item Set the x position to be \textit{In percent of parent container}
+  \item Set the x position to \textit{50} to center the node
+  \item Set the y position to \textit{80}
+  \item Set the \textit{Preferred size} to \textit{100.0, 40.0}
+  \item Set the \textit{title} to \textit{Start!}
+  \item Set the \textit{Font name} to \textit{Optima-Bold}
+  \item Set the \textit{Font size} to \textit{17.00} 
+\end{enumerate}
+\end{leftbar}
+
+Let's discuss some of these properties we just set up. As a short reminder - in
+almost all cases we want to position UI elements relative to the screen corner
+which they are closest to. This will result in the best behavior when the game
+runs on different screen sizes. Therefore we choose the \textit{Bottom-Left}
+corner as reference corner (technically we could also choose the
+\textit{Bottom-Right}, since we are centering the button horizontally this
+wouldn't make any difference).
+
+We also need to set up some code connections. When the user taps the button we
+want to start the transition. And there's another little feature that's
+important. We only want to activate the \textit{Start!} button when the user has
+selected one of the two game modes. If the user is currently scrolling between
+two screen modes it shouldn't be possible to start the game. Otherwise it could
+be pretty unclear to the user which game mode has been selected. We're going to
+solve this issue by deactivating the button when a user is scrolling between
+game modes.

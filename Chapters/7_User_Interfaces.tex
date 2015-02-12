@@ -369,7 +369,7 @@ stop scrolling in the middle of two game modes.
 
 Great! At this point the set up of our start scene is almost complete.
 
-\subsection{Implementing the game mode selection}
+\subsection{Finishing up the game mode selection scene}
 As a last step we will implement the actual selection of one of the two game
 modes. So far we have a scroll view that will allow users to switch between the
 game modes but we don't have a mechanism to select one of the two and start a
@@ -424,9 +424,79 @@ solve this issue by deactivating the button when a user is scrolling between
 game modes.
 
 \begin{leftbar}
-Select the our \textit{Start!} button and open the \textit{Code Connections}
-tab.
+Select the \textit{Start!} button and open the \textit{Code Connections}
+tab. Set up a code connection with the \textit{Doc root var} and call it
+\textit{playButton}. 
 \end{leftbar}
 
-We have discussed how we can set up methods that are called upon button clicks
-in the \cocos{} and \SB{} introduction chapter (\ref{target_selector}).
+We are going to use this code connection to active and deactivate the start
+button. Towards the beginning of this book we have discussed how we can connect
+method calls to button taps (\ref{target_selector}). Now we are going to use
+this functionality for the start button.
+
+\begin{leftbar}
+Set the \textit{selector} (method name) to \textit{playButtonPressed} and choose
+the \textit{target} to be \textit{Document root}.
+\end{leftbar}
+
+As soon as the button is clicked the \inlinecode{playButtonPressed} will be
+called on the class of the root node. Right now the root node has no class set
+up. Let's change that.
+
+\begin{leftbar}
+Select the root node (top most node in the timeline) of \textit{StartScene.ccb},
+then open the code connections tab. Inside of the code connections tab set the
+\textit{Custom class} to \textit{StartScene}.
+\end{leftbar}
+
+We'll need one more code connection for this scene - a connection for the
+scroll view. Later, when we add some code to this scene you will see that we
+need to connect to the scroll view to be informed when the scroll view
+starts/stops scrolling. Whenever that happens we need to deactivate and activate
+the start button accordingly.
+
+\begin{leftbar}
+Select the scroll view from the timeline and open the code connection tab. Set
+up a code connection to \textit{Doc root var} and name that connection
+\textit{scrollView}.
+\end{leftbar}
+
+Now we have all the code connections set up. Before we add some code to make
+this scene work we will work through one last step in SpriteBuilder - creating a
+nicely animated transition from the selection scene to the gameplay scene.
+
+\subsection{Adding a fancy transition animation}
+
+This is what our transition shall look like:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.85\linewidth]{images/Chapter7/gameplay_transition.png}
+		\caption{By moving UI elements out of the screen and brightening the scene up
+		we transition from the start scene to the gameplay scene}
+\end{figure}
+
+This transition is a nice example of how menus can be integrated into games
+seamlessly. Luckily creating this animation is pretty straightforward, using
+SpriteBuilder's timeline. There are a bunch of steps involved, but none of them
+is complicated.
+
+\begin{leftbar}
+Create a new timeline
+\end{leftbar}
+
+\begin{leftbar}
+Set timeline duration to 1s
+\end{leftbar}
+
+\begin{leftbar}
+Set up all keyframes
+\end{leftbar}
+
+\begin{leftbar}
+Set up callback function after 1 second to trigger actual transition between the
+scenes.
+\end{leftbar}
+
+\subsection{Implementing the game mode selection}
+ 

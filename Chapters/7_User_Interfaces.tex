@@ -275,6 +275,8 @@ Set the timeline duration to 1 second:
 \begin{figure}[H]
 \centering
 \includegraphics[width=300pt]{images/Chapter7/timeline_duration.png}
+\caption{Changing the timeline duration}\label{fig:
+timeline_duration}\index{SpriteBuilder Timeline!Change Duration}
 \end{figure}
 \end{leftbar}
 
@@ -479,23 +481,99 @@ This is what our transition shall look like:
 This transition is a nice example of how menus can be integrated into games
 seamlessly. Luckily creating this animation is pretty straightforward, using
 SpriteBuilder's timeline. There are a bunch of steps involved, but none of them
-is complicated.
+are complicated. First, we'll need to create a new timeline. The default
+timeline runs automatically as soon as the scene becomes visible - the animation
+we are about to build, in contrast, shall only run when the user has selected a
+game mode. Therefore we need to create new timeline which we can run when
+triggered in code.
 
 \begin{leftbar}
-Create a new timeline
+Create a new timeline for our transition animation:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200pt]{images/Chapter7/new_timeline.png}
+\end{figure}
+Next, rename the timeline. You can access the timeline editor through \SB{}'s
+menu (\textit{Animation -> Edit Timelines\ldots}). Change the timeline name to
+\textit{StartGameplay}.
+\end{leftbar}
+We want the transition to be pretty fast, so let's set the timeline duration to
+1 second.
+\begin{leftbar}
+Set timeline duration to 1s. If you forgot how to change the timeline duration
+you can skim back a few pages to figure \ref{fig: timeline_duration}.
+\end{leftbar}
+Next, we are going to set up keyframes for all of the UI elements that we want
+to move off the screen. Additionally we will fade in the background sprite. Make
+sure to follow the instructions exactly!
+\begin{leftbar}
+\begin{enumerate}
+  \item Select the \textit{background} sprite
+  \item Create an \textit{Opacity Keyframe} at 0 seconds and set the opacity
+  value to \textit{0.7}
+  \item Create a second \textit{Opacity Keyframe} at 1 second and set the
+  opacity to \textit{1.0}
+  \item Select the \textit{CCButton}
+  \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
+  unchanged
+  \item Create a second \textit{Position Keyframe} at 1 second and set the
+  position to \textit{(50\%, -400 points)}
+  \item Select the \textit{CCScrollView}
+  \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
+  unchanged
+  \item Create a second \textit{Position Keyframe} at 1 second and set the
+  position to \textit{(0, -400)} 
+  \item Select the \textit{CCLabelTTF}
+  \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
+  unchanged
+  \item Create a second \textit{Position Keyframe} at 1 second and set the
+  position to \textit{(50\%, -50 points)}  
+\end{enumerate}
+\end{leftbar}
+Great! If you want you can test the animation with the \SB{} timeline playback
+feature.
+
+There's one last step left in \SB{} before we move to \xcode{} and implement the
+actual transition between start scene and gameplay. As soon as the animation
+completes, that means all UI elements have moved off the screen and the
+background is brightened up completely, we want to switch to the gameplay scene.
+Switching scenes has to be implemented in code. This means that we need a
+callback in code that gets triggered as soon as this animation completes.
+
+\SB{} and \cocos{} provide three different ways to implement this:
+\begin{itemize}
+  \item Provide a completion block to the animation manager of a scene. This
+  completion block will be called whenever a timeline animation completes
+  (\inlinecode{setCompletedAnimationCallbackBlock:})
+  \item Implement a delegate method that gets called by the animation manager
+  when a timeline animation completes
+  (\inlinecode{completedAnimationSequenceNamed:})
+  \item Set up a callback method within a \SB{} timeline animation
+\end{itemize}
+
+For this section I want to go with the last option. The ability to call methods
+as part of timeline animations can be useful in many situations, so I want to
+use it as early as possible!
+
+\begin{leftbar}
+To add a callback method to a timeline animation you need to \textit{Option-Key
++ Click} into the \textit{Callbacks} line of the timeline editor:
+
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=300pt]{images/Chapter7/timeline_callback.png}
+\end{figure}
+Place that callback at 1 second. You can also choose the \textit{target} and
+\textit{selector} for this callback. Select \textit{Document root} as target and
+\textit{transitionAnimationComplete} as selector.
 \end{leftbar}
 
-\begin{leftbar}
-Set timeline duration to 1s
-\end{leftbar}
+Great! This was quite a lot of work, but now we have a game mode selection
+scene (including a scroll view) and a great transition into the gameplay scene.
+Now it's time to switch back to code and implement the scene transition.
 
 \begin{leftbar}
-Set up all keyframes
-\end{leftbar}
-
-\begin{leftbar}
-Set up callback function after 1 second to trigger actual transition between the
-scenes.
+Publish the \SB{} project and switch to the \xcode{} project.
 \end{leftbar}
 
 \subsection{Implementing the game mode selection}

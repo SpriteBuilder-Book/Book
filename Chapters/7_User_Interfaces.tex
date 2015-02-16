@@ -621,8 +621,8 @@ Create a new Swift file. Call it \inlinecode{StartScene}. Set up the basic
 \begin{lstlisting}
 class StartScene: CCNode {
   
-  var scrollView: CCScrollView!
-  var playButton: CCButton!
+  weak var scrollView: CCScrollView!
+  weak var playButton: CCButton!
   var selectedGameMode: MainScene.GameMode = .Endless
   
 }
@@ -827,8 +827,19 @@ will gain health for collecting correct items. For the endless mode we need to
 display a health bar. For the timed mode we need to display a counter that shows
 the remaining time and a score label.
 
-\subsection{Adding UIs for different game modes}
+\section{Implementing multiple game modes}
+In this section we're going to implement the two different game modes. We're
+going to start with setting up the UI in for each game mode in \SB{}. Then we
+will come up with a way to implement the two game modes without dupicating code
+- this is a great example for exploring some potential design patterns for game
+development.
 
-\subsection{Implementing different game modes}
+\subsection{Adding UIs for different game modes}
+Open your \SB{} project. We're going to creat two separate \ccbfile{}s, one for
+each game mode.
+
+\subsection{Implement game logic for different modes}
+
+\subsection{Adding a game end popup}
 
  

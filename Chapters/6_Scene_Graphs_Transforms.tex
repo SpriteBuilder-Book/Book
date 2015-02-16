@@ -423,6 +423,8 @@ Add the method for the \textit{caught} step:
     // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
     if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
       fallingObject.removeFromParent()
+      let fallingObjectIndex = find(fallingObjects, fallingObject)!
+      fallingObjects.removeAtIndex(fallingObjectIndex)
     }
   }
 \end{lstlisting}

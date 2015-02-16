@@ -3,7 +3,7 @@
 \indexentry{Publish|hyperpage}{25}
 \indexentry{Positioning System|hyperpage}{31}
 \indexentry{Code Connections!Callbacks|hyperpage}{31}
-\indexentry{Document Root|hyperpage}{33}
+\indexentry{Document Root|hyperpage}{32}
 \indexentry{Code Connections!Custom Classes|hyperpage}{33}
 \indexentry{Code Connections!Custom Classes|hyperpage}{35}
 \indexentry{Scene Transition|hyperpage}{38}
@@ -18,7 +18,7 @@
 \indexentry{Framework Classes!CCFileUtils|hyperpage}{64}
 \indexentry{Update Loop|hyperpage}{78}
 \indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{78}
-\indexentry{Fixed Update|hyperpage}{81}
+\indexentry{Fixed Update|hyperpage}{80}
 \indexentry{\SB{} timeline|hyperpage}{83}
 \indexentry{Z-Order|hyperpage}{90}
 \indexentry{Node transformation!Bounding Box|hyperpage}{108}
@@ -28,3 +28,5 @@
 \indexentry{Document Types|hyperpage}{125}
 \indexentry{SpriteBuilder Timeline!Change Duration|hyperpage}{129}
 \indexentry{\SB{} Timeline!Chaining|hyperpage}{130}
+\indexentry{Start Scene|hyperpage}{138}
+\indexentry{User Interface!CCScrollView!Delegate|hyperpage}{141}

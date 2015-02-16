@@ -572,9 +572,230 @@ Great! This was quite a lot of work, but now we have a game mode selection
 scene (including a scroll view) and a great transition into the gameplay scene.
 Now it's time to switch back to code and implement the scene transition.
 
+\subsection{Implementing the game mode selection}
+
 \begin{leftbar}
 Publish the \SB{} project and switch to the \xcode{} project.
 \end{leftbar}
 
-\subsection{Implementing the game mode selection}
+The first change we need to make to the \xcode{} project, is setting up which
+scene gets presented when our game starts\index{Start Scene}. By default it's
+the \textit{MainScene}. However, we have created a new \textit{StartScene} and want
+that one to be the first scene of the game.
+
+We can change this setting in the \textit{AppDelegate} of the project. 
+\begin{leftbar}
+Open \textit{AppDelegate.m} in \textit{Source/Platforms/iOS/}:
+\begin{figure}[H]
+		\centering
+		\includegraphics[width=200pt]{images/Chapter7/app_delegate.png}
+\end{figure}
+\end{leftbar}
+
+The \inlinecode{AppDelegate} of \cocos{} is written in Objective-C. If you don't
+know Objective-C, don't worry, the change we need to make is trivial.
+
+When a \cocos{} game starts, the \inlinecode{startScene} method of the
+\inlinecode{AppDelegate} gets called. That method is responsible for loading and
+returning the start scene of the game. Let's modify it to load
+\inlinecode{StartScene} instead of \inlinecode{MainScene}.
+
+\begin{leftbar}
+Modify the \inlinecode{startScene} method of \textit{AppDelegate.m} to look as
+following:
+\begin{lstlisting}
+- (CCScene*) startScene
+{
+    return [CCBReader loadAsScene:@"StartScene"];
+}
+\end{lstlisting}
+\end{leftbar}
+Great! Now our new start scene will be presented when our game starts. Note
+that the game won't run at this point. We need to create the
+\inlinecode{StartScene} class. We're already referencing this class from the
+\SB{} project, but we haven't created it yet.
+
+\begin{leftbar}
+Create a new Swift file. Call it \inlinecode{StartScene}. Set up the basic
+\inlinecode{StartScene} class like this:
+\begin{lstlisting}
+class StartScene: CCNode {
+  
+  var scrollView: CCScrollView!
+  var playButton: CCButton!
+  var selectedGameMode: MainScene.GameMode = .Endless
+  
+}
+\end{lstlisting}
+\end{leftbar}
+The first two variables are necessary for the code connections that we set up
+in our \SB{} project. The third variable stores which game mode the player has
+currently selected. Since the game mode is a choice between multiple options, an
+enum is a great way to model this. The enum referenced here
+(\inlinecode{MainScene.GameMode}) does not exist yet. We need to add it to the
+\inlinecode{MainScene} class.
+
+\begin{leftbar}
+Open \textit{MainScene.swift} and add the following lines:
+\begin{lstlisting}
+var gameMode:GameMode?
+  
+enum GameMode: Int {
+  case Endless
+  case Timed
+ }
+\end{lstlisting}
+\end{leftbar}
+The first line is a property that stores the game mode of the current game.
+Later we will use that property to apply different rules to the gameplay and
+display different score information. Once the user has selected a game mode, the
+\inlinecode{StartScene} will set this property on the \inlinecode{MainScene}.
+
+We've also added an enum definition. The \inlinecode{GameMode} enum has two
+different states, one for each game mode. For now we will only implement an
+endless and a timed game mode. As we've done earlier, we are associating
+\textit{raw values} with this enum by adding the \inlinecode{Int} type after the
+enum name. This means that the \inlinecode{Endless} value corresponds to 0 and
+the \inlinecode{Timed} value corresponds to 1.
+
+Now we can switch back to working on our new start scene. There are three
+features we need to implement in \textit{StartScene.swift}. We need to keep
+track of the movement of the scroll view. When the user scrolls to one of the
+two pages of the scroll view, we need to remember which game mode has been
+chosen. Further, as discussed earlier, we need to deactivate the \textit{Start!}
+button while the user scrolls. Finally, we need to trigger a transition to the
+gameplay scene (\inlinecode{MainScene}) as soon as a user taps the start button.
+As part of that transition we need to inform \inlinecode{MainScene} which game
+mode was selected. Let's start with the scroll view related code.
+
+\subsubsection{Implementing a scroll view delegate}\index{User
+Interface!CCScrollView!Delegate}
+If you have written code for the iOS platform before, you are very familiar with
+the principle of delegation. Since this book does not necessarily require
+previous iOS app development knowledge, I will give you a brief introduction.
+
+Delegation is often used in iOS frameworks when an object A wants to provide an
+object B with the ability to modify object A's behavior or to listen to changes
+of object A. However, object A does not need to know the exact type of object B.
+Instead, all of the methods that object B can implement are described in a
+protocol. Any object can implement this protocol and be the \textit{delegate} of
+object A.
+
+\begin{details}[frametitle={Delegate pattern}]
+Delegation is used so frequently as part of iOS development that Apple has a
+short chapter about it in it's documentation:
+\url{https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html}
+\end{details}
+
+The \inlinecode{CCScrollView} in \cocos{} also uses the delegate pattern. This
+is what the (Objective-C) protocol looks like:
+\begin{lstlisting}
+@protocol CCScrollViewDelegate <NSObject>
+
+@optional
+- (void)scrollViewDidScroll:(CCScrollView *)scrollView;
+- (void)scrollViewWillBeginDragging:(CCScrollView *)scrollView;
+- (void)scrollViewDidEndDragging:(CCScrollView * )scrollView willDecelerate:(BOOL)decelerate;
+- (void)scrollViewWillBeginDecelerating:(CCScrollView *)scrollView;
+- (void)scrollViewDidEndDecelerating:(CCScrollView *)scrollView;
+
+@end
+\end{lstlisting}
+
+There are a total of five methods that we can implement. The optional keyword
+marks a section of the protocol in which all listed methods are not required to
+be implemented. In this specific protocol \textit{all} methods are optional. We
+want to be informed when the scroll view starts and ends scrolling. There are
+two methods that get called in these cases:
+\inlinecode{scrollViewWillBeginDragging} and
+\inlinecode{scrollViewDidEndDecelerating}. Let's implement these methods and
+become the delegate of our scroll view.
+
+The first step, is setting ourselves up as the delegate of the scroll view. We
+can set ourselves as the delegate as soon as the scene is entirely loaded (when
+\inlinecode{didLoadFromCCB} is called). 
+\begin{leftbar}
+Add the following implementation of \inlinecode{didLoadFromCCB} to
+\inlinecode{MainScene}:
+\begin{lstlisting}
+func didLoadFromCCB() {
+  scrollView.delegate = self
+}
+\end{lstlisting}
+\end{leftbar}
+Now the scroll view knows about us and will call all the methods of the
+\inlinecode{CCScrollViewDelegate} protocol that we implement.
+
+Now we need to add the protocol implementation. In Swift, it is common to
+implement protocols in class extensions. Class extensions allow us to add functionality to
+a class outside of its original definition. Moving all protocol
+implementations into separate class extensions is a nice way of keeping our code
+organized. 
+
+The implementation of our two protocol methods is pretty simple. When the user
+starts scrolling we deactivate the start button. When the user ends scrolling,
+we activate the start button and remember the selected game mode.
+\begin{leftbar}
+Add the following protocol implementation to \filemention{StartScene.swift}. It
+is \textbf{important} that the class extension is \textbf{not} part of the
+class, but placed after the closing curly brackets of the class definition:
+\begin{lstlisting}
+class StartScene: CCNode {
+  ...  
+}
+
+extension StartScene: CCScrollViewDelegate {
+  
+  func scrollViewWillBeginDragging(scrollView: CCScrollView) {
+    playButton.enabled = false
+  }
+  
+  func scrollViewDidEndDecelerating(scrollView: CCScrollView) {
+    playButton.enabled = true
+    selectedGameMode = MainScene.GameMode(rawValue: Int(scrollView.horizontalPage))!
+  }
+  
+}
+\end{lstlisting}
+\end{leftbar}
+Activating and deactivating the button is very simple, \inlinecode{CCButton}
+provides a property for it. Choosing the game mode based on the selected scroll
+view page is similarly straightforward. \inlinecode{CCScrollView} provides a
+\inlinecode{horizontalPage} property that allows use to read which page the user
+has currently scrolled to. We use that value to select the according game mode.
+In order to create an enum value from a number we need to use the
+\inlinecode{rawValue:} initializer (remember that 0 corresponds to the endless
+game mode and 1 to the timed game mode).
+
+Our work with the scroll view is completed. Next, let's implement the callback
+method for the button interaction. As soon as the play button is tapped we want
+to play the transition animation that we created in \SB{}. Additionally, we
+should deactivate the scroll view. That way users cannot modify the selected
+game mode while the scene is in transition.
+
+\begin{leftbar}
+Implement the \inlinecode{playButtonPressed} method that we've set up in \SB{}
+inside of \inlinecode{StartScene}. This should be implemented as part of the
+core class, not of the extension:
+\begin{lstlisting}
+  func playButtonPressed() {
+    scrollView.userInteractionEnabled = false
+    animationManager.runAnimationsForSequenceNamed("StartGameplay")
+  }
+\end{lstlisting}
+\end{leftbar}
+First, we deactivate user interaction on the scroll view. Whichever game mode
+has been selected by the user before hitting the play button will stay selected
+throughout the animation. Then we run the actual animation. Remember that all
+timelines created in \SB{} can be referenced in code by using their name.
+
+Now there's a last method left to be implemented. We have added a callback to
+the timeline animation that gets called when the transition animation is
+completed. In the implementation of that method we should perform the actual
+scene transition.
+
+\subsection{Adding HUDs for different game modes}
+
+\subsection{Implementing different game modes}
+
  

@@ -913,7 +913,34 @@ Great! The UI for the timed game mode is completed. It should look as following:
 \end{figure}
 
 \subsubsection{UI for the endless game mode}
+Now lets create the second UI. We'll start of by creating a new \ccbfile{}.
+\begin{leftbar}
+Create a new \ccbfile{} of type \textit{Layer} and name it
+\textit{EndlessModeUI}. Select the root node of the new \ccbfile{} and change
+the size type to be \textit{percentage of parent container} for both, width and height. Set the
+values for width and height to \textit{100\%}.
+\end{leftbar}
+Next, let's add a label that displays the amount of seconds a player has
+survived. Once again we can copy the existing label from the
+\filemention{TimeModeUI.ccb} file since we want both labels to look identical.
+\begin{leftbar}
+Open \filemention{TimeModeUI.ccb} and copy the label in the \textbf{top left
+corner}. Then open \filemention{EndlessModeUI.ccb} and paste the label. Select
+the pasted label and modify it as following:
+\begin{enumerate}
+  \item Change the label text to \textit{Survived: 0}
+  \item Set up a code connection to the \textbf{Owner var} and name it \textit{survivedLabel}
+\end{enumerate}
+\end{leftbar}
 
+Besides this label we will also need to display a health bar in the endless game
+mode. The easiest way to implement a health bar in \cocos{} is taking a plain
+\inlinecode{CCColorNode} and scaling it depending on the current health level
+of the player.
+
+\begin{leftbar}
+Drag a \textit{Color Node} from the node library to the stage\ldots
+\end{leftbar}
 
 \subsection{Implement game logic for different modes}
 

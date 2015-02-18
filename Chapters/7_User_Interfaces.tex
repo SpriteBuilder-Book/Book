@@ -828,15 +828,92 @@ display a health bar. For the timed mode we need to display a counter that shows
 the remaining time and a score label.
 
 \section{Implementing multiple game modes}
-In this section we're going to implement the two different game modes. We're
+Lets implement the two different game modes. We're
 going to start with setting up the UI in for each game mode in \SB{}. Then we
-will come up with a way to implement the two game modes without dupicating code
-- this is a great example for exploring some potential design patterns for game
-development.
+will come up with a way to implement the two game modes without duplicating
+code - this is a great use case for exploring some potential design patterns for
+game development.
 
 \subsection{Adding UIs for different game modes}
-Open your \SB{} project. We're going to creat two separate \ccbfile{}s, one for
-each game mode.
+Open your \SB{} project. We're going to create two separate \ccbfile{}s, one for
+the UI elements of each game mode.
+
+\subsubsection{UI for the timed game mode}
+\begin{leftbar}
+Create a new \ccbfile{} of type \textit{Layer} and name it \textit{TimedModeUI}.
+Select the root node of the new \ccbfile{} and change the size type to be
+\textit{percentage of parent container} for both, width and height. Set the
+values for width and height to \textit{100\%}.
+\end{leftbar}
+We will place all UI elements relative to the edges of the screen. That way the
+UI will look good on any given screen size. That's why we want the root node to
+take 100\% the size of its parent container. If we instead would use a fixed
+size for this layer our UI would not respond to multiple screen sizes.
+
+The UI for the timed game mode is not too complicated, it consists of two
+separate labels. We want the style of these labels to be consistent with the
+labels that we used on the start scene. The easiest way to do accomplish this is
+to actually copy the label in \SB{}.
+
+\begin{leftbar}
+Open \filemention{StartScene.ccb} and select the \textit{CCLabelTTF} from the
+timeline. Now select \textit{Edit -> Copy} from the \SB{} menu (or use the
+shortkey: \textit{CMD+C}). 
+
+Next, open \filemention{TimedModeUI.ccb} and select \textit{Edit -> Paste} from
+the \SB{} menu (or use: \textit{CMD+V}).
+\end{leftbar}
+
+Now you should have an exact copy of the start scene label in our new
+\ccbfile{}. Now we can make a small tweak to this label and lay it out
+correctly.
+
+\begin{leftbar}
+Apply the following changes to the label:
+\begin{enumerate}
+  \item Select the \textit{Position Reference Corner} to be the top left corner
+  \item Change the position to \textit{(20,20)}
+  \item Change the anchor point to \textit{(0.0, 1.0)}
+  \item Change the label text to \textit{Time: 0}
+  \item Change the font size to \textit{30}
+  \item Set up a code connection to the \textbf{Owner var} (not the \textit{Doc
+  root var}, this is very important!) and name it \textit{timeLabel}
+\end{enumerate}
+\end{leftbar}
+
+Now the label should be nicely positioned in the top left corner! We will not be
+creating a custom class for this UI layer, since it doesn't have any behavior
+associated with it. Instead we will later assign the label code connections to
+the classes that contain the actual gameplay logic. That's why it's important to set up the code connection with the \textit{Owner var} instead of the \textit{Doc root var}.
+
+Next, let's create the points label. Since it will look almost identical to the
+time label we should save some time and just copy and modify the label again
+instead of starting with a new label from scratch. Note however, that you should
+be concentrated when using this approach. When you copy a node all of it's
+properties are copied (including code connections). If you aren't careful you
+might end up with hard to debug issues (e.g. because two nodes attempt to use
+the same code connection variable).
+
+\begin{leftbar}
+Copy the time label that you just created it and paste it. Change the pasted
+label as following:
+\begin{enumerate}
+  \item Select the \textit{Position Reference Corner} to be the top right corner
+  \item Change the anchor point to \textit{(1.0, 1.0)}
+  \item Change the label text to \textit{Points: 0}
+  \item Set up a code connection to the \textbf{Owner var} and name it \textit{pointsLabel}
+\end{enumerate}
+\end{leftbar}
+
+Great! The UI for the timed game mode is completed. It should look as following:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/timed_mode_ui.png}
+\end{figure}
+
+\subsubsection{UI for the endless game mode}
+
 
 \subsection{Implement game logic for different modes}
 

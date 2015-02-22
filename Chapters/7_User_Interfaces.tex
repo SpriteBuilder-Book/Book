@@ -980,6 +980,63 @@ implement:
   \item Every game mode should know which score board entries it has and it
   should be responsible for updating them based on the current state of the game
 \end{itemize}
+
+We should try to come up with a solution that lets us add more game modes as
+easily as possible. One modular way of implementing this is setting up different
+game modes as individual classes. These classes can be referenced by the
+\inlinecode{Gameplay} class. In this scenario, the \inlinecode{Gameplay} class
+remains responsible for the core of the game, it spawns falling objects (though,
+even this could be moved into the gameplay classes eventually) and lets them
+fall to the ground. It handles collision detection and determines if an object
+was caught or dropped.
+
+The consequences of catching or dropping objects however, are not implemented in
+the \inlinecode{Gameplay} class itself. Instead, they are implemented by the
+game modes. This means that the \inlinecode{Gameplay} class needs to inform the
+game mode when a significant event occurs. The game mode itself can then decide
+how this event impacts the gameplay.
+
+Let's start implementing this design. We should start by defining a protocol
+that can be implemented by all game modes.
+\begin{leftbar}
+Create a new Swift file in \xcode{}. Then add the following protocol definition
+to it:
+\begin{lstlisting}
+protocol GameModeDelegate: class {
+  var userInterface: CCNode! { get }
+
+  func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject)
+  func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject)
+  func gameplayStep(delta: CCTime) -> Bool
+}
+\end{lstlisting}
+\end{leftbar}
+Note that I have omitted the source code documentation of this protocol for the
+sake of brevity. The protocol we've just defined will be implemented by
+multiple classes, it's important to document its methods and properties for developers that want
+to add game modes in future. You can take a look at the source code for
+this chapter on GitHub() to read the documentation. %TODO: add link to source
+% code
+Let's discuss this protocol in detail. The first thing to note is that we
+have defined the protocol as a class-only protocol \ldots \cocos{} needs to
+store a reference to this game mode, that is only possible if the type
+implementing this protocol is a class.
+
+
+First, we require on property:
+\inlinecode{userInterface}. This property shall provide access to the
+user interface of the game mode to outside classes. The \inlinecode{Gameplay}
+class can use this property to access the UI for the currently active game mode.
+We only expose as a getter as part of the protocol, the UI cannot be changed
+from outside of the game mode class.
+
+
+\begin{details}[frametitle={Source code
+documentation in Swift}] Many details about source code documentation in Swift are still up in the air.
+NSHipster provides a great article that describes the currently supported
+documentation style: \url{http://nshipster.com/swift-documentation/}.
+\end{details}
+
 \subsection{Adding a game end popup}
 
  

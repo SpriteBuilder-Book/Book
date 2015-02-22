@@ -939,11 +939,47 @@ mode. The easiest way to implement a health bar in \cocos{} is taking a plain
 of the player.
 
 \begin{leftbar}
-Drag a \textit{Color Node} from the node library to the stage\ldots
+Drag a \textit{Color Node} from the node library to the stage. Set it up as
+following:
+\begin{enumerate}
+  \item Select the \textit{Position Reference Corner} to be the top right corner
+  \item Change the position to \textit{(20,20)}
+  \item Change the anchor point to \textit{(1.0, 1.0)}
+  \item Change the node color to \textit{green} (pick any color you enjoy)
+  \item Change the font size to \textit{30}
+  \item Set up a code connection to the \textbf{Owner var} (not the \textit{Doc
+  root var}, this is very important!) and name it \textit{healthBar}
+\end{enumerate}
 \end{leftbar}
 
-\subsection{Implement game logic for different modes}
+Now the UI for the endless mode should look like this:
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/endless_mode_ui.png}
+\end{figure}
+
+We're done with the UI setup. To make these score displays actually show up as
+part of the game, we'll now move to implementing the two game modes in code.
+
+\subsection{Implement game logic for different modes}
+We need to change multiple parts of our game to support two different game
+modes.Depending on which game mode a player selects, we want to display a different
+score board and also implement a different set of rules.
+
+Before we dive into coding, let's try to figure out what we'll need to
+implement:
+\begin{itemize}
+  \item When we start a game, the \inlinecode{Gameplay} class needs to know
+  which game mode a user has selected
+  \item \inlinecode{Gameplay} shouldn't know
+  anything about the rules of the selected game mode. That way we could add game
+  modes in the future without increasing the complexity of \inlinecode{Gameplay}
+  \item Every game mode should know about its rules (when does a player earn /
+  loose points, when does a game end)
+  \item Every game mode should know which score board entries it has and it
+  should be responsible for updating them based on the current state of the game
+\end{itemize}
 \subsection{Adding a game end popup}
 
  

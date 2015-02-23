@@ -1013,12 +1013,14 @@ Create a new Swift file in \xcode{} and call it
 \filemention{GameModeDelegate.swift}.
 Then add the following protocol definition to it:
 \begin{lstlisting}
+typealias GameOver = Bool
+
 protocol GameModeDelegate: class {
   var userInterface: CCNode! { get }
 
   func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject)
   func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject)
-  func gameplayStep(mainScene:MainScene, delta: CCTime) -> Bool
+  func gameplayStep(mainScene:MainScene, delta: CCTime) -> GameOver
 }
 \end{lstlisting}
 \end{leftbar}
@@ -1035,7 +1037,13 @@ NSHipster provides a great article that describes the currently supported
 documentation style: \url{http://nshipster.com/swift-documentation/}.
 \end{details}
 
-Let's discuss this protocol in detail. The first thing to note is that we
+Let's discuss this protocol in detail. The first interesting aspect is a
+\inlinecode{typealias} statement before the protocol declaration. Using
+typealiases is simple in Swift, and it's a nice way of better capturing the
+semantics of a type. Returning a type of \inlinecode{GameOver} is easier to
+understand the returning a \inlinecode{Bool}.
+
+The second thing to note is that we
 have defined the protocol as a \textit{class-only} protocol. We can do that by
 adding the \inlinecode{class} keyword to the protocol's inheritance list. Later
 you'll see that any type that implements \inlinecode{GameModeDelegate} is
@@ -1065,7 +1073,7 @@ The last method(\inlinecode{gameplayStep:}) fulfills two purposes. Firstly, it
 allows game modes to hook into the update method of \inlinecode{MainScene}. That
 is necessary for any time based actions, e.g. capturing the total time that
 has passed since the beginning of the game. The second purpose is fulfilled by
-the \inlinecode{Bool} return value. The return value allows the game mode to
+the \inlinecode{GameOver} return value. The return value allows the game mode to
 tell the \inlinecode{MainScene} that the game is over. All game modes will use
 this method to implement the game over condition.
 
@@ -1227,7 +1235,29 @@ Since we are checking for multiple possible values of an enum using a switch
 statement results in nicely readable code. Besides the switch statement the
 implementation is pretty straightforward.
 
-Now there's only one last method to implement, the \inlinecode{}
+Now there's only one last method to implement:
+\inlinecode{gameplayStep(mainScene:, delta:)} We need to do two things in the
+implementation of this method:
+\begin{enumerate}
+  \item Subtract passed time from time that is left over
+  \item Check if time reached minimum time (0.0) and return \inlinecode{true} if
+  that's the case
+\end{enumerate}
+\begin{leftbar}
+Add the following implementation of the step method to
+\inlinecode{TimedGameMode}:
+\begin{lstlisting}
+func gameplayStep(mainScene: MainScene, delta: CCTime) -> GameOver {
+  time -= delta
+  return !(time > minTime)
+}
+\end{lstlisting}
+\end{leftbar}
+First, we subtract \inlinecode{delta} from the remaining game time. Next, we
+check if the total time is over or not and return a \inlinecode{GameOver} value
+based on that.
+
+Congratulations! We have fully implemented our first game mode.
 
 \subsection{Adding a game end popup}
 

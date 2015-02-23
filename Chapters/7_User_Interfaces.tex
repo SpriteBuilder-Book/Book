@@ -970,11 +970,12 @@ score board and also implement a different set of rules.
 Before we dive into coding, let's try to figure out what we'll need to
 implement:
 \begin{itemize}
-  \item When we start a game, the \inlinecode{Gameplay} class needs to know
+  \item When we start a game, the \inlinecode{MainScene} class needs to know
   which game mode a user has selected
-  \item \inlinecode{Gameplay} shouldn't know
+  \item \inlinecode{MainScene} shouldn't know
   anything about the rules of the selected game mode. That way we could add game
-  modes in the future without increasing the complexity of \inlinecode{Gameplay}
+  modes in the future without increasing the complexity of
+  \inlinecode{MainScene}
   \item Every game mode should know about its rules (when does a player earn /
   loose points, when does a game end)
   \item Every game mode should know which score board entries it has and it
@@ -984,7 +985,7 @@ implement:
 We should try to come up with a solution that lets us add more game modes as
 easily as possible. One modular way of implementing this is setting up different
 game modes as individual classes. These classes can be referenced by the
-\inlinecode{Gameplay} class. In this scenario, the \inlinecode{Gameplay} class
+\inlinecode{MainScene} class. In this scenario, the \inlinecode{MainScene} class
 remains responsible for the core of the game, it spawns falling objects (though,
 even this could be moved into the gameplay classes eventually) and lets them
 fall to the ground. It handles collision detection and determines if an object
@@ -996,18 +997,28 @@ game modes. This means that the \inlinecode{Gameplay} class needs to inform the
 game mode when a significant event occurs. The game mode itself can then decide
 how this event impacts the gameplay.
 
-Let's start implementing this design. We should start by defining a protocol
-that can be implemented by all game modes.
+Here's a diagram that illustrates our solution:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/gameplay_design.png}
+\end{figure}
+
+\subsubsection{Defining a protocol for game modes}
+Let's start implementing this design. The first step is defining a protocol
+that can be implemented by all game modes. In the diagram above I've highlighted
+the protocol in green.
 \begin{leftbar}
-Create a new Swift file in \xcode{}. Then add the following protocol definition
-to it:
+Create a new Swift file in \xcode{} and call it
+\filemention{GameModeDelegate.swift}.
+Then add the following protocol definition to it:
 \begin{lstlisting}
 protocol GameModeDelegate: class {
   var userInterface: CCNode! { get }
 
   func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject)
   func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject)
-  func gameplayStep(delta: CCTime) -> Bool
+  func gameplayStep(mainScene:MainScene, delta: CCTime) -> Bool
 }
 \end{lstlisting}
 \end{leftbar}
@@ -1017,25 +1028,206 @@ multiple classes, it's important to document its methods and properties for deve
 to add game modes in future. You can take a look at the source code for
 this chapter on GitHub() to read the documentation. %TODO: add link to source
 % code
-Let's discuss this protocol in detail. The first thing to note is that we
-have defined the protocol as a class-only protocol \ldots \cocos{} needs to
-store a reference to this game mode, that is only possible if the type
-implementing this protocol is a class.
-
-
-First, we require on property:
-\inlinecode{userInterface}. This property shall provide access to the
-user interface of the game mode to outside classes. The \inlinecode{Gameplay}
-class can use this property to access the UI for the currently active game mode.
-We only expose as a getter as part of the protocol, the UI cannot be changed
-from outside of the game mode class.
-
 
 \begin{details}[frametitle={Source code
 documentation in Swift}] Many details about source code documentation in Swift are still up in the air.
 NSHipster provides a great article that describes the currently supported
 documentation style: \url{http://nshipster.com/swift-documentation/}.
 \end{details}
+
+Let's discuss this protocol in detail. The first thing to note is that we
+have defined the protocol as a \textit{class-only} protocol. We can do that by
+adding the \inlinecode{class} keyword to the protocol's inheritance list. Later
+you'll see that any type that implements \inlinecode{GameModeDelegate} is
+required to be a reference type, because we need to pass references to it to
+\cocos{}.
+
+We start our protocol by requiring a property: \inlinecode{userInterface}. This
+property shall provide access to the game mode's user interface. The
+\inlinecode{MainScene} class can use this property to access the UI for the
+currently active game mode.
+We only expose as a getter as part of the protocol, the UI cannot be changed
+from outside of the game mode class. Each game mode knows the \ccbfile{} of its
+UI and loads it as soon as the game mode is created.
+
+Next, we define two methods that get called when objects get dropped or caught.
+Both methods receive a reference to the \inlinecode{MainScene}. This is pretty
+common when using the delegate pattern. Theoretically a game mode instance
+could be the delegate of multiple \inlinecode{MainScene} instances. By passing
+the the \inlinecode{MainScene} in which the event occurred to the delegate the
+delegate can perform different actions based on which \inlinecode{MainScene}
+called the method. The second parameter sent to both methods is the object which
+has been caught or dropped. The class implementing
+the \inlinecode{GameModeDelegate} can use this information to determine whether
+points should be added or subtracted.
+
+The last method(\inlinecode{gameplayStep:}) fulfills two purposes. Firstly, it
+allows game modes to hook into the update method of \inlinecode{MainScene}. That
+is necessary for any time based actions, e.g. capturing the total time that
+has passed since the beginning of the game. The second purpose is fulfilled by
+the \inlinecode{Bool} return value. The return value allows the game mode to
+tell the \inlinecode{MainScene} that the game is over. All game modes will use
+this method to implement the game over condition.
+
+Now that our protocol is defined we can implement the two game modes. 
+
+\subsubsection{Implementing the timed game mode}
+Let's start by implementing the timed game mode. Since we thought about the
+software design upfront and even defined a protocol for game modes, the
+implementation itself is not too complicated.
+
+\begin{leftbar}
+Create a new Swift file and name it \filemention{TimedGameMode}. Add the
+following class definition to the new file:
+\begin{lstlisting}
+@objc(TimedGameMode)
+class TimedGameMode: GameModeDelegate {
+  var timeLabel: CCLabelTTF!
+  var pointsLabel: CCLabelTTF!
+}
+\end{lstlisting}
+\end{leftbar}
+There's a lot going on in these few lines. Firstly, we need the
+\inlinecode{@objc} annotation to make this class visible to \cocos{}. \cocos{}
+is written in Objective-C and can only see classes that are subclasses of
+\inlinecode{NSObject} or that have the \inlinecode{@objc} annotation. So far all
+of our classes have been subclasses of \cocos{} classes, and all of them in turn
+are derived from \inlinecode{NSObject}, therefore this annotation wasn't
+necessary. The \inlinecode{TimedGameMode} class is our first class that is not a
+subclass of an Objective-C class.
+
+In the second line we declare that our class conforms to the
+\inlinecode{GameModeDelegate} protocol. We also declare to instance variables
+for the code connections that we set up in the \ccbfile{} for the timed game
+mode. We have access to two different labels, one displays the player's the
+other one displays the time that's left.
+
+We'll need a whole set of additional variables. We need a
+\inlinecode{userInterface} variable to conform to the
+\inlinecode{GameModeDelegate}, we also need variables to store the amount of
+points the player has scored and the time that is left in the current game.
+
+\begin{leftbar}
+Add the following properties and property observers to the
+\inlinecode{TimedGameMode} class:
+\begin{lstlisting}
+let minPoints = 0
+let minTime = 0.0
+
+private(set) var userInterface: CCNode!
+
+private var time: CCTime = 10 {
+  didSet {
+    updateTimeDisplay(time)
+  }
+}
+
+private var points: Int = 0 {
+  didSet {
+    updatePointsDisplay(points)
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+The first two constants are used to define the bottom line for time and points
+in this game mode. In almost all cases using constants should be preferred over
+using numbers directly in code. By defining constants our intentions are obvious
+to other developers.
+
+Further, we add the \inlinecode{userInterface} variable. This variable will
+store the loaded \ccbfile{} that belongs to the timed game mode. It is also
+required to conform with the \inlinecode{GameModeDelegate} protocol.
+
+Next, we declare and define the \inlinecode{time} property that stores the time
+that is left during the current game. For testing purposes our games only last 10 seconds. We
+also add a property observer. When the time value changes we call the (yet to
+be implemented) \inlinecode{updateTimeDisplay:} method, that method updates the
+label that displays the leftover time.
+
+We essentially do the same for the \inlinecode{points} property.
+
+Next, let's implement the two helper methods that update the time and point
+labels.
+\begin{leftbar}
+Add the following two methods to \inlinecode{TimedGameMode}:
+\begin{lstlisting}
+func updatePointsDisplay(points: Int) {
+  pointsLabel.string = "Points: \(points)"
+}
+
+func updateTimeDisplay(time: CCTime) {
+  timeLabel.string = "Time: \(Int(time))"
+}
+\end{lstlisting}
+\end{leftbar}
+These methods are very simple. We only put this code into separate methods
+because we need the functionality in multiple places, as you'll see shortly.
+
+Next, before we implement the methods defined in our protocol, let's tackle the
+initializer of this class. The main task the the initializer needs to perform is
+loading its UI from a \ccbfile{}.
+\begin{leftbar}
+Add the following initializer:
+\begin{lstlisting}
+init() {
+  userInterface = CCBReader.load("TimedModeUI", owner:self)
+  updatePointsDisplay(points)
+  updateTimeDisplay(time)
+}
+\end{lstlisting}
+\end{leftbar}
+In the first line we load the \filemention{TimedModeUI} \ccbfile{}. We store the
+loaded node hierarchy in the \inlinecode{userInterface} property, that way it
+can be accessed by \inlinecode{MainScene}.
+We also call our to label helper methods, so that the labels display the correct
+initial values for time and points.
+
+Now we can move on to the core of this class. The methods that are required by
+the \inlinecode{GameModeDelegate} protocol.
+
+Let's start with the \inlinecode{gameplay(mainScene:,
+droppedFallingObject:)} method. Now it's time to make some decisions on the
+rules of the timed game mode. I suggest that we subtract 1 point when the player
+drops an object that should be caught. Because we don't want to be too mean we
+set the lowest possible score to 0.
+
+\begin{leftbar}
+Add the following method to \inlinecode{TimedGameMode}:
+\begin{lstlisting}
+func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject) {
+  if (droppedFallingObject.type == .Good) {
+    points = max(points - 1, minPoints)
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+If the object that has been dropped is a \inlinecode{.Good} object, we subtract
+one point. Using Swift's \inlinecode{max} function we make sure that the total
+score never drops below \inlinecode{minPoints}, which we have defined as 0.
+
+Next, we'll implement the method that gets called when objects are caught.
+Once again time to decide on some rules. I propose to add a point when a good
+object is caught and subtract a point when a bad object is caught. You can
+obviously feel free to use different values!
+
+\begin{leftbar}
+Add the method for caught objects to \inlinecode{TimedGameMode}:
+\begin{lstlisting}
+func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject) {
+  switch (caughtFallingObject.type) {
+  case .Bad:
+    points = max(points - 1, minPoints)
+  case .Good:
+    points += 1
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+Since we are checking for multiple possible values of an enum using a switch
+statement results in nicely readable code. Besides the switch statement the
+implementation is pretty straightforward.
+
+Now there's only one last method to implement, the \inlinecode{}
 
 \subsection{Adding a game end popup}
 

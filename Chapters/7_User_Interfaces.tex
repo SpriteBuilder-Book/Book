@@ -1415,12 +1415,107 @@ into the \inlinecode{MainScene} class.
 The last important step in implementing the game modes is connecting them to
 \inlinecode{MainScene}. Currently the \inlinecode{StartScene} passes the
 selected game mode to the \inlinecode{MainScene}. The next step for 
-\inlinecode{MainScene} will be instantiating a game mode based on this
+\inlinecode{MainScene} will be creating an instance of a game mode based on this
 selection.
 
 Additionally we need to modify \inlinecode{MainScene} to call the methods
 defined in \inlinecode{GameModeDelegate} whenever objects are caught, dropped
 and when the \inlinecode{update} method is called.
+
+Let's start with instantiating one of our two game modes. In order to do that we
+need a variable that can store the created game mode and a property observer for
+the \inlinecode{gameMode} property. Observing the \inlinecode{gameMode} property
+will allow us to instantiate a game mode object as soon as a game mode has been
+selected:
+\begin{leftbar}
+Add a property to store the instantiated game mode:
+\begin{lstlisting}
+var gameModeDelegate:GameModeDelegate?
+\end{lstlisting}
+Next, add this property definition and observer to \inlinecode{gameMode}:
+\begin{lstlisting}
+var gameMode:GameMode = .Endless {
+  didSet {
+    switch (gameMode) {
+    case .Endless:
+      gameModeDelegate = EndlessGameMode()
+    case .Timed:
+      gameModeDelegate = TimedGameMode()
+    }
+    self.addChild(gameModeDelegate?.userInterface)
+    gameModeDelegate?.userInterface.zOrder = Int.max
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+Swift requires all non Optional properties to have a value after the
+initializer of the class is called. Since \inlinecode{gameMode} is is not
+initialized from the \inlinecode{init} method, but is instead set by an outside caller after
+ initialization we would have to mark it as an Optional type. An alternative to
+ that is assigning an initial value. In this case it makes sense to work with
+ such a default value. If the outside caller does not select a specific game
+ mode, we run the \inlinecode{.Endless} game mode and all of the code in
+ \inlinecode{MainScene} works as expected.
+
+Inside of the property observer we first switch over the potential game modes.
+Depending on the game mode we instantiate a different game mode class. Next, we
+add the user interface of the created game mode to main scene. If you are fairly
+new to Swift you might be surprised by the question mark in
+\inlinecode{gameModeDelegate?.userInterface}. This pattern is called
+\textit{optional chaining}. In this specific case the \inlinecode{userInterface}
+variable is only being accessed if \inlinecode{gameModeDelegate} actually
+contains a value. More general optional chaining can be used to call methods and
+access properties on values that might be \inlinecode{nil}, without causing an
+runtime error.
+
+In the last line of the property observer we set the \inlinecode{zOrder} of the
+game mode UI to \inlinecode{Int.max}, which means that the UI will be rendered
+above all other elements in this scene.
+
+Now we have instantiated a game mode - we can move on to the code that will
+communicate with it. Let's start by calling the
+\inlinecode{gameplayStep(mainScene:, delta:)} method. This method needs to be
+called from within the \inlinecode{update:} method of \inlinecode{MainScene}.
+Additionally to calling the method we need to capture the return value to see
+wether the current game is over or not.
+
+\begin{leftbar}
+Add the following statements to the end of the \inlinecode{update:} method of
+\inlinecode{MainScene}:
+\begin{lstlisting}
+let gameOver = gameModeDelegate?.gameplayStep(self, delta: delta)
+if let gameOver = gameOver {
+  if (gameOver) {
+    self.gameOver()
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+We call the step method of our delegate, passing a reference to
+\inlinecode{self} and the \inlinecode{delta} value. We store the boolean result
+and use it to check whether the game over condition occurred or not. If the game
+is over we call the \inlinecode{gameOver} method.
+
+We should add the \inlinecode{gameOver} method next. For now all it will do is
+displaying the start scene of this game. Later on we will display a popup
+that summarizes the player's results.
+
+\begin{leftbar}
+Add the \inlinecode{gameOver()} method to \inlinecode{MainScene}:
+\begin{lstlisting}
+func gameOver() {
+  let startScene = CCBReader.loadAsScene("StartScene")
+  let transition = CCTransition(crossFadeWithDuration: 0.7)
+  CCDirector.sharedDirector().replaceScene(startScene, withTransition: transition)
+}
+\end{lstlisting}
+\end{leftbar}
+
+All we do is loading the \filemention{StartScene} and presenting it with a cross
+fade transition.
+
+Now all that is left is calling the \inlinecode{GameModeDelegate} when objects
+have been dropped or caught.
 
 \subsection{Adding a game end popup}
 

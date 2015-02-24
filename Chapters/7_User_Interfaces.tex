@@ -1515,8 +1515,56 @@ All we do is loading the \filemention{StartScene} and presenting it with a cross
 fade transition.
 
 Now all that is left is calling the \inlinecode{GameModeDelegate} when objects
-have been dropped or caught.
+have been dropped or caught. Let's begin with dropped objects.
 
-\subsection{Adding a game end popup}
+\begin{leftbar}
+Extend the \inlinecode{performMissedStep:} method to call the game mode
+delegate:
+\begin{lstlisting}
+func performMissedStep(fallingObject:FallingObject) {
+  // check if falling object is below the screen boundary
+  if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
+    gameModeDelegate?.gameplay(self, droppedFallingObject: fallingObject)
+    ...
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+We again use optional chaining to only call the
+\inlinecode{gameplay(mainScene:, droppedFallingObject:)} method if
+\inlinecode{gameModeDelegate} actually contains a value.
+
+As a last step implement the same functionality for caught objects.
+\begin{leftbar}
+Extend \inlinecode{performCaughtStep:} with a call to the game mode delegate:
+\begin{lstlisting}
+func performCaughtStep(fallingObject:FallingObject) {
+  // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
+  if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
+    gameModeDelegate?.gameplay(self, caughtFallingObject: fallingObject)
+    ...
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now the game modes and all the communication between the selected game mode and
+\inlinecode{MainScene} should be set up correctly. Finally we can test the game
+mode selection. 
+
+Run the app and select the endless game mode, you should see something
+similar to the following screen once the game starts:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/endless_game_with_ui.png}
+    \caption{The endless game mode features a survival time label and a health
+    bar}
+\end{figure}
+
+You should see the health bar grow and shrink according to the game mode
+rules that we implemented - finally all the parts have come together.
+
+\section{Adding a game end popup}
 
  

@@ -1105,7 +1105,7 @@ necessary. The \inlinecode{TimedGameMode} class is our first class that is not a
 subclass of an Objective-C class.
 
 In the second line we declare that our class conforms to the
-\inlinecode{GameModeDelegate} protocol. We also declare to instance variables
+\inlinecode{GameModeDelegate} protocol. We also declare to properties
 for the code connections that we set up in the \ccbfile{} for the timed game
 mode. We have access to two different labels, one displays the player's the
 other one displays the time that's left.
@@ -1257,7 +1257,170 @@ First, we subtract \inlinecode{delta} from the remaining game time. Next, we
 check if the total time is over or not and return a \inlinecode{GameOver} value
 based on that.
 
-Congratulations! We have fully implemented our first game mode.
+Congratulations! We have fully implemented our first game mode. Now, let's
+implement the endless game mode.
+
+\subsubsection{Implementing the endless game mode}
+The procedure for implementing the endless game mode will be very similar to the
+timed one: Setting up code connections, implementing game mode rules and
+updating the scoreboard.
+
+Let's start with setting up the basic class and code connections.
+\begin{leftbar}
+Create a new Swift file in \xcode{} and name it \textit{EndlessGameMode}. Then
+add the following class definition and properties:
+\begin{lstlisting}
+@objc(EndlessGameMode)
+class EndlessGameMode: GameModeDelegate {
+  var healthBar: CCNode!
+  var survivedLabel: CCLabelTTF!
+}
+\end{lstlisting}
+\end{leftbar}
+As I said, this is pretty similar to the timed game mode. We need the
+\inlinecode{@objc} annotation because this class does not inherit from any
+Objective-C object. We declare two properties for the two UI elements in the
+\filemention{EndlessModeUI} \ccbfile{}.
+
+In the endless game mode we will have two game parameters that we want to keep
+track off: the current \textit{health} of the player and the
+\textit{survivalTime} of the current game. In endless game mode the player has
+the goal of surviving as long as possible. Instead of gaining points for
+catching objects the player regains some health. Whenever the player catches an
+incorrect object or drops a good object she looses points. We'll need properties
+to keep track of these values.
+
+Additionally we'll need a property that stores the UI node to conform with the
+\inlinecode{GameModeDelegate} protocol.
+
+\begin{leftbar}
+Add the following properties and property observers to
+\inlinecode{EndlessGameMode}:
+\begin{lstlisting}
+private(set) var userInterface: CCNode!
+private let minHealth = 0
+private let maxHealth = 10
+
+private var health:Int = 10 {
+  didSet {
+    let newScale = Float(health) / Float(maxHealth)
+    let scaleAction = CCActionScaleTo.actionWithDuration(0.2, scaleX: newScale, scaleY: 1.0) as CCAction
+    
+    healthBar.stopAllActions()
+    healthBar.runAction(scaleAction)
+  }
+}
+
+private var survivalTime: CCTime = 0.0 {
+  didSet {
+    survivedLabel.string = "Survived: \(Int(survivalTime))"
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+We start of with a variable that stores the user
+interface for this game mode. Then we define two constants for the upper and
+lower bounds of the player's health. 
+
+Next, we define the actual \inlinecode{health} variable and initialize it to
+\textit{10}. We also add a property observer to \inlinecode{health}. Whenever the value changes we need to
+rescale the green health bar to reflect the new value. We calculate the new
+scale by dividing the current health by the maximum health. Instead of simply
+assigning new scale we apply the change as an animation. It's these small
+details that make games look more polished, and in \cocos{} they are easy to
+implement. \cocos{} provides a scale action (\inlinecode{CCActionScaleTo}), we
+define it to run in 0.2 seconds. Before we start the action we ensure that all
+other actions are stopped. Since the action takes 0.2 seconds to complete it is
+likely that we start a new scale action while an old one is still in progress.
+Two actions fighting against each other would result in serious glitches,
+therefore it's important to call \inlinecode{stopAllActions()}.
+
+Finally, we add a property that stores the survival time. We once again add a
+property observer, in this case we update the time label whenever the survival
+time changes.
+
+Next, we need to add the initializer that will load the user interface.
+
+\begin{leftbar}
+Add the following init method to \inlinecode{EndlessGameMode}:
+\begin{lstlisting}
+init() {
+  userInterface = CCBReader.load("EndlessModeUI", owner:self)
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now all that is left is implementing the game rules as part of the three methods
+defined in the \inlinecode{GameModeDelegate} protocol. 
+
+When the player drops a \inlinecode{.Good} object, we subtract a point.
+\begin{leftbar}
+Add the following method to \inlinecode{EndlessGameMode}:
+\begin{lstlisting}
+func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject) {
+  if (droppedFallingObject.type == .Good) {
+    health = max(health - 1, minHealth)
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+We once again use the \inlinecode{max} function to ensure that the health does
+not drop below our defined minimum.
+
+Next, let's implement the caught method. When the user catches a
+\inlinecode{.Good} object he regains a point, when he catches a
+\inlinecode{.Bad} object he looses one.
+
+\begin{leftbar}
+Add the caught method:
+\begin{lstlisting}
+func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject) {
+  switch (caughtFallingObject.type) {
+  case .Bad:
+    health = max(health - 1, minHealth)
+  case .Good:
+    health = min(health + 1, maxHealth)
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+%TODO: mention that we need to inlcude Helpers.swift at the beginning of this
+% project
+
+%TODO: make sure that we don't use the word 'instance variable'
+
+The last method we need to implement is the \inlinecode{gameplayStep(mainScene:,
+delta:)} method. We need to keep track of the time that the user has survived,
+we can do that by adding up all the delta time frames that we receive in this
+method. Additionally we need to determine the game over situation. In this game
+mode the player loses as soon as his health drops to the minimum health.
+
+\begin{leftbar}
+Add the \inlinecode{gameplayStep(mainScene:,
+delta:)} to \inlinecode{EndlessGameMode}:
+\begin{lstlisting}
+func gameplayStep(mainScene: MainScene, delta: CCTime) -> GameOver {
+  survivalTime += delta
+  return (health <= minHealth)
+}
+\end{lstlisting}
+\end{leftbar}
+And this completes our second game mode. As you can see there weren't too many
+surprises after implementing the \inlinecode{TimedGameMode}.
+
+Before we can test these two game modes in our app we need to integrate them
+into the \inlinecode{MainScene} class.
+
+\subsection{Connecting the game modes to the main scene}
+The last important step in implementing the game modes is connecting them to
+\inlinecode{MainScene}. Currently the \inlinecode{StartScene} passes the
+selected game mode to the \inlinecode{MainScene}. The next step for 
+\inlinecode{MainScene} will be instantiating a game mode based on this
+selection.
+
+Additionally we need to modify \inlinecode{MainScene} to call the methods
+defined in \inlinecode{GameModeDelegate} whenever objects are caught, dropped
+and when the \inlinecode{update} method is called.
 
 \subsection{Adding a game end popup}
 

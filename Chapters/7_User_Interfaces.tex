@@ -1443,7 +1443,7 @@ var gameMode:GameMode = .Endless {
       gameModeDelegate = TimedGameMode()
     }
     self.addChild(gameModeDelegate?.userInterface)
-    gameModeDelegate?.userInterface.zOrder = Int.max
+    gameModeDelegate?.userInterface.zOrder = DrawingOrder.ScoreBoard.rawValue
   }
 }
 \end{lstlisting}
@@ -1469,8 +1469,27 @@ access properties on values that might be \inlinecode{nil}, without causing an
 runtime error.
 
 In the last line of the property observer we set the \inlinecode{zOrder} of the
-game mode UI to \inlinecode{Int.max}, which means that the UI will be rendered
-above all other elements in this scene.
+game mode UI to \inlinecode{DrawingOrder.ScoreBoard.rawValue}. You probably
+remember that we have used an enum to keep track of our drawing order. The UI of
+the current game mode should be rendered on top of all gameplay elements, so we
+need a new entry in that enum.
+
+\begin{leftbar}
+Extend the drawing order enum to include the case
+\inlinecode{DrawingOrder.ScoreBoard} that we've just used:
+\begin{lstlisting}
+  enum DrawingOrder: Int {
+    case BehindPot
+    case PotTop
+    case FallingObject
+    case PotBottom
+    case ScoreBoard
+  }
+\end{lstlisting}
+\end{leftbar}
+Having the scoreboard as the last case (with the highest integer value),
+means that the game mode UI will be rendered above all other elements in this
+scene.
 
 Now we have instantiated a game mode - we can move on to the code that will
 communicate with it. Let's start by calling the
@@ -1565,6 +1584,26 @@ similar to the following screen once the game starts:
 You should see the health bar grow and shrink according to the game mode
 rules that we implemented - finally all the parts have come together.
 
-\section{Adding a game end popup}
+Currently the automatic transition from the main scene back to the start scene
+is a little unexpected. It's typical for games to present a summary after each
+session the player has completed. In the next section we'll add a game over
+popup to our game.
 
- 
+\section{Adding a game over popup}
+Whenever a session ends, either because of a game over situation or because the
+time has run out, we want to present a popup that shows the results of this
+session. The popup should also provide easy ways to play the same game mode
+again and to switch back to the start scene.
+
+By the end of this section we will have built a popup that looks like this:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/game_over_popup.png}
+    \caption{A popup at the end of each playing session summarizes the player's
+    results}
+\end{figure}
+
+We will get started by creating this new UI element in \SB{}, then we will work
+on integrating it in code.
+
+\subsection{Setting up the popup in \SB{}}

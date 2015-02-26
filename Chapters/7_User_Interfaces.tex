@@ -1600,10 +1600,91 @@ By the end of this section we will have built a popup that looks like this:
     \centering
     \includegraphics[width=0.5\linewidth]{images/Chapter7/game_over_popup.png}
     \caption{A popup at the end of each playing session summarizes the player's
-    results}
+    results}\label{fig:gameover_popup}
 \end{figure}
 
 We will get started by creating this new UI element in \SB{}, then we will work
 on integrating it in code.
 
 \subsection{Setting up the popup in \SB{}}
+We'll start by creating a new \ccbfile{} for our popup.
+\begin{leftbar}
+Create a new \ccbfile{} in \SB{}. Select \textit{Layer} as the type. Choose the
+size to be \textit{(400, 300)} and name the file \filemention{GameOverPopup}.
+\end{leftbar}
+We will center the popup when we present it. Centering is a lot easier when the
+anchor point of the popup is at (0.5, 0.5).
+\begin{leftbar}
+Select the root node and change the \textit{Anchor point} to (0.5, 0.5).
+\end{leftbar} 
+Next, we'll add the background for the popup. As you might have seen in figure
+\ref{fig: gameover_popup} our popup has rounded corners. The easiest way to
+accomplish rounded corners in \cocos{} is using a stretchable image.\index{Nodes!CCSprite9Slice}
+ The specific type of image we want to use is called a \textit{9 slice} image. 9
+ slices images are divided into stretchable and non-stretchable parts. Using 9 slices images we can
+use small images and scale them to arbitrary dimensions without distorting the
+non-scalable parts of the image.
+
+Here's an illustration of how a 9 slice image works:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/9_slice.png}
+    \caption{A 9 slice image is divided into stretchable and non-stretchable
+    regions}
+\end{figure}
+
+In the example above we have a blue image with rounded corner. If we want to
+scale that image, it's important that the corners don't get scaled, otherwise
+they would be distorted. \SB{} allows us to define the scalable area of 9 slice
+images, that way we can choose a scalable area that is appropriate for each
+asset. The assets you have downloaded include an image with rounded corners.
+We'll use that for the background of our popup.
+
+\begin{leftbar}
+Drag a \textit{Sprite 9 Slice} from the node library and add it to the root node
+of \filemention{GameOverPopup.ccb}.
+
+Set up the sprite 9 slice as following:
+\begin{enumerate}
+  \item Set the position type to \textit{percentage of parent container} for
+  \textit{x} and \textit{y} position
+  \item Set the position to \textit{(50\%, 50\%)}
+  \item Set the content size type to \textit{percentage of parent container} for
+  \textit{width} and \textit{height}
+  \item Set the width to \textit{(100\%, 100\%)} 
+  \item Set the anchor point to \textit{(0.5, 0.5)}
+  \item Set the sprite frame to \textit{assets/popup-background.png}
+  \item Set the opacity to \textit{0.95}
+  \item Select a \textit{light blue} color
+\end{enumerate}
+\end{leftbar} 
+
+At this point your stage should look like this:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/9_slice_setup.png}
+\end{figure}
+
+Note, that the asset \filemention{popup-background.png} has a white background.
+That allows us to create a sprite with rounded corners of any color. You might
+also have realized that the sprite 9 slice scales correctly without that we hat
+to define a scalable and non-scalable region. That's because \SB{} provides
+default values that work for many sprites. When you've selected a sprite 9 slice
+you'll see the following entry in the \textit{Item properties} tab:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.5\linewidth]{images/Chapter7/9_slice_settings.png}
+\end{figure}
+These values are expressed in percentage of the image size. This means the
+non-scalable are is defined by 33\% of the image size from each edge. These
+settings work well for many 9 slice images, if you ever run into problems with a
+9 slice image you now know where to change these settings.
+
+Now we'll add the label that displays the highscore when the game is over. We'll
+add this label and the two buttons as a child to the sprite 9 slice because
+we'll add a little scale up animation to the popup later on. We want the entire
+popup content to scale with the sprite 9 slice.
+
+\begin{leftbar}
+Drag a \textit{CCLabelTTF} to the stage. Drag it onto the \textit{}
+\end{leftbar}

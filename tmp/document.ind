@@ -37,6 +37,8 @@
   \item Node transformation
     \subitem Bounding Box, \hyperpage{108}
     \subitem Position, \hyperpage{112}
+  \item Nodes
+    \subitem CCSprite9Slice, \hyperpage{169}
 
   \indexspace
 

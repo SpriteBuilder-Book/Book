@@ -288,7 +288,14 @@ keyframes by hitting the \textit{O} (like in opacity) key on your keyboard.
 Alternatively you can create keyframes through the top bar menu:
 \textit{Animation -> Insert Keyframe\ldots -> Opacity}. Place the first keyframe
 at 0 seconds the second one at 0.5 seconds and the third one at 1
-second.
+second. You can choose the exact position of a keyframe by dragging the timeline
+ruler to the according position:
+\begin{figure}[H]
+\centering
+\includegraphics[width=70pt]{images/Chapter7/timeline_ruler.png}
+\caption{Drag the timeline ruler to select a frame at which you want to create
+the keyframe}
+\end{figure}
 \end{leftbar}
 
 Now we can set different opacity values for each of these keyframes and \SB{}
@@ -1600,7 +1607,7 @@ By the end of this section we will have built a popup that looks like this:
     \centering
     \includegraphics[width=0.5\linewidth]{images/Chapter7/game_over_popup.png}
     \caption{A popup at the end of each playing session summarizes the player's
-    results}\label{fig:gameover_popup}
+    results}\label{fig: gameover_popup}
 \end{figure}
 
 We will get started by creating this new UI element in \SB{}, then we will work
@@ -1686,5 +1693,158 @@ we'll add a little scale up animation to the popup later on. We want the entire
 popup content to scale with the sprite 9 slice.
 
 \begin{leftbar}
-Drag a \textit{CCLabelTTF} to the stage. Drag it onto the \textit{}
+Drag a \textit{Label TTF} to the stage. Drop it onto the
+\textit{CCSprite9Slice} in the timeline to make the label a child of the sprite.
+
+Set the label up as following:
+\begin{enumerate}
+  \item Set the position reference corner to \textit{Top-left}
+  \item Set the \textit{X} position type to \textit{percentage of parent
+  container}
+  \item Set the position to \textit{(50, 30)}
+  \item Set the label text to \textit{You have survived 10 seconds!}, this is a
+  placeholder text. We'll set the actual text in dymanically in code
+  \item Set the font name to \textit{Optima-Bold}
+  \item Set the font size to \textit{30}
+  \item Set the size type of the width of the \textit{Dimensions} to
+  \textit{percentage of parent container}. Labels resize dynamically, the
+  \textit{Dimensions} size determines the maximum size for the label
+  \item Set the the Dimensions to \textit{(95, 0)}
+  \item Set the horizontal alignment to \textit{Center}
+  \item Set the draw color to \textit{black}
+  \item Set the outline color to \textit{white}
+  \item Set the outline width to \textit{4}
+  \item Set up a code connection to \textit{Owner var} and name it
+  \textit{gameOverPopUpHighscoreLabel}
+\end{enumerate}
 \end{leftbar}
+
+By providing the \textit{owner} of the popup with access to the label we avoid
+providing a custom class for the popup. Instead, whichever class displays this
+popup can set itself as the owner and modify the popup appropriately. For UI
+components that don't have any custom behavior I prefer this approach over
+providing custom classes.
+
+Now we're going to create two buttons, one to play another round of the current
+game mode, a second one to return to the main menu.
+
+\begin{leftbar}
+Drag a \textit{Button} to the stage. Drop it onto the
+\textit{CCSprite9Slice} in the timeline to make the label a child of the sprite.
+
+Configure the button like this:
+\begin{enumerate}
+  \item Set the \textit{X} position type to \textit{percentage of parent
+  container}
+  \item Set the position to \textit{(30, 55)}
+  \item Set the preferred size to \textit{(120, 40)}. Buttons resize
+  automatically based on their content, the preferred size determines the
+  minimum size of the button
+  \item Set the title to \textit{Back to Menu}
+  \item Set the font name to \textit{Optima-Bold}
+  \item Set up a selector (in the code connections tab). Name it
+  \textit{backToMenu} and set the target to \textit{Owner}.
+\end{enumerate}
+\end{leftbar}
+
+Just as we let the owner change the text of the label, we will also invoke the
+button callbacks on the owner - we want to avoid creating a custom class for
+this simple popup.
+
+You can now copy this button to create the second one.
+\begin{leftbar}
+Copy the button that we just created. Apply the following changes:
+\begin{enumerate}
+  \item Change the position reference corner to \textit{Bottom-right}
+  \item Change the selector to \textit{playAgain} 
+\end{enumerate}
+\end{leftbar}
+
+Now the popup should look exactly as depicted in figure \ref{fig:
+gameover_popup} at the beginning of this chapter.
+
+We're almost done with designing the popup in \SB{}. However, so far we haven't
+considered how this popup is going to be presented. It would be weird if it
+would suddenly appear at the end of the game, without any visual transition.
+Especially iOS users are used to smooth transitions and UI elements that are
+presented and dismissed with animations - our game should live up to these
+standards! \SB{}'s timeline editor makes implementing this a matter of seconds!
+
+To present the popup smoothly we will use a scale animation (very similiar to
+the animation that iOS uses for its alert views). Here's what it will look like:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/Chapter7/popup_animation.png}
+    \caption{We make the popup appear over 13 frames by animating its scale
+    property}\label{fig: animate_gamover_popup}
+\end{figure}
+
+The animation will have a length of 13 frames. We will scale the popup from 0
+to 1.1 and finally to 1. This approach creates a nice little bounce animation
+when the popup appears.
+
+Instead of creating a new timeline, we will use the \textit{Default Timeline}
+that is provided by \SB{} for every \ccbfile{}. The default timeline has
+\textit{autoplay} activated, which means that it runs as soon as the root node
+of the \ccbfile{} is added to an active scene. By coincidence this is exactly
+the behavior we want: as soon as the popup is added to a scene we want this
+animation to play once.
+
+Note, that \SB{} does not allow us to add keyframe based animations to the root
+node, instead we will animate the \textit{CCSprite9Slice} which has all other
+elements of the popup as its children.
+
+\begin{leftbar}
+Select the \textit{CCSprite9Slice} in the timeline. Since this animation is very
+short, you should use the timeline's maximum zoom level to place the keyframes
+accurately. Drag the zoom lever in the top right corner all the way to the
+right:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter7/timeline_zoom.png}
+\end{figure}
+Now, create three keyframes by hitting the \textit{S} key, one at
+\textit{00:00:00}, one at \textit{00:00:09} and a third one at
+\textit{00:00:13}. Next, set the scale values by double-clicking onto each of
+the keyframes. As show in figure \ref{fig: animate_gamover_popup} we want the
+values to be \textit{0}, \textit{1} and \textit{1.1}.
+\end{leftbar}
+You can now run the animation and you should see a nice bounce effect. If you
+have ever paid close attention to the animations of system elements on iOS you
+will realize that something with this animation still doesn't feel exactly
+right. Why?
+
+As a default setting \SB{} uses linear interpolation between keyframes. This
+results in animations that move smoothly at a constant speed. However, real life
+objects seldom move at a constant speed. Instead they accelerate an decelerate.
+Believe it or not, the difference between a linear animation and an accelerated
+one is noticeable, even if the entire animation only lasts 13 frames.
+
+Since the developers of \cocos{} are aware of this effect, they have provided us
+with a whole bunch of different interpolations. Once you have created two
+keyframes and a pink bar appears between them you can select between all of
+the variations by right-clicking onto the pink bar.
+
+Many developers have done a good job of visualizing the different interpolation
+types\ldots %TODO: add link to interpolation visualization or ask for permission
+
+For this animation we are going to use the \textit{Ease In} interpolation.
+
+\begin{leftbar}
+Right-click onto the segment between the first and the second keyframe and
+select \textit{Ease In} as the interpolation function:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter7/timeline_ease_in.png}
+\end{figure}
+\end{leftbar}
+
+Now you can run the animation again. You should notice that it is looking much
+better now! These are the small details that catch the player's attention.
+
+Now we are ready to present this popup in code!
+\section{Presenting the popup in code}
+
+
+\section{Providing a highscore for each game mode}

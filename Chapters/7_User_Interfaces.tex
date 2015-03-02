@@ -824,6 +824,8 @@ func transitionAnimationComplete() {
 \end{lstlisting}
 \end{leftbar}
 
+%TODO: discuss laodAsScene and laod in detail, generally add more detail here
+
 Great! Now our game mode selection screen is complete; including an awesome
 transition to the gameplay scene. You can run the project and try it out.
 
@@ -1844,7 +1846,394 @@ Now you can run the animation again. You should notice that it is looking much
 better now! These are the small details that catch the player's attention.
 
 Now we are ready to present this popup in code!
+
+
 \section{Presenting the popup in code}
 
+As always, let's get started by setting up properties for the code connections
+we've added in \SB{}. The code to present the popup will be part of 
+\inlinecode{MainScene}. In \SB{} we've set up all code connections for the game
+over popup to be connected to the \textit{Owner}. Since \inlinecode{MainScene}
+will be the owner of \inlinecode{GameOverPopup} we need to add code connection
+variables and callback methods there.
+
+Let's first add the property for the label on the game over popup.
+\begin{leftbar}
+Add the following property to \filemention{MainScene.swift}:
+\begin{lstlisting}
+weak var gameOverPopUpHighscoreLabel: CCLabelTTF!
+\end{lstlisting}
+\end{leftbar}
+This property will allow us to change the presented text on the game over popup
+from within \inlinecode{MainScene}. Later we'll use it to present the final
+score at the end of each game.
+
+Our game over popup should be presented above all other content of
+\inlinecode{MainScene}, so we should add a new entry to the drawing order enum,
+that places the popup at the highest z-order.
+
+\begin{leftbar}
+Extend the drawing order enum by adding a case for our new popup:
+\begin{lstlisting}
+enum DrawingOrder: Int {
+  case BehindPot
+  case PotTop
+  case FallingObject
+  case PotBottom
+  case ScoreBoard
+  case GameOverPopup
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now we're set up to work on the code that adds the popup to
+\inlinecode{MainScene} as soons as the game ends. We'll modify the existing
+\inlinecode{gameOver} function in this step. So far \inlinecode{gameOver}
+transitions back to the \inlinecode{StartScene} when the game ends, we can
+remove all of that code for now.
+
+\begin{leftbar}
+Change the \inlinecode{gameOver} method, so that it no longer switches back to
+the \inlinecode{StartScene}:
+\begin{lstlisting}
+func gameOver() {
+  userInteractionEnabled = false
+  presentGameOverPopup()
+}
+\end{lstlisting}
+\end{leftbar}
+
+In the new implementation of \inlinecode{gameOver}, we're turning of user
+interaction on \inlinecode{MainScene} by setting the
+\inlinecode{userInteractionEnabled} property to \inlinecode{false}. This means
+that \inlinecode{MainScene} will no longer receive touch events. Without this line it
+ would be possible for the user to drag the pot across the screen, even though the game has ended. Typically as soon as a
+game ends you want to disable all interactions between the player and any game
+elements - everything else tends to look awkward.
+
+Additionally we're calling the \inlinecode{presentGameOverPopup} method that we
+haven't implemented yet. As you'll see shortly, presenting the popup involves
+quite a few lines of boilerplate code, so it makes sense to bundle this
+functionality into a separate method.
+
+Let's implement \inlincode{presentGameOverPopup} now. There aren't a lot of new
+concepts involved in this method, so I'll provide the entire implementation and
+will discuss the details afterwards.
+
+\begin{leftbar}
+Add the following lines to the end of the \inlinecode{MainScene} class,
+directly before the closing curly braces of the class definition:
+%TODO: discuss MARK: earlier add screenshot for outline with mark
+\begin{lstlisting}
+// MARK: Game over popup
+func presentGameOverPopup() {
+  let gameOverPopup = CCBReader.load("GameOverPopup", owner:self)
+  
+  // workaround because CCPositionTypeNormalized cannot be used at the moment
+  // https://github.com/spritebuilder/SpriteBuilder/issues/1346
+  gameOverPopup.positionType = CCPositionType(
+    xUnit: .Normalized,
+    yUnit: .Normalized,
+    corner: .BottomLeft
+  )
+  
+  gameOverPopup.position = ccp(0.5, 0.5)
+  gameOverPopup.zOrder = DrawingOrder.GameOverPopup.rawValue
+  
+  gameOverPopUpHighscoreLabel.string = gameModeDelegate?.highscoreMessage()
+  
+  addChild(gameOverPopup)
+}
+\end{lstlisting}
+\end{leftbar}
+In the first line we are loading the \filemention{GameOverPopup.ccb} using the
+\inlinecode{CCBReader}, we are setting \inlinecode{MainScene} as the owner.
+
+Next, we're setting up the position type of the popup. We want the popup to be
+presented centered on the screen. The easiest way to do that is to use the
+\inlinecode{Normalized} position type (which is called \textit{Percent of
+parent container} in \SB{}). We need to configure the position type in code,
+because \SB{} does not support setting the position type of the root node of a
+\ccbfile{}. If you select the root node of \filemention{GameOverPopup.ccb},
+you'll see that the control is disabled:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter7/root_node_disabled_position_type.png}
+    \caption{It isn't possible to change the position type or position of the
+    root node in \SB{}}
+    %TODO: file an issue about this on GitHub, CCB file should be able to define
+    % default, file that includes the ccb file can override
+\end{figure}
+When setting the position type in code, we run into a small Swift <->
+Objective-C related issue. The way that many \cocos{} constants are defined is
+incompatible with Swift, these constants are not available to Swift classes.
+Usually we could simply set the position type to
+\inlinecode{CCPositionTypeNormalized}, but because of this issue we need to
+construct the position type manually (if you are interested in the details you
+can read \url{https://github.com/spritebuilder/SpriteBuilder/issues/1346}).
+
+After we've set up the position type, we center the node by setting the position
+to \textit{(0.5, 0.5)} and we set the \inlinecode{zOrder} to render this popup
+on top of all other game content.
+
+Then we configure which text is displayed on the popup. We haven't implemented
+this on the game mode classes yet, but we're adding a
+\inlinecode{highscoreMessage} function to each game mode that will return a
+suitable highscore message for the current game state. This way each game mode
+can present a different message at the end of the game. This design makes it
+easy to add more game modes in future. We'll discuss the
+\inlinecode{highScoreMessage} function in detail as soon as we implement it.
+
+In the next line we add the game over popup to the gameplay scene. Adding the
+popup will trigger it's timeline to start playing. That will scale the popup
+from 0\% to 100\% size, with the animation that we have defined in \SB{}.
+
+With this method in place we're getting close to presenting the popup! We'll
+need to satisfy two more code connections, the callback methods for both
+buttons on the popup, and we'll need to add the \inlinecode{highScoreMessage}
+method to our game modes.
+
+Let's start with the button and implement the callback for the \textit{Back to
+menu} button. All this button does is bring us back to the main scene, so the
+implementation is very simple.
+
+\begin{leftbar}
+Add the \inlinecode{backToMenu} method below the
+\inlinecode{presentGameOverPopup} method in \filemention{MainScene.swift}:
+\begin{lstlisting}
+func backToMenu() {
+  let startScene = CCBReader.loadAsScene("StartScene")
+  let transition = CCTransition(crossFadeWithDuration: 0.7)
+  CCDirector.sharedDirector().replaceScene(startScene, withTransition: transition)
+}
+\end{lstlisting}
+\end{leftbar}
+Nothing special here, this is the code that used to live in the
+\inlinecode{gameOver} method - when the player hits the \textit{Back to
+menu} button, we transition back to \inlinecode{StartScene}.
+
+The \textit{Play again} button is a little bit more exciting. This is a feature
+that you'll want to add to many types of games and the implementation isn't very
+complicated. The easiest way to restart the game is to create a new instance of
+the \inlinecode{MainScene} class and replace the currently active scene with
+that new one. I've often seen beginners in game development write code to reset
+different state variables in their gameplay scene, in order to start a new match
+or a new round of the same game. Creating a new instance of the core gameplay
+class is the simplest and most reliable way of resetting the entire state of the
+game.
+
+For this specific game there's on small gotcha that we need to avoid. The
+\inlinecode{MainScene} needs to know which gameplay mode has been selected. When
+a player hits the \textit{Play again} button, we want to start the \textit{same}
+game mode that the player has been playing up until then. That means as we
+create a new instance of \inlinecode{MainScene}, we need to take care of
+preserving the selected game mode.
+
+With all of this in mind, let's add the \inlinecode{backToMenu} method.
+\begin{leftbar}
+Add the \inlinecode{playAgain} method below the \inlinecode{backToMenu} method:
+\begin{lstlisting}
+func playAgain() {
+  let mainSceneContainer = CCBReader.loadAsScene("MainScene")
+  let mainScene = mainSceneContainer.children[0] as MainScene
+  mainScene.gameMode = gameMode
+  let transition = CCTransition(crossFadeWithDuration: 0.7)
+  CCDirector.sharedDirector().replaceScene(mainSceneContainer, withTransition: transition)
+}
+\end{lstlisting}
+\end{leftbar}
+Remember, when we use the \inlinecode{CCBReader.loadAsScene()} method, the
+entire scene graph from the loaded \ccbfile{} is wrapped into a \ccscene{}
+instance. That is why we need to access the first child of the loaded scene to
+get a reference to the new \inlinecode{MainScene} instance. With that reference
+at hand, we set the \inlinecode{gameMode} of the new \inlinecode{MainScene} to
+be the same as the currently selected game mode. The rest is business as usual,
+replacing the scene with an animated transition.
+
+And that's all there is; now you know how to add a \textit{play again} feature
+to your game easily. Next, we'll extend the game modes to provide individual
+highscore messages.
 
 \section{Providing a highscore for each game mode}
+Whenever we want to extend the functionality of our game modes we should start
+by adding the new features to the \inlinecode{GameModeDelegate} protocol.
+\begin{leftbar}
+Add the following method the \inlinecode{GameModeDelegate} in
+\filemention{GameModeDelegate.swift}:
+%TODO: Add info on documentation in Swift when creating this protocol first
+\begin{lstlisting}
+/**
+Provides a highscore message for the current game
+
+:returns: Highscore message
+*/
+func highscoreMessage() -> String
+\end{lstlisting}
+\end{leftbar}
+Now every game mode will be required to implement a
+\inlinecode{highscoreMessage} method. Let's go ahead and add them, so we can
+finally see the popup in action.
+
+Let's start with the \inlinecode{EndlessGameMode}. When the
+\inlinecode{EndlessGameMode} ends, we want to display how many seconds a player
+has survived.
+
+\begin{leftbar}
+Add the following implementation of \inlinecode{highscoreMessage} to
+\inlinecode{EndlessGameMode}:
+\begin{lstlisting}
+func highscoreMessage() -> String {
+  let secondsText = Int(survivalTime) == 1 ? "second" : "seconds"
+  return "You have survived \(Int(survivalTime)) \(secondsText)!"
+}
+\end{lstlisting}
+\end{leftbar}
+The most exciting part of this implementation is the ternary operator that we
+use to determine whether or not we need to pluralize the term
+\inlinecode{second}. 
+
+The implementation of this method inside of \inlinecode{TimedGameMode} looks
+almost the same:
+\begin{leftbar}
+Implement the \inlinecode{highscoreMessage} method in \inlinecode{TimedGameMode}
+as following:
+\begin{lstlisting}
+func highscoreMessage() -> String {
+  let pointsText = points == 1 ? "point" : "points"
+  return "You have scored \(Int(points)) \(pointsText)!"
+}
+\end{lstlisting}
+\end{leftbar}
+Awesome! Now we have all the parts together to actually test our new popup. Run
+the game on the simulator or on a phone, lose one of the two game modes, and see
+what happens.
+
+You should see something very similar to this:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/Chapter7/endless_popups.png}
+    \caption{An endless amount of popups is filling up the screen (and our
+    main memory)}
+\end{figure}
+As soon as the game ends our popup gets presented. But not only once - new
+popups are added endlessly. We'll look into fixing this in the next section.
+
+\section{Tweaking the game over popup}
+The issue we are experiencing is very common among developers that are
+implementing their first game over popup. What is going wrong?
+
+We are presenting the popup from within the \inlinecode{update:} method, and
+that method gets called 60 times a second. We are currently not checking whether
+or not we've already presented the popup. Instead, every single frame the game
+over condition is met and we present a new game over popup. If you have the
+patience to wait long enough you will experience a crash due to excessive use of
+memory.
+
+The fix for this problem is pretty straightforward. We'll add a boolean flag to
+\inlinecode{MainScene} that will indicate whether we are in \textit{Game over}
+state or not. If we are in game over state, we will skip the entire
+\inlinecode{update:} method. That way we will no longer check if the game over
+condition is met which means we'll no longer present an endless amount of
+popups. This approach has another advantage: since we've implemented all object
+movement inside of the \inlinecode{update:} method, all objects will freeze as
+soon as the game ends. That's the behavior that most players expect. 
+
+Let's add a new property to reflect the state of the game.
+
+\begin{leftbar}
+Add the following property to \inlinecode{MainScene}:
+\begin{lstlisting}
+private var isGameOver = false
+\end{lstlisting}
+\end{leftbar}
+
+By default, \inlinecode{isGameOver} is \inlinecode{false}, as soon as the game
+ends we'll set it to \inlinecode{true}. The most convenient place to set the
+flag is inside of the \inlinecode{gameOver} method, since this method is called
+as soon as the game ends.
+
+\begin{leftbar}
+Modify the \inlinecode{gameOver} method of \inlinecode{MainScene} to look as
+following:
+\begin{lstlisting}
+func gameOver() {
+  isGameOver = true
+  userInteractionEnabled = false
+  presentGameOverPopup()
+}
+\end{lstlisting}
+\end{leftbar}
+
+No we'll also need to modify the \inlinecode{update:} method to check for this
+flag.
+\begin{leftbar}
+Add the following statements to the beginning of the \inlinecode{update:}
+method:
+\begin{lstlisting}
+override func update(delta: CCTime) {
+  if (isGameOver) {
+    return
+  }
+...
+}
+\end{lstlisting}
+\end{leftbar}
+If the \inlinecode{isGameOver} flag is set we immediately return from the
+\inlinecode{update:} method, without performing any game logic.
+
+Now you can run the game again, and you should notice that our issue is fixed.
+However, there's one thing left that is throwing me off. When the game ends and
+the popup appears, we have multiple score displays on screen. The popup informs
+us about the final score, and in the background behind the popup we can see the
+scoreboard that is displayed during gameplay.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/Chapter7/no_ui_fadeout_popup.png}
+    \caption{The player is confronted with score information in two places. The
+    popup and the scoreboard contain the same information.}
+\end{figure}
+
+To fix this, we'll hide the scoreboard UI as soon as the game over popup is
+presented. We'll extend \inlinecode{presentGameOverPopup} to implement this. 
+
+\begin{leftbar}
+Add the following three lines to the end of \inlinecode{presentGameOverPopup}:
+\begin{lstlisting}
+func presentGameOverPopup() {
+  ...  
+  let fadeOutAction = CCActionFadeOut.actionWithDuration(0.3) as CCAction
+  gameModeDelegate?.userInterface.cascadeOpacityEnabled = true
+  gameModeDelegate?.userInterface.runAction(fadeOutAction)
+}
+\end{lstlisting}
+\end{leftbar}
+
+Animated appearances and disappearances always look a lot better than unanimated
+ones. With \cocos{} we can accomplish visual effects with only a few lines of
+code, so we fade out the scoreboard UI instead of simply making it invisible.
+
+With this code in place you can test the game once again. Now you should see a
+nicely presented popup with no duplicate information displayed behind it:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{images/Chapter7/ui_fadeout_popup.png}
+    \caption{Without the score information in \inlinecode{MainScene} this popup
+    looks more polished}
+\end{figure}
+
+Well done! In this chapter you have learned a lot about user interfaces in \SB{}
+and \cocos{}. You know how to use scroll views, how to present popups and
+connect them to code efficiently and you've also learned how to implement a
+restart mechanism. Additionally we've spoken a lot about code design in this
+chapter. We have focused on creating this game in a way that decouples game
+modes from the actual gameplay. With this design it is very easy to add more
+game modes in future, and the lessons learned from this approach should apply to
+many of your original games as well.
+
+In the next chapter we will look at how we can store highscores for this game.
+It is crucial to make your games competitive and to implement ways for players
+to track their progress as they play your game over longer periods of time. It's
+one of the best ways of keeping players engaged with your products.
+\section{Pausing the Game (Optional)}

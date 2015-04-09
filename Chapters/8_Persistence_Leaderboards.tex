@@ -1,1 +1,182 @@
-\chapter{Persistence and Leaderboards}
+\chapter{Persisting Highscores}
+The game we have built so far is clearly fun to play, however, if we want
+players to come back regularly we will need a highscore feature. Highscores will
+motivate players to improve their skills by playing the game frequently.
+
+For this game we will keep the mechanism very simple. For each game mode we will
+store the highest score the player has achieved. These scores will only be
+stored locally on the device. Then we'll extend the game over popup to show the
+current highscore and to inform the player in case she has beaten her old one.
+
+\section{Extending the GameModeDelegate}
+We'll start implementing this feature by extending the definition of the
+\inlinecode{GameModeDelegate}. We'll add a required method called
+\inlinecode{saveHighscore}. That method will be called from within
+\inlinecode{MainScene} as soon a game ends. All game modes will implement this
+method and perform the highscore storing code within it.
+
+\begin{leftbar}
+Open \filemention{GameModeDelegate.swift} and add the following method to the
+end of the protocol definition:
+\begin{lstlisting}
+/**
+Should be invoked when the receiving Game Mode should store the latest Highscore
+*/
+func saveHighscore()
+\end{lstlisting}
+\end{leftbar}
+
+Now that we've extended the definition of the protocol, let's add a method call
+to \inlinecode{MainScene} that uses the new \inlinecode{saveHighscore} method.
+Whenever a game ends, we want to store the latest highscore of the current game
+mode.
+
+\begin{leftbar}
+Extend the \inlinecode{gameOver} method in \filemention{MainScene.swift} to look
+as following:
+\begin{lstlisting}
+func gameOver() {
+  isGameOver = true
+  userInteractionEnabled = false
+  gameModeDelegate?.saveHighscore()
+  presentGameOverPopup()
+}
+\end{lstlisting}
+\end{leftbar}
+
+This change was simple. Now let's implement the highscore saving mechanism for
+both game modes.
+
+\section{Storing highscores for the endless game mode}
+iOS provides us a variety of options to persist application data. Core
+Data offers a feature-rich object persistence API that allows for advanced features
+such as search and migration between different versions of a data model. Through
+\inlinecode{NSKeyedArchiver} we are able to serialize objects and store them
+in files. Another option, preferred for simple tasks, is using the
+\inlinecode{NSUserDefaults} class to persist information.
+
+\inlinecode{NSUserDefaults} is a persistent key-value store with a very simple
+API. We can store an integer with the following call:
+\begin{lstlisting}
+NSUserDefaults.standardUserDefaults().setInteger(20, forKey: "highscore")
+\end{lstlisting}
+
+And retrieving the information is just as straightforward:
+\begin{lstlisting}
+let oldHigschore =
+NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
+\end{lstlisting}
+
+Since we only want to score one integer per game mode, this simple API is ideal
+for our purposes.
+
+Let's start with the implementation. First we'll define a new variable and a
+new constant. We'll use a variable called \inlinecode{newHighscore} to store
+whether or not the latest achieved score was a highscore. Based on this variable
+we will display a slightly different message to the user later on.
+
+We'll also define a constant for the \textit{key} that we use to store and
+retrieve the highscore from \inlinecode{NSUserDefaults.}
+
+\begin{leftbar}
+Add the following two member definitions to \filemention{EndlessGameMode.swift}:
+\begin{lstlisting}
+private let highscoreKey = "EndlessGameMode.Highschore"
+private var newHighscore = false
+\end{lstlisting}
+\end{leftbar}
+
+When defining a key for working with \inlinecode{NSUserDefaults} it's good
+practice to prefix it with the current class name. That avoids conflicts between
+different parts of your app that might store and access information in the user
+defaults.
+
+Now we can implement the \inlinecode{saveHighscore} method. We'll check if
+the latest score is higher than the current highscore, if that's the case we
+will persist the latest score and set the \inlinecode{newHighscore} variable to
+\inlinecode{true}. Otherwise we'll simply set \inlinecode{newHighscore} to
+\inlinecode{false}.
+
+\begin{leftbar}
+Add the following method to \filemention{EndlessGameMode.swift}:
+\begin{lstlisting}
+func saveHighscore() {
+  let oldHigschore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
+
+  if (Int(survivalTime) > oldHigschore) {
+    // if this score is larger than the old highscore, store it
+    NSUserDefaults.standardUserDefaults().setInteger(Int(survivalTime), forKey: highscoreKey)
+    NSUserDefaults.standardUserDefaults().synchronize()
+    newHighscore = true
+  } else {
+    newHighscore = false
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now we are conforming to the new \inlinecode{GameModeDelegate} protocol and are
+successfully storing new highscores! One interesting line that we did not
+discuss yet is the following:
+\begin{lstlisting}
+NSUserDefaults.standardUserDefaults().synchronize()
+\end{lstlisting}
+This line forces \inlinecode{NSUserDefaults} to write the latest changes to disk
+immediately. This method is called periodically by default. If we however store
+more or less sensitive information, such as the latest highscore a player just
+achieved, we call the method explicitly. That way the changes are persisted
+right away, eliminating the risk of losing data if the app crashes or is quit by
+the user.
+
+Now there's a last step left. We should change the highscore message that we are
+displaying at the end of the game to include the player's highscore. Further, if
+the player just beat her own highscore we want to display a special message to
+congratulate the player.
+
+\begin{leftbar}
+Replace the existing \inlinecode{highscoreMessage} method with the following
+one:
+\begin{lstlisting}
+func highscoreMessage() -> String {
+  let secondsText = "second".pluralize(survivalTime)
+
+  if (!newHighscore) {
+    let oldHighscore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
+    let oldHighscoreText = "second".pluralize(oldHighscore)
+    
+    return "You have survived \(Int(survivalTime)) \(secondsText)! Your highscore is \(Int(oldHighscore)) \(oldHighscoreText)."
+  } else {
+    return "You have reached a new highscore of \(Int(survivalTime)) \(secondsText)!"
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+One of the first things you might notice is that we've introduced a
+\inlinecode{pluralize} method on \inlinecode{String}. This method is
+part of the helpers that we've included right at the beginning of this project.
+Since we now have multiple occasions in which we need to use the pluralized form
+of a word it makes sense to factor this functionality out and avoid code
+duplication. This \inlinecode{pluralize} method is very primitive, it will
+append and \textit{s} to a word in case the integer passed to the method is
+larger than one. That is obviously not the correct way to pluralize all English 
+words, but for our game in which we use \textit{points} and \textit{seconds} it
+works just fine.
+
+In the first line of this method we determine whether we need to use the word
+\textit{second} or \textit{second\textbf{s}} for this highscore message. Since
+we need this part of the message in any case, we keep it outside of the
+\inlinecode{if} statement.
+
+Next, we check if the player has achieved a new highscore. If not, we display
+the latest score along with the current highscore. Else, we let the player know
+that he just reached a new highscore.
+
+And this is all it takes to build a simple highscore system -
+\inlinecode{NSUserDefaults} can go a pretty far way when storing this kind of
+simple information.
+
+All that is left for this chapter is adding the same highscore functionality to
+the timed game mode.
+
+\section{Storing highscores for the timed game mode}

@@ -180,3 +180,65 @@ All that is left for this chapter is adding the same highscore functionality to
 the timed game mode.
 
 \section{Storing highscores for the timed game mode}
+The implementation for the timed game mode is very similar to the one we've
+implemented just now. In fact they are so similar that I briefly thought about
+factoring the implementation out, so that it can be used by both game modes
+without duplicating code. However, I've decided not to follow through on that
+idea. I think the amount of duplicate code in this case isn't large enough to
+require a more abstract but more complex solution. If you were to add a few more
+game modes this might change, for now we are going to accept some code
+duplication.
+
+Since the implementation is so similar to what we've just seen, we won't discuss
+it in the usual detail.
+
+\begin{leftbar}
+Add the \inlinecode{newHighscore} variable and the \inlinecode{highscoreKey}
+constant to \filemention{TimedGameMode.swift}:
+\begin{lstlisting}
+private let highscoreKey = "TimedGameMode.Highschore"
+private var newHighscore = false
+\end{lstlisting}
+\end{leftbar}
+
+Next, add the highscore saving method.
+
+\begin{leftbar}
+Add \inlinecode{saveHighscore} to \filemention{TimedGameMode.swift}:
+\begin{lstlisting}
+func saveHighscore() {
+  let oldHigschore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
+
+  if (Int(survivalTime) > oldHigschore) {
+    // if this score is larger than the old highscore, store it
+    NSUserDefaults.standardUserDefaults().setInteger(Int(survivalTime), forKey: highscoreKey)
+    NSUserDefaults.standardUserDefaults().synchronize()
+    newHighscore = true
+  } else {
+    newHighscore = false
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+And finally update the method that displays the highscore message.
+\begin{leftbar}
+Replace the existing \inlinecode{highscoreMessage} method within
+\filemention{TimedGameMode.swift} with the following one:
+\begin{lstlisting}
+func highscoreMessage() -> String {
+  let secondsText = "second".pluralize(survivalTime)
+
+  if (!newHighscore) {
+    let oldHighscore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
+    let oldHighscoreText = "second".pluralize(oldHighscore)
+    
+    return "You have survived \(Int(survivalTime)) \(secondsText)! Your highscore is \(Int(oldHighscore)) \(oldHighscoreText)."
+  } else {
+    return "You have reached a new highscore of \(Int(survivalTime)) \(secondsText)!"
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now we've implemented the entire highscore functionality for both game modes!

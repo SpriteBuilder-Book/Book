@@ -25,7 +25,9 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 \makeindex
 
 \usepackage[colorlinks=true]{hyperref}
-
+%http://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+\usepackage[hyphens]{url}
 %\usepackage[T1]{fontenc}                
 %\usepackage{lipsum}
 %\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters

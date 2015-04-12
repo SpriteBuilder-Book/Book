@@ -208,16 +208,15 @@ Add \inlinecode{saveHighscore} to \filemention{TimedGameMode.swift}:
 \begin{lstlisting}
 func saveHighscore() {
   let oldHigschore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
-
-  if (Int(survivalTime) > oldHigschore) {
+  
+  if (points > oldHigschore) {
     // if this score is larger than the old highscore, store it
-    NSUserDefaults.standardUserDefaults().setInteger(Int(survivalTime), forKey: highscoreKey)
+    NSUserDefaults.standardUserDefaults().setInteger(points, forKey: highscoreKey)
     NSUserDefaults.standardUserDefaults().synchronize()
     newHighscore = true
   } else {
     newHighscore = false
   }
-}
 \end{lstlisting}
 \end{leftbar}
 
@@ -227,23 +226,35 @@ Replace the existing \inlinecode{highscoreMessage} method within
 \filemention{TimedGameMode.swift} with the following one:
 \begin{lstlisting}
 func highscoreMessage() -> String {
-  let secondsText = "second".pluralize(survivalTime)
-
+  let pointsText = "point".pluralize(points)
+  
   if (!newHighscore) {
     let oldHighscore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
-    let oldHighscoreText = "second".pluralize(oldHighscore)
+    let oldHighscoreText = "point".pluralize(oldHighscore)
     
-    return "You have survived \(Int(survivalTime)) \(secondsText)! Your highscore is \(Int(oldHighscore)) \(oldHighscoreText)."
+    return "You have scored \(points) \(pointsText)! Your highscore is \(Int(oldHighscore)) \(oldHighscoreText)."
   } else {
-    return "You have reached a new highscore of \(Int(survivalTime)) \(secondsText)!"
+    
+    return "You have reached a new highscore of \(points) \(pointsText)!"
   }
 }
 \end{lstlisting}
 \end{leftbar}
+Overall this implementation is almost identical to the Endless Game Mode's one.
+
+\section{Wrapping up}
 
 Now we've implemented the entire highscore functionality for both game modes!
 I'll admit that it is a very simple functionality, but it will definitely
-increase the motivation of players to come back to our game.
+increase the motivation of players to come back to our game. Here's what the
+popup message should look like once you've finished a game:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{images/Chapter8/Highscore_Message.png}
+    \caption{When the game ends the user retrieves information about their
+    highscore}
+\end{figure}
 
 \begin{details}[frametitle={Advanced Highscores}]
 If you are interested in implementing highscores and leaderboards that work

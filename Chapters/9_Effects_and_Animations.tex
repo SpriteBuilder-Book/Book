@@ -47,4 +47,54 @@ and the falling objects.
 We will create \textit{normal maps} for each of our game objects. A normal map
 is a special kind of texture that describes the 3D surface of an object. That
 way the game engine can calculate how strong certain areas of a texture should
-be light up by a light source.
+be light up by a light source. Here's what a normal map looks like:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=180pt]{images/Chapter9/pot-bottom_NRM.png}
+    \caption{The normal map for the bottom part of the pot. Each color encodes
+    information about the object's surface}
+\end{figure}
+
+And here's a comparison that shows how lighting and normal maps together give
+the pot a 3D feel:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/Chapter9/pot_lighting_comparison.png}
+    \caption{No lighting on the left, lighting with normal map on the right}
+\end{figure}
+
+The comparison above shows that certain parts of the pot appear brighter and
+shinier. \cocos{} calculates the brightness for each part of the texture based
+on the normal map that we provide and the position of the light. 
+
+Lighting and normal maps for 2D games are topics that are worth dedicating
+entire books to (and there are a ton out there!) so for now we will stick with
+this overview of how lighting works. Even this basic knowledge will allows us to
+make the game look quite a bit better. You might wonder where the normal maps
+for our textures come from. The answer is: we need to create them ourselves. 
+
+\subsection{Creating normal maps}
+There are a bunch of tools available that turn creating simple normal maps into
+an easy task. For this book I've provided all of the normal maps for you, as
+part of the asset pack that you downloaded at the beginning of this book.
+
+%TODO: check crazy bump license
+What if you want to create normal maps for your own game? The normal maps for
+this book have been created with the tool \textit{CrazyBump}
+(\url{http://www.crazybump.com/}). CrazyBump uses shape detection to guess
+normal maps and the results have been great for me!
+
+If you have complicated textures, or you need to polish the lighting effects in
+your game in great detail, you might want to resort to a tool that allows you to
+create a normal map manually. \textit{SpriteIlluminator}
+(\url{https://www.codeandweb.com/spriteilluminator}) is a great tool for
+manually creating normal maps.
+
+Since we already have all the normal maps we need, let's dive right into \SB{}
+and set up some light sources!
+
+\subsection{Setting up lighting effects in \SB{}}
+
+\subsection{Assigning normal maps in code}

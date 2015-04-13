@@ -96,5 +96,81 @@ Since we already have all the normal maps we need, let's dive right into \SB{}
 and set up some light sources!
 
 \subsection{Setting up lighting effects in \SB{}}
+Now that we have a basic understanding of 2D lighting it's time to dive into the
+CCEffects API. There are three important components that we will be using:
+\begin{description}
+\item[CCEffectNode] is a container for all visual effects. If
+you want to apply effects to \ccsprite{}s, all of them need to be the child of a
+\inlinecode{CCEffectNode}. In practice this means that you'll mostly have a
+\inlinecode{CCEffectNode} as a container for your entire gameplay scene.
+\item[CCEffect] represents one of the different available visual effects, e.g.
+lighting, refraction, blur, etc. Currently effects can only be applied to
+\ccsprite{}s. You add an effect to a sprite by instantiating a
+\inlinecode{CCEffect} and assigning it to a \ccsprite{}.
+\item[CCLightNode] is used in combination with the effect
+\inlinecode{CCEffectLighting} to define light sources.
+\end{description}
+
+To summarize what we've dicussed so far: Effects can only be applied to
+\ccsprite{}s. All affected sprites need to be a child of a
+\inlinecode{CCEffectNode}. Light nodes are used together with the lighting
+effect and define light sources. Direction and brightness of these light nodes
+is used by \cocos{} to render lighting effects.
+
+Here's a diagram of how the components play together:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=260pt]{images/Chapter9/effect_setup.png}
+\end{figure}
+
+We will only discuss a subset of the \inlinecode{CCEffects} API, but the good
+news is that it is very easy to use and therefore can be explored without much
+instruction! 
+
+There a many simple effects that can be added with a single line of
+code, such as \textit{blur} or \textit{saturation}. You can add all effects in
+code or in \SB{}. You can change the relevant
+properties of a \inlinecode{CCEffect} in code, that
+alows you to animate effects. You can for example create
+a \textit{saturation} effect that starts with full
+saturation and over time reduces the saturation until
+the sprite turns into a grayscale image.
+
+Finally, \inlinecode{CCEffectStack} allows you to
+combine multiple effects.
+
+\begin{details}[frametitle={More on effects}]
+If you want to learn a little bit more about effects in \cocos{} you should read
+our tutorial that introduces the \inlinecode{CCEffects} 
+API (\url{https://www.makeschool.com/tutorials/cocos2d-3-2-with-cceffects-is-coming}).
+\end{details}
+
+This introduction gives us enough understanding to move to \SB{} and set up our
+lighting. Open the \SB{} project and select the \filemention{MainScene.ccb}
+file.
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Drag an \textit{Effect Node} from the node library to the timeline of
+  \filemention{MainScene.ccb}
+  \item Use the {Shift} key to select all of the nodes that are currently added
+  to Main Scene: \begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter9/shift_select.png}
+    \end{figure}
+  \item Drag the selected nodes onto the \textit{Effect Node} to turn all of the nodes into children of the effect node. Your node
+  hierarchy should look like this:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter9/node_hierarchy_effect.png}
+  \end{figure}
+  \item Set the content size of the effect node to \textit{percentage of parent
+  container} and set the size to (100\%, 100\%)
+\end{enumerate}
+\end{leftbar}
+
+Now we have the \inlinecode{CCEffectNode} set up, which allows us to add visual
+effects!
 
 \subsection{Assigning normal maps in code}

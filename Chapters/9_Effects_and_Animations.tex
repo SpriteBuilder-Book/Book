@@ -111,7 +111,7 @@ lighting, refraction, blur, etc. Currently effects can only be applied to
 \inlinecode{CCEffectLighting} to define light sources.
 \end{description}
 
-To summarize what we've dicussed so far: Effects can only be applied to
+To summarize what we've discussed so far: Effects can only be applied to
 \ccsprite{}s. All affected sprites need to be a child of a
 \inlinecode{CCEffectNode}. Light nodes are used together with the lighting
 effect and define light sources. Direction and brightness of these light nodes
@@ -172,5 +172,197 @@ file.
 
 Now we have the \inlinecode{CCEffectNode} set up, which allows us to add visual
 effects!
+
+Next, let's look into adding the two light sources. We want the light sources to
+be place on the window and above the stove. As you might remember, we are designing this game to
+work on 3.5 inch iPhones, 4 inch iPhones and on iPads. 
+
+In order to position the lights correctly for all of these device types we need
+to use a little trick, simply using relative positioning with percentage values
+does not work. Here's what the scene looks like on different device types using
+relative positioning: 
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\linewidth]{images/Chapter9/light_source_relative_position.png}
+    \caption{Relative positioning results in slightly different light positions
+    for each device type}
+\end{figure}
+
+We have set up the background image to be centered on all device types.
+Therefore the distance of the window and the stove from the screen edges varies.
+This means we cannot use the screen edges as reference points for positioning
+the lights.
+
+The center of the background image is always at exactly the same position. The
+trick in this situation is to position the light sources relative to that center
+position. We can do so by adding an empty \ccnode{} to the center of the scene
+and adding our two light sources as children.
+
+\begin{details}[frametitle={Previewing a scene on different device types}]
+We have discussed this briefly in \ref{preview_screen_sizes}, but just as a
+short reminder: \SB{} allows you to preview your scenes on different device
+types. To switch between different device types, go to the \textit{Document} ->
+\textit{Resolution} menu:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=200pt]{images/Chapter9/select_resolution.png}
+\end{figure}
+You can also use the shortcuts displayed next to the device types!
+\end{details}
+Now we can start adding the center node and the two light sources.
+\begin{leftbar}
+First, let's add the center node.
+\begin{enumerate}
+  \item Drag a plain \textit{Node} from the node library and add it as a child
+  of the \textit{CCEffectNode}
+  \item Set its position type to be \textit{percentage of parent container}
+  \item Set the position to \textit{(50\%, 50\%)}
+  \item Rename the node to \textit{light-container} by selecting the node in the
+  timeline and hitting the return key
+\end{enumerate}
+Now we can add the light source for the window. We will discuss the interesting
+properties of our light sources in detail as soon as they are set up:
+\begin{enumerate}
+  \item Drag a \textit{Light Node} from the node library and add it as a child
+  of the \textit{CCNode} that we created just now
+  \item Set the position of the light to \textit{(-180, 90)}
+  \item Set the \textit{Diffuse Intensity} to \textit{0.25}
+  \item Set the \textit{Specular Intensity} to \textit{0.60}
+  \item Set the \textit{Ambient Intensity} to \textit{0.73}
+  \item Set the \textit{Cutoff Radius} to \textit{500.00}
+  \item Set the \textit{Half Radius} to \textit{0.70}
+  \item Set the \textit{Depth} to \textit{180}
+\end{enumerate}
+And finally, add the second light source:
+\begin{enumerate}
+  \item Drag a \textit{Light Node} from the node library and add it as a child
+  of the \textit{CCNode} that we created just now
+  \item Set the position of the light to \textit{(140, 40)}
+  \item Set the \textit{Diffuse Intensity} to \textit{0.20}
+  \item Set the \textit{Specular Intensity} to \textit{0.60}
+  \item Set the \textit{Ambient Intensity} to \textit{0.00}
+\end{enumerate}
+\end{leftbar}
+
+Now you should be able to switch between the different screen sizes and see that
+the lights are positioned correctly all the time! Let's discuss some of the
+light properties that we just set up.
+
+\begin{description}
+\item[Diffuse Intensity] the intensity of the diffused portion of the light.
+Diffused light brightens nearby objects, without resulting in a
+\textit{shininess} effect. Diffused light is soft, directional light.
+\item[Specular Intensity] the intensity of the specular portion of the light.
+Specular light is a sharp, directional light. It causes reflections on surfaces
+of objects that are lit up.
+\item[Ambient Intensity] the intensity of the ambient portion of the light.
+Ambient light has no direction and the distance to objects in the scene is not
+relevant for this kind of light. All objects in the scene are lit up by
+ambient light in exactly the same way. This factor is used to set a base
+brightness.
+\item[Cutoff Radius] the reach of the light in points. Only nodes within the
+radius of the light will be lit.
+\item[Half Radius] the portion of the radius at which the intensity of the light
+has fallen to half of its maximum value. You can choose a value between 0 and 1.
+A smaller value will create a sharper light, a higher value will create a
+smoother light.
+\item[Depth] defines the distance of the light from the pane it is lighting. A
+small value means that objects are lit from the side. A large value means that
+the object is far away from the pane, therefore the objects are lit from the
+front.
+\end{description}
+
+The last thing to note is that \cocos{} provides two different light types:
+\textit{Point lights} and \textit{Directional lights}. For this game we are only
+using point lights. You can change the type in the \textit{Light type} dropdown
+in the property inspector. A point light only lights up objects that are within
+the cutoff radius, and objects that are further away from the light source are
+lit up less than closer objects. Directional lights light up all objects in the
+same way. They are similar to ambient lighting, except that the light comes from
+a certain direction.
+
+\begin{details}[frametitle={More details on lighting}]
+The creator of \textit{Sprite Illuminator}, one of the normal map tools
+mentioned earlier, has written a nice article on lighting in \SB{} and \cocos{}
+that covers many light properties in detail: \url{https://www.codeandweb.com/blog/2015/03/17/cocos2d-dynamic-lighting-tutorial
+}. The source code annotations in \filemention{CCLightNode.h} of the \cocos{}
+also reveal many details about the different adjustable properties.
+\end{details}
+
+At this point we have the lighting set up, but we don't see any change in our
+scene. Setting up lighting is a two step process in \cocos{}. We need to define
+the light sources, which we just did. Then we need to add the \textit{Lighting
+effect} to sprites that shall be effected by these light sources. In this scene
+we want the background image and the bottom and top part of the pot to be
+affected by our light sources.
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Select the \textit{background} sprite from the timeline
+  \item Add a lighting effect in the property inspector as following: 
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter9/add_lighting_effect.png}
+  \end{figure}
+  \item Select \textit{pot-top} and add a lighting effect in the same way you
+  added it to the background
+  \item Adjust the \textit{shininess} of this lighting effect to \textit{0.3}
+  \item Select \textit{pot-bottom} and add a lighting effect
+  \item Adjust the \textit{shininess} to \textit{0.3} 
+\end{enumerate}
+\end{leftbar}
+
+Now you should see the lighting taking effect! The last thing we need to do is
+add our normal maps.
+
+\subsection{Assigning normal maps in \SB{}}
+Now that our light sources and lighting effects are set up, let's assign the
+normal maps to our sprites so that we get more detailed lighting. For the \textit{pot-top}
+and \textit{pot-bottom} sprite, we can set up the normal map in \SB{}. The
+falling objects are spawned dynamically in code, we will look at how to set up
+their normal maps in the next section.
+
+Adding normal maps to sprites is very simple in \SB{}. In the property
+insepctor of a \ccsprite{} there's a separate dropdown below the \textit{Sprite
+frame} dropdown that allows us to assign a normal map:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=200pt]{images/Chapter9/select_normal_map.png}
+\end{figure}
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Select \textit{pot-top} in the timeline 
+  \item Set the normal map to \filemention{assets\/pot-top_NRM.png}
+  \item Select \textit{pot-bottom} in the timeline
+  \item Set the normal map to \filemention{assets\/pot-bottom_NRM.png}
+\end{enumerate}
+\end{leftbar}
+
+Great! Now you should see a nicely lit scene, with subtle reflections on the
+pot:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=350pt]{images/Chapter9/lighting_finished.png}
+\end{figure}
+
+Note that the preview of the lighting effects in \SB{} currently don't match the
+lighting effects on the simulator or device exactly. To get a good understanding
+of how your lighting effects are working you'll need to run your game.
+
+Now all that's left in terms of lighting is assigning normal maps to
+our falling objects!
+
+\begin{details}[frametitle={Testing lighting effects on the simulator}]
+In case you've been curious and have tried running the current version of the
+project, you might have realized that the performance in the simulator is
+extremely poor. The reason is that the iOS simulator doesn't use your computers
+GPU for all OpenGL features, but instead simulates many of them in software,
+which in many cases can be extremely slow. When working with CCEffects, I highly
+recommend testing your game on an actual device, even though that means that
+you're required to purchase an Apple Developer license.
+\end{details}
 
 \subsection{Assigning normal maps in code}

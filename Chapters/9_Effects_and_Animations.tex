@@ -373,4 +373,71 @@ maps in code is pretty simple. Additionally we will also need to look into
 adding the lighting effect to all falling objects in code, so that they are
 affected by our two light sources.
 
+As you might remember, we had a clever way of managing the different assets for
+our falling objects. We are using a \textit{plist} file that stores the image
+names for all \textit{positive} and \textit{negative} objects. The goal of this
+attempt is to keep information about game content outside of our codebase. In
+software design this principle is called \textit{configuration over code}.
+
+Ideally we want to use the same approach for the normal maps we are about to
+assign. We could simply add the image names of all the normal maps to the plist
+to accomplish that. However, there's another interesting principle in software
+design: \textit{convention over configuration}. When creating the normal maps
+for the sprites in our game, I have followed a \textit{convention}. Each normal
+map file name is built as following: \textit{\{ImageName\}\_NRM.png}
+
+This means that we know the file name of the normal map as soon as we now the
+file name of the sprite's texture. Using this knowledge, the implementation of
+setting up normal maps in code becomes pretty straightforward.
+
+\begin{leftbar}
+Open \filemention{FallingObject.swift} and extend the \inlinecode{init(type:)}
+initializer by adding the following lines \textbf{to the end of the
+initializer}:
+\begin{lstlisting}
+effect = CCEffectLighting()
+    
+let imageNameSplit = split(imageName!) { $0 == "." }
+let imageNameFirstPart = imageNameSplit[0]
+let normalMapName = "\(imageNameFirstPart)_NRM.png"
+
+normalMapSpriteFrame = CCSpriteFrame.frameWithImageNamed(normalMapName) as! CCSpriteFrame
+\end{lstlisting}
+\end{leftbar}
+
+By adding the code above to the initializer of \inlinecode{FallingObject}, we
+make sure that the lighting effect and the normal map are set up as soon as the
+object is created.
+
+In the first line we set up the \inlinecode{CCEffectLighting} and assign it to
+the \inlinecode{effect} property of our \inlinecode{FallingObject}. The
+\inlinecode{effect} property is inherited from \inlinecode{CCSprite}. Now our
+falling object will be affected by light sources.
+
+The remaining lines are used to assign the correct normal map to this object. We
+split the image name to get the part before the file extension. Then we append
+\textit{\_NRM.png} to that first part to retrieve the filename of the normal
+map.
+
+Finally we use that filename to load a \inlinecode{CCSpriteFrame} that we can
+assign to the \inlinecode{normalMapSpriteFrame}. That property is also inherited
+from \inlinecode{CCSprite}.
+
+Now our falling objects are good to go! If you run this version of the game you
+should see detailed lighting effects and subtle reflections on all of the
+spawned objects.
+
+This concludes our coverage of the \inlinecode{CCEffects} API for this book. You
+now know the basic set up that effects require. You also know how to configure
+effects in \SB{} and in code. The lighting effect is one of the more complicated
+ones provided by the effects API - you should be able to pick up simpler effects
+such as blur and saturation pretty easily.
+
+If you find some time, I highly recommend playing around with this API. With
+little time investment you will be able to create stunning visual effects.
+
+\section{Adding Particle Effects}
+
+
+\section{Delightful animations with \SB{}s timeline}
 

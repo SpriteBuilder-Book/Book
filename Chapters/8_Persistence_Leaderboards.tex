@@ -38,6 +38,7 @@ as following:
 func gameOver() {
   isGameOver = true
   userInteractionEnabled = false
+  isDraggingPot = false
   gameModeDelegate?.saveHighscore()
   presentGameOverPopup()
 }

@@ -1898,6 +1898,7 @@ the \inlinecode{StartScene}:
 \begin{lstlisting}
 func gameOver() {
   userInteractionEnabled = false
+  isDraggingPot = false
   presentGameOverPopup()
 }
 \end{lstlisting}
@@ -1910,6 +1911,13 @@ that \inlinecode{MainScene} will no longer receive touch events. Without this li
  would be possible for the user to drag the pot across the screen, even though the game has ended. Typically as soon as a
 game ends you want to disable all interactions between the player and any game
 elements - everything else tends to look awkward.
+
+Additionally to disabling user interaction, we also need to set
+\inlinecode{isDraggingPot} to \inlinecode{false}. Ongoing touch events are not
+cancelled when user interaction gets disable, so if a player would be
+dragging the pot when the game over condition is met, they could go one forever.
+With \inlinecode{isDraggingPot} disabled, the code in \inlinecode{touchMoved}
+will not be performed and the dragging is interrupted immediately.
 
 Additionally we're calling the \inlinecode{presentGameOverPopup} method that we
 haven't implemented yet. As you'll see shortly, presenting the popup involves
@@ -2159,6 +2167,7 @@ following:
 func gameOver() {
   isGameOver = true
   userInteractionEnabled = false
+  isDraggingPot = false
   presentGameOverPopup()
 }
 \end{lstlisting}

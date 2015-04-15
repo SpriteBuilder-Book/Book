@@ -350,10 +350,11 @@ pot:
 
 Note that the preview of the lighting effects in \SB{} currently don't match the
 lighting effects on the simulator or device exactly. To get a good understanding
-of how your lighting effects are working you'll need to run your game.
+of how your lighting effects are working you'll need to run your game from
+\xcode{}.
 
 Now all that's left in terms of lighting is assigning normal maps to
-our falling objects!
+our falling objects as well!
 
 \begin{details}[frametitle={Testing lighting effects on the simulator}]
 In case you've been curious and have tried running the current version of the
@@ -366,3 +367,10 @@ you're required to purchase an Apple Developer license.
 \end{details}
 
 \subsection{Assigning normal maps in code}
+As mentioned earlier, the falling objects are spawned dynamically in code,
+therefore we cannot assign the normal maps in \SB{}. However, adding normal
+maps in code is pretty simple. Additionally we will also need to look into
+adding the lighting effect to all falling objects in code, so that they are
+affected by our two light sources.
+
+

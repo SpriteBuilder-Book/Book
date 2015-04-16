@@ -417,7 +417,12 @@ falling object will be affected by light sources.
 The remaining lines are used to assign the correct normal map to this object. We
 split the image name to get the part before the file extension. Then we append
 \textit{\_NRM.png} to that first part to retrieve the filename of the normal
-map.
+map. Within the closure passed to the \inlinecode{split} function we access a
+variable called \inlinecode{\$0}. This is a cool feature in Swift, within
+closures we can access parameters either by name or by using the \inlinecode{\$}
+symbol in combination with the index of the argument. Using these shorthand
+argument names is pretty common when working with standard library functions
+such as \inlinecode{split}, \inlinecode{map}, etc.
 
 Finally we use that filename to load a \inlinecode{CCSpriteFrame} that we can
 assign to the \inlinecode{normalMapSpriteFrame}. That property is also inherited
@@ -437,7 +442,192 @@ If you find some time, I highly recommend playing around with this API. With
 little time investment you will be able to create stunning visual effects.
 
 \section{Adding Particle Effects}
+Another great way to improve the look and feel of your app is to add particle
+effects. Particle effects are used to animate huge amounts of very small
+sprites, which can be very useful when animating fire, smoke or explosions.
+Here's an example of what a particle effect in \cocos{} can look like:
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=130pt]{images/Chapter9/particle_fire.png}
+\end{figure}
+
+\SB{} comes with built in support for particle effects which makes it easy to
+create them and iterate on them while watching a live visual preview. 
+For our game we will add a particle effect that takes place as soon as the
+player catches one of the good objects.
+
+We are going to create the particle effect in \SB{}, then load it and add it to
+the scene dynamically in code.
+
+\subsection{Creating a Particle Effect in \SB{}}
+Let's open our \SB{} project to get started!
+
+\begin{leftbar}
+Create a new \ccbfile{} of type \textit{Particle} and call it
+\textit{CaughtParticleEffect.ccb}:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=250pt]{images/Chapter9/create_particle_effect.png}
+\end{figure}
+\end{leftbar}
+
+Now you should see a new file with the default fire particle effect. We want to
+use a different effect for our game.
+
+Now how do we go about building our explosion effect? There are two different
+aspects that make up a particle effect. The first is the texture for the
+individual particles, the second are all the settings that define how the
+particles of the system move, change over time, how long the entire particle
+systems lasts, etc. There are well over 20 settings that you can use to build
+your particle effects - discussing all of them goes well beyond the scope of
+this book.
+
+There are two essentially different ways to start out building your own effect.
+You can start entirely from scratch, choosing your own particle texture and
+experimenting with the vast amount of available configuration options.
+Alternatively you can select a particle effect from \SB{} templates and modify
+it to build your custom effect.
+
+In most cases this second approach makes more sense. You will likely be able to
+find an existing particle effect that is a good starting point for your
+custom one. For this game we will use that second approach and will use a very
+slightly modified library effect.
+
+The best way to dive deeper into particle effects is spending some time playing
+around with the different options the editor in \SB{} provides.
+
+Let's turn our fire effect into an explosion effect.
+
+\begin{leftbar}
+Select the \textit{CCParticleSystem} in the timeline. Then open the last tab in
+the inspector panel on the right. Scroll down to the \textit{Exploded Ring}
+effect and \textbf{double-click} onto it to select it:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=250pt]{images/Chapter9/select_exploded_ring.png}
+\end{figure}
+\end{leftbar}
+
+Now you should see the fire being replace by an exploding ring. You will notice
+that this particle effect will only run once, then you will see a blank stage.
+That's because this template creates an effect in which has a limited lifetime.
+The fire effect had a \textit{duration} of \textit{-1.0} seconds which indicates
+an endlessly looping effect. This effect has a \textit{duration} of \textit{0.01}
+which means that particles are only emitted for a very short time. If you
+want to see what the particle effect looks like again, you can click the
+\textit{Start Particles} in the inspector panel. 
+
+The \textit{duration} property defines the lifetime of the particle system,
+which defines how long particles will be created.
+
+Each individual particle has a lifetime as well. In the exploded ring template
+the lifetime is set to \textit{1.0} seconds. The larger this value, the longer
+the particles stay visible as the move from the center to the edge of the stage.
+This makes the ring appear larger. 
+
+We actually want the ring to be a little bit smaller. Later we will add it to
+the inside of the pot as soon as an object is caught. We want it to look like
+all the particles are contained inside of the pot. After playing around with a
+few values I settled with \textit{0.6} for the lifetime of each particle.
+
+\begin{leftbar}
+Change the \textit{Life} property of this effect in the inspector
+panel to \textit{0.6}:
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=250pt]{images/Chapter9/change_lifetime.png}
+\end{figure}
+\end{leftbar}
+
+When you start this particle effect again you will see that the explosion circle
+now appears smaller. This completes our particle effect setup in \SB{}. Feel
+free to spend some time exploring the other properties of particle effects
+before moving on.
+
+Next, we'll load this particle effect in code and add it to our game scene
+dynamically whenever the user catches a good object!
+
+\subsection{Loading particle effects in code}
+Now it's time to pull up the \xcode{} project again. We want to run the particle
+effect when the player catches a good object. This means we need to extend the
+\inlinecode{performCaughtStep} method that we implemented earlier.
+
+We'll first load the \ccbfile{} that stores the particle effect, then we
+position it and add it to the top part of the pot, this will make the effect
+appear to take place inside of the body of the pot. The particle effect starts
+automatically, as soon as it is added to a visible scene.
+
+Let's implement this feature and then discuss some more details!
+
+\begin{leftbar}
+Extend the implementation of \inlinecode{performCaughtStep(fallingObject:)} to
+load and add the particle effect:
+\begin{lstlisting}
+func performCaughtStep(fallingObject:FallingObject) {
+  // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
+  if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
+    gameModeDelegate?.gameplay(self, caughtFallingObject: fallingObject)
+    fallingObject.removeFromParent()
+    let fallingObjectIndex = find(fallingObjects, fallingObject)!
+    fallingObjects.removeAtIndex(fallingObjectIndex)
+    
+    if (fallingObject.type == .Good) {      
+      let particleEffect = CCBReader.load("CaughtParticleEffect") as! CCParticleSystem
+      particleEffect.autoRemoveOnFinish = true
+      particleEffect.positionType = CCPositionType(
+        xUnit: .Normalized,
+        yUnit: .Points,
+        corner: .TopLeft
+      )
+      particleEffect.position = ccp(0.5, 20)
+      potTop.addChild(particleEffect) 
+    }
+    
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+Let's look at the code we added, step by step. First, we check the object type.
+We want to display the particle effect only if the user caught a
+\inlinecode{.Good} object. If that's the case, we use the \inlinecode{CCBReader}
+to load the \ccbfile{} that contains the particle effect. We parse the value
+returned by the \inlinecode{CCBReader}.
+
+Next, we configure an important setting on the particle effect. We set
+\inlinecode{autoRemoveOnFinish} to \inlinecode{true}. This means that \cocos{}
+will take care of removing this particle effect from its parent object as soon
+as the particle effect completed. A particle effect completes once all emitted
+particles have reached the end of their lifetime. Without this line of code you
+would need keep track of all added particle effects manually and make sure to
+remove them - an easy way to introduce memory issues.
+
+With the particle loaded and set up, we take care of positioning it. This
+particle effect should be rendered inside of the pot's body. I've decided to
+center the effect horizontally. We set up a position type that makes the
+centering easy and that allows us to position the particle effect from the top
+edge of the top instead of from the bottom.
+
+Then we set the position: horizontally centered, vertically slightly below the
+top edge of the pot.
+
+In the last step we add the \inlinecode{particleEffect} to \inlinecode{potTop}.
+
+\begin{details}[frametitle={An alternative positioning approach}]
+Instead of setting the position type and the position of the particle system in
+code, you could also add an empty node in \SB{} at the position where you want
+to render the particle effect. Then you could add the particle effect to that
+node instead of to \inlinecode{potTop}. I tend to use this approach for
+positions that are harder to express in code.
+\end{details}
+
+Now you can run the game. You'll see the particle effect run as soon as you
+catch a good object. This game is already looking a lot more polished than at
+the beginning of this chapter.
+
+In the next and last section we will look into using the \SB{} timeline to add
+some more animations to our core gameplay.
 
 \section{Delightful animations with \SB{}s timeline}
 

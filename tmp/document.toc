@@ -108,4 +108,6 @@
 \contentsline {subsection}{\numberline {7.1.4}Assigning normal maps in SpriteBuilder{}}{211}{subsection.7.1.4}
 \contentsline {subsection}{\numberline {7.1.5}Assigning normal maps in code}{213}{subsection.7.1.5}
 \contentsline {section}{\numberline {7.2}Adding Particle Effects}{215}{section.7.2}
-\contentsline {section}{\numberline {7.3}Delightful animations with SpriteBuilder{}s timeline}{215}{section.7.3}
+\contentsline {subsection}{\numberline {7.2.1}Creating a Particle Effect in SpriteBuilder{}}{216}{subsection.7.2.1}
+\contentsline {subsection}{\numberline {7.2.2}Loading particle effects in code}{219}{subsection.7.2.2}
+\contentsline {section}{\numberline {7.3}Delightful animations with SpriteBuilder{}s timeline}{221}{section.7.3}

@@ -85,4 +85,6 @@
 \BOOKMARK [2][-]{subsection.7.1.4}{Assigning normal maps in SpriteBuilder}{section.7.1}% 85
 \BOOKMARK [2][-]{subsection.7.1.5}{Assigning normal maps in code}{section.7.1}% 86
 \BOOKMARK [1][-]{section.7.2}{Adding Particle Effects}{chapter.7}% 87
-\BOOKMARK [1][-]{section.7.3}{Delightful animations with SpriteBuilders timeline}{chapter.7}% 88
+\BOOKMARK [2][-]{subsection.7.2.1}{Creating a Particle Effect in SpriteBuilder}{section.7.2}% 88
+\BOOKMARK [2][-]{subsection.7.2.2}{Loading particle effects in code}{section.7.2}% 89
+\BOOKMARK [1][-]{section.7.3}{Delightful animations with SpriteBuilders timeline}{chapter.7}% 90

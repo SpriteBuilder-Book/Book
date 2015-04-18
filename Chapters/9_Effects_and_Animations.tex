@@ -669,8 +669,52 @@ Open up the \SB{} project and select the \filemention{MainScene.ccb} file.
   will be very short:
   \begin{figure}[H]
   \centering
-  \includegraphics[width=300pt]{images/Chapter9/zoom_timeline.png}
+  \includegraphics[width=130pt]{images/Chapter9/zoom_timeline.png}
+  \end{figure}
+  \item Select the \textbf{pot-bottom} node from the timeline
+  \item Create rotation keyframes at the following frames and rotations
+  (remember you can see the current frame in the last segment of the time
+  displayed next to the zoom indicator, as shown in the image above):
+  \begin{enumerate}
+    \item frame:0, rotation: 0
+    \item frame: 3, rotation: 10
+    \item frame: 5, rotation: 10
+    \item frame: 7, rotation: -10 
+    \item frame: 10, rotation: 0
+  \end{enumerate}
+  The result should look as following:
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=300pt]{images/Chapter9/wobble_timeline.png}
   \end{figure}
 \end{enumerate}
 \end{leftbar}
  
+Great, you should be able to play this animation and see the bottom part of the
+pot wobbling. Once you are up to speed with \SB{}'s timeline, building
+animations becomes extremely fast. Next, we need to copy this animation for the
+top part of the pot.
+
+\begin{leftbar}
+Let's copy the keyframes we just created and add them to \textbf{pot-top}:
+\begin{enumerate}
+  \item Hold down the Shift key and click onto each of the 5 keyframes
+  \item Hit the \textit{CMD + C} keys to copy the keyframes
+  \item Select the \textbf{pot-top} node from the timeline. Drag the timeline
+  ruler all the way to the left, to frame 0 (the copied keyframes will be added
+  at the position of the ruler). Then hit the \textit{CMD + V} keys to paste the
+  keyframes:
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=300pt]{images/Chapter9/copy_keyframes.png}
+  \end{figure}
+\end{enumerate}
+\end{leftbar}
+
+Now we're done with the catch animation. You can use the timeline playback tool
+to preview the animation.
+
+Before we switch to \xcode{} to write code that will trigger this timeline to
+play, let's add the animation for catching negative objects as well.
+
+

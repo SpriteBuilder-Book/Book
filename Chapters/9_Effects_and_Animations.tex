@@ -629,5 +629,48 @@ the beginning of this chapter.
 In the next and last section we will look into using the \SB{} timeline to add
 some more animations to our core gameplay.
 
-\section{Delightful animations with \SB{}s timeline}
+\section{Delightful animations with \SB{}'s timeline}
+We will now add some animations to the game to wrap this chapter up. So far
+we've used the \SB{} timeline to animate user interfaces, now we want to
+animate parts of our gameplay as well.
 
+Whenever the player catches a good object we'll let the pot play a little wobble
+animation:
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.8\linewidth]{images/Chapter9/wobble_animation.png}
+\end{figure}
+
+Later on we will create a second animation based on this one where we add a
+coloring effect that turns the pot red. We will use that second animation
+whenever the user catches a bad object.
+
+%TODO: check why it is fine to add spawning objects to Main while pot is added
+% to effect node
+Let's get started on creating these animations! You might remember that the top
+and the bottom part of the pot need to have the same parent node as the falling
+object due to a limitation in \cocos{}. This means we cannot group them under
+a container node. We discussed this in detail in chapter \ref{rendering_tweak}
+(\textit{A rendering tweak}). This unfortunately means that we need to copy the
+keyframes for the animation for both parts of the pot. Luckily \SB{} makes this
+pretty easy!
+\begin{leftbar}
+Open up the \SB{} project and select the \filemention{MainScene.ccb} file. 
+\begin{enumerate}
+  \item Create a new timeline
+  \item Name that timeline \textit{CatchAnimation}: 
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=300pt]{images/Chapter9/rename_timeline.png}
+  \end{figure}
+  
+  \item Zoom in all the way in the timeline since the animation we're building
+  will be very short:
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=300pt]{images/Chapter9/zoom_timeline.png}
+  \end{figure}
+\end{enumerate}
+\end{leftbar}
+ 

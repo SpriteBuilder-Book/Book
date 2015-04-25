@@ -1,15 +1,15 @@
 \begin{theindex}
 
   \item \SB{} Timeline
-    \subitem Chaining, \hyperpage{130}
-  \item \SB{} timeline, \hyperpage{83}
+    \subitem Chaining, \hyperpage{132}
+  \item \SB{} timeline, \hyperpage{85}
 
   \indexspace
 
-  \item Action System, \hyperpage{50}
+  \item Action System, \hyperpage{52}
   \item Assets
-    \subitem Adding Assets, \hyperpage{57}
-    \subitem Automatic Downscaling, \hyperpage{58}
+    \subitem Adding Assets, \hyperpage{59}
+    \subitem Automatic Downscaling, \hyperpage{60}
 
   \indexspace
 
@@ -22,23 +22,23 @@
 
   \indexspace
 
-  \item Document Root, \hyperpage{32}
-  \item Document Types, \hyperpage{23}, \hyperpage{125}
+  \item Document Root, \hyperpage{33}
+  \item Document Types, \hyperpage{23}, \hyperpage{127}
 
   \indexspace
 
-  \item Fixed Update, \hyperpage{80}
-  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{78}
-    \subitem CCFileUtils, \hyperpage{64}
+  \item Fixed Update, \hyperpage{82}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{80}
+    \subitem CCFileUtils, \hyperpage{66}
 
   \indexspace
 
-  \item Node Lifecycle, \hyperpage{48}
+  \item Node Lifecycle, \hyperpage{50}
   \item Node transformation
-    \subitem Bounding Box, \hyperpage{108}
-    \subitem Position, \hyperpage{112}
+    \subitem Bounding Box, \hyperpage{110}
+    \subitem Position, \hyperpage{114}
   \item Nodes
-    \subitem CCSprite9Slice, \hyperpage{169}
+    \subitem CCSprite9Slice, \hyperpage{171}
 
   \indexspace
 
@@ -47,24 +47,26 @@
 
   \indexspace
 
-  \item Scene Transition, \hyperpage{38}
+  \item Scene Transition, \hyperpage{39}
   \item SpriteBuilder Timeline
-    \subitem Change Duration, \hyperpage{129}
-  \item Start Scene, \hyperpage{139}
+    \subitem Change Duration, \hyperpage{131}
+    \subitem Create new   Timeline, \hyperpage{224}
+    \subitem Interpolation, \hyperpage{177}
+  \item Start Scene, \hyperpage{141}
 
   \indexspace
 
-  \item Touch Handling, \hyperpage{52}
+  \item Touch Handling, \hyperpage{54}
 
   \indexspace
 
-  \item Update Loop, \hyperpage{78}
+  \item Update Loop, \hyperpage{80}
   \item User Interface
-    \subitem CCScrollView, \hyperpage{120}
-      \subsubitem Delegate, \hyperpage{141}
+    \subitem CCScrollView, \hyperpage{122}
+      \subsubitem Delegate, \hyperpage{143}
 
   \indexspace
 
-  \item Z-Order, \hyperpage{90}, \hyperpage{116}
+  \item Z-Order, \hyperpage{92}, \hyperpage{118}
 
 \end{theindex}

@@ -658,7 +658,13 @@ pretty easy!
 \begin{leftbar}
 Open up the \SB{} project and select the \filemention{MainScene.ccb} file. 
 \begin{enumerate}
-  \item Create a new timeline
+  \item Create a new timeline \index{SpriteBuilder Timeline!Create new
+  Timeline}:
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=200pt]{images/Chapter9/timeline_new.png}
+  \end{figure} 
+ 
   \item Name that timeline \textit{CatchAnimation}: 
   \begin{figure}[H]
   \centering
@@ -717,4 +723,222 @@ to preview the animation.
 Before we switch to \xcode{} to write code that will trigger this timeline to
 play, let's add the animation for catching negative objects as well.
 
+Essentially all we need to do is copy the entire animation that we've created so
+far and add an animation to fade the color of the pot to red.
 
+\begin{leftbar}
+Let's create the second timeline with the animation for catching negative
+objects.
+\begin{enumerate}
+  \item Create a new timeline
+  \item Name the timeline \textit{CatchNegativeAnimation}
+  \item Switch to the \textit{CatchAnimation} timeline
+  \item Copy the 5 keyframes from the wobble animation from the
+  \textit{CatchAnimation} timeline by selecting all keyframes with the
+  \textit{Shift} key and then hitting the \textit{CMD + C} keys
+  \item Switch back to the \textit{CatchNegativeAnimation} timeline
+  \item Select the \textbf{pot-top} node from the timeline
+  \item Make sure the timeline ruler is at frame 0
+  \item Use the \textit{CMD + V} keys to paste the animation
+  \item Select the \textbf{pot-bottom} node from the timeline
+  \item Use the \textit{CMD + V} keys to paste the animation
+\end{enumerate}
+\end{leftbar}
+
+Now it's time to add the color fade animation! This animation will not be a
+linear one. In chapter \ref{timeline_interpolation} we discussed that \cocos{}
+provides different types of interpolations for our animations. I've built the
+color animation using the \textbf{Ease Out} / \textit{Ease In} interpolations.
+That makes the color snap to red pretty fast, and then fade out to white a
+little bit slower. Choosing different interpolations every once in a while,
+instead of always using the default linear interpolation, will make your
+animations look more interesting.
+
+\begin{leftbar}
+Make sure you have the \textit{CatchNegativeAnimation} timeline selected before
+starting!
+\begin{enumerate}
+  \item Select the \textbf{pot-bottom} node from the timeline
+  \item Add the following \textit{Color} keyframes:
+  \begin{enumerate}
+    \item frame:0, color: white
+    \item frame: 5, color: red
+    \item frame: 10, color: white 
+  \end{enumerate}
+  \item \textit{Right-Click} onto the pink bar between the first and the second
+  keyframe
+  \item Select \textit{Ease Out} from the context menu
+  \item \textit{Right-Click} onto the pink bar between the second and the third
+  keyframe
+  \item Select \textit{Ease In} from the context menu
+\end{enumerate}
+\end{leftbar}
+
+And now, as a very last step, we need to copy the animation from
+\textbf{pot-bottom} to \textbf{pot-top}.
+
+\begin{leftbar}
+Make sure you have the \textit{CatchNegativeAnimation} timeline selected.
+\begin{enumerate}
+  \item Select the \textbf{pot-bottom} node from the timeline
+  \item Copy the three keyframes from the color animation
+  \item Set the timeline ruler to frame 0
+  \item Select the \textbf{pot-top} node from the timeline
+  \item Paste the three keyframes from the color animation
+\end{enumerate}
+\end{leftbar}
+
+And now we are all set! You should be a little bit more experienced at using the
+timeline at this point, and we have to new animations that will make our game
+look better.
+
+Now the final step for this chapter is adding code that will trigger the
+playback of our new timelines.
+
+\subsection{Playing the timelines}
+Now it's time to switch back to our \xcode{} project. Since both animations
+will be playing once an object is caught, we once again need to extend the
+\inlinecode{performCaughtStep(fallingObject:)} method.
+
+We simply need to add two lines that trigger the timeline playback:
+\begin{leftbar}
+Extend the \inlinecode{performCaughtStep} method to look as
+following:
+\begin{lstlisting}
+func performCaughtStep(fallingObject:FallingObject) {
+  // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
+  if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
+    gameModeDelegate?.gameplay(self, caughtFallingObject: fallingObject)
+    fallingObject.removeFromParent()
+    let fallingObjectIndex = find(fallingObjects, fallingObject)!
+    fallingObjects.removeAtIndex(fallingObjectIndex)
+    
+    if (fallingObject.type == .Good) {
+      animationManager.runAnimationsForSequenceNamed("CatchAnimation", tweenDuration: 0.1)
+      
+      let particleEffect = CCBReader.load("CaughtParticleEffect") as! CCParticleSystem
+      particleEffect.autoRemoveOnFinish = true
+      particleEffect.positionType = CCPositionType(
+        xUnit: .Normalized,
+        yUnit: .Points,
+        corner: .TopLeft
+      )
+      particleEffect.position = ccp(0.5, 20)
+      potTop.addChild(particleEffect)
+      
+    } else if (fallingObject.type == .Bad) {
+      animationManager.runAnimationsForSequenceNamed("CatchNegativeAnimation", tweenDuration: 0.1)
+    }
+  }
+}
+\end{lstlisting}
+\end{leftbar}
+
+If the player catches a good object, we play \textit{CatchAnimation}, if the
+player catches a bad object we play \textit{CatchNegativeAnimation}.
+
+You might have noticed the new \inlinecode{tweenDuration} argument that we are
+using as part of calling \inlinecode{runAnimationsForSequenceNamed}. This
+duration defines how much time is used to animate a transition between two
+different timelines.
+
+Since multiple objects can be caught in a very small timeframe, it could happen
+that the player catches a good object and then catches a bad object immediately
+afterwards. This might mean that the \textit{CatchNegativeAnimation} would be
+started before the \textit{CatchAnimation} can complete. If we wouldn't use a
+\inlinecode{tweenDuration}, then the transition would happen instantly, which
+can result in noticeable jumps of the rotation and the blend color. Using a
+\inlinecode{tweenDuration}, \cocos{} generates a smooth transition between the 
+timelines by animating the properties that need to be changed, instead of changing 
+them instantly.
+
+There's one issue with timelines that we haven't discussed yet. \textbf{Only one
+timeline per \ccbfile{} can be played back at a time}. As soon as we play a
+timeline, any other timeline that might have been playing will be stopped. This causes a problem
+with code that we have set up very early in this book: the sound that gets
+played whenever a falling object is missed and drops to the ground.
+
+Playing this sound will now interrupt our catch animation timelines. Since
+players will drop a lot of objects, this issue will occur frequently.
+
+What can we do? One solution would be moving the timeline to a separate
+sub-\ccbfile{} within \filemention{MainScene.ccb}. However, there is luckily a
+simpler solution for this use case. We can trigger the sound to be played in
+code, without using a timeline for it.
+
+\section{Playing sound effects from code}
+Playing back sound in \cocos{} is also just a few lines of code.
+
+\begin{leftbar}
+Modify the \inlinecode{performMissedStep} method to look as following:
+\begin{lstlisting}
+func performMissedStep(fallingObject:FallingObject) {
+  // check if falling object is below the screen boundary
+  if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
+    gameModeDelegate?.gameplay(self, droppedFallingObject: fallingObject)
+    // if object is below screen, remove it
+    fallingObject.removeFromParent()
+    let fallingObjectIndex = find(fallingObjects, fallingObject)!
+    fallingObjects.removeAtIndex(fallingObjectIndex)
+    // access audio object
+    let audio = OALSimpleAudio.sharedInstance()
+    // play sound effect
+    let filePath = CCFileUtils.sharedFileUtils().fullPathForFilenameIgnoringResolutions("assets/drop.caf")
+    audio.playEffect(filePath)
+  }
+}
+\end{lstlisting} 
+\end{leftbar}
+
+As a first step we grab a reference to the audio engine, using
+\inlinecode{OALSimpleAudio.sharedInstance()}. Then we find the file path to the
+audio file we want to play. Note that we need to use the
+\inlinecode{fullPathForFilenameIgnoringResolutions} method. Typically
+\inlinecode{CCFileUtils} will look for our file inside of a path that is
+specific to the current device resolution. This makes a lot of sense for images,
+because they are scaled for different devices and then stored in specific
+subdirectories. For sound files however, we don't want to use this device
+specific file search. Sound files are used without any modification across all
+devices and are not stored in the resolution specific directories.
+
+You can see it in the folder structure of the \textit{Published-iOS} folder,
+that is stored under \textit{Resources/Published-iOS}:
+  \begin{figure}[H]
+  \centering
+  \includegraphics[width=150pt]{images/Chapter9/resource_structure.png}
+  \end{figure}
+
+Once we have the file path, we simply call the \inlinecode{playEffect} method.
+Now you know how to play back sound effects in code!
+
+There's even a small advantage we can gain using this approach. We can
+\textit{preload} sound effects. Typically a sound effect is loaded by
+\inlinecode{OALAudio} as soon as it is played the first time. If you have larger
+sound files this can lead to a small freeze in your gameplay whenever you play a
+sound effect for the first time.
+
+We can avoid this issue by explicitly telling \inlinecode{OALAudio} to load a
+sound effect. Typically you want to do this as soon your gameplay scene is
+loaded, e.g. in the \inlinecode{didLoadFromCCB} method.
+
+Let's preload our audio effect so that you know how to do it in case you build a
+game that is more audio heavy.
+
+\begin{leftbar}
+Extend \inlinecode{didLoadFromCCB} to preload the sound effect we are using:
+\begin{lstlisting}
+func didLoadFromCCB() {
+  potTop.zOrder = DrawingOrder.PotTop.rawValue
+  potBottom.zOrder = DrawingOrder.PotBottom.rawValue
+  
+  let audio = OALSimpleAudio.sharedInstance()
+  let filePath = CCFileUtils.sharedFileUtils().fullPathForFilenameIgnoringResolutions("assets/drop.caf")
+  audio.preloadEffect(filePath)
+}
+\end{lstlisting}
+\end{leftbar}
+
+Instead of calling \inlinecode{playEffect}, we call \inlinecode{preloadEffect}
+to load the sound file and prepare it for playback.
+
+Now we have added enough polish to this game!

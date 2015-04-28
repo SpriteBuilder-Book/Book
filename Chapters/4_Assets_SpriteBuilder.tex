@@ -157,24 +157,30 @@ Classes!CCFileUtils}
 Now that we have a basic understanding of how asset management works, lets get
 started working on our game. For now our game will only consist of one scene, so
 we can start working in the \textit{MainScene.ccb} that is part of the \SB{}
-template. First, remove the existing content so that we can start with a blank
+template. 
+
+\begin{leftbar}
+First, remove the existing content so that we can start with a blank
 scene. Now we can add the background image. To add a sprite to a scene we can
-simply drag the asset to the stage, \SB{} will automatically create an instance
-of \ccsprite{}. Add the \textit{background.png} image to the stage.
+simply drag the asset from the left panel to the stage, \SB{} will
+automatically create an instance of \ccsprite{}. Add the \textit{background.png} image to the stage.
+\end{leftbar}
 
 How should we position this background image? We already have briefly discussed
 the \SB{} positioning system (\ref{PositioningSystem}). Using the positioning
 system correctly is especially important when we create games for phones and tablets -
 which we always should try to do. In most cases - like in this game it is the
 best to center the background image. That way phones and tablets will display a
-very similar portion of the background image. You can center the image by
-choosing a \textit{normalized} position type (\textit{in \% of parent
-container}) and setting the position to (50, 50).
+very similar portion of the background image. 
 
+\begin{leftbar}
+Center the image by choosing a \textit{normalized} position type (\textit{in \%
+of parent container}) and setting the position to (50, 50) as shown below:
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/Chapter2/center_background.png}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Chapter2/center_background.png}
 \end{figure}
+\end{leftbar}
 
 You can preview what your game will look like on different device types directly
 in \SB{}, without the need to compile and run the game - you should do this as
@@ -196,7 +202,10 @@ falling objects dynamically, while the game is running, and for each object we
 only need to store if it should be caught or not. That can be best accomplished
 by a subclass of \ccsprite{} that we create in code. This way you will also
 learn how to use assets you added in \SB{} to create \ccsprite{}s in code.
-Open the \xcode{} project of the game to get started.
+\begin{leftbar}
+Open the \xcode{} project of the game to get started. Remember that you can use
+the \textit{CMD + Shift + O} shortcut to do so!
+\end{leftbar}
 
 \subsection{Create a falling object class}
 In general we have two ways to differentiate objects a player should catch and
@@ -210,9 +219,17 @@ Since our falling objects won't have any type-specific behaviour, creating two
 distinct subclasses is not necessary in this case. Instead, as of now, one
 subclass with a \inlinecode{type} property is the better solution.
 
+\begin{leftbar}
 Create a new class called \inlinecode{FallingObject} and make it a subclass
-of \ccsprite{}. The best way to represent different types in Swift is
-using enumerations. Add this enum definition to \textit{FallingObject.swift},
+of \ccsprite{}. If you run into issues, check how created new classes in the
+last chapter.
+\end{leftbar}
+
+The best way to implement our \inlinecode{type} property is using an 
+enumeration. Enumerations define multiple mutually exclusive values.
+
+\begin{leftbar}
+Add this enum definition to \textit{FallingObject.swift},
 inside of the \inlinecode{class} block:
 
 \begin{lstlisting}
@@ -221,12 +238,15 @@ enum FallingObjectType: Int {
   case Bad
 }
 \end{lstlisting}
+\end{leftbar}
 
 Swift supports multiple types of enumerations and enumeration values.
 In the example above we are creating an enumeration with \textit{Raw Values}.
 When we use an enumeration with raw values we need to assign a type as part of
 the enum definition, as shown in the first line (\inlinecode{enum
-FallingObjectType: Int}). Each enum value will be mapped to one value of this
+FallingObjectType: Int}). 
+
+Each enum value will be mapped to one value of this
 provided type. In the example shown above, the raw value for
 \inlinecode{FallingObjectType.Good} will be 0 and the value for
 \inlinecode{FallingObjectType.Bad} will be 1. Thanks to auto-increment we do not
@@ -238,26 +258,31 @@ You can read everything about the different ways of creating enumerations in
 Swift in the official documentation
 (\url{https://developer.apple.com/library/ios/documentation/
 Swift/Conceptual/Swift_Programming_Language/Enumerations.html}).
+You can also read a more practical tutorial on Swift enums on our website:
+(\url{https://www.makeschool.com/tutorials/learn-swift-by-example-part-2-enums})
 \end{details}
 
 Additionally we add an instance variable to store the object type. Later we will
-add an initializer to set the type of the falling object. For now your class
-should look as follows:
+add an initializer to set the type of the falling object. 
 
+\begin{leftbar}
+Add a property to store the falling object type, so that the class looks as
+following:
 \begin{lstlisting}
 import Foundation
 
 class FallingObject: CCSprite {
 
   enum FallingObjectType: Int {
-	case Good
-	case Bad
+  case Good
+  case Bad
   }
     
   private(set) var type:FallingObjectType
   
 }
 \end{lstlisting}
+\end{leftbar}
 
 We define the instance variable to be \textit{readonly} because we will not
 support changing the type of a falling object after it has been created. In Swift we can 
@@ -285,27 +310,48 @@ update the list of assets later on and it keeps our codebase small and well
 structured. So instead of creating these arrays in code we could use some sort
 of resources file that stores information on available images. A very common 
 format for storing such type of information in Cocoa Touch is a \textit{plist} 
-(Property List). You can create a \textit{plist} by selecting \textit{File ->
+(Property List). Let's add one to our project!
+
+\begin{leftbar}
+Create a \textit{plist} by selecting \textit{File ->
 New -> File\ldots} from \xcode{}'s menu. 
-Then you need to select \textit{Resource} from the left panel and choose
+Then select \textit{Resource} from the left panel and choose
 \textit{Property List} on the right:
 
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=300pt]{images/Chapter2/create_plist.png}
+    \centering
+    \includegraphics[width=300pt]{images/Chapter2/create_plist.png}
 \end{figure}
 
-As the name choose \textit{FallingObjectImages}. Now fill the \textit{plist}
-with two arrays that contain the filenames of the assets that we added in \SB{}.
-When accessing assets from a \SB{} project you always need to include folder
-names. Instead of referencing the tomato with \inlinecode{tomato.png} you need
-to use \inlinecode{assets/tomato.png} since the asset is in the
-\inlinecode{assets} folder in the \SB{} project:
+As the name choose \textit{FallingObjectImages}.
+\end{leftbar} 
 
+Next, let's fill the \textit{plist} with two arrays that contain the filenames
+of the assets that we added in \SB{}, grouped into \textit{good} and
+\textit{bad} objects. When referencing assets from a \SB{} project you always
+need to include the folder names in which the images are contained. Instead of
+referencing the tomato with \inlinecode{tomato.png} you need to use \inlinecode{assets/tomato.png} since the asset is in the
+\inlinecode{assets} folder in the \SB{} project.
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Right-click onto the \textit{plist} root and select \textit{Add Row}
+  from the context menu
+  \item Click onto the \textit{Type} column of the new row and select the type
+  to be \textit{Array}
+  \item Double-click onto to the name of the array and rename it to
+  \textit{FallingObjectTypeBadImages}
+  \item Repeat step 2 and 3 to create another array
+  \item Name that new array \textit{FallingObjectTypeGoodImages}
+  \item Add all the assets as \textit{String} entries to the according arrays
+\end{enumerate}
+The resulting \textit{plist} should look like this:
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=0.7\linewidth]{images/Chapter2/plist_setup.png}
+    \centering
+    \includegraphics[width=0.7\linewidth]{images/Chapter2/plist_setup.png}
 \end{figure}
+\end{leftbar}
+
 Now we have a list of all asset names grouped into the two object type
 categories. Time to implement the \inlinecode{FallingObject} class.
 
@@ -324,25 +370,23 @@ once and then keep a reference to it for future use. A good way of doing this is
 using a class constant to store the \textit{plist} reference once it is loaded.
 
 \begin{details}[frametitle={Class variables in Swift}] 
-While class constants and non-computed class variables are already specified as
-part of the Swift language they aren't implemented in the Swift compiler yet 
-(as of Xcode version 6.1.1), therefore we need to use a workaround. 
+Swift 1.2 does not support stored class variables. However, we can use the
+\inlinecode{static} keyword to create class-wide constants. The difference
+between a \inlinecode{static} and a \inlinecode{class} variable is that the
+\inlinecode{static} variable is not inherited by subclasses. That isn't an issue
+for our use case!
 \end{details}
 
-As described in the detail box above, Swift does not yet support class
-constants, therefore we need to use a workaround. Here is the code that loads
-the plist and stores the content in a class variable. You should place it within
-the class definition of \inlinecode{FallingObject} (no worries, we will discuss
-the code in detail right away):
+Let's add the code that loads the plist and stores the content in a static
+variable. 
+
+\begin{leftbar}
+Place the following code within the class definition of
+\inlinecode{FallingObject} (no worries, we will discuss the code in detail right away):
 
 \begin{lstlisting}
-  private class var imageNames:ImageNames {
-    struct ClassConstantWrapper {
-      static let instance = ImageNames()
-    }
-    return ClassConstantWrapper.instance
-  }
-  
+  private static let imageNames = ImageNames()
+
   private struct ImageNames {
     var good: [String]
     var bad: [String]
@@ -355,19 +399,13 @@ the code in detail right away):
     }
   }
 \end{lstlisting}
+\end{leftbar}
 
-First, we are defining a private class variable. Currently Swift only supports
-computed class variables, that means we need to provide a getter that will
-return a generated value and does not rely on a class storage variable. We
-provide that getter through the closure that is placed directly after the 
-variable declaration. Whenever the class variable is accessed
-this closure is called. Inside of this closure we place the workaround mentioned
-earlier. We declare a struct called \inlinecode{ClassConstantWrapper} with a
-static constant called \inlinecode{instance}. This static constant is initialized with an instance of
-the structure \inlinecode{ImageNames} which we declare a few lines later. Since
-\inlinecode{instance} is a static constant, the expression will only be
+First, we are defining a private static constat. This static constant is
+initialized with an instance of the structure \inlinecode{ImageNames} which we declare a few lines later. Since
+\inlinecode{instance} is a static constant, the expression will be
 evaluated once and only one instance of \inlinecode{ImageNames} will ever be
-created, independently of how often the class variable is accessed.
+created, independently of how often the static constant is accessed.
 
 Inside of the \inlinecode{ImageNames} struct, the actual work happens. First we
 declare two array variables that store strings. They store the filenames of the
@@ -390,10 +428,7 @@ an Objective-C Array (\inlinecode{NSArray}) that cannot store type information
 about the elements it contains. We however know that this array only contains
 strings so we want to treat it as a \inlinecode{[String]} array in Swift.
 
-Due to the necessary workaround this is quite a bit of code, but things will
-improve as Swift matures. 
-
-Now we have successfully set up a class constant that will load the required
+Now we have successfully set up a static constant that will load the required
 image names when it is accessed the fist time and store these images on a class
 level. That will avoid reloading the plist for every instance of
 \inlinecode{FallingObject} that we create.
@@ -405,7 +440,8 @@ initializer of \inlinecode{FallingObject}. We need to:
   \item Call the designated initializer of our superclass \ccsprite{}
 \end{itemize}
 
-This is what the initializer should look like:
+\begin{leftbar}
+Add the following initializer to \filemention{FallingObject.swift}:
 \begin{lstlisting}
   init(type: FallingObjectType) {
     self.type = type
@@ -426,16 +462,18 @@ This is what the initializer should look like:
     anchorPoint = ccp(0,0)
   }
 \end{lstlisting}
+\end{leftbar}
+
 We start of by storing the type we receive in an instance variable.
 Then we create a local variable called \inlinecode{imageName} that we will use
 to load the correct texture for this object type. Next, we check whether we are
 initializing a good or a bad object. In each case we generate a random number,
 using our helper function \inlinecode{randomInteger}, that picks one image name
-from the set of available image names in the arrays. %TODO: mention how to add
-% helper functions
+from the set of available image names in the arrays. 
+
 Next, we need to call an initializer of our superclass \ccsprite{}. Here we run
-into another limitation of the current version of Swift: we can only call
-\textit{designated} initializers of our superclass, but not any
+into another limitation of the current version of Swift: \textbf{we can only
+call \textit{designated} initializers of our superclass}, but not any
 \textit{convenience} initializers. This means instead of calling:
 \begin{lstlisting}
 CCSprite(imageNamed: String!)
@@ -449,6 +487,19 @@ with the image name that we have selected from one of our lists, then we use
 that sprite frame to call \ccsprite{}'s designated initializer. Finally, we set
 the anchor point of our object to the bottom left corner, that will make it
 easier to determine the spawn position later on.
+
+You will notice that this code won't compile! The \inlinecode{randomInteger}
+function is not part of the Swift standard library. Instead it is a convenience
+function that I've created to make generation of random numbers in Swift easier.
+You need to download the file containing the helper and add it to your project.
+
+\begin{leftbar}
+Download \filemention{Helpers.swift} from this
+\url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/Helpers.swift}
+and add it to your project.
+\end{leftbar}
+
+Now the compiler should be satisfied!
 
 That's all we need in order to create a \inlinecode{FallingObject}! Now we
 can move on and spawn some objects.
@@ -464,8 +515,10 @@ increasing amount of memory we will need to take care of removing objects that
 have fallen below the bottom edge of the screen. A good way to do this is
 creating an array to store all the objects we spawn. Swift lets us define a
 private instance variable and initialize the array stored in it in a single line
-of code:
+of code.
 
+\begin{leftbar}
+Add the following property to \inlinecode{MainScene}
 \begin{lstlisting}
 class MainScene: CCNode {
 
@@ -473,11 +526,14 @@ class MainScene: CCNode {
 
 }
 \end{lstlisting}
+\end{leftbar}
 
 We also need to define a falling speed and an interval at which we want to spawn
 objects. A good way to do this is by defining constants - we want to avoid to
-have these numbers all over our code. Add the two constants so that your class
-definition looks as following:
+have these numbers all over our code. 
+
+\begin{leftbar}
+Add the two constants so that your class definition looks as following:
 
 \begin{lstlisting}
 class MainScene: CCNode {
@@ -488,11 +544,15 @@ class MainScene: CCNode {
   private let spawnFrequency = 0.5
 }
 \end{lstlisting}
+\end{leftbar}
 
 We are going to spawn falling objects with the frequency that we have defined in
 the constant \inlinecode{spawnFrequency}. Through the \inlinecode{CCNode} class
 \cocos{} provides convenient methods for scheduling repeating events without the
-need to instantiate a timer. We schedule that timer in the
+need to instantiate a timer. 
+
+\begin{leftbar}
+Schedule the \inlinecode{spawnObject} method in the
 \inlinecode{onEnterTransitionDidFinish} method:
 
 \begin{lstlisting}
@@ -503,6 +563,7 @@ need to instantiate a timer. We schedule that timer in the
     schedule("spawnObject", interval: spawnFrequency)
   }
 \end{lstlisting}
+\end{leftbar}
 
 Remember, \textit{onEnterTransitionDidFinish} is called as soon as the
 presentation transition is completed and the current scene is fully visible.
@@ -518,9 +579,10 @@ the top of the screen to the bottom.
 We want to randomly spawn either positive objects that should be caught or
 negative ones that should not, for that we will generate a random number. Based
 on the random number we will generate a falling object. We will place that
-spawning object just above the screen at a random X position. Here is how we can
-implement that:
+spawning object just above the screen at a random X position. 
 
+\begin{leftbar}
+Add the following \inlinecode{spawnObject} method to \inlinecode{MainScene}:
 \begin{lstlisting}
   func spawnObject() {
     let randomNumber = randomInteger(2)
@@ -539,11 +601,15 @@ implement that:
     addChild(fallingObject)
   }
 \end{lstlisting}
+\end{leftbar}
 
-As you can see here, defining the \inlinecode{FallingObjectType} enumeration
-with a raw integer value allows us to create a type directly from a number.
-Here that comes very handy. Besides that the spawning code is not too exciting,
-it primarily consists of a little math and type conversions.
+As you can see here we can create an enum value directly from a number.
+This is possible because we defined the \inlinecode{FallingObjectType}
+enumeration to have a raw integer value earlier. The \inlinecode{rawValue}
+initializer is very handy for this specific situation. Besides that the spawning
+code is not too exciting, it primarily consists of a little math and type
+conversions. We add each spawned object to the \inlinecode{fallingObject} array,
+choose a spawn position and add it as a child to \inlinecode{MainScene}.
 
 This is a schematic diagram of where we are spawning
 objects with the code shown above:
@@ -604,8 +670,8 @@ Here is what we want to do in the update method:
   bottom
 \end{itemize}
 
-And here is how we can implement it:
-
+\begin{leftbar}
+Add the following \inlinecode{update} method to \inlinecode{MainScene}:
 \begin{lstlisting}
   override func update(delta: CCTime) {
     // use classic for loop so that we can remove objects while iterating over the array
@@ -627,6 +693,7 @@ And here is how we can implement it:
     }
   }
 \end{lstlisting}
+\end{leftbar}
 
 The interesting aspect of the code snippet above is how we check if the
 falling object is out of bounds and how we move the falling object. Note that we
@@ -644,7 +711,7 @@ If the falling object is within the screen boundary we move it to the bottom
 with the constant speed that we defined earlier.
 
 Now the falling mechanic is entirely implemented! In the next and last
-subchapter you will learn how to add sound assets to the game.
+section you will learn how to add sound assets to the game.
 
 \begin{details}[frametitle={Update vs. Fixed Update}] 
 This chapter discusses the \inlinecode{update:} method of \cocos{} in detail.
@@ -657,9 +724,9 @@ integrated in \cocos{} uses the
 \inlinecode{fixedUpdate:} method to perform all of its calculations. For you as
 developer that means that you should implement code that changes physical
 attributes in the \inlinecode{fixedUpdate:} method and \textbf{not} in the
-\inlinecode{update:} method. We will discuss the physics engine of \cocos{} in
-later chapters in detail. A nice blog post about the \inlinecode{fixedUpdate}
-method is available here:
+\inlinecode{update:} method. Building games involving physics is not part of
+this book. If you pursue a physics game on your own after finishing this book
+you can read a nice blog post about the \inlinecode{fixedUpdate} method here:
 \url{http://kirillmuzykov.com/update-vs-fixedupdate-in-cocos2d/}.
 \end{details}
 
@@ -670,27 +737,19 @@ effects also play a big role in creating games that your players enjoy. In this
 section you will learn how to add a sound effect that gets played whenever one
 of the falling objects drops out of the screen.
 
-Start by downloading the sound file here:
-\url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/drop.wav}.
-
 All sound files need to be added to your \SB{} project in the \textit{Wave}
 format. \SB{} will then generate compressed versions of that sound in different
 formats for the iOS and the Android app. You can add the sound effect - just
 like any other asset - by dragging it from Finder to the resource pane (in the
-bottom left) of \SB{}.
-
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/Chapter2/new_timeline_audio.png}
-		\caption{WAV files can be added by dragging them to the resource
-		pane}\label{fig:audio_new_timeline}
-\end{figure}
+bottom left) of \SB{}. For this project I have included a \filemention{drop.wav}
+file in the \filemention{assets} folder that you downloaded and added to your
+project earlier.
 
 There are different ways to play sound effects added to your \SB{} project: you
 can add a sound effect to a \SB{} timeline or you can play a sound effect
-directly from code. We will first look at the timeline approach, implementing the code
-approach will be an exercise at the end of this chapter. Before we set up the
-sound effect I want to give you a basic introduction to the timeline feature
+directly from code. We will first look at the timeline approach, later in the
+book I will show you how to play sound effects in code.
+Before we set up the sound effect I want to give you a basic introduction to the timeline feature
 of \SB{} since it is one of the most important ones!
 
 \subsection{\SB{}'s timeline feature}\index{\SB{} timeline}
@@ -699,46 +758,67 @@ sequences of sound effects without writing code. Every \ccbfile{} has one
 \textit{Default Timeline} associated with it as soon as it is created. However,
 a \ccbfile{} can, and often will, have multiple different timelines. Each
 timeline is a sequence of sound effects, callbacks and most importantly
-keyframes.
-
-\ldots
-
-%TODO: discuss keyframes, sound effects, callbacks, autoplay, etc.
+keyframes. Keyframes allow us to create animations by defining how sprites move
+and change over time. We can change properties such as position, rotation,
+color, etc. \SB{}'s animation tool is very similar to the famous Flash keyframe
+editor. It is extremely useful in creating polished games and throughout later
+parts of this book we will use the \SB{} timeline to create UI and game
+animations.
 
 \subsubsection{Adding the sound effect to a timeline}
+For now let's take a look at how we can play sound effects using the timeline!
 
-Start by creating a new timeline for the sound effect as show in figure
-\ref{fig:audio_new_timeline}. Once the timeline is created you can drag the
-sound effect from the asset library in the left panel to the \textit{Sound
-effects} row of \SB{}'s timeline (the second row from the top).
+\begin{leftbar}
+Start by creating a new timeline for the sound effect as shown in the following
+screenshot: 
 
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/Chapter2/audio_timeline.png}
-		\caption{(1) Audio file added to timeline\newline{} (2)
-		Button to change timeline duration\newline{} (3) Timeline
-		duration dialog\newline{}}\label{fig:change_timeline_duration}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Chapter2/new_timeline_audio.png}
+    \caption{WAV files can be added by dragging them to the resource
+    pane}\label{fig:audio_new_timeline}
 \end{figure}
 
-When the sound is added to the timeline it will be displayed in wave form. You
-should adjust the duration of the timeline to match the duration of the sound
-effect. Figure \ref{fig:change_timeline_duration} shows how you can change the
+\begin{description}
+\item[(1)] Once the timeline is created you can drag the
+sound effect from the asset library in the left panel to the \textit{Sound
+effects} row of \SB{}'s timeline (the second row from the top). When the sound
+is added to the timeline it will be displayed in wave form.
+\item[(2) / (3)] You should adjust the duration of the timeline to match the
+duration of the sound effect. Figure \ref{fig:change_timeline_duration} shows how you can change the
 duration. You should set it to 10 frames.
+\end{description}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Chapter2/audio_timeline.png}
+    \caption{(1) Audio file added to timeline\newline{} (2)
+    Button to change timeline duration\newline{} (3) Timeline
+    duration dialog\newline{}}\label{fig:change_timeline_duration}
+\end{figure}
+
+\end{leftbar}
 
 Now the sound is ready to play! The last step is assigning a unique name to this
 timeline which we can reference from code. You can rename a timeline by either
 choosing \textit{Animation -> Edit Timelines\ldots} or selecting the dropdown
-button next to the timeline name:
+button next to the timeline name.
 
+\begin{leftbar}
+Rename the sound timeline to  \textit{DropSound}:
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=200pt]{images/Chapter2/edit_timeline.png}
-		\caption{\textit{Edit Timelines\ldots} allows you to change the name of a
-		timeline}
+    \centering
+    \includegraphics[width=200pt]{images/Chapter2/edit_timeline.png}
+    \caption{\textit{Edit Timelines\ldots} allows you to change the name of a
+    timeline}
 \end{figure}
+\end{leftbar}
 
-I have chosen \textit{DropSound} for the name of this timeline. Now everything
-is set up and you can hit the publish button in \SB{}.
+Now everything is set up and you can hit the publish button in \SB{}.
+
+\begin{leftbar}
+Publish the \SB{} project and switch to \xcode{}.
+\end{leftbar}
 
 \subsection{Triggering a Sound Effect}
 Now we have set up the sound effect in \SB{} and published the project, all that
@@ -759,7 +839,10 @@ completion - we will use these capabilities extensively throughout this book.
 As mentioned earlier we want to play the sound effect when an object falls off
 the screen. We already have code that checks for that condition in our
 \inlinecode{update} method, all we need to do this to add the line that runs the
-timeline. Extend the relevant part of the \inlinecode{update} method to look as
+timeline. 
+
+\begin{leftbar}
+Extend the relevant part of the \inlinecode{update} method to look as
 following:
 \begin{lstlisting}
 // check if falling object is below the screen boundary
@@ -771,8 +854,11 @@ if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
     animationManager.runAnimationsForSequenceNamed("DropSound")
 } else {...}
 \end{lstlisting}
+\end{leftbar}
+
 Now you can compile and test the project. Every time an object falls of the
 screen you should hear the drop sound play!
+
 \section{Wrapping up}
 In this chapter you have learned how to work with an essential component of all
 video games - image and audio assets. You have learned how to design scenes with
@@ -782,17 +868,5 @@ device types and you have played your first sound effect. You have learned some
 of the most important essentials of game development with \SB{} and \cocos{}.
 
 The focus of the next chapter is \textit{User Interaction}. You will learn how
-to implement Drag and Drop functionality, how to use the Accelerometer as an
-alternative control scheme and how to use gestures to make your games more
-enjoyable. Before you move on you should complete the exercise for this chapter.
-
-\section{Exercises}
-Now it's time for an exercise. For this exercise you will have to use internet
-research.
-\begin{description}
-\item[2.0] Play the 'drop' sound without using a \SB{} timeline. Tips: you will
-have to use \inlinecode{OALSimpleAudio} to play the sound and
-\inlinecode{CCFileUtils} to find the location of the sound file. Note that this
-approach that avoids using a \SB{} can often be the more convenient approach to
-playing sound effects in your game!
-\end{description}
+to incorporate user input into your game by implementing a drag and drop
+mechanism!

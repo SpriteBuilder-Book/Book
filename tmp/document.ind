@@ -27,8 +27,8 @@
 
   \indexspace
 
-  \item Fixed Update, \hyperpage{82}
-  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{80}
+  \item Fixed Update, \hyperpage{84}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{82}
     \subitem CCFileUtils, \hyperpage{66}
 
   \indexspace
@@ -60,7 +60,7 @@
 
   \indexspace
 
-  \item Update Loop, \hyperpage{80}
+  \item Update Loop, \hyperpage{81}
   \item User Interface
     \subitem CCScrollView, \hyperpage{122}
       \subsubitem Delegate, \hyperpage{143}

@@ -41,16 +41,15 @@
 \contentsline {section}{\numberline {2.4}Create falling objects}{68}{section.2.4}
 \contentsline {subsection}{\numberline {2.4.1}Create a falling object class}{68}{subsection.2.4.1}
 \contentsline {subsection}{\numberline {2.4.2}Choose an asset for a falling object}{70}{subsection.2.4.2}
-\contentsline {section}{\numberline {2.5}Spawn falling objects}{76}{section.2.5}
-\contentsline {section}{\numberline {2.6}Move falling objects}{79}{section.2.6}
-\contentsline {subsection}{\numberline {2.6.1}Update Loop}{80}{subsection.2.6.1}
-\contentsline {subsection}{\numberline {2.6.2}Implementing the update method}{80}{subsection.2.6.2}
-\contentsline {section}{\numberline {2.7}Adding sound effects}{83}{section.2.7}
+\contentsline {section}{\numberline {2.5}Spawn falling objects}{77}{section.2.5}
+\contentsline {section}{\numberline {2.6}Move falling objects}{81}{section.2.6}
+\contentsline {subsection}{\numberline {2.6.1}Update Loop}{82}{subsection.2.6.1}
+\contentsline {subsection}{\numberline {2.6.2}Implementing the update method}{82}{subsection.2.6.2}
+\contentsline {section}{\numberline {2.7}Adding sound effects}{85}{section.2.7}
 \contentsline {subsection}{\numberline {2.7.1}SpriteBuilder{}'s timeline feature}{85}{subsection.2.7.1}
-\contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{85}{section*.18}
-\contentsline {subsection}{\numberline {2.7.2}Triggering a Sound Effect}{87}{subsection.2.7.2}
-\contentsline {section}{\numberline {2.8}Wrapping up}{88}{section.2.8}
-\contentsline {section}{\numberline {2.9}Exercises}{89}{section.2.9}
+\contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{86}{section*.18}
+\contentsline {subsection}{\numberline {2.7.2}Triggering a Sound Effect}{88}{subsection.2.7.2}
+\contentsline {section}{\numberline {2.8}Wrapping up}{89}{section.2.8}
 \contentsline {chapter}{\numberline {3}User Interaction and Collision Detection}{91}{chapter.3}
 \contentsline {section}{\numberline {3.1}Add the pot to the game}{92}{section.3.1}
 \contentsline {subsection}{\numberline {3.1.1}Working with the z-order}{92}{subsection.3.1.1}

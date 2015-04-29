@@ -35,7 +35,34 @@ spend your precious time trying to solve them again. So now that you know that
 you definitely should use a framework - \textbf{which ones are available and why
 should you choose \cocos{}}?
 
-\textit{Add brief discussion on different frameworks}
+\subsection{2D game development frameworks}
+Currently there are four 2D game development frameworks that are heavily used by
+developers:
+
+\subsubsection{Unity}
+
+\begin{description}
+\item[Pros] Cross-Platform; Advanced Visual Editor
+\item[Cons] Product focused on 3D, 2D support suboptimal; Heavy focus on editor,
+harder to develop good code base, Closed source
+\end{description}
+
+\subsubsection{Cocos2D-X}
+
+\begin{description}
+\item[Pros] Cross-Platform; Focus on 2D
+\item[Cons] Tools and APIs are not as mature as competitors, documentation is
+limited
+\end{description}
+
+\subsubsection{SpriteKit}
+
+\begin{description}
+\item[Pros] Officially supported by Apple; Well documented
+and nicely designed API
+\item[Cons] Limited support for visual editors;
+significant updates only once a year; Closed source
+\end{description}
 
 \section{Introduction to \cocos{}}
 First let us take a look at the features of \cocos{}. That will give you a basic
@@ -1024,7 +1051,7 @@ to the \textit{Color Node} in a property called \textit{colorNode}
 
 We now face the same 'problem' as earlier when we set up a
 \textit{Callback}. The root node of \textit{Square.ccb} is a plain \ccnode{} and
-a plain \ccnode{} does not have an instance variable called
+a plain \ccnode{} does not have a property called
 \textit{colorNode}! We once again need to define a custom class for the root
 node of this \ccbfile{}.
 
@@ -1067,7 +1094,8 @@ custom class for \textit{Square.ccb}).
 
 We've set up multiple code connections throughout this chapter. In order for all
 of them to work, we need to \textbf{publish the \SB{} project} and switch to the
-\xcode{} project and create the classes and instance variables that we are referencing in the \SB{} project.
+\xcode{} project and create the classes and properties that we are referencing
+in the \SB{} project.
 
 \subsubsection{Creating the Square class}
 Now let's add the code to our project.

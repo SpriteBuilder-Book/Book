@@ -94,7 +94,7 @@ Next, move to the \xcode{} project to set up the code connection variables and
 implement the touch handling code.
 
 \begin{leftbar}
-Open \inlinecode{MainScene.swift} and add instance variables for our code
+Open \inlinecode{MainScene.swift} and add properties for our code
 connections at the top of the class:
 \begin{lstlisting}
 weak var potTop: CCSprite!
@@ -109,7 +109,7 @@ references that don't mark an ownership, \inlinecode{weak} should be used.
 
 Secondly, we always want to declare code connections as \textit{forcefully
 unwrapped optionals} as denoted by the bang (!) after the type. Swift
-requires that all instance variables that aren't optionals are either
+requires that all properties that aren't optionals are either
 initialized with a default value or get set to a value in one of the
 initializers of the class, that way the compiler can guarantee that these
 variables never contain a \inlinecode{nil} value. Code connections however are
@@ -236,7 +236,7 @@ No we know why it is important to store the touch offset!
 
 \begin{leftbar}
 To wrap up the implementation of \inlinecode{touchBegan} let's add the two
-instance variables we have referenced: \inlinecode{isDraggingPot} and
+properties we have referenced: \inlinecode{isDraggingPot} and
 \inlinecode{dragTouchOffset}. Your list of iVars should now look like this:
 \begin{lstlisting}
   weak var potTop:CCSprite!
@@ -310,11 +310,3 @@ valuable.
 Now we can move on to the next chapter, which is one of the hardest (thus most
 interesting) parts of this book. We will implement catching objects while
 learning more about scene graphs and node transforms.
-
-\subsection{Swipe Gesture}
-%TODO: write this subsection
-Remove all objects from screen (powerup)\ldots
-
-\subsection{Exercise}
-%TODO: write this subsection
-Implement Accelerometer

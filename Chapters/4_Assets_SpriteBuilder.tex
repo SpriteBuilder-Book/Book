@@ -262,7 +262,7 @@ You can also read a more practical tutorial on Swift enums on our website:
 (\url{https://www.makeschool.com/tutorials/learn-swift-by-example-part-2-enums})
 \end{details}
 
-Additionally we add an instance variable to store the object type. Later we will
+Additionally we add a property to store the object type. Later we will
 add an initializer to set the type of the falling object. 
 
 \begin{leftbar}
@@ -284,7 +284,7 @@ class FallingObject: CCSprite {
 \end{lstlisting}
 \end{leftbar}
 
-We define the instance variable to be \textit{readonly} because we will not
+We define the property to be \textit{readonly} because we will not
 support changing the type of a falling object after it has been created. In Swift we can 
 define variables as \textit{readonly} by marking the \textit{setter} as private.
 
@@ -464,7 +464,7 @@ Add the following initializer to \filemention{FallingObject.swift}:
 \end{lstlisting}
 \end{leftbar}
 
-We start of by storing the type we receive in an instance variable.
+We start of by storing the type we receive in a property.
 Then we create a local variable called \inlinecode{imageName} that we will use
 to load the correct texture for this object type. Next, we check whether we are
 initializing a good or a bad object. In each case we generate a random number,
@@ -514,7 +514,7 @@ start at the top of the screen and fall to the bottom. To not use an
 increasing amount of memory we will need to take care of removing objects that
 have fallen below the bottom edge of the screen. A good way to do this is
 creating an array to store all the objects we spawn. Swift lets us define a
-private instance variable and initialize the array stored in it in a single line
+private property and initialize the array stored in it in a single line
 of code.
 
 \begin{leftbar}

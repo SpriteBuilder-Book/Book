@@ -1,4 +1,4 @@
-\chapter{User Interfaces}
+\chapter{User Interfaces and implementing multiple game modes}
 
 So far we have worked hard on the core mechanic of our game. Another important
 aspect are the screens and components that wrap this mechanic. In this chapter
@@ -824,8 +824,6 @@ func transitionAnimationComplete() {
 \end{lstlisting}
 \end{leftbar}
 
-%TODO: discuss laodAsScene and laod in detail, generally add more detail here
-
 Great! Now our game mode selection screen is complete; including an awesome
 transition to the gameplay scene. You can run the project and try it out.
 
@@ -1393,10 +1391,6 @@ func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject) {
 }
 \end{lstlisting}
 \end{leftbar}
-%TODO: mention that we need to inlcude Helpers.swift at the beginning of this
-% project
-
-%TODO: make sure that we don't use the word 'instance variable'
 
 The last method we need to implement is the \inlinecode{gameplayStep(mainScene:,
 delta:)} method. We need to keep track of the time that the user has survived,
@@ -1830,7 +1824,9 @@ keyframes and a pink bar appears between them you can select between all of
 the variations by right-clicking onto the pink bar.
 
 Many developers have done a good job of visualizing the different interpolation
-types\ldots %TODO: add link to interpolation visualization or ask for permission
+types. Kirill Muzykov has create a nice blog post with animated diagrams of the
+different interpolations that \cocos{} provides
+\url{http://kirillmuzykov.com/cocos2d-iphone-easing-examples/}.
 
 For this animation we are going to use the \textit{Ease In} interpolation.
 
@@ -1925,7 +1921,7 @@ haven't implemented yet. As you'll see shortly, presenting the popup involves
 quite a few lines of boilerplate code, so it makes sense to bundle this
 functionality into a separate method.
 
-Let's implement \inlincode{presentGameOverPopup} now. There aren't a lot of new
+Let's implement \inlinecode{presentGameOverPopup} now. There aren't a lot of new
 concepts involved in this method, so I'll provide the entire implementation and
 will discuss the details afterwards.
 

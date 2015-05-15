@@ -563,8 +563,7 @@ Let's implement this feature and then discuss some more details!
 \begin{leftbar}
 Extend the implementation of \inlinecode{performCaughtStep(fallingObject:)} to
 load and add the particle effect:
-\fvset{samepage=false}
-\begin{pyglist}[language=swift, style=xcode]
+\begin{lstlisting}
 func performCaughtStep(fallingObject:FallingObject) {
   // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
   if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
@@ -587,7 +586,7 @@ func performCaughtStep(fallingObject:FallingObject) {
     
   }
 }
-\end{pyglist}
+\end{lstlisting}
 \end{leftbar}
 Let's look at the code we added, step by step. First, we check the object type.
 We want to display the particle effect only if the user caught a

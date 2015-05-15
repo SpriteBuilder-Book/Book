@@ -1272,12 +1272,12 @@ another action and - exactly, repeats it forever!
 \begin{leftbar}
 Add the following lines to the \inlinecode{onEnter} method of \textit{Square.m}
 to make the square rotate endlessly:
-\begin{pyglist}[language=swift, style=xcode]
+\begin{lstlisting}
 let rotate = CCActionRotateBy(duration: 2.0, angle: 360.0)
 let repeatRotation = CCActionRepeatForever(action: rotate)
 
 runAction(repeatRotation)
-\end{pyglist}
+\end{lstlisting}
 \end{leftbar}
 One of the nicest aspects of the Action System is that it produces very readable
 code, just as the one shown above. We rotate our square by 360 degrees in 2

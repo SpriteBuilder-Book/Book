@@ -101,8 +101,8 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
                   @try, @throw, @catch, @finally,
                   @synchronized, @property, @synthesize, @dynamic, func, var,
                   let, class, extension, true, false, if, weak, private, set,
-                  @objc, public}, moredelim=[s][color{red}]{@"}{"},
-                  moredelim=[s][color{red}]{<}{>} }
+                  @objc, public, override, private},
+                  moredelim=[s][color{red}]{@"}{"}, moredelim=[s][color{red}]{<}{>} }
 
 \lstdefinestyle{Xcode} {
     language        = Swift,
@@ -129,11 +129,9 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 }
 
 \usepackage{pdftexcmds}
-%\usepackage{minted}
-%\usemintedstyle{xcode}
-
-\usepackage{verbments}
-
+\usepackage[breaklines=true]{minted}
+\usemintedstyle{xcode}
+ 
 % http://tex.stackexchange.com/questions/19646/how-to-typeset-special-apple-mac-keyboard-symbols
 %\usepackage{menukeys}
   

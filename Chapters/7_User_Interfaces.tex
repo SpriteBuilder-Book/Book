@@ -1929,8 +1929,7 @@ will discuss the details afterwards.
 Add the following lines to the end of the \inlinecode{MainScene} class,
 directly before the closing curly braces of the class definition:
 %TODO: discuss MARK: earlier add screenshot for outline with mark
-\fvset{samepage=false}
-\begin{pyglist}[language=swift, style=xcode]
+\begin{lstlisting}
 // MARK: Game over popup
 func presentGameOverPopup() {
   let gameOverPopup = CCBReader.load("GameOverPopup", owner:self)
@@ -1950,7 +1949,7 @@ func presentGameOverPopup() {
   
   addChild(gameOverPopup)
 }
-\end{pyglist}
+\end{lstlisting}
 \end{leftbar}
 In the first line we are loading the \filemention{GameOverPopup.ccb} using the
 \inlinecode{CCBReader}, we are setting \inlinecode{MainScene} as the owner.

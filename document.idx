@@ -1,36 +1,36 @@
-\indexentry{Code Connections|hyperpage}{24}
-\indexentry{Document Types|hyperpage}{25}
-\indexentry{Publish|hyperpage}{27}
-\indexentry{Positioning System|hyperpage}{33}
-\indexentry{Code Connections!Callbacks|hyperpage}{33}
-\indexentry{Document Root|hyperpage}{35}
-\indexentry{Code Connections!Custom Classes|hyperpage}{35}
-\indexentry{Code Connections!Custom Classes|hyperpage}{37}
-\indexentry{Scene Transition|hyperpage}{41}
-\indexentry{CCDirector|hyperpage}{41}
-\indexentry{CCBReader|hyperpage}{44}
-\indexentry{Code Connections!Variable Assignment|hyperpage}{47}
-\indexentry{Node Lifecycle|hyperpage}{52}
-\indexentry{Action System|hyperpage}{54}
-\indexentry{Touch Handling|hyperpage}{56}
+\indexentry{Code Connections|hyperpage}{25}
+\indexentry{Document Types|hyperpage}{26}
+\indexentry{Publish|hyperpage}{28}
+\indexentry{Positioning System|hyperpage}{34}
+\indexentry{Code Connections!Callbacks|hyperpage}{34}
+\indexentry{Document Root|hyperpage}{36}
+\indexentry{Code Connections!Custom Classes|hyperpage}{36}
+\indexentry{Code Connections!Custom Classes|hyperpage}{38}
+\indexentry{Scene Transition|hyperpage}{42}
+\indexentry{CCDirector|hyperpage}{42}
+\indexentry{CCBReader|hyperpage}{45}
+\indexentry{Code Connections!Variable Assignment|hyperpage}{48}
+\indexentry{Node Lifecycle|hyperpage}{53}
+\indexentry{Action System|hyperpage}{55}
+\indexentry{Touch Handling|hyperpage}{57}
 \indexentry{Assets!Adding Assets|hyperpage}{61}
 \indexentry{Assets!Automatic Downscaling|hyperpage}{62}
-\indexentry{Framework Classes!CCFileUtils|hyperpage}{68}
-\indexentry{Update Loop|hyperpage}{83}
-\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{83}
-\indexentry{Fixed Update|hyperpage}{86}
-\indexentry{\SB{} timeline|hyperpage}{87}
-\indexentry{Z-Order|hyperpage}{94}
-\indexentry{Node transformation!Bounding Box|hyperpage}{112}
-\indexentry{Node transformation!Position|hyperpage}{116}
-\indexentry{Z-Order|hyperpage}{120}
-\indexentry{User Interface!CCScrollView|hyperpage}{124}
-\indexentry{Document Types|hyperpage}{129}
-\indexentry{SpriteBuilder Timeline!Change Duration|hyperpage}{133}
-\indexentry{\SB{} Timeline!Chaining|hyperpage}{134}
-\indexentry{Start Scene|hyperpage}{143}
-\indexentry{User Interface!CCScrollView!Delegate|hyperpage}{145}
-\indexentry{Nodes!CCSprite9Slice|hyperpage}{173}
-\indexentry{SpriteBuilder Timeline!Interpolation|hyperpage}{179}
-\indexentry{SpriteBuilder Timeline!Create new   Timeline|hyperpage}{226}
-\indexentry{Framework Classes!CCRenderTexture|hyperpage}{239}
+\indexentry{Framework Classes!CCFileUtils|hyperpage}{67}
+\indexentry{Update Loop|hyperpage}{81}
+\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{82}
+\indexentry{Fixed Update|hyperpage}{84}
+\indexentry{\SB{} timeline|hyperpage}{85}
+\indexentry{Z-Order|hyperpage}{92}
+\indexentry{Node transformation!Bounding Box|hyperpage}{110}
+\indexentry{Node transformation!Position|hyperpage}{114}
+\indexentry{Z-Order|hyperpage}{118}
+\indexentry{User Interface!CCScrollView|hyperpage}{122}
+\indexentry{Document Types|hyperpage}{127}
+\indexentry{SpriteBuilder Timeline!Change Duration|hyperpage}{131}
+\indexentry{\SB{} Timeline!Chaining|hyperpage}{132}
+\indexentry{Start Scene|hyperpage}{140}
+\indexentry{User Interface!CCScrollView!Delegate|hyperpage}{143}
+\indexentry{Nodes!CCSprite9Slice|hyperpage}{170}
+\indexentry{SpriteBuilder Timeline!Interpolation|hyperpage}{177}
+\indexentry{SpriteBuilder Timeline!Create new   Timeline|hyperpage}{224}
+\indexentry{Framework Classes!CCRenderTexture|hyperpage}{237}

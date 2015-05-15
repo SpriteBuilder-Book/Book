@@ -65,7 +65,7 @@ object and instead place it inside of \inlinecode{MainScene.ccb}. There would be
 other ways to work around this issue but adding the pot to the Main Scene is a
 good solution for this game.
 
-\begin{details}[frametitle={Global Z-order in \cocos{}}] 
+\begin{details}[Global Z-order in \cocos{}] 
 While \cocos{} does not have support for global Z-order at the moment, it is
 being discussed as a potential feature for future releases. Many games run into
 issues as discussed above due to the lack of this feature. You can follow the
@@ -195,8 +195,8 @@ Add this implementation to \inlinecode{MainScene.swift}:
 \end{leftbar}
 
 Let's discuss this implementation briefly. You already have seen the usage of 
-\inlinecode{touch.locationInNode(self)} in the first chapter of this book,
-where we briefly discussed touch handling
+\linebreak \inlinecode{touch.locationInNode(self)} in the first chapter of this
+book, where we briefly discussed touch handling
 (\ref{Introduction_FirstTouchHandling}). This method returns the touch position
 within a given node. In this specific case we are receiving the touch position
 within \inlinecode{MainScene}.

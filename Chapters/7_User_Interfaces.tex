@@ -971,8 +971,8 @@ part of the game, we'll now move to implementing the two game modes in code.
 
 \subsection{Implement game logic for different modes}
 We need to change multiple parts of our game to support two different game
-modes.Depending on which game mode a player selects, we want to display a different
-score board and also implement a different set of rules.
+modes. Depending on which game mode a player selects, we want to display a
+different score board and also implement a different set of rules.
 
 Before we dive into coding, let's try to figure out what we'll need to
 implement:
@@ -1929,7 +1929,8 @@ will discuss the details afterwards.
 Add the following lines to the end of the \inlinecode{MainScene} class,
 directly before the closing curly braces of the class definition:
 %TODO: discuss MARK: earlier add screenshot for outline with mark
-\begin{lstlisting}
+\fvset{samepage=false}
+\begin{pyglist}[language=swift, style=xcode]
 // MARK: Game over popup
 func presentGameOverPopup() {
   let gameOverPopup = CCBReader.load("GameOverPopup", owner:self)
@@ -1949,7 +1950,7 @@ func presentGameOverPopup() {
   
   addChild(gameOverPopup)
 }
-\end{lstlisting}
+\end{pyglist}
 \end{leftbar}
 In the first line we are loading the \filemention{GameOverPopup.ccb} using the
 \inlinecode{CCBReader}, we are setting \inlinecode{MainScene} as the owner.

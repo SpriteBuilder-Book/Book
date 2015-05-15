@@ -563,7 +563,8 @@ Let's implement this feature and then discuss some more details!
 \begin{leftbar}
 Extend the implementation of \inlinecode{performCaughtStep(fallingObject:)} to
 load and add the particle effect:
-\begin{lstlisting}
+\fvset{samepage=false}
+\begin{pyglist}[language=swift, style=xcode]
 func performCaughtStep(fallingObject:FallingObject) {
   // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
   if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
@@ -586,7 +587,7 @@ func performCaughtStep(fallingObject:FallingObject) {
     
   }
 }
-\end{lstlisting}
+\end{pyglist}
 \end{leftbar}
 Let's look at the code we added, step by step. First, we check the object type.
 We want to display the particle effect only if the user caught a
@@ -890,9 +891,11 @@ func performMissedStep(fallingObject:FallingObject) {
 \end{leftbar}
 
 As a first step we grab a reference to the audio engine, using
-\inlinecode{OALSimpleAudio.sharedInstance()}. Then we find the file path to the
-audio file we want to play. Note that we need to use the
-\inlinecode{fullPathForFilenameIgnoringResolutions} method. Typically
+\begin{lstlisting}
+OALSimpleAudio.sharedInstance()
+\end{lstlisting} 
+Then we find the file path to the audio file we want to play. Note that we need
+to use the \inlinecode{fullPathForFilenameIgnoringResolutions} method. Typically
 \inlinecode{CCFileUtils} will look for our file inside of a path that is
 specific to the current device resolution. This makes a lot of sense for images,
 because they are scaled for different devices and then stored in specific

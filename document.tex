@@ -57,6 +57,8 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 \newcommand{\cclabel}{CCLabelTTF}
 \newcommand{\ccbfile}{CCB File}
 \newcommand{\inlinecode}{\texttt}
+%http://tex.stackexchange.com/questions/59122/how-to-avoid-using-sloppy-document-wide-to-fix-overfull-hbox-problems
+\setlength{\emergencystretch}{10pt}
 \newcommand{\filemention}{\textit}
 \newcommand{\imagesize}{width=0.9\linewidth}
 
@@ -82,22 +84,55 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 \definecolor{download}{rgb}{0.8,0.1,0.5}
 \definecolor{title}{rgb}{0.4,0.4,0.4}
 
+
+
+\definecolor{pink}  {rgb}{0.67, 0.05, 0.57} % keywords
+\definecolor{red}   {rgb}{0.87, 0.20, 0.00} % strings
+\definecolor{green} {rgb}{0.00, 0.47, 0.00} % comments
+\definecolor{violet}{rgb}{0.41, 0.12, 0.61} % classes
+\definecolor{blue}  {rgb}{0.21, 0.00, 0.44} % functions
+\definecolor{brown} {rgb}{0.39, 0.22, 0.13} % brown
+
+\lstdefinelanguage{Swift}[Objective]{C} {
+    morekeywords={id, Class, SEL, IMP, BOOL, nil, Nil, NO, YES,
+                  oneway, in, out, inout, bycopy, byref,
+                  self, super, _cmd,
+                  @required, @optional,
+                  @try, @throw, @catch, @finally,
+                  @synchronized, @property, @synthesize, @dynamic, func, var,
+                  let, class, extension, true, false, if, weak, private, set,
+                  @objc, public}, moredelim=[s][color{red}]{@"}{"},
+                  moredelim=[s][color{red}]{<}{>} }
+
+\lstdefinestyle{Xcode} {
+    language        = Swift,
+    basicstyle      = \ttfamily\small,
+    identifierstyle = \color{black},
+    commentstyle    = \color{green},
+    keywordstyle    = \color{pink},
+    stringstyle     = \color{red},
+    directivestyle  = \color{brown},
+    extendedchars   = true,
+    tabsize         = 4,
+    showspaces      = false,
+    showstringspaces = false,
+    breakautoindent = true,
+    flexiblecolumns = true,
+    keepspaces      = true,
+    stepnumber      = 0,
+    xleftmargin     = 0pt}
+
 \lstset{
-    language=[Objective]C,
-    basicstyle=\ttfamily\small\color{code},
-    showspaces=false,
-    showstringspaces=false,
-    keywordstyle=\color{keyword}\bfseries,
-    stringstyle=\itshape,
-    morekeywords={dosync,if, func, var, let},
-    deletekeywords={alter}
-    frame=single,
+    style = Xcode,
     breaklines=true,
+    frame=none
 }
 
 \usepackage{pdftexcmds}
-\usepackage{minted}
-\usemintedstyle{xcode}
+%\usepackage{minted}
+%\usemintedstyle{xcode}
+
+\usepackage{verbments}
 
 % http://tex.stackexchange.com/questions/19646/how-to-typeset-special-apple-mac-keyboard-symbols
 %\usepackage{menukeys}
@@ -175,9 +210,9 @@ errorsymbol/.style={%
  frametitlefont=\bfseries,
  leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
  skipabove=\topsep,skipbelow=\topsep,
- singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[ lampsymbol] {\leftpointright};
-                          \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$) -- ($(P)-(.2cm,0)$); 
-                          \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
+ singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[
+ lampsymbol] {\smallpencil}; \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$)
+ -- ($(P)-(.2cm,0)$); \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
     },%
 ]{bestpractice}
 
@@ -189,12 +224,16 @@ errorsymbol/.style={%
                           \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$) -- ($(P)-(.2cm,0)$); 
                           \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
     },%
-]{details}
+]{detailsold}
+
+\usepackage{tcolorbox}
+
+\newtcolorbox{details}[1][]{arc=0mm,colback=gray!5,colframe=gray, title=#1}
 
 \definecolor{light-gray}{gray}{0.7}
 %change leftbar color:
 \renewenvironment{leftbar}[1][\hsize]
-{%
+{% 
     \def\FrameCommand
     {%
         {\color{light-gray}\vrule width 4pt}%

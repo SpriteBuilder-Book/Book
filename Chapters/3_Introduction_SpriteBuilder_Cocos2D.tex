@@ -613,8 +613,7 @@ to design their interfaces with great flexibility:
 
 If you want to learn more about dynamic layouts you should read our two part
 tutorial:
-\url{https://www.makeschool.com/tutorials/dynamic-layouts-with-spritebuilder-and-cocos2d-3-x/}
-
+\url{https://www.makeschool.com/tutorials/dynamic-layouts-with-spritebuilder-and-cocos2d-3-x/}.
 \end{details}
 
 Now the button is placed correctly. Next, we want to assign an action to it.
@@ -1273,12 +1272,12 @@ another action and - exactly, repeats it forever!
 \begin{leftbar}
 Add the following lines to the \inlinecode{onEnter} method of \textit{Square.m}
 to make the square rotate endlessly:
-\begin{lstlisting}
+\begin{pyglist}[language=swift, style=xcode]
 let rotate = CCActionRotateBy(duration: 2.0, angle: 360.0)
 let repeatRotation = CCActionRepeatForever(action: rotate)
 
 runAction(repeatRotation)
-\end{lstlisting}
+\end{pyglist}
 \end{leftbar}
 One of the nicest aspects of the Action System is that it produces very readable
 code, just as the one shown above. We rotate our square by 360 degrees in 2
@@ -1337,7 +1336,7 @@ You can override all of these methods in any \ccnode{} subclass in order to
 respond to these lifecycle events. For our simple example now, we only need to
 respond to the \inlinecode{touchBegan} method.
 
-\begin{details}[frametitle={The \cocos{} Touch System}]
+\begin{details}[The \cocos{} Touch System]
 We will see more complicated use cases of the \cocos{} touch system throughout
 other examples in this book. If you are interested in more details right away
 you should

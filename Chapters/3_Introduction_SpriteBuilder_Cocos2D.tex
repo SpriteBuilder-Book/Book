@@ -199,10 +199,10 @@ of the example above to the top right corner we would only have to move the
 parent node instead of both child nodes. As you can imagine this becomes
 even more relevant in games that have ten or more entries in their scoreboard.
 
-\begin{bestpractice}[frametitle={Structuring Nodes}] 
+\begin{details}[Structuring Nodes] 
 Always group nodes that logically belong together under one parent node. That
 will save you a lot of time when you change the layout of your scene.
-\end{bestpractice}
+\end{details}
 
 The other two objects in the scene graph are simpler. One represents the
 background image the other one the main character.
@@ -342,11 +342,11 @@ Every \SB{} project is contained in a \textit{.spritebuilder} folder. Within
 this folder all the files of the \SB{} project are stored - along with an \xcode{}
 project. 
 
-\begin{lamp}[frametitle={\SB{} and Xcode}] 
+\begin{details}[\SB{} and Xcode] 
 \SB{} will create an \xcode{} project for every new project you create! The
 \xcode{} project will automatically contain the newest version of \cocos{} -
 very handy.
-\end{lamp}
+\end{details}
 
 Later on you will learn more about how the \SB{} project and the \xcode{}
 project work together. The general rule is that all code will be part of the
@@ -593,7 +593,7 @@ vertically centered (yes, even on an iPad)!
 \end{description}
 \end{leftbar}
 
-\begin{details}[frametitle={Positioning System in \cocos{} and \SB{}}]
+\begin{details}[Positioning System in \cocos{} and \SB{}]
 \index{Positioning System} \label{PositioningSystem}
 The positioning system in \cocos{} is designed from the ground up to make it
 easy to design scenes and user interfaces for different screen sizes and
@@ -646,7 +646,7 @@ called on which object (target) when this button is tapped by a user. As
 selector enter \inlinecode{startGame}. As target choose \textit{Document Root}.
 \end{leftbar}
 
-\begin{details}[frametitle={Targets and Selectors}] \label{target_selector}
+\begin{details}[Targets and Selectors] \label{target_selector}
 The concept of targets and selectors is part of design pattern widely used
 throughout the Cocoa framework (Target/Action pattern). A \textit{selector} is
 a method name and a \textit{target} is the object that shall receive this method.
@@ -704,7 +704,7 @@ that we have saved the puzzle of where to add the code for the
 \inlinecode{startGame} method - it needs to be part of the
 \inlinecode{MainScene} class.
 
-\begin{details}[frametitle={Requirements for Custom Classes}] \index{Code
+\begin{details}[Requirements for Custom Classes] \index{Code
 Connections!Custom Classes}
 Every custom class has to be a subclass of the default class for a given node.
 For example, the default class for the \textit{Sprite} node in \SB{} is
@@ -752,10 +752,10 @@ For now we will simply use the \inlinecode{println} function to log a text to
 the console once the button is pressed, this is an easy way to check if our code
 connection is set up correctly.
 
-\begin{lamp}[frametitle={Displaying the console in \xcode{}}] 
+\begin{details}[Displaying the console in \xcode{}] 
 To display the console in \xcode{} select \textit{View -> Debug Area ->
 Activate Console}.
-\end{lamp}
+\end{details}
 
 Now, run the \xcode{} project by hitting the play button in the top left corner.
 You should check that you have selected \textit{HelloSB} as target and are set
@@ -831,7 +831,7 @@ scene and generating transitions between different scenes:
 singleton - thus there's only one CCDirector per \cocos{} game. The instance can be accessed
 through the class method \inlinecode{CCDirector.sharedInstance()}.
 
-\begin{lamp}[frametitle={CCDirector is versatile!}] 
+\begin{lamp}[CCDirector is versatile!] 
 CCDirector is responsible for a lot more than only handling active scenes and
 scene transitions. It is basically a collection of different global \cocos{}
 settings. The scene handling methods however are the most frequently used
@@ -904,13 +904,13 @@ CCDirector.sharedDirector().presentScene(mainMenu)
 If you would ever change the menu hierarchy in your game, you would have to
 change the code for each back button.
 
-\begin{bestpractice}[frametitle={Scene transitions - the right way}] 
+\begin{details}[Scene transitions - the right way] 
 For \textbf{one time transitions} for example from a splash screen to the
 gameplay of a game, use \inlinecode{presentScene}. Whenever a user can navigate
 between your scenes, e.g. by using a back button to return to the previous
 scene, make use of the navigation stack by using the \inlinecode{pushScene} and
 \inlinecode{popScene} methods.
-\end{bestpractice}
+\end{details}
 
 \subsubsection{Adding transition effects}
 For every scene replacement method there's one variation that takes an instance
@@ -964,7 +964,7 @@ black Gameplay scene that lasts for one second.
 to implement transition between different scenes in a game. Now let's implement
 the actual gameplay of our first example game!
 
-\begin{details}[frametitle={.ccb and .ccbi}] 
+\begin{details}[.ccb and .ccbi] 
 The files with the file extension \textit{.ccb} are in XML-format and are used
 by \SB{} to store and read information about a scene or node created in \SB{}.
 When a \SB{} project gets published, \SB{} generates a binary version of
@@ -1054,7 +1054,7 @@ a plain \ccnode{} does not have a property called
 \textit{colorNode}! We once again need to define a custom class for the root
 node of this \ccbfile{}.
 
-\begin{details}[frametitle={Variable Assignments, Callbacks and Custom Classes}] 
+\begin{details}[Variable Assignments, Callbacks and Custom Classes] 
 Always remember that you practically cannot set up a \textit{Variable
 assignment} or a \textit{Callback} for the \textit{Document Root} without also
 setting a custom class for the root node of the corresponding \ccbfile{}.
@@ -1153,7 +1153,7 @@ initialization rules! We choose \textit{forcefully unwrapped} because we know th
 knowledge it's preferable to choose \textit{forcefully unwrapped} over
 \textit{optional} because it avoids a lot of optional-unwrapping code.
 
-\begin{details}[frametitle={Swift initialization and optionals}]
+\begin{details}[Swift initialization and optionals]
 You can read more about Swift initialization and optionals in our following
 tutorial:
 \url{https://www.makeschool.com/tutorials/learn-swift-by-example-part-3-classes-and-initialization}
@@ -1202,7 +1202,7 @@ to call the \inlinecode{super} implementation if you override any of the
 has its own implementation of these methods and they are important for the
 functionality of the framework - if you do not call them this will result in
 unexpected behaviour throughout your game. 
-\begin{details}[frametitle={Overriding \cocos{} lifecycle methods}]
+\begin{details}[Overriding \cocos{} lifecycle methods]
 As of \cocos{} 3.1 not calling \inlinecode{super} when overriding one of these
 lifecycle methods will result in a compiler warning - this can save a lot of
 debugging time. You are interested in how that can be done? \cocos{} makes use
@@ -1255,8 +1255,8 @@ aSimpleNode.runAction(move)
 All actions can be run by calling the \inlinecode{runAction} method and
 providing the action as an argument. 
 
-\begin{details}[frametitle={More about the
-\cocos{} Action System}] The \cocos{} Action System is one of the most
+\begin{details}[More about the
+\cocos{} Action System] The \cocos{} Action System is one of the most
 important building blocks for most games and we will discuss it in detail
 throughout this book. If you want to learn more about the \cocos{} action system
 right away, you can check the according chapter in the \cocos{} documentation:

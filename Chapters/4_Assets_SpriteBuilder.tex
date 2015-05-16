@@ -114,7 +114,7 @@ A last interesting case are background images that you want to work for
 all 4 resolutions. A solution is discussed in
 the Q\&A section (\ref{background_all_resolutions}).
 
-\begin{details}[frametitle={Different images for different devices}] 
+\begin{details}[Different images for different devices] 
 You can not only change the scaling option for an asset on different devices,
 you can even use an entirely different image for a certain resolution. You can
 do that by dragging an image \textbf{that is currently not part of the \SB{}
@@ -131,7 +131,7 @@ added them and will not be downscaled.
 
 \end{details}
 
-\begin{details}[frametitle={Behind the scenes}] 
+\begin{details}[Behind the scenes] 
 If you are interested in how \SB{} and \cocos{} organize assets you can take a
 look at the resource package
 (\textit{/Packages/\allowbreak{}SpriteBuilder Resources\allowbreak{}.sbpack}) by
@@ -253,7 +253,7 @@ provided type. In the example shown above, the raw value for
 need to map entries to numbers explicitly. Associating enum values with raw values is optional,
 throughout this chapter you will see why this feature is useful to us.
 
-\begin{details}[frametitle={Enumerations in Swift}] 
+\begin{details}[Enumerations in Swift] 
 You can read everything about the different ways of creating enumerations in
 Swift in the official documentation
 (\url{https://developer.apple.com/library/ios/documentation/
@@ -369,7 +369,7 @@ new instance of \inlinecode{FallingObject}. Instead we should only load it
 once and then keep a reference to it for future use. A good way of doing this is
 using a class constant to store the \textit{plist} reference once it is loaded.
 
-\begin{details}[frametitle={Class variables in Swift}] 
+\begin{details}[Class variables in Swift] 
 Swift 1.2 does not support stored class variables. However, we can use the
 \inlinecode{static} keyword to create class-wide constants. The difference
 between a \inlinecode{static} and a \inlinecode{class} variable is that the
@@ -721,7 +721,7 @@ with the constant speed that we defined earlier.
 Now the falling mechanic is entirely implemented! In the next and last
 section you will learn how to add sound assets to the game.
 
-\begin{details}[frametitle={Update vs. Fixed Update}] 
+\begin{details}[Update vs. Fixed Update] 
 This chapter discusses the \inlinecode{update:} method of \cocos{} in detail.
 \cocos{} provides a second similar method called
 \inlinecode{fixedUpdate:}\index{Fixed Update}.

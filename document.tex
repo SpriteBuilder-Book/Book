@@ -224,9 +224,13 @@ errorsymbol/.style={%
     },%
 ]{detailsold}
 
-\usepackage{tcolorbox}
+\usepackage[most]{tcolorbox}
 
-\newtcolorbox{details}[1][]{arc=0mm,colback=gray!5,colframe=gray, title=#1}
+\newtcolorbox{details}[1][]{breakable,enhanced, arc=0mm, coltitle = black,
+,left=22mm, top=6mm, colbacktitle=gray!30,colframe=gray!30, colback=white,
+title=#1, attach boxed title to top left={yshift=-2ex,xshift=12ex}, height from
+= 2.7cm to 99cm, overlay unbroken and first={\node[anchor=north west,outer
+sep=10pt] at (frame.north west) {\includegraphics[width=16mm]{images/note.png}}; }}
 
 \definecolor{light-gray}{gray}{0.7}
 %change leftbar color:
@@ -249,8 +253,8 @@ errorsymbol/.style={%
 
 \tableofcontents{}
 
-% \include{Chapters/Preamble}
-% \newpage
+\include{Chapters/Preamble}
+\newpage
 \include{Chapters/2_About_Book}
 \include{Chapters/3_Introduction_SpriteBuilder_Cocos2D}
 \include{Chapters/4_Assets_SpriteBuilder}
@@ -259,8 +263,6 @@ errorsymbol/.style={%
 \include{Chapters/7_User_Interfaces}
 \include{Chapters/8_Persistence_Leaderboards}
 \include{Chapters/9_Effects_and_Animations}
-
-\include{Chapters/B_QandA}
 
 % \include{Chapters/Cocos2D}
 % \newpage

@@ -393,15 +393,15 @@ Place the following code within the class definition of
     
     init () {
       let path = NSBundle.mainBundle().pathForResource("FallingObjectImages", ofType: "plist")!
-      let imageDictionary:Dictionary = NSDictionary(contentsOfFile: path)!
-      good = imageDictionary["FallingObjectTypeGoodImages"] as [String]
-      bad = imageDictionary["FallingObjectTypeBadImages"] as [String]
+      let imageDictionary:Dictionary = NSDictionary(contentsOfFile: path)! as! [String : AnyObject]
+      good = imageDictionary["FallingObjectTypeGoodImages"] as! [String]
+      bad = imageDictionary["FallingObjectTypeBadImages"] as! [String]
     }
   }
 \end{lstlisting}
 \end{leftbar}
 
-First, we are defining a private static constat. This static constant is
+First, we are defining a private static constant. This static constant is
 initialized with an instance of the structure \inlinecode{ImageNames} which we declare a few lines later. Since
 \inlinecode{instance} is a static constant, the expression will be
 evaluated once and only one instance of \inlinecode{ImageNames} will ever be
@@ -416,15 +416,21 @@ The initializer takes no parameters. The first line gets the path of the
 \textit{FallingObjectImages.plist} file. Then we use a convenience initializer
 on \inlinecode{NSDictionary} called \inlinecode{contentsOfFile:}. That
 initializer creates a dictionary from a provided plist. This only works because
-the root element of our plist is a dictionary! 
-Earlier we've set up our plist to contain two arrays of strings,
+the root element of our plist is a dictionary! Since the file from which we are
+creating a dictionary might not exist, or could be of an invalid file type, the
+\inlinecode{contentsOfFile:} initializer returns an optional. Therefore we need
+to use the \inlinecode{!} operator to unwrap the value. Additionally we need to
+cast the Objective-C dictionary that doesn't have any type information about the
+elements it contains to a Swift dictionary of type \inlinecode{[String :
+AnyObject]} using the \inlinecode{as!} operator.
+
+We've set up our plist to contain two arrays of strings,
 \textit{FallingObjectTypeGoodImages} and \textit{FallingObjectTypeBadImages}
-below the root element.
-We can now extract these two arrays from our dictionary and assign them to the 
-\inlinecode{good} variable and \inlinecode{bad} variable, respectively. During
+below the root element. We can now extract these two arrays from our dictionary
+and assign them to the \inlinecode{good} variable and \inlinecode{bad} variable, respectively. During
 this assignment we need to cast the arrays into \inlinecode{[String]} arrays
-using the \inlinecode{as} operator. This is necessary because we are receiving
-an Objective-C Array (\inlinecode{NSArray}) that cannot store type information
+using the \inlinecode{as!} operator. This is again necessary because we are
+receiving an Objective-C Array (\inlinecode{NSArray}) that cannot store type information
 about the elements it contains. We however know that this array only contains
 strings so we want to treat it as a \inlinecode{[String]} array in Swift.
 
@@ -456,7 +462,9 @@ Add the following initializer to \filemention{FallingObject.swift}:
       imageName = FallingObject.imageNames.bad[randomIndex]
     }
     
-    let spriteFrame = CCSpriteFrame.frameWithImageNamed(imageName) as CCSpriteFrame
+    let spriteFrame = CCSpriteFrame.frameWithImageNamed(imageName) as!
+    CCSpriteFrame 
+    
     super.init(texture: spriteFrame.texture, rect: spriteFrame.rect, rotated: false)
     
     anchorPoint = ccp(0,0)

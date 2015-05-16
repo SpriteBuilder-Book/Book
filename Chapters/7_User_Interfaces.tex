@@ -98,8 +98,14 @@ Throughout this chapter we will use \cocos{}'s reference
 corner feature to accomplish resizable user interfaces. 
 
 \begin{leftbar}
-Drag a \textit{CCLabelTTF} from the node library \textit{onto} the background
-sprite, so that it becomes a child of it. Set the position up as following:
+Drag a \textit{CCLabelTTF} from the node library \textit{below} the background
+sprite, so that is rendered ontop of the background image:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter7/label_ontop_background.png}
+\end{figure}
+ 
+Set the position up as following:
 \begin{enumerate}
   \item Set the position to be relative from the \textit{Top-left}.
   \item Set the position type for X to \textit{percentage of parent container}
@@ -356,10 +362,15 @@ mode selection layer into the start scene.
 
 \begin{leftbar}
 Switch to the \textit{StartScene.ccb} file and drag a \textit{CCScrollView} from
-the node library onto the \textit{background} node. Set the position to 0,0. The
-scroll view shall cover the entire screen, so set the size type to
-\textit{percentage of parent container} and choose 100\% for the width and the
-height of the scroll view. Set up the scroll view specific settings in the
+the node library \textbf{below} the \textit{background} node in the timeline
+(so that the scroll view is rendered in front of the background image). 
+
+Set the position to (0,0). 
+
+The scroll view shall cover the entire screen, so set the size type to
+\textit{percentage of parent container} and choose 100\% for the width and the height of the scroll view. 
+
+Set up the scroll view specific settings in the
 property inspector as follows:
 \begin{figure}[H]
 \centering
@@ -395,7 +406,8 @@ the bottom of the screen, below the label that shows the selected game mode.
 
 \begin{leftbar}
 Open \textit{StartScene.ccb} and drag a \textit{Button} from the node library to
-the stage, make sure it is a child of the \textit{background} node.
+the stage, make sure it is below the \textit{background} node, just as the
+scroll view and the label we added earlier.
 Set the button up as following:
 \begin{enumerate}
   \item Set the \textit{Position Reference Corner} to \textit{Bottom-left}
@@ -816,7 +828,7 @@ Add the following implementation for the timeline callback that we set up in
 \begin{lstlisting}
 func transitionAnimationComplete() {
   let scene = CCBReader.loadAsScene("MainScene")
-  let gameplay = scene.children[0] as MainScene
+  let gameplay = scene.children[0] as! MainScene
   gameplay.gameMode = selectedGameMode
   let transition = CCTransition(crossFadeWithDuration: 0.7)
   CCDirector.sharedDirector().replaceScene(scene, withTransition: transition)
@@ -1311,7 +1323,8 @@ private let maxHealth = 10
 private var health:Int = 10 {
   didSet {
     let newScale = Float(health) / Float(maxHealth)
-    let scaleAction = CCActionScaleTo.actionWithDuration(0.2, scaleX: newScale, scaleY: 1.0) as CCAction
+    let scaleAction = CCActionScaleTo.actionWithDuration(0.2, scaleX: newScale,
+    scaleY: 1.0) as! CCAction
     
     healthBar.stopAllActions()
     healthBar.runAction(scaleAction)
@@ -2040,7 +2053,7 @@ Add the \inlinecode{playAgain} method below the \inlinecode{backToMenu} method:
 \begin{lstlisting}
 func playAgain() {
   let mainSceneContainer = CCBReader.loadAsScene("MainScene")
-  let mainScene = mainSceneContainer.children[0] as MainScene
+  let mainScene = mainSceneContainer.children[0] as! MainScene
   mainScene.gameMode = gameMode
   let transition = CCTransition(crossFadeWithDuration: 0.7)
   CCDirector.sharedDirector().replaceScene(mainSceneContainer, withTransition: transition)
@@ -2242,4 +2255,3 @@ In the next chapter we will look at how we can store highscores for this game.
 It is crucial to make your games competitive and to implement ways for players
 to track their progress as they play your game over longer periods of time. It's
 one of the best ways of keeping players engaged with your products.
-\section{Pausing the Game (Optional)}

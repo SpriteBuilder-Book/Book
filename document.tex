@@ -128,10 +128,7 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
     frame=none
 }
 
-\usepackage{pdftexcmds}
-\usepackage[breaklines=true]{minted}
-\usemintedstyle{xcode}
- 
+\usepackage{pdftexcmds} 
 % http://tex.stackexchange.com/questions/19646/how-to-typeset-special-apple-mac-keyboard-symbols
 %\usepackage{menukeys}
   
@@ -174,45 +171,6 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 
 \newcounter{error}[chapter]
 \renewcommand*\theerror{\thechapter.\arabic{error}}
-\tikzset{
-errorsymbol/.style={%
-    rectangle,draw=blue,
-   ,scale=2,overlay}}
-
-\tikzset{
- lampsymbol/.style={%
-   ,scale=2,overlay}}
-
-\newmdenv[nobreak=true, hidealllines=true,backgroundcolor=blue!5,%
- frametitle={\stepcounter{error}Common~Error~\theerror},
- frametitlefont=\color{blue!80!black}\bfseries,
- skipabove=\topsep,skipbelow=\topsep,nobreak,
- leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
- singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[errorsymbol] {\eye};},%
-]{error}
-
-
-\newmdenv[nobreak=true,middlelinewidth=.8pt,
- frametitlefont=\bfseries,
- leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
- skipabove=\topsep,skipbelow=\topsep,
- singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[ lampsymbol] {\leftpointright};
-                          \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$) -- ($(P)-(.2cm,0)$); 
-                          \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
-    },%
-]{lamp}
-
-
-
-\newmdenv[nobreak=true,middlelinewidth=.8pt,
- frametitlefont=\bfseries,
- leftmargin=.3cm,rightmargin=.3cm, innerleftmargin=2cm,
- skipabove=\topsep,skipbelow=\topsep,
- singleextra={\path let \p1=(P), \p2=(O) in ($(\x2,0)+0.5*(2,\y1)$) node[
- lampsymbol] {\smallpencil}; \draw[line width=.8pt,white,] ($(O|-P)+(.2cm,0)$)
- -- ($(P)-(.2cm,0)$); \draw[line width=.8pt,white,] ($(O)+(.2cm,0)$) -- ($(P|-O)-(.2cm,0)$);
-    },%
-]{bestpractice}
 
 \newmdenv[nobreak=true,middlelinewidth=.8pt,
  frametitlefont=\bfseries,

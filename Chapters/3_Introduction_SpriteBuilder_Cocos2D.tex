@@ -780,17 +780,17 @@ code connection! Later on this button shall trigger a transition to the second
 scene in the game. Before we can implement that we need to create the second
 scene in our \SB{} project!
 
-\begin{error}
+\begin{details}[Common errors with code connections]
 If you are not getting the expected result, check for all of these common
 errors:
 \begin{itemize}
-  \item Have you published your \SB{} before running in \xcode{}?
+  \item Have you published your \SB{} project before running in \xcode{}?
   \item Is the custom class of the root node of \textit{MainScene.ccb} set to
   \inlinecode{MainScene}
   \item Does the button in \textit{MainScene.ccb} have the correct target and
   selector?
 \end{itemize}
-\end{error}
+\end{details}
 
 \subsection{Creating the Gameplay Scene}
 Now it's time to create your first scene using \SB{} from scratch. The scene we
@@ -831,12 +831,12 @@ scene and generating transitions between different scenes:
 singleton - thus there's only one CCDirector per \cocos{} game. The instance can be accessed
 through the class method \inlinecode{CCDirector.sharedInstance()}.
 
-\begin{lamp}[CCDirector is versatile!] 
+\begin{details}[CCDirector is versatile!] 
 CCDirector is responsible for a lot more than only handling active scenes and
 scene transitions. It is basically a collection of different global \cocos{}
 settings. The scene handling methods however are the most frequently used
 CCDirector methods.
-\end{lamp}
+\end{details}
 
 CCDirector provides a large collection of methods to present scenes with and
 without transitions, here are the most important ones:
@@ -1121,7 +1121,7 @@ you have selected in \SB{}. The node type of the root node of
 
 \begin{leftbar}
 Now open \textit{Square.swift} and add the property
-\inlinecode{\colorNode} to the \inlinecode{Square} class. This variable is the
+\inlinecode{\colorNode{}} to the \inlinecode{Square} class. This variable is the
 one that we defined in \SB{} to store the reference to the
 \inlinecode{CCNodeColor} that displays the color of our square:
 \begin{lstlisting}

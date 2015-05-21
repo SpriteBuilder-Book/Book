@@ -1,16 +1,19 @@
 \chapter{Introduction to \SB{} and \cocos{} }
-Now it's time to dive into 2D Game Development! For this chapter I will assume
-that you haven't written a game with a game engine yet. We will be discussing
-all the relevant concepts throughout this chapter.
+Now it's time to dive into 2D Game Development! I don't assume any previous
+knowledge, we will be discussing all the relevant concepts throughout this
+chapter.
+
+Besides general 2D programming concepts, this chapter will introduce \SB{}
+and \cocos{} - the Open Source tools that we will use throughout this book. 
+\cocos{} is the game engine (or framework) and \SB{} is a visual content editor
+for \cocos{}
 
 \section{Installing the software}
-First things first. Let's install the software used throughout this book.
-In general there are two ways to install \cocos{} depending on whether you want
-to use \SB{} or not. In this book we will be using \SB{} to set up all
-of our projects, therefore we will only install \SB{} which will come bundled
-with the latest version of \cocos{}. 
+First things first. Let's install the software used throughout this book. \SB{}
+comes bundled with the latest version of \cocos{}, so we don't need to install
+these two tools separately.
 
-Installing \SB{} is easy, simply open the \textit{App Store} app on your Mac and
+Installing \SB{} is easy. Simply open the \textit{App Store} app on your Mac and
 search for \textit{SpriteBuilder}. Note that you should always use the latest
 version of Mac OS X and \xcode{} together with \SB{} (as of this writing Mac
 OS X 10.10 and \xcode{} 6.3).
@@ -18,56 +21,16 @@ OS X 10.10 and \xcode{} 6.3).
 \begin{figure}[H] 
 		\centering
 		\includegraphics[width=200pt]{images/cocos2d/setup/mac_appstore_install.png}     
-		\caption{\cocos{} Technology Stack}
+		\caption{\SB{} on the Mac App Store}
 \end{figure}
 
 After a couple of minutes the \SB{} installation should be completed. Later
 throughout this chapter you will learn how to set up your first project.
 
-\section{Why \cocos{}}
-Well, now you have already installed \cocos{}. I still want to spend a moment on
-discussing why we are using this tool. The main goal of \cocos{} is to make
-mobile game development \textit{easier}. Earlier we have discussed the basic
-concepts and benefits of game engines. You should now know that there are many
-problems developers have faced while developing games, animations, physics, etc.
-- and most of them have been solved and put into frameworks. You should not
-spend your precious time trying to solve them again. So now that you know that
-you definitely should use a framework - \textbf{which ones are available and why
-should you choose \cocos{}}?
-
-\subsection{2D game development frameworks}
-Currently there are four 2D game development frameworks that are heavily used by
-developers:
-
-\subsubsection{Unity}
-
-\begin{description}
-\item[Pros] Cross-Platform; Advanced Visual Editor
-\item[Cons] Product focused on 3D, 2D support suboptimal; Heavy focus on editor,
-harder to develop good code base, Closed source
-\end{description}
-
-\subsubsection{Cocos2D-X}
-
-\begin{description}
-\item[Pros] Cross-Platform; Focus on 2D
-\item[Cons] Tools and APIs are not as mature as competitors, documentation is
-limited
-\end{description}
-
-\subsubsection{SpriteKit}
-
-\begin{description}
-\item[Pros] Officially supported by Apple; Well documented
-and nicely designed API
-\item[Cons] Limited support for visual editors;
-significant updates only once a year; Closed source
-\end{description}
-
 \section{Introduction to \cocos{}}
-First let us take a look at the features of \cocos{}. That will give you a basic
-understanding of which tasks you will hand off to the framework, later on we
-will be discussing all of these features in detail:
+First, let us take a look at the features of \cocos{}. That will give you a
+basic understanding of which tasks you will hand off to the framework. Later on
+we will be discussing all of these features in detail:
 \begin{description}
   \item[Scene Graphs] \cocos{} provides the concepts of scenes and nodes.
   Everything that is rendered to the screen is part of a hierarchical
@@ -87,18 +50,25 @@ will be discussing all of these features in detail:
 \end{description}
 
 There are many more features - but this brief outline shows the most
-important ones and should give you an idea why almost all game developers these
-days use game engines.  Let's take a closer look at how \cocos{} works.
+important. This should help you see why almost all game developers these
+days use game engines instead of building all of these features from scratch.
+ 
+Let's take a closer look at how \cocos{} works.
 
 \subsection{The \cocos{} technology stack}
 
-\cocos{} is built on top of OpenGL ES 2.0. If you have ever written OpenGL code
-before, you know that it takes a lot of code even to render the most primitive
-scenes.	OpenGL is a fairly low level framework that gives the graphics
-programmer a lot of control over how and when certain tasks are performed -
+\cocos{} is built on top of OpenGL ES 2.0 (and it has recently added
+experimental support for Apple's \textit{Metal} Framework).
+If you have ever written OpenGL code before, you know that it takes a lot of
+code to render even the most primitive scenes.	OpenGL is a fairly low level
+framework that gives the graphics programmer a lot of control over how and when certain tasks are performed -
 more control then you need for most 2D games. \cocos{} abstracts all of these
-tasks for you. Many \cocos{} developers write entire games without writing any
-OpenGL code at all. The following diagram shows which technologies are used by
+tasks for you. 
+
+While \cocos{} makes it easy to mix in custom OpenGL code, many \cocos{}
+developers write entire games without writing any OpenGL code at all. 
+
+The following diagram shows which technologies are used by
 \cocos{}:
 
 \begin{figure}[H]
@@ -116,33 +86,34 @@ scenes for him.
 In order to provide this functionality \cocos{} consists of variety of classes -
 some important ones will be discussed in this chapter. All \cocos{} classes use the \textit{CC} prefix (\ccscene{}, \ccnode{}, etc.).
 
-When working with a 2D game engine for the first time you will be introduced to
+When working with a 2D game engine for the first time, you will be introduced to
 a whole set of new terminology. We have already talked about nodes and scenes
 but we haven't discussed what these terms mean. We will now start discussing the
-most important terms and get to know how the concepts behind them are
-implemented in \cocos{}.
-
-\subsubsection{How are games rendered in \cocos{}?}
-The most important aspect of \cocos{} is that it
-\ldots \textbf{addmore}
+most important ones.
 
 \subsection{Scenes}
 Scenes are the basic building blocks of all \cocos{} games, they are the
 highest level on which game content can be structured. Each scene in \cocos{} is
 a full-screen canvas. For every full-screen section of your game you will use
 \textit{one} scene.
-\textbf{Add screenshots here}
-Here's an example from the MakeGamesWithUs game \textit{Deep Sea Fury}:
-% add image
+
+Here's an illustration from the \cocos{} documentation:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=300pt]{images/Chapter1/scenegraph.png}     
+    \caption{A game with 3 scenes}
+\end{figure}
+
 You can see that the game consists of the start scene, the gameplay scene and
 the game over scene.
 
 Scenes are represented by the \ccscene{} class. Another
-important \cocos{} class for scene handling is \ccdirector{}. The \ccdirector{}
-class is responsible for deciding which scene is currently active in the game
-(\cocos{} only allows one active scene at a time). Whenever a developer wants to
-display a scene or transition between two scenes he needs to use the
-\ccdirector{} class.
+important \cocos{} class for scene handling is \ccdirector{}.
+As shown in the image above, the \ccdirector{} class is responsible for deciding
+which scene is currently active in the game (\cocos{} only allows one active scene at a time). 
+Whenever a developer wants to display a scene or transition between two scenes
+she needs to use the \ccdirector{} class.
 
 This means creating and displaying a new scene is a two step process:
 \begin{enumerate}
@@ -161,25 +132,25 @@ Every node can have other nodes as its children. \cocos{} provides a huge amount
 of different node types. Every node type is a subclass of \ccnode{}.
 
 Most nodes are used to represent an object on the screen (an image, a solid
-color, an UI element, etc.), a few other nodes are only used to group other
-nodes. All nodes have a size, positions and children (and many other properties
+color, an UI element, etc.), a few other nodes are only used as containers that
+group other nodes. All nodes have a size, position and children (and many other properties
 which are less important for us right now). Here are some of the popular
 node types of \cocos{}:
 
 \begin{description}
   \item[CCSprite] represents an image or an animated image. Used for characters,
   enemies, etc.
-  \item[CCColorNode] a node being displayed in one plain color.
+  \item[CCColorNode] a node that displays one plain color.
   \item[CCLabelTTF] a node that can represent text in any TTF font.
-  \item[CCButton] a interactive node that can receive touches.
+  \item[CCButton] an interactive node that can receive touches.
 \end{description}
 
 Nodes and their children form a scene graph. The concept of a scene graph isn't
-unique to \cocos{} it is a common concept of 2D and 3D graphics. A scene graph
+unique to \cocos{}; it is a common concept of 2D and 3D graphics. A scene graph
 is a hierarchy of many different nodes. 
 
 \subsection{Scene Graphs}
-Let's take a look at simple example of a scene graph:
+Let's take a look at simple example of a \cocos{} scene:
 
 \begin{figure}[H]
 		\centering
@@ -187,15 +158,16 @@ Let's take a look at simple example of a scene graph:
 		\caption{\cocos{} Scene Graph}
 \end{figure}
 
-On the left side of the image you can see the node hierarchy. On the first level
-you have the \ccscene{}. As the first child we have a \ccnode{} with two
-children of type \cclabel{}. This \ccnode{} is the first example of a grouping
-node, it groups the score caption label and the label displaying the actual
-score. Instances of \ccnode{} don't have any appearance they are solely used to
+The image above shows \cocos{}'s rendering output for a scene alongside with
+its scene graph. The root node of the scene graph is a \ccscene{}. The first
+child is a \ccnode{} with two children of type \cclabel{}. This \ccnode{} is the first example of a grouping node: it groups the score caption
+label and the label displaying the actual score. 
+
+Instances of \ccnode{} don't have any appearance they are solely used to
 group other nodes. Throughout this book you will learn that it often makes sense
 to group nodes under certain parent nodes. The main reason is that all children are placed
 \textit{relative} to their parents. So if we would want to move the scoreboard
-of the example above to the top right corner we would only have to move the
+of the example above to the top right corner, we would only have to move the
 parent node instead of both child nodes. As you can imagine this becomes
 even more relevant in games that have ten or more entries in their scoreboard.
 
@@ -204,10 +176,10 @@ Always group nodes that logically belong together under one parent node. That
 will save you a lot of time when you change the layout of your scene.
 \end{details}
 
-The other two objects in the scene graph are simpler. One represents the
-background image the other one the main character.
+The other two objects in the scene graph are simpler. Both are CCSprites, one
+represents the background image the other one the main character.
 
-For some games, scene graphs can get very complex and include hundreds of
+For some games scene graphs can get very complex and include hundreds of
 different nodes. The key takeaways for now are:
 
 \begin{enumerate}
@@ -215,18 +187,20 @@ different nodes. The key takeaways for now are:
   \item A hierarchy of nodes is called a scene graph
   \item Children of nodes are placed relative to their parents - often it is
   useful to group nodes that are moved together under one parent
+  \item \cocos{} renders the screen output based on a scene graph that you
+  provide
 \end{enumerate}
 
 As you can see nodes are the most important building block of \cocos{} games -
 they are used to build everything that is visible in your game. Because it
-is so important to understand how nodes work in \cocos{} we will take a look at
+is so important to understand how nodes work in \cocos{}, we will take a look at
 the most important properties and methods that \ccnode{} provides.
 
 \subsection{An Introduction to CCNode}\label{Introduction_CCNode}
 Every visible object in your game will be a subclass of \ccnode{}. Because
-you use nodes to build and arrange your scenes it is important to understand
+you use nodes to build and arrange your scenes, it is important to understand
 how nodes are positioned and how positions of nodes can be accessed. Let's
-discuss the most relevant properties and methods to access and change
+take a look at the most relevant properties and methods to access and change
 size and position of a \ccnode{}:
 
 \begin{description}
@@ -239,16 +213,18 @@ only read it but not set it
 \end{description}
 
 The \textit{contentSizeInPoints} and \textit{positionInPoints} properties
-express the size and the position of a \ccnode{} and should be fairly easy to
-understand. The \textit{bounding box} and the \textit{anchor point} however, are
-concepts related to game development and these may be new to you. The bounding
-box is a rectangle that encloses the entire node, you will see an example of a
-bounding box in the next diagram. The anchor point is relevant for positioning
+express the size and the position of a \ccnode{}. If you have worked with UI
+frameworks before, you should be familiar with similar properties.
+
+The \textit{bounding box} and the \textit{anchor point} however, are
+concepts that are more specific to game development.
+The bounding box is a rectangle that encloses the entire node. You will see an
+example of a bounding box in the next diagram. The anchor point is relevant for positioning
 and rotating nodes.
 
-Let's take a look at how anchor points influence positioning first. We know that
-the position of a node is expressed relative to its parent. More specifically every node position in
-\cocos{} is expressed from the \textit{position reference corner} of the parent
+Let's take a look at how anchor points influence positioning first. We know
+that the position of a node is expressed relative to its parent. More
+specifically, every node position in \cocos{} is expressed from the \textit{position reference corner} of the parent
 to the anchor point of the \ccnode{}. Here's a visual example in which a bear
 node is placed relative to a background node:
 
@@ -261,8 +237,8 @@ node is placed relative to a background node:
 As you can see, the \textit{anchor point} and the \textit{position reference
 corner} influence the position of a node. The anchor point can have any value
 between (0, 0), representing the bottom left corner of a node and (1,1),
-representing the top right corner of a node. In the example above, the bear has
-a anchor point of (0.5, 0.5) which is at the center of the bear. By choosing an
+representing the top right corner of a node. In the example above the bear has
+an anchor point of (0.5, 0.5) which is at the center of the bear. By choosing an
 anchor point of (0.5, 0.5), the \textit{center} of the bear will be positioned
 at (215, 285). If we would choose an anchor point of (0,0) the \textit{bottom
 left} corner of the bear would be positioned at (215, 285).
@@ -284,7 +260,7 @@ example of rotating the bear node with two different anchor points:
 		\caption{\ccnode{} positioning example}
 \end{figure}
 
-There is a lot more to learn about \ccnode{}, but for now our only goal is to
+There is a lot more to learn about \ccnode{}. For now our only goal is to
 get a basic understanding of how \cocos{} games are structured and what the most
 important parts of \cocos{} are.
 
@@ -296,8 +272,8 @@ positioned in \cocos{}.
 Now that you have that basic understanding, we will take a look at a second tool which we will be using throughout this book: \SB{}.
 
 \section{Introduction to \SB{}}
-You have learned the fundamentals of the game engine we will use. Now we will
-take a look at a tool called \SB{} which we will use to create the majority of
+So far you have learned the basics of the game engine that we will use. Now we
+will take a look at a tool called \SB{} which we will use to create the majority of
 our game content. The main purpose of \SB{} is to provide a visual editor for
 the creation of scenes, animations and more. For most games you will create some
 basic mechanics in code (enemy movement, score mechanism, etc.) but you will create
@@ -307,27 +283,29 @@ preview instead of putting these scenes together in code.
 
 If you have never used \SB{} before, it is very important to understand that
 everything that can be implemented in \SB{} can also be implemented in code.
-\SB{} is not part of the game engine, it just allows you to configure \cocos{}
+\SB{} is not part of the game engine, it simply allows you to configure \cocos{}
 scenes and nodes in an editor instead of configuring them in code.
 
 \subsection{Creating a first project}
 To dive into the features of \SB{} we will create our first project! 
 
 \begin{leftbar}
-Create a new project by opening SpriteBuilder and selecting \textit{File > New >
+\begin{enumerate}
+  \item Create a new project by opening SpriteBuilder and selecting \textit{File > New >
 Project...}:
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/cocos2d/setup/spritebuilder_new_project.png}     
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/cocos2d/setup/spritebuilder_new_project.png}     
 \end{figure}
 
-\SB{} will ask for a name and a location for the new project. Name it
+  \item \SB{} will ask for a name and a location for the new project. Name it
 \textit{HelloSB}. Also make sure to choose \textit{Swift} as the primary project
 language:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{images/Chapter1/new_project_swift.png}     
-\end{figure}
+\end{figure} 
+\end{enumerate}
 \end{leftbar}
 
 After you create the project the folder structure should look similar
@@ -338,9 +316,8 @@ to this:
 		\caption{\SB{} project folder structure}
 \end{figure}
 
-Every \SB{} project is contained in a \textit{.spritebuilder} folder. Within
-this folder all the files of the \SB{} project are stored - along with an \xcode{}
-project. 
+Every \SB{} project is contained in a \textit{.spritebuilder} folder. This
+folder stores all \SB{} project files - along with an \xcode{} project. 
 
 \begin{details}[\SB{} and Xcode] 
 \SB{} will create an \xcode{} project for every new project you create! The
@@ -353,7 +330,7 @@ project work together. The general rule is that all code will be part of the
 \xcode{} project and most content creation will happen in the \SB{} project.
 
 \subsection{The Editor}
-When you have created your first \SB{} project you will see that the \SB{} UI
+When you have created your first \SB{} project, you will see that the \SB{} UI
 gets enabled. Let's take a look at the different parts of the editor to get a
 better understanding of \SB{}.
 
@@ -368,7 +345,7 @@ The \SB{} interface is divided into 4 main sections:
   \item \textit{Stage:} The stage will preview your current scene. Here you can
   arrange all of the nodes that belong to a scene. 
   \item \textit{Timeline:} The timeline is used to create animations within
-  SpriteBuilder.
+  SpriteBuilder. It also displays the scene graph of the current scene.
   \item \textit{Inspector:} Once you select a node in your scene, this detail
   view will display a lot of editable information about that node. You can modify positions, content (the text of a label, for example) and physics properties.
 \end{enumerate}
@@ -407,14 +384,15 @@ the Inspector. Once you have selected an object on your stage you can use this p
 The second tab on the right panel let's you manage code connections for your
 selected node. As mentioned previously the entire code for your games will be
 written as part of the \xcode{} project. This view allows you to create
-connections between the \xcode{} project and the \SB{} project. For example you can set a custom Objective-C class for a node or you can select
-a method in your code that shall be called once a button in your scene is tapped. 
-
+connections between the \xcode{} project and the \SB{} project. For example you
+can set a custom Swift class for a node or you can select a method in your code
+that shall be called once a button in your scene is tapped. We will discuss the
+use of code connections extensively throughout this book.
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
 \end{figure} 
-Code connections will be discussed in detail later on.
+
 
 \subsection{\ccbfile{}s}
 \ccbfile{}s are the basic building blocks of your \SB{} project. Every scene in

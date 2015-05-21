@@ -1,0 +1,24 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PY{k+kd}{func} \PY{n+nf}{performCaughtStep}\PY{p}{(}\PY{n}{fallingObject}\PY{p}{:}\PY{n}{FallingObject}\PY{p}{)} \PY{p}{\PYZob{}}
+  \PY{c+c1}{// if the object was caught, remove it as soon as soon as it is entirely contained in the pot}
+  \PY{k}{if} \PY{p}{(}\PY{n}{CGRectContainsRect}\PY{p}{(}\PY{n}{catchContainer}\PY{p}{.}\PY{n}{boundingBox}\PY{p}{(),} \PY{n}{fallingObject}\PY{p}{.}\PY{n}{boundingBox}\PY{p}{()))} \PY{p}{\PYZob{}}
+    \PY{n}{gameModeDelegate}\PY{p}{?.}\PY{n}{gameplay}\PY{p}{(}\PY{k+kc}{self}\PY{p}{,} \PY{n}{caughtFallingObject}\PY{p}{:} \PY{n}{fallingObject}\PY{p}{)}
+    \PY{n}{fallingObject}\PY{p}{.}\PY{n}{removeFromParent}\PY{p}{()}
+    \PY{k+kd}{let} \PY{n+nv}{fallingObjectIndex} \PY{p}{=} \PY{n+nb+bp}{find}\PY{p}{(}\PY{n}{fallingObjects}\PY{p}{,} \PY{n}{fallingObject}\PY{p}{)}\PY{o}{!}
+    \PY{n}{fallingObjects}\PY{p}{.}\PY{n+nb+bp}{removeAtIndex}\PY{p}{(}\PY{n}{fallingObjectIndex}\PY{p}{)}
+
+    \PY{k}{if} \PY{p}{(}\PY{n}{fallingObject}\PY{p}{.}\PY{n}{type} \PY{p}{==} \PY{p}{.}\PY{n}{Good}\PY{p}{)} \PY{p}{\PYZob{}}
+      \PY{k+kd}{let} \PY{n+nv}{particleEffect} \PY{p}{=} \PY{n}{CCBReader}\PY{p}{.}\PY{n}{load}\PY{p}{(}\PY{l+s}{\PYZdq{}CaughtParticleEffect\PYZdq{}}\PY{p}{)} \PY{k+kc}{as}\PY{p}{!} \PY{n}{CCParticleSystem}
+      \PY{n}{particleEffect}\PY{p}{.}\PY{n}{autoRemoveOnFinish} \PY{p}{=} \PY{k+kc}{true}
+      \PY{n}{particleEffect}\PY{p}{.}\PY{n}{positionType} \PY{p}{=} \PY{n}{CCPositionType}\PY{p}{(}
+        \PY{n}{xUnit}\PY{p}{:} \PY{p}{.}\PY{n}{Normalized}\PY{p}{,}
+        \PY{n}{yUnit}\PY{p}{:} \PY{p}{.}\PY{n}{Points}\PY{p}{,}
+        \PY{n}{corner}\PY{p}{:} \PY{p}{.}\PY{n}{TopLeft}
+      \PY{p}{)}
+      \PY{n}{particleEffect}\PY{p}{.}\PY{n}{position} \PY{p}{=} \PY{n}{ccp}\PY{p}{(}\PY{l+m+mf}{0.5}\PY{p}{,} \PY{l+m+mi}{20}\PY{p}{)}
+      \PY{n}{potTop}\PY{p}{.}\PY{n}{addChild}\PY{p}{(}\PY{n}{particleEffect}\PY{p}{)}
+    \PY{p}{\PYZcb{}}
+
+  \PY{p}{\PYZcb{}}
+\PY{p}{\PYZcb{}}
+\end{Verbatim}

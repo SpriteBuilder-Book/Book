@@ -410,7 +410,7 @@ available \ccbfile{} types when you create a new one, by selecting
 These are the different document types briefly explained:
 \begin{description}
 \item[Scenes] will fill the full screen size of the device.
-\item[Nodes] used primarily for grouping functionality, don't have a size.
+\item[Nodes] used primarily for grouping functionality.
 \item[Layers] are nodes with a content size. This is useful, for instance, when
 creating levels or contents for scroll views.
 \item[Sprites] used to create (animated) characters, enemies, etc.
@@ -428,11 +428,11 @@ order to be a well versed and efficient \SB{} game developer it is very
 important to understand the details of this cooperation.
 
 When creating a \SB{} project, \SB{} will create and maintain a corresponding
-\xcode{} project. In \SB{} will you create multiple \ccbfile{}s that describe
+\xcode{} project. In \SB{} you'll create multiple \ccbfile{}s that describe
 the content of the scenes in your game. You will also add the resources that
 you want to use in your game and set up code connections to interact with the
 code in your \xcode{} project. \xcode{} will be the place where you add code to
-your project and where you run the actual game.
+your project and from where you run the actual game.
 
 Since \xcode{} is the tool that actually compiles and runs your game it needs
 to know about all the scenes and resources that are part of your \SB{} project.
@@ -448,7 +448,7 @@ a button in the top left corner of the interface:
 Using that button, you publish your changes in your
 \SB{} project to your \xcode{} project. Whenever you changed your \SB{}
 project and want to run it you should hit this button before building the \xcode{}
-project.
+project. Alternatively you can use the shortkey \textit{CMD + Shift + O}.
 
 Here's a diagram that visualizes how \SB{} and \xcode{} work together:
 \begin{figure}[H]
@@ -464,7 +464,7 @@ project resources are copied to your \xcode{} project.
 \label{CCBReader}
 When running the project in \xcode{} a class called CCBReader will parse your
 \ccbfile{}s and create the according \ccnode{} subclasses to reconstruct the scene
-graph you have designed in \spriteb{}.
+graph you have designed in \SB{}.
 
 If you would use \cocos{} without \SB{} you would manually create instances of
 \ccnode{}, \ccsprite{}, etc. in code and add children to these nodes -
@@ -497,7 +497,7 @@ scene. For example a character might want a reference to its right arm node (a
 child of the character node) in order to move it. 
 \item[Callbacks] are only available to UI elements like buttons and sliders.
 They allow you to decide which method should be called on which class once a
-button is pressed.
+user interaction occurs.
 \end{description}
 Now you should have an idea about what code connections are used for and which
 kinds exist. We will discuss the details of all types when we use them as part
@@ -520,21 +520,21 @@ By creating this project you will learn all of the following:
   \item Creating code connections (callbacks, variable assignments and custom
   classes)
   \item Switching between different scenes
-  \item Manipulate a scene graph from code (add/remove nodes, load CCB Files and
-  add them to the scene)
-  \item Use the \cocos{} action system to create animations
-  \item Use the \cocos{} touch handling system to capture touches
+  \item Manipulating a scene graph from code (add/remove nodes, load CCB Files
+  and add them to the scene)
+  \item Using the \cocos{} action system to create animations
+  \item Using the \cocos{} touch handling system to capture touches
 \end{itemize}
 
 \subsection{Setting up the first scene}
-%explain code connections in detail here
 Now it is time to open the \textit{HelloSB} \SB{} project. We want to add a
 \textit{Start Button} to the first scene. When this button is tapped we want to
 switch to the second scene. 
 
 \subsubsection{Positioning the first button}
 \begin{leftbar}
-Start by adding a button to the first scene:
+Start by adding a button to the first scene by following the three steps
+outlined below:
 
 \begin{figure}[H]
 		\centering
@@ -542,10 +542,6 @@ Start by adding a button to the first scene:
 		\caption{The project build throughout this chapter}
 		%\label{labelstruct} 
 \end{figure}
-
-One simple button, but since this is your first action in \SB{} there's
-\textit{lots} to explain about it. Let's look at the three steps highlighted in
-the image above, one by one.
 
 \begin{description}
 \item[(1)] Open \textit{MainScene.ccb} by double clicking it in the left
@@ -589,8 +585,8 @@ to design their interfaces with great flexibility:
   \item Size Type
 \end{itemize}
 
-If you want to learn more about dynamic layouts you should read our two part
-tutorial:
+We will use the positioning system throughout multiple chapters in this book.
+If you want to learn more about dynamic layouts right away, you should read our tutorial:
 \url{https://www.makeschool.com/tutorials/dynamic-layouts-with-spritebuilder-and-cocos2d-3-x/}.
 \end{details}
 
@@ -603,18 +599,18 @@ Earlier you learned that \SB{} has three types of code connections
 (\ref{CodeConnections}). Now we will use one of them in our project -
 \textit{Callbacks}\index{Code Connections!Callbacks}. Callbacks are only
 available to nodes that allow for some sort of user interaction (this means they need to be subclasses of
-\inlinecode{CCControl}). Buttons, next to Sliders and Text Fields are one of
-these types of nodes. 
+\inlinecode{CCControl}). Buttons, as well as Sliders and Text Fields are some of
+these types of nodes.
 
 \begin{leftbar}
 Select the button we have added to the scene earlier and
-select the third tab of the right pane:
+select the second tab of the right pane:
 
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.9\linewidth]{images/firstproject/button_callback.png}
 		\caption{Nodes that allow user interaction can use callback methods to
-		connect to the code base}
+		connect to the code base of a game}
 		%\label{labelstruct} 
 \end{figure}
 
@@ -654,13 +650,14 @@ called on the document root when the button is tapped. Next, we will have to
 implement this \inlinecode{startGame} method within our document root. But to
 which \textit{class} could we add this method? In order to find that out we need to understand the
 concept of \textit{Custom Classes} \index{Code Connections!Custom Classes}.
+
 Think about it - by default our document root is an instance of a plain
 \ccnode{} class.
 Now we want to call a method called \inlinecode{startGame} on this object. Our
 problem: the \ccnode{} class does not have a \inlinecode{startGame} method! This
 is where custom classes come to rescue us, they allow us to tell \SB{} that our
 document root node should \textbf{not} be a plain \ccnode{} but should be an
-instance of a class that we have created and that knows about our
+instance of a class that we have created and implements our
 \inlinecode{startGame} method. To define a custom class for the document root
 you need to select the document root (the top-level \ccnode{}) from the timeline
 and open the third tab in the right pane:
@@ -680,7 +677,10 @@ CCBReader loads this \ccbfile{} it will create an instance of \inlinecode{MainSc
 Now our document root object is a \inlinecode{MainScene} object! That also means
 that we have saved the puzzle of where to add the code for the
 \inlinecode{startGame} method - it needs to be part of the
-\inlinecode{MainScene} class.
+\inlinecode{MainScene} class. The \inlinecode{MainScene} class is already part
+of the template \xcode{} project generated by \SB{}.
+
+Now that we have the connection set up, it is time to add some code.
 
 \begin{details}[Requirements for Custom Classes] \index{Code
 Connections!Custom Classes}
@@ -698,21 +698,28 @@ the CCBReader and finally also you will run into problems!
 When creating games with \SB{} we are always working with two tools. \SB{} to
 create interfaces and scenes (our game content) and \xcode{} to add code (game
 mechanics, etc.). Now we will add our first few lines of code to the
-\inlinecode{MainScene} class. Now it's time to publish the changes in our \SB{}
-project, so that they are available in our \xcode{} project. Use the publish
-button in the top left corner of the \SB{} interface (\ref{Publish}). 
+\inlinecode{MainScene} class. 
+
+It's time to publish the changes in our \SB{}
+project, so that they are available in our \xcode{} project. 
+
+
 
 \begin{leftbar}
-Now open the \xcode{} project (it's called \textit{HelloSB.xcodeproj} and is
-located inside the \textit{HelloSB.spritebuilder} folder). 
-You can also use a shortcut provided by \SB{}: CMD + Shift + O
+\begin{enumerate}
+  \item Use the publish button in the top left corner of the \SB{} interface
+(\ref{Publish}). Or use the shortkey: \textit{Option + CMD + S}.
+  \item Open the \xcode{} project (it's called \textit{HelloSB.xcodeproj} and is
+located inside the \textit{HelloSB.spritebuilder} folder). You can also use a
+shortcut provided by \SB{}: CMD + Shift + O
+\end{enumerate}
 \end{leftbar}
-You will see that
-project contains two classes, \inlinecode{AppDelegate} and
+
+You will see that project contains two classes, \inlinecode{AppDelegate} and
 \inlinecode{MainScene}. As part of the template for new \SB{} projects the
 \inlinecode{MainScene} class has already been created for you. For any
 subsequent custom classes you link in your \SB{} project you will need to create
-the according class in \xcode{} on your own.
+the according classes in \xcode{} on your own.
 
 Now it's finally time to implement the \inlinecode{startGame} method. 
 
@@ -737,8 +744,8 @@ Activate Console}.
 
 Now, run the \xcode{} project by hitting the play button in the top left corner.
 You should check that you have selected \textit{HelloSB} as target and are set
-up to run the app on a simulator (indicated by a device description instead of
-a device name):
+up to run the app on a simulator (indicated by a device description, e.g.
+iPhone Retina, instead of a device name):
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=200pt]{images/firstproject/run_app.png}
@@ -754,8 +761,8 @@ the log message. You should see something similar to this:
 \end{figure}
 
 You have successfully set up your first \SB{} scene and have created a working
-code connection! Later on this button shall trigger a transition to the second
-scene in the game. Before we can implement that we need to create the second
+code connection! Later on this button shall trigger a transition to the Gameplay
+scene. Before we can implement that we need to create the second
 scene in our \SB{} project!
 
 \begin{details}[Common errors with code connections]
@@ -767,6 +774,8 @@ errors:
   \inlinecode{MainScene}
   \item Does the button in \textit{MainScene.ccb} have the correct target and
   selector?
+  \item Make sure to read the console log as it usually includes details about
+  the failed code connection
 \end{itemize}
 \end{details}
 
@@ -792,16 +801,15 @@ scene appear.
 \end{leftbar}
 
 Our Gameplay scene will remain empty. As you have seen in the outline
-of the project, we want to dynamically add colored objects to the game, whenever
+of the project, we want to dynamically add colored objects to the game whenever
 the user taps into our Gameplay scene - initially however, the scene will be
-blank. Now that we have created the Gameplay scene, we can add the transition
+blank. Now that we have created the Gameplay scene we can add the transition
 from the Main scene to the Gameplay scene.
 
 \subsection{Adding a Scene Transition}
 Transitions \index{Scene Transition} are essential for any game. We use them
 whenever we want to switch from one scene to another. Transitions cannot be configured in
-\SB{}, they always need to be implemented in code. To implement this step,
-you need to open your \xcode{} project again.
+\SB{}, they always need to be implemented in code.
 
 \cocos{} has one central class that is responsible for displaying the active
 scene and generating transitions between different scenes:
@@ -818,7 +826,6 @@ CCDirector methods.
 
 CCDirector provides a large collection of methods to present scenes with and
 without transitions, here are the most important ones:
-%TODO: turn this into Swift interface
 \begin{lstlisting}
 - (void)presentScene:(CCScene *)scene;
 - (void)presentScene:(CCScene *)scene withTransition:(CCTransition *)transition;
@@ -830,13 +837,20 @@ without transitions, here are the most important ones:
 - (void)popToRootSceneWithTransition:(CCTransition *)transition;
 \end{lstlisting}
 
+\begin{details}[\cocos{} is written in Objetive-C]
+Yes I know, this isn't Swift code! \cocos{} is written entirely in Objective-C.
+While it plays nicely with our Swift only code, you will be forced to read some
+Objective-C headers once in a while. Luckily these header files aren't too
+cryptic!
+\end{details}
+
 \cocos{} has two different approaches for displaying a new scene.
 \textbf{Replacing} the current scene with a new one, using the
 \inlinecode{presentScene:} methods, or \textbf{Pushing} the new scene on top of
 the currently active one using the \inlinecode{pushScene:} methods. Whichever
 type you choose, you always have the option to provide a transition effect for
-presenting a scene, or not to provide a transition effect and display the new
-scene instantaneously. If you want to provide an effect you need to create an
+presenting a scene with an animation, or not to provide a transition effect and
+display the new scene instantaneously. If you want to provide an effect you need to create an
 instance of \inlinecode{CCTransition}.
 
 Before we look into using transition effects, let's take a look at the
@@ -893,22 +907,26 @@ scene, make use of the navigation stack by using the \inlinecode{pushScene} and
 \subsubsection{Adding transition effects}
 For every scene replacement method there's one variation that takes an instance
 of \inlinecode{CCTransition}. The CCTransition instance provides an animation
-for transitions between different scenes. CCTransition provides multiple class
-methods to easily create them. Here's an example of how to provide an animated
-transition:
+for transitions between different scenes. CCTransition provides multiple
+convenience initializers which makes for short and readable code. Here's an
+example of how to create an animated transition:
 \begin{lstlisting}
 let transition = CCTransition(fadeWithDuration: 1.0)
 CCDirector.sharedDirector().presentScene(gameplayScene, withTransition: transition)
 \end{lstlisting}
+First we create a transition object, then we hand it to the
+\inlinecode{presentScene} method.
 
 \subsubsection{Implementing a scene transition for our game}
 Now that you know the most important details about scene transitions, let's add
-the transition from our start scene to our Gameplay scene. Open
-\textit{MainScene.m} in \xcode{}. Earlier we have already implemented a test
+the transition from our start scene to our Gameplay scene. Earlier we have already implemented a test
 version of the \inlinecode{startGame} method, where we printed a log message to
-the console. Now we are going to implement a transition. 
+the console. Now we are going to implement a transition.  
+
 \begin{leftbar}
-Replace the current implementation of \inlinecode{startGame} with this one:
+\begin{enumerate}
+\item Open \textit{MainScene.m} in \xcode{}. 
+\item Replace the current implementation of \inlinecode{startGame} with this one:
 \begin{lstlisting}
 func startGame() {
   let gameplayScene = CCBReader.loadAsScene("Gameplay")
@@ -916,6 +934,7 @@ func startGame() {
   CCDirector.sharedDirector().presentScene(gameplayScene, withTransition: transition)
 }
 \end{lstlisting}
+\end{enumerate}
 \end{leftbar}
 
 Now that you are familiar with scene transitions, the only interesting line
@@ -925,10 +944,10 @@ of this chapter (\ref{CCBReader}). It is capable of reading \SB{}s
 \textit{.ccbi} files and creating the according \cocos{} classes from the
 information stored in them. Whenever we want to load a scene or any
 other type of node that we created in \SB{} into code we use the CCBReader
-class. In the lines shown above, we load the content of our
+class. In the lines shown above we load the content of our
 \textit{Gameplay.ccb} into a variable called \inlinecode{gameplayScene}. The
 \inlinecode{loadAsScene:} method wraps whatever scene graph you load into an
-instance of \inlinecode{CCScene}, use it whenever you want to load a \ccbfile{}
+instance of \inlinecode{CCScene}. Use it whenever you want to load a \ccbfile{}
 in order to present is as a full-screen scene.
 
 Then we create a simple fade transition and store that object in
@@ -939,7 +958,7 @@ the \textit{Start} button on the first scene, you should see a transition to our
 black Gameplay scene that lasts for one second.
 
 \textbf{Well done!} You have learned how to create a new scene in \SB{} and how
-to implement transition between different scenes in a game. Now let's implement
+to implement transitions between different scenes in a game. Now let's implement
 the actual gameplay of our first example game!
 
 \begin{details}[.ccb and .ccbi] 
@@ -948,7 +967,8 @@ by \SB{} to store and read information about a scene or node created in \SB{}.
 When a \SB{} project gets published, \SB{} generates a binary version of
 each \textit{.ccb} file. The file extension for these binary files is
 \textit{.ccbi} and they are a lot smaller than their corresponding
-\textit{.ccb} files. The CCBReader reads these smaller binary files.
+\textit{.ccb} files. The CCBReader reads these smaller binary files at runtime
+and turns them into nodes.
 \end{details}
 
 \subsection{Implementing the Gameplay}
@@ -960,7 +980,10 @@ square at the location of the touch.
 \subsubsection{Creating the Square \ccbfile{}}
 
 Let's start by creating the square we want
-to spawn during the game in \SB{}. 
+to spawn during the game in \SB{}. In most games each of your different entities
+will be represented by an individual \ccbfile{}. That makes it easy to load
+entities in Code and reuse them throughout different scenes. For that reason we
+will create an individual \ccbfile{} for our rotating squares.
 
 \begin{leftbar}
 Create a new \ccbfile{} of type
@@ -973,9 +996,9 @@ Create a new \ccbfile{} of type
 \end{leftbar}
 
 The squares we generate in the game shall have a color. A default \ccnode{}
-cannot display a color. In order to display a color we need to use a
-\inlinecode{CCNodeColor}. The \SB{} node for a CCNodeColor is called
-\textit{Color Node}. The root node of every \ccbfile{} is a plain \ccnode{},
+cannot display a color - it doesn't have a \inlinecode{backgroundColor}
+property. In order to display a color we need to use a \inlinecode{CCNodeColor}.
+The \SB{} node for a CCNodeColor is called \textit{Color Node}. The root node of every \ccbfile{} is a plain \ccnode{},
 that cannot be changed. This means we need to add the \textit{Color Node} as a
 child of the root node of \textit{Square.ccb}.
 
@@ -988,7 +1011,7 @@ Add a \textit{Color Node} by performing the following steps:
 \end{figure}
 \begin{description}
 \item[(1)] Open the \textit{Node Library} and drag a \textit{Color Node} to the
-stage or the timeline in order to add it to the root node of of
+stage or to the timeline in order to add it to the root node of of
 \textit{Square.ccb}.
 \item[(2)] Center the new \textit{Color Node} on the root node by selecting an
 \textit{Anchor Point} of (0.5, 0.5). Change the \textit{Content Size} of the
@@ -999,7 +1022,7 @@ node to (50, 50).
 Now the basic square is set up. Next, we need to set up a code connection. Earlier you have seen
 the use of \textit{Custom Classes} and \textit{Callbacks}, now we will use the
 third type of code connections supported by \SB{} a \textit{Variable
-Assignment}.\index{Code Connections!Variable Assignment}. Variable assignments
+Assignment}.\index{Code Connections!Variable Assignment} Variable assignments
 are generally used when we want to access a part of our scene graph in code. In
 our game, whenever a new square is created we want to set a random color for
 this square. Generating a random color is something we need to do in code and
@@ -1035,7 +1058,9 @@ node of this \ccbfile{}.
 \begin{details}[Variable Assignments, Callbacks and Custom Classes] 
 Always remember that you practically cannot set up a \textit{Variable
 assignment} or a \textit{Callback} for the \textit{Document Root} without also
-setting a custom class for the root node of the corresponding \ccbfile{}.
+setting a custom class for the root node of the corresponding \ccbfile{}. You
+will always want to access properties or methods that aren't available on the
+default type of the root node.
 \end{details}
 
 \begin{leftbar}
@@ -1047,8 +1072,8 @@ for this node to \textit{Square}:
 \end{figure}
 \end{leftbar}
 
-When the \textit{CCBReader} reads this \ccbfile{} it will create instance of the
-class \textit{Square} as the root node and it will assign a reference to the
+When the \textit{CCBReader} reads this \ccbfile{} it will create an instance of
+the class \textit{Square} as the root node and it will assign a reference to the
 \textit{Color Node} to a property of \textit{Square} called
 \textit{colorNode}. This way we will be able to access the \textit{Color Node}
 and change the color of our square programmatically!
@@ -1070,27 +1095,36 @@ custom class for \textit{Square.ccb}).
 \end{leftbar}
 
 We've set up multiple code connections throughout this chapter. In order for all
-of them to work, we need to \textbf{publish the \SB{} project} and switch to the
-\xcode{} project and create the classes and properties that we are referencing
-in the \SB{} project.
+of them to work, we need to publish the \SB{} project. 
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Publish the \SB{} project
+  \item Switch to your Xcode project
+\end{enumerate}
+\end{leftbar}
 
 \subsubsection{Creating the Square class}
-Now let's add the code to our project.
+Let's create the classes and properties that we are referencing
+in the \SB{} project to our Xcode project. We'll get started with the
+\inlinecode{Square} class.
 \begin{leftbar}
-Open \xcode{} and create a new Swift class by selecting \textit{File ->
+\begin{enumerate}
+  \item Open \xcode{} and create a new Swift class by selecting \textit{File ->
 New File\ldots} and choosing \textit{Cocoa Touch Class}: 
 \begin{figure}[H]
     \centering
     \includegraphics[width=350pt]{images/Chapter1/new_cocoa_touch.png}
 \end{figure}
-Make sure you have selected \textbf{Swift} as the language!
-As class name choose \textit{Square} and define it to be a subclass of
-\ccnode{}:
-\begin{figure}[H]
+  \item Hit the next button
+  \item Choose \textit{Square} as the class name and make sure you have selected
+  \textbf{Swift} as the programming language! Define the class to be a subclass
+  of \ccnode{}: \begin{figure}[H]
     \centering
     \includegraphics[width=350pt]{images/Chapter1/new_cocoa_touch_2.png}
 \end{figure}
-Then hit the \textit{Next} button to create the file.
+\item Hit the \textit{Next} button to create the file.
+\end{enumerate}
 \end{leftbar}
 
 Remember, a custom class always has to be a subclass of the node type
@@ -1099,7 +1133,7 @@ you have selected in \SB{}. The node type of the root node of
 
 \begin{leftbar}
 Now open \textit{Square.swift} and add the property
-\inlinecode{\colorNode{}} to the \inlinecode{Square} class. This variable is the
+\inlinecode{\colorNode{}} to the \inlinecode{Square} class. This property is the
 one that we defined in \SB{} to store the reference to the
 \inlinecode{CCNodeColor} that displays the color of our square:
 \begin{lstlisting}
@@ -1111,25 +1145,32 @@ class Square : CCNode {
 \end{lstlisting}
 \end{leftbar}
 
-After adding the property, the code for \textit{Square.swift} should look as
-shown above. Note that we are using a \inlinecode{weak} variable of forcefully
-unwrapped type (indicated by the trailing \textit{!}). This will be default for
-all code connections throughout this book.
+Note that we are using a \inlinecode{weak} variable of forcefully
+unwrapped type (indicated by the trailing \textit{!} after the type name). This
+will be default for all code connections throughout this book for the following
+two reasons:
 
-The property is declared as \inlinecode{weak} because it doesn't \textit{own}
+\begin{enumerate}
+ 
+\item The property is declared as \inlinecode{weak} because it doesn't \textit{own}
 the referenced child node. We only want to use this property as a reference - we
 know that another part of our game is responsible for keeping the referenced
 object around. In this case the \inlinecode{colorNode} will stay in memory as
-long as it is a child node of a scene that is rendered on the screen.
+long as it is a child node of a scene that is rendered on the screen. Unowned
+references should always be marked as \inlinecode{weak} (or by using the Swift
+keyword \inlinecode{unowned}, but that is beyond the scope of this book!).
 
-Since the code connection we set up will not have a value assigned as soon as
+\item Since the code connection we set up will not have a value assigned as soon as
 \inlinecode{Square} is initialized we need to declare the property as either
 \textit{optional} or \textit{forcefully unwrapped}. Swift has pretty strict
 initialization rules! We choose \textit{forcefully unwrapped} because we know that
 \cocos{} guarantees that this property will have a value as soon as the
-\ccbfile{} is loaded and \inlinecode{didLoadFromCCB} is called. Given this
-knowledge it's preferable to choose \textit{forcefully unwrapped} over
+\ccbfile{} is loaded and \inlinecode{didLoadFromCCB} is called (we will discuss
+the \cocos{} lifecycle in detail shortly).
+Given this knowledge it's preferable to choose \textit{forcefully unwrapped} over
 \textit{optional} because it avoids a lot of optional-unwrapping code.
+
+\end{enumerate}
 
 \begin{details}[Swift initialization and optionals]
 You can read more about Swift initialization and optionals in our following
@@ -1140,7 +1181,7 @@ tutorial:
 Now that we have a reference to the \inlinecode{CCNodeColor} we
 need a position in code where we can set a random color for that node.
 
-The requirements for this projects state that we need to choose a random color
+The requirements for this project state that we need to choose a random color
 for our Square as soon as it is added to the Gameplay scene. \textbf{How can we
 be informed about the square being added to the Gameplay scene?} Therefore we
 need to take a closer look at what we call the \textbf{Node
@@ -1162,7 +1203,10 @@ part of the scene that is being loaded/presented/hidden:
   \inlinecode{onEnter} will be called on that scene as soon as the transition
   starts and \inlinecode{onEnterTransitionDidFinish} will be called when the transition
   completes. If a scene or node is being presented/added without an animated
-  transition both methods are called directly after each other.
+  transition both methods are called directly after each other. It's also
+  important to note that the content size of a node that is expressed relative
+  to the parent node will not be available until \inlinecode{onEnter} has been
+  called.
   \item[onExitTransitionDidStart/onExit] are called as soon as a node leaves the
   stage. If you are hiding a scene with an animated transition,
   \inlinecode{onExitTransitionDidStart} will be called on that scene as soon as
@@ -1207,10 +1251,10 @@ override func onEnter() {
 }
 \end{lstlisting}
 \end{leftbar}
-The lines above generate three random numbers, one for each color component
-with a value between 0.0 and 1.0. These three numbers are used to create an
-instance of \inlinecode{CCColor} and set it as the color of our node. Since
-\inlinecode{CCColor} wants to be initialized with \inlinecode{Float} values we
+The lines above generate three random numbers, with a value between 0.0 and 1.0,
+using the C function \inlinecode{arc4random\_uniform}. That's one number for
+each color component. These three numbers are used to create an
+instance of \inlinecode{CCColor} and set it as the color of our node. Since \inlinecode{CCColor} wants to be initialized with \inlinecode{Float} values we
 need to explicitly create \inlinecode{Float} numbers from the result of calling
 the \inlinecode{arc4random\_uniform} function which returns a
 \inlinecode{UInt32}.
@@ -1218,9 +1262,18 @@ the \inlinecode{arc4random\_uniform} function which returns a
 Now the square will appear in a random color as soon as we add it to a scene.
 The second requirement for our square is that it shall rotate while on the
 screen. One of the ways to move and/or animate a node in \cocos{} is using the
-\cocos{} Action System\index{Action System}. The Action System provides a simple
-and expressive way for developers to implement animated changes like:
-\textit{Move the main character to the top left corner in 2 seconds}. 
+\cocos{} Action System\index{Action System}. 
+
+\subsection{Adding Actions in Code}
+Throughout most of the book we will be using \SB{} to create animations. It is
+still very useful to know how to generate actions in code, as that approach can
+be easier to use for certain types of animations.
+
+The \cocos{} Action System provides a simple
+and expressive way for developers to implement animated changes and
+movements such as:
+\textit{Move the main character to the top left corner of the screen over the
+period of 2 seconds}.
 
 The Action System consists of
 dozens of subclasses of \inlinecode{\ccaction{}} - a majority of these actions represent some type of animated movement or
@@ -1230,22 +1283,16 @@ target position within a provided time interval. This is how to use it:
 let move = CCActionMoveTo(duration:2.0, position:ccp(20, 100))
 aSimpleNode.runAction(move)
 \end{lstlisting}
-All actions can be run by calling the \inlinecode{runAction} method and
-providing the action as an argument. 
-
-\begin{details}[More about the
-\cocos{} Action System] The \cocos{} Action System is one of the most
-important building blocks for most games and we will discuss it in detail
-throughout this book. If you want to learn more about the \cocos{} action system
-right away, you can check the according chapter in the \cocos{} documentation:
-\url{https://www.makeschool.com/docs/#!/cocos2d/1.0/animations-movements}
-\end{details}
+All actions can be run by calling the \inlinecode{runAction} method of \ccnode{} 
+and providing the action as an argument. 
 
 The Action System also provides several actions that take other actions as
 arguments. One example is \inlinecode{CCActionReverse} that reverses the action
 it is initialized with - for example moving a node backwards instead of
 forwards. Another example is \inlinecode{CCActionRepeatForever} that takes
 another action and - exactly, repeats it forever!
+
+Let's use the Action System to rotate our squares!
 
 \begin{leftbar}
 Add the following lines to the \inlinecode{onEnter} method of \textit{Square.m}
@@ -1263,7 +1310,7 @@ seconds and repeat that forever!
 
 Now our implementation of \inlinecode{Square} is complete. Along the way you
 have learned about code connections, generating random numbers and using the
-action system. Now let's move on to implement the \inlinecode{Gameplay} class so
+action system. Let's move on to implementing the \inlinecode{Gameplay} class so
 that we can see our delightfully colored and rotating squares in action.
 
 \subsubsection{Creating the Gameplay class}
@@ -1276,10 +1323,14 @@ creates a square and adds it to the gameplay scene as soon as a player touches
 the screen.
 
 \begin{leftbar}
-Create the new class just as you have created the \inlinecode{Square} class. In
-\xcode{} select \textit{File -> New -> File\ldots} and select
-\textit{Cocoa Touch Class}. Again, this class needs to be a subclass of
+Create the new class just as you have created the \inlinecode{Square} class. 
+\begin{enumerate}
+  \item In \xcode{} select \textit{File -> New -> File\ldots} and select
+\textit{Cocoa Touch Class}.
+\item This class needs to be a subclass of
 \ccnode{} since the root node of \textit{Gameplay.ccb} is a \ccnode{}.
+\item Name the class \filemention{Gameplay}
+\end{enumerate}
 \end{leftbar}
 
 \subsubsection{Adding Touch Handling to the
@@ -1314,11 +1365,16 @@ You can override all of these methods in any \ccnode{} subclass in order to
 respond to these lifecycle events. For our simple example now, we only need to
 respond to the \inlinecode{touchBegan} method.
 
+Note, that you always need to implement \inlinecode{touchBegan} in order to
+receive touches! If \inlinecode{touchBegan} is not implemented in your class,
+any touches will be ignored and none of the other lifecycle events will be
+called.
+
 \begin{details}[The \cocos{} Touch System]
 We will see more complicated use cases of the \cocos{} touch system throughout
 other examples in this book. If you are interested in more details right away
 you should
-read:\url{https://www.makeschool.com/docs/#!/cocos2d/1.1/user-interaction} and
+read:\url{https://www.makeschool.com/docs/#!/cocos2d/1.2/user-interaction} and
 \url{https://www.makeschool.com/tutorials/touch-handling-in-cocos2d}.
 \end{details}
 
@@ -1328,6 +1384,9 @@ place to do this is in the \inlinecode{onEnterTransitionDidFinish} method. Why?
 If you have an animated transition that presents your gameplay scene you will
 likely not want to the player to interact with your game before this transition
 has finished entirely. 
+
+Let's start receiving touches in the \inlinecode{Gameplay} class!
+
 \begin{leftbar}
 Add the following method to \textit{Gameplay.swift}:
 \begin{lstlisting}
@@ -1343,9 +1402,9 @@ the lifecycle method you are overriding. In the second step we are setting
 \inlinecode{userInteractionEnabled} to \inlinecode{true}. Now \cocos{} knows
 that this node wants to receive touch events. 
 
-In the next step we need to decide to which touch events we
-want to subscribe and implement the corresponding method. For this simple game
-we only need to know when a touch begins, because we will add a square to the
+In the next step we need to decide which touch events we
+want to subscribe to and implement the corresponding methods. For this simple
+game we only need to know when a touch begins because we will add a square to the
 screen immediately. This means we only need to implement the
 \inlinecode{touchBegan} method. 
 
@@ -1362,10 +1421,10 @@ override func touchBegan(touch: CCTouch!, withEvent event: CCTouchEvent!) {
 \end{lstlisting}
 \end{leftbar}
 
-We have now implemented the \inlinecode{touchBegan} method. It will be called
+The \inlinecode{touchBegan} method above will be called
 every time the user taps onto the gameplay scene. As one parameter of this
-method we receive a \inlinecode{UITouch}. The \inlinecode{UITouch} stores all
-information about the touch. \cocos{} adds a method called
+method we receive a \inlinecode{CCTouch}. The \inlinecode{CCTouch} stores all
+information about the touch. \cocos{} provides a useful method called
 \inlinecode{locationInNode:}. This method returns the touch position
 relative to the provided node. In the first line we call this method to receive
 the touch location within the gameplay scene (referred to by \inlinecode{self}).
@@ -1376,7 +1435,9 @@ square to the node hierarchy of the gameplay scene. As soon as node becomes part
 of the node hierarchy of the currently active scene it will be displayed on the
 screen. Finally we choose a position for the square.
 We provide the touch position that we determined in the first line - this way the square will be spawned exactly at the position touched by
-the player. Now it's time to run your project again. Once the game started,
+the player. 
+
+Now it's time to run your project again. Once the game started,
 select the \textit{Start} button to go to the gameplay scene then click onto the
 screen multiple times to simulate touches. Every time you simulate a touch you
 should see a new square spawn at the touch position:

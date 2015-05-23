@@ -1,26 +1,70 @@
-\chapter{A Game with Assets in SpriteBuilder}
+\chapter{Asset Handling and Basic Game Mechanics}
 
 Graphics and Sounds are the essence of every good game. In the first chapter
 you have learned the very basics of \SB{} and \cocos{} by building a game that only
 uses plain colored shapes. In this chapter you will learn how \SB{} helps you to
-integrate assets into your game. Learning by example is the most fun, so we will
-build a small game throughout this chapter that uses all aspects of asset
-management.
+integrate assets into your game. Learning by example is the most fun, so
+starting in this chapter and lasting until the end of the book, we will build
+a full iOS game! The final product is available on the App Store!%TODO: Add link
+
+Here's what the final game will look like:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=250pt]{images/Chapter2/final_game.png}
+    \caption{The game that is built throughout this book}
+\end{figure}
+
+The goal of that game is for the user to drag a pot across the screen in order
+to collect food items and avoid inedible kitchen equipment and other electronic
+devices.
+
+When building this type of game you can choose whether or not to use the
+\cocos{} physics engine. For this book I have chosen to build the game
+\textbf{without} it. Here are the reasons:
+\begin{enumerate}
+  \item Games built with a physics engine have a very different feel from games
+  where all objects are moved through custom code. A physics engine is never
+  100\% accurate. The player can feel this in collisions and other interactions
+  throughout the game. This is one of the main reasons while many platformers do
+  not rely on physics engines. They are great for game concepts that entirely
+  rely on a physics engine - such as the popular game angry birds. But there are
+  more games out there that don't use a physics engine than the other way
+  round.
+  \item Many games are a little bit easier to build with a physics engine, but
+  you will end up learning a very different set of skills. The main goal of this
+  book is to teach you skills that you can use to build your own games. I felt I
+  can provide more value by implementing object movement, collision detection,
+  etc. customly.
+  \item There are already great resources on physics based games with \SB{} and
+  \cocos{} out there, including our Peeved Penguins tutorial
+  (\url{https://www.makeschool.com/tutorials/getting-started-with-spritebuilder/}) and 
+  Steffen Itterheim's book \textit{Learn SpriteBuilder}
+  (\url{http://www.apress.com/9781484202630}).
+\end{enumerate}
+
+Now you should have a decent idea of the game we will be building throughout the
+rest of this book! Let's get started with the first part: asset
+management and setting up the basic mechanics of our game.
 
 \section{Adding Assets to a SpriteBuilder project}
-Start by creating a new \SB{} project for this game. I have called the
-project \textit{FallingObjects}.
+First of all we need to create a new \SB{} project. You will also need to
+download the art pack for this game.
 
-Now you should download the assets from
-\url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/assets.zip}.
-Once the download completes you add the assets to the project by dragging the
+\begin{leftbar}
+\begin{enumerate}
+  \item Create a new \SB{} project and name it \textit{FallingObjects}.
+  \item Download the assets from
+  \url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/assets.zip}.
+  \item Unzip the folder once the download completes
+  \item Add the assets to the project by dragging the
 entire folder into the left \textit{File View} in the left panel of
 \SB{}:\index{Assets!Adding Assets}
-
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=200pt]{images/Chapter2/DragAssets.png}
+    \centering
+    \includegraphics[width=200pt]{images/Chapter2/DragAssets.png}
 \end{figure}
+\end{enumerate}
+\end{leftbar}
 
 Great, now we have some assets to use in our game. Now is a good time to take a
 close look at how \SB{} and \cocos{} handle assets.
@@ -28,21 +72,21 @@ close look at how \SB{} and \cocos{} handle assets.
 \section{Asset Handling in \SB{} and \cocos{}}
 One of the main goals of \SB{} is to make game development for multiple device
 types as easy as possible. This means that games should automatically be able to
-run on differently sized iPhones, iPads and Android Devices. Since each of these
+run on differently sized iPhones and on iPads. Since each of these
 devices has a different resolution \cocos{} and \SB{} allow developers to use different assets to target them. \SB{}
 provides four different resolution categories:
 \begin{description}
-\item[phone] resolution for non-retina iPhone and Android devices
-\item[phone-hd] retina resolution for iPhone and Android
-\item[tablet] resolution for non-retina iPad and Android tablets
-\item[tablet-hd] resolution for retina iPad and Android tablets
+\item[phone] resolution for non-retina iPhone
+\item[phone-hd] retina resolution for iPhone
+\item[tablet] resolution for non-retina iPad
+\item[tablet-hd] resolution for retina iPad
 \end{description}
 
-Luckily using \SB{}, there is no need to provide four resolutions for each asset
+Luckily using \SB{} there is no need to provide four resolutions for each asset
 thanks to \textbf{automatic downscaling}\index{Assets!Automatic Downscaling}.
 Per default \SB{} assumes that all assets added to a project are provided in \textit{tablet-hd} resolution, then
 \SB{} generates downscaled images for the other resolutions. While you can
-provide different images for four targets, \SB{} only knows three resolution
+provide different images for the four targets, \SB{} only knows three resolution
 types:
 \begin{description}
 \item[1x] non-retina images
@@ -51,9 +95,9 @@ types:
 \end{description}
 
 By default \SB{} maps these resolution types to the different devices in a way
-that every asset has the same size (in relation to the screen size) on every
-device. This means games running on an iPad will look very similar to games
-running on an iPhone, except that the have a slightly different aspect ratio.
+that every asset has the same relative size, in relation to the screen size, on
+every device. This means games running on an iPad will look very similar to games
+running on an iPhone, except that they have a slightly different aspect ratio.
 Here is an example from on of our tutorials showing what a game looks like on
 different device types:
 
@@ -64,19 +108,22 @@ different device types:
 		Cocos2D}}
 \end{figure}
 
-Let's take a look at where all the settings I mentioned are visible in the \SB{}
-UI. When you open the project settings (\textit{File -> Project Settings\ldots})
-you can see the available downscaling options:
+Let's take a look at all of the options for image sizes in the context of our
+\SB{} project - that will make it easier to understand how the parts fit
+together.
+
+Let's start in the project settings. When you open the project settings
+(\textit{File -> Project Settings\ldots}) you can see the available downscaling options:
 
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=300pt]{images/Chapter2/DownScalingGlobal.png}
 \end{figure}
 
-This setting defines the \textit{global} downscaling option. Individual assets
-can define their own behaviour, thereby overriding this global setting. To make
-support of multiple devices as easy as possible you should provide all of your
-assets in \textit{4x} resolution and keep this default setting.
+The \textit{Default scaling from} setting defines the \textit{global}
+downscaling option, i.e. which resolution \SB{} uses to generate all of our
+assets. Individual assets can define their own behaviour, thereby overriding
+this global setting. To make support of multiple devices as easy as possible you should provide all of your assets in \textit{4x} resolution and keep this default setting.
 
 When you select an individual asset from the File View you can see different
 downscaling settings:
@@ -107,20 +154,19 @@ iPad Retina     & 4x                               & 100x100                    
 \end{tabular}
 \end{table}
 
-You can see, if you have a size in mind for a certain asset on an iPhone you
-should provide the asset in four times larger resolution.
+The key takeaway for now is that it's best to provide assets in \textit{4x}
+resolution in order to build games that look good on all device types. All the
+assets in the art pack that you downloaded earlier are provided in \textit{4x}
+resolution.
 
-A last interesting case are background images that you want to work for
-all 4 resolutions. A solution is discussed in
-the Q\&A section (\ref{background_all_resolutions}).
+That's enough of theory for now - let's get started on building the
+\textit{Falling Object!} game.
 
 \begin{details}[Different images for different devices] 
 You can not only change the scaling option for an asset on different devices,
 you can even use an entirely different image for a certain resolution. You can
 do that by dragging an image \textbf{that is currently not part of the \SB{}
 project} from Finder into one of the four boxes below the asset preview:
-%TODO: note this fact in docs as well
-%TODO: ask viktor why this displays the image for tablet and not for phone in SB
 \begin{figure}[H]
 		\centering
 		\includegraphics[height=140pt]{images/Chapter2/DifferentImageDevice.png}
@@ -155,11 +201,19 @@ Classes!CCFileUtils}
 
 \section{Adding the background image}
 Now that we have a basic understanding of how asset management works, lets get
-started working on our game. For now our game will only consist of one scene, so
-we can start working in the \textit{MainScene.ccb} that is part of the \SB{}
-template. 
+started working on our game. For now it will only consist of one scene, so
+we can start working directly in the \textit{MainScene.ccb} that is part of the
+\SB{} template. 
 
 \begin{leftbar}
+\begin{enumerate}
+  \item Open \filemention{MainScene.ccb} in your \SB{} project
+  \item Remove all of the content from \filemention{MainScene.ccb} by selecting
+  all nodes on stage and hitting the return key
+  \item Drag the \filemention{background.png} file from the asset folder, in the
+  left panel of \SB{}, to the stage. \SB{} will automatically generate a Sprite
+  Node from this image
+\end{enumerate}
 First, remove the existing content so that we can start with a blank
 scene. Now we can add the background image. To add a sprite to a scene we can
 simply drag the asset from the left panel to the stage, \SB{} will
@@ -168,11 +222,16 @@ automatically create an instance of \ccsprite{}. Add the \textit{background.png}
 
 How should we position this background image? We already have briefly discussed
 the \SB{} positioning system (\ref{PositioningSystem}). Using the positioning
-system correctly is especially important when we create games for phones and tablets -
-which we always should try to do. In most cases - like in this game it is the
-best to center the background image. That way phones and tablets will display a
-very similar portion of the background image. 
+system correctly is especially important when we create games that shall work on
+both phones and tablets - which we always should try to do. In most cases - like
+in this game - it is best to center the background image. That way phones
+and tablets will display a very similar portion of it. The background image that
+is part of the asset catalog has a size of \textit{(2272 x 1536)}. This is an
+image in \textit{4x} resolution that has exactly the right dimensions to support
+phones and tablets in landscape mode. It's high enough for the higher tablet
+screens and wide enough for the wider phone screens.
 
+Let's position the background image correctly!
 \begin{leftbar}
 Center the image by choosing a \textit{normalized} position type (\textit{in \%
 of parent container}) and setting the position to (50, 50) as shown below:
@@ -221,7 +280,7 @@ subclass with a \inlinecode{type} property is the better solution.
 
 \begin{leftbar}
 Create a new class called \inlinecode{FallingObject} and make it a subclass
-of \ccsprite{}. If you run into issues, check how created new classes in the
+of \ccsprite{}. If you run into issues, check how we created new classes in the
 last chapter.
 \end{leftbar}
 
@@ -239,8 +298,9 @@ enum FallingObjectType: Int {
 }
 \end{lstlisting}
 \end{leftbar}
-
-Swift supports multiple types of enumerations and enumeration values.
+The enumeration above can only be in one of the two states at a time, either
+\inlinecode{.Good} or \inlinecode{.Bad}. Swift supports multiple types of
+enumerations and enumeration values.
 In the example above we are creating an enumeration with \textit{Raw Values}.
 When we use an enumeration with raw values we need to assign a type as part of
 the enum definition, as shown in the first line (\inlinecode{enum
@@ -263,7 +323,7 @@ You can also read a more practical tutorial on Swift enums on our website:
 \end{details}
 
 Additionally we add a property to store the object type. Later we will
-add an initializer to set the type of the falling object. 
+add an initializer to set the type of the falling object upon initialization. 
 
 \begin{leftbar}
 Add a property to store the falling object type, so that the class looks as
@@ -290,9 +350,9 @@ define variables as \textit{readonly} by marking the \textit{setter} as private.
 
 Note that the code will not compile at this point. Since \inlinecode{type} isn't
 declared as an optional value, Swift requires us to provide an initializer that
-sets this value. We will fix this in the next chapter.
+sets this value. We will fix this in the next section.
 
-\subsection{Choose an asset for a falling object}
+\subsection{Choosing an asset for a falling object}
 We want the game to spawn entirely random falling objects. As you remember we
 have a couple of assets for both types of objects. Whenever we spawn an object
 we will need to choose a random asset, based on the object type. A good place to
@@ -305,12 +365,17 @@ How can we create a list of images for objects that should be caught (e.g.
 food) and ones that shouldn't (e.g. radios)? One way of implementing this would
 be creating two arrays, one for each object type, and storing filenames for 
 different assets in these arrays. As good game developers however, we try to
-keep game content and code as separated as possible. That makes it easier to
-update the list of assets later on and it keeps our codebase small and well
+keep game content and code as strictly separated as possible. That makes it
+easier to update the list of assets later on and it keeps our codebase small and well
 structured. So instead of creating these arrays in code we could use some sort
 of resources file that stores information on available images. A very common 
-format for storing such type of information in Cocoa Touch is a \textit{plist} 
-(Property List). Let's add one to our project!
+format for storing such type of information in iOS applications is a
+\textit{plist} (Property List). A plist is a special type of XML file that allows us to
+store structured data. The iOS frameworks have some
+features that make it easy to interact with plists and to generate them or read
+them from source code.
+
+Let's a plist file to our project!
 
 \begin{leftbar}
 Create a \textit{plist} by selecting \textit{File ->
@@ -328,10 +393,13 @@ As the name choose \textit{FallingObjectImages}.
 
 Next, let's fill the \textit{plist} with two arrays that contain the filenames
 of the assets that we added in \SB{}, grouped into \textit{good} and
-\textit{bad} objects. When referencing assets from a \SB{} project you always
+\textit{bad} objects. 
+
+When referencing assets from a \SB{} project you always
 need to include the folder names in which the images are contained. Instead of
-referencing the tomato with \inlinecode{tomato.png} you need to use \inlinecode{assets/tomato.png} since the asset is in the
-\inlinecode{assets} folder in the \SB{} project.
+referencing the tomato with \inlinecode{tomato.png} you need to use
+\inlinecode{assets/tomato.png} since the image is in the \inlinecode{assets}
+folder in the \SB{} project.
 
 \begin{leftbar}
 \begin{enumerate}
@@ -360,21 +428,22 @@ choose random image from the \textit{plist} that we just created.
 The first step is loading the \textit{plist} in code. Luckily \textit{plists}
 consist of Dictionaries, Arrays, Strings, etc. and all of these types exist in
 Swift as well - there are some very convenient methods to load
-\textit{plists}. 
+\textit{plists} and turn their content into Swift types. 
 
 During each playing session we are going to create hundreds of
 falling objects. Since the images that represent these objects won't change it
 would be a waste of resources to load the \textit{plist} every time we create a
 new instance of \inlinecode{FallingObject}. Instead we should only load it
 once and then keep a reference to it for future use. A good way of doing this is
-using a class constant to store the \textit{plist} reference once it is loaded.
+using a class constant to store a reference to the \textit{plist} once
+it is loaded.
 
 \begin{details}[Class variables in Swift] 
 Swift 1.2 does not support stored class variables. However, we can use the
-\inlinecode{static} keyword to create class-wide constants. The difference
+\inlinecode{static} keyword to create class-wide variables. The difference
 between a \inlinecode{static} and a \inlinecode{class} variable is that the
-\inlinecode{static} variable is not inherited by subclasses. That isn't an issue
-for our use case!
+\inlinecode{static} variable is not inherited by subclasses. However, that isn't
+an issue for our use case!
 \end{details}
 
 Let's add the code that loads the plist and stores the content in a static
@@ -403,8 +472,8 @@ Place the following code within the class definition of
 
 First, we are defining a private static constant. This static constant is
 initialized with an instance of the structure \inlinecode{ImageNames} which we declare a few lines later. Since
-\inlinecode{instance} is a static constant, the expression will be
-evaluated once and only one instance of \inlinecode{ImageNames} will ever be
+\inlinecode{imageNames} is a static constant, the expression will ever only be
+evaluated once. This means only one instance of \inlinecode{ImageNames} will be
 created, independently of how often the static constant is accessed.
 
 Inside of the \inlinecode{ImageNames} struct, the actual work happens. First we
@@ -493,8 +562,8 @@ CCSprite(texture: CCTexture!, rect: CGRect, rotated: Bool)
 This unfortunately means some extra code! We create a \inlinecode{CCSpriteFrame}
 with the image name that we have selected from one of our lists, then we use
 that sprite frame to call \ccsprite{}'s designated initializer. Finally, we set
-the anchor point of our object to the bottom left corner, that will make it
-easier to determine the spawn position later on.
+the anchor point of our object to the bottom left corner. That will make it
+easier to calculate the spawn position later on.
 
 You will notice that this code won't compile! The \inlinecode{randomInteger}
 function is not part of the Swift standard library. Instead it is a convenience
@@ -502,7 +571,7 @@ function that I've created to make generation of random numbers in Swift easier.
 You need to download the file containing the helper and add it to your project.
 
 \begin{leftbar}
-Download \filemention{Helpers.swift} from this
+Download \filemention{Helpers.swift} from this url
 \url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/Helpers.swift}
 and add it to your project.
 \end{leftbar}
@@ -514,16 +583,14 @@ can move on and spawn some objects.
 
 \section{Spawn falling objects}
 Now it's time to implement one of the core mechanics of the game: Spawning
-objects and make them fall from the top of the screen to the bottom. We are
+objects and making them fall from the top of the screen to the bottom. We are
 going to implement this in \textit{MainScene.swift}. 
 
 We will spawn objects after a certain time period. The spawning objects will
 start at the top of the screen and fall to the bottom. To not use an
 increasing amount of memory we will need to take care of removing objects that
 have fallen below the bottom edge of the screen. A good way to do this is
-creating an array to store all the objects we spawn. Swift lets us define a
-private property and initialize the array stored in it in a single line
-of code.
+creating an array to store all the objects we spawn.
 
 \begin{leftbar}
 Add the following property to \inlinecode{MainScene}
@@ -554,10 +621,9 @@ class MainScene: CCNode {
 \end{lstlisting}
 \end{leftbar}
 
-We are going to spawn falling objects with the frequency that we have defined in
+We are going to spawn falling objects ever 0.5 seconds as expressed in
 the constant \inlinecode{spawnFrequency}. Through the \inlinecode{CCNode} class
-\cocos{} provides convenient methods for scheduling repeating events without the
-need to instantiate a timer. 
+\cocos{} provides convenient methods for scheduling repeating events without the need to instantiate a timer. 
 
 \begin{leftbar}
 Schedule the \inlinecode{spawnObject} method in the
@@ -575,7 +641,7 @@ Schedule the \inlinecode{spawnObject} method in the
 
 Remember, \textit{onEnterTransitionDidFinish} is called as soon as the
 presentation transition is completed and the current scene is fully visible.
-This is when we want to kick of the spawning mechanism. 
+This is when we want to kick off the spawning mechanism. 
 All we need to provide is a \textit{selector}, which simply means a method name
 as a string, and a frequency at which it shall be called. Now, as soon as the
 \inlinecode{MainScene} is presented on the stage, the \inlinecode{spawnObject}
@@ -585,9 +651,10 @@ To complete the spawning functionality we will have to implement the
 the top of the screen to the bottom.
 
 We want to randomly spawn either positive objects that should be caught or
-negative ones that should not, for that we will generate a random number. Based
-on the random number we will generate a falling object. We will place that
-spawning object just above the screen at a random X position. 
+negative ones that should not, for that we will generate a random number
+between 0 and 1. Based on the random number we will generate a falling object
+of positive or negative type. We will place that spawning object just above the
+screen at a random X position.
 
 \begin{leftbar}
 Add the following \inlinecode{spawnObject} method to \inlinecode{MainScene}:
@@ -624,7 +691,7 @@ objects with the code shown above:
 
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=200pt]{images/Chapter2/SpawnObjects.png}
+		\includegraphics[width=170pt]{images/Chapter2/SpawnObjects.png}
 \end{figure}
 
 Our current version of the game spawns new objects twice a second at the top of
@@ -633,19 +700,20 @@ you won't be able to see them falling down. Let's implement the falling code to
 complete the entire spawning functionality!
 
 \section{Move falling objects}
-The last step for this chapter will be moving the objects we are spawning to the
-bottom of the screen. While building your very first \SB{} game you have learned
-to use the \cocos{} action system to move nodes. The action system lets us
-describe changes over time, e.g. \textit{move 100 points to the right over 2
+The last step for this chapter will be making the objects we are spawning fall
+to the ground. While building your very first \SB{} game you have learned to use
+the \cocos{} action system to move nodes. The action system lets us describe changes over time, e.g. \textit{move 100 points to the right over 2
 seconds}. Another option to move nodes that we haven't
 discussed yet is using the \cocos{} \textit{update loop}\index{Update Loop}.
 
 \subsection{Update Loop}
 When we build games with \cocos{} the engine attempts to render 60 frames a
-second and draws theses rendered frames to the screen of the device. When we
-move objects between rendering frames, they will appear as moving objects to the
-user. \cocos{} provides a method that is called directly before a frame is
-rendered, the \inlinecode{update} method.
+second and draws theses rendered frames to the screen of the device. 60 discrete
+updates a second are so fast, that they appear as one continous movement to the
+human eye. 
+
+When we move objects between rendering frames, they will appear as
+moving objects to the user. \cocos{} provides a method that is called directly before a frame is rendered, the \inlinecode{update} method.
 
 The \inlinecode{update} method is defined as part of the
 \inlinecode{CCSchedulerTarget}\index{Framework Classes|CCSchedulerTarget}
@@ -710,16 +778,22 @@ functions to determine the top and the bottom of the bounding boxes of the
 falling object and the gameplay scene. The \inlinecode{CGRectGetMaxY} function
 returns the largest Y value of the bounding box. Using these functions is preferred over accessing values
 directly (e.g. \inlinecode{fallingObject.boundingBox.origin.y}) because they
-also work for rectangles with negative sizes.
+also work for rectangles with negative sizes, e.g. a rectangle with a height of
+\textit{-10} (which is technically possible in 2D math!).
 
 If we detect that the top border of the falling object is below the bottom
-border of the screen, we remove the falling object from the scene.
+border of the screen, we remove the falling object from the scene. We do that by
+first calling \inlinecode{removeFromParent} on the node - which removes it from
+the scene graph and makes it invisible. Then we additionally remove the node
+from the \inlinecode{fallingObjects} array, so that the node gets destroyed and
+the memory gets freed.
 
 If the falling object is within the screen boundary we move it to the bottom
-with the constant speed that we defined earlier.
+with the constant speed that we defined earlier multiplied by the value of
+\inlinecode{delta}.
 
 Now the falling mechanic is entirely implemented! In the next and last
-section you will learn how to add sound assets to the game.
+section of this chapter you will learn how to add sound assets to the game.
 
 \begin{details}[Update vs. Fixed Update] 
 This chapter discusses the \inlinecode{update:} method of \cocos{} in detail.
@@ -743,13 +817,15 @@ The goal of this chapter is for you to learn how to use assets with \SB{} and
 \cocos{}. Obviously images are the most important assets in games, but sound
 effects also play a big role in creating games that your players enjoy. In this
 section you will learn how to add a sound effect that gets played whenever one
-of the falling objects drops out of the screen.
+of the falling objects drops off the screen.
 
-All sound files need to be added to your \SB{} project in the \textit{Wave}
-format. \SB{} will then generate compressed versions of that sound in different
-formats for the iOS and the Android app. You can add the sound effect - just
-like any other asset - by dragging it from Finder to the resource pane (in the
-bottom left) of \SB{}. For this project I have included a \filemention{drop.wav}
+\SB{} is designed to take care of your entire asset management. This means that
+you want to add all image files and all audio files to your \SB{} project.
+
+All sound files need to be added to \SB{} projects in the \textit{Wave}
+format. \SB{} will then generate compressed versions of that sound as you
+publish the project. You can add the sound effect - just like any other asset -
+by dragging it from Finder to the resource pane (in the bottom left) of \SB{}. For this project I have included a \filemention{drop.wav}
 file in the \filemention{assets} folder that you downloaded and added to your
 project earlier.
 
@@ -758,7 +834,7 @@ can add a sound effect to a \SB{} timeline or you can play a sound effect
 directly from code. We will first look at the timeline approach, later in the
 book I will show you how to play sound effects in code.
 Before we set up the sound effect I want to give you a basic introduction to the timeline feature
-of \SB{} since it is one of the most important ones!
+of \SB{} since it is one of the most powerful tools that \SB{} provides.
 
 \subsection{\SB{}'s timeline feature}\index{\SB{} timeline}
 The \SB{} timeline is a tool that allows developers to create animations and
@@ -773,6 +849,21 @@ editor. It is extremely useful in creating polished games and throughout later
 parts of this book we will use the \SB{} timeline to create UI and game
 animations.
 
+Timelines can either be idle or playing. Timelines start playing in one of three
+cases:
+\begin{enumerate}
+  \item \texit{Autoplay} is activated. That's the default setting for the
+  \textit{Default Timeline}
+  \item The timeline is triggered to play from code
+  \item The timeline has been chained to another timeline
+\end{enumerate}
+
+We'll discuss each of these three cases as we use the timeline feature
+throughout this book. 
+
+You will get to know the value of \SB{}s timeline as we add more features to our
+game.
+
 \subsubsection{Adding the sound effect to a timeline}
 For now let's take a look at how we can play sound effects using the timeline!
 
@@ -786,25 +877,26 @@ screenshot:
     \caption{WAV files can be added by dragging them to the resource
     pane}\label{fig:audio_new_timeline}
 \end{figure}
+\end{leftbar}
 
-\begin{description}
-\item[(1)] Once the timeline is created you can drag the
-sound effect from the asset library in the left panel to the \textit{Sound
-effects} row of \SB{}'s timeline (the second row from the top). When the sound
-is added to the timeline it will be displayed in wave form.
-\item[(2) / (3)] You should adjust the duration of the timeline to match the
-duration of the sound effect. Figure \ref{fig:change_timeline_duration} shows how you can change the
-duration. You should set it to 10 frames.
-\end{description}
+Now we can add the audio file to this new timeline.
 
+\begin{leftbar}
+Take a look at the next image and follow the individual steps below it:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\linewidth]{images/Chapter2/audio_timeline.png}
-    \caption{(1) Audio file added to timeline\newline{} (2)
-    Button to change timeline duration\newline{} (3) Timeline
-    duration dialog\newline{}}\label{fig:change_timeline_duration}
 \end{figure}
-
+\begin{description}
+\item[(1)] Drag the sound effect from the asset library in the left panel to the
+\textit{Sound effects} row of \SB{}'s timeline (the second row from the top). When the sound
+is added to the timeline it will be displayed in wave form.
+\item[(2)] You should adjust the duration of the timeline to match the
+duration of the sound effect. Click onto the time indicator to adjust the
+timeline duration.
+\item[(3)] In the popup that shows up next, change the timeline duration to 10
+frames.
+\end{description}
 \end{leftbar}
 
 Now the sound is ready to play! The last step is assigning a unique name to this
@@ -813,13 +905,20 @@ choosing \textit{Animation -> Edit Timelines\ldots} or selecting the dropdown
 button next to the timeline name.
 
 \begin{leftbar}
-Rename the sound timeline to  \textit{DropSound}:
-\begin{figure}[H]
+Rename the sound timeline to  \textit{DropSound}.
+\begin{enumerate}
+  \item Open the timeline editor dialog:
+  \begin{figure}[H]
     \centering
     \includegraphics[width=200pt]{images/Chapter2/edit_timeline.png}
-    \caption{\textit{Edit Timelines\ldots} allows you to change the name of a
-    timeline}
-\end{figure}
+  \end{figure}
+  \item Then rename the timeline by double-clicking onto the name:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter2/rename_timeline.png}
+  \end{figure}
+\end{enumerate}
+
 \end{leftbar}
 
 Now everything is set up and you can hit the publish button in \SB{}.
@@ -830,8 +929,8 @@ Publish the \SB{} project and switch to \xcode{}.
 
 \subsection{Triggering a Sound Effect}
 Now we have set up the sound effect in \SB{} and published the project, all that
-is left to do is to open the \xcode{} project and play the sound effect as soon
-as an object falls below the screen boundary.
+is left to do is to open the \xcode{} project and add code to play the sound
+effect as soon as an object falls below the screen boundary.
 
 We are going to implement this in \textit{SBBMainScene.m}. \cocos{} provides a
 very simple API call to run a timeline animation from code. The following line
@@ -841,12 +940,12 @@ sound we added to the project:
 animationManager.runAnimationsForSequenceNamed("DropSound")
 \end{lstlisting}
 The animation manager of the root node of a \ccbfile{} provides us access to the
-different timelines and allows us to run, pause them and to react to their
+different timelines and allows us to run and pause them and to react to their
 completion - we will use these capabilities extensively throughout this book.
 
 As mentioned earlier we want to play the sound effect when an object falls off
 the screen. We already have code that checks for that condition in our
-\inlinecode{update} method, all we need to do this to add the line that runs the
+\inlinecode{update} method. All we need to do this to add the line that runs the
 timeline. 
 
 \begin{leftbar}

@@ -531,8 +531,7 @@ Add the following initializer to \filemention{FallingObject.swift}:
       imageName = FallingObject.imageNames.bad[randomIndex]
     }
     
-    let spriteFrame = CCSpriteFrame.frameWithImageNamed(imageName) as!
-    CCSpriteFrame 
+    let spriteFrame = CCSpriteFrame(imageNamed:imageName)
     
     super.init(texture: spriteFrame.texture, rect: spriteFrame.rect, rotated: false)
     

@@ -1,107 +1,124 @@
-\chapter{User Interaction and Collision Detection}
+\chapter{User Interaction}
 
-In this chapter you will incorporate User Interaction into the object catching
-game. The first step will be implementing a drag and drop mechanism that lets
-the user move the pot in order to catch objects. To detect if the player has
-caught or missed an object we will implement basic collision detection - note
-that you will later learn how to use the \cocos{} physics engine that provides
-collision detection out of the box. Whether you want to implement your own
-collision detection or use the physics engine will depend a lot on the type of
-game you are developing and we will discuss the advantages of both approaches
-throughout this book.
+In this chapter we will incorporate User Interaction into our game. First, we
+will add the player's avatar, the pot, to the game. Then we will be
+implementing a drag and drop mechanism that lets the user move that pot in order
+to catch objects.
 
-When we've implemented the first control scheme we will add a second option for
-players - controlling the game with the accelerometer of the device, another
-common way to interact with mobile games.
-
-As a byproduct of implementing these features we will work with translating
-positions and sizes between different node spaces and the world space, so we
-will be discussing that important concept throughout this chapter as well.
+While implementing the drag and drop feature you'll learn how \cocos{}'s touch
+system works in detail.
 
 \section{Add the pot to the game}
 The goal of our game will be to move a pot across the screen and try to catch
-all the vegetables while avoiding catching inedible objects. Before we can
+food while avoiding catching inedible objects. Before we can
 implement the drag and drop mechanism we need to add the pot assets to our game,
-we're going to do that in the \SB{} project, open it now.
+we're going to do that in the \SB{} project.
 
-Typically we use individual \ccbfile{}s for each type of object in our game,
-however for this game we need to make an exception due to the specific way in
-which order \cocos{} renders our objects in the game.
+Just as in the game we built in the very first chapter we are going to create an
+individual \ccbfile{} for this new entity. That way we can encapsulate its
+assets, behavior and animations nicely.
 
-\subsection{Working with the z-order}\index{Z-Order}\label{z-order-intro}
-Throughout this book we are working with a 2D engine. In a 2D engine depth can
-only be represented by certain objects being placed in front or behind of other
-objects. \cocos{} uses the following criteria to decide which nodes are rendered
-in front of other nodes:
-\begin{enumerate}
-  \item Child nodes are rendered in front of their parent nodes
-  \item Siblings (nodes with the same parent) are rendered in order of their
-  \inlinecode{zOrder} property; nodes with higher \inlinecode{zOrder} are
-  rendered in front of nodes with a lower one
-  \item If two siblings have the same \inlinecode{zOrder} the siblings are
-  rendered in reverse order of how they have been added (the latest added node
-  is rendered in front of all other nodes)
-\end{enumerate}
-
-As you can see from the description above the \inlinecode{zOrder} only affects
-how siblings are ordered, \cocos{} currently does not have a global
-\inlinecode{zOrder}. For our game we want to create the illusion of objects
-dropping into a pot, we can do that using the \cocos{} Z-order as shown in
-the figure below. 
+One important aspect of this game is the ability to for objects to fall into
+our pot. Since we are building a 2D game we need to fake the conception of depth
+in our scene. In \cocos{} we can use the z-order to influence which sprites are
+rendered in which order. Using that z-order, and using two assets for to create
+the pot, we can make it look like objects drop into the pot:
 
 \begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/Chapter3/drawing_order.png}
-		\caption{Left: Objects on different Layers, Right: How the Z-Order influences
-		on which Layer a node is rendered}
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Chapter3/drawing_order.png}
+    \caption{Left: Sprites rendered on different layers, Right: How the z-Order
+    influences on which layer a sprite is rendered}
 \end{figure}
 
-For this solution to work all the falling objects and the bottom and top part of
-our pot need to have the same parent node, otherwise we would not be able to use
-the Z-Order to place the falling objects between the two parts of the pot. 
-
-That is the reason why we are not creating a separate \ccbfile{} for the pot
-object and instead place it inside of \inlinecode{MainScene.ccb}. There would be
-other ways to work around this issue but adding the pot to the Main Scene is a
-good solution for this game.
-
-\begin{details}[Global Z-order in \cocos{}] 
-While \cocos{} does not have support for global Z-order at the moment, it is
-being discussed as a potential feature for future releases. Many games run into
-issues as discussed above due to the lack of this feature. You can follow the
-discussion on GitHub: \url{https://github.com/cocos2d/cocos2d-swift/issues/662}.
-\end{details}
+It's essential for this trick to break down the pot into two assets. Such
+rendering tricks are very common in 2D games!
 
 \subsection{Setting up the pot assets}
-Equipped with everything we need to know about Z-order let's add the pot assets
-to our Main Scene in \SB{}:
-
-\begin{figure}[H]
-		\centering
-		\includegraphics[width=0.9\linewidth]{images/Chapter3/add_pot.png}
-		\caption{Add both pot parts to the main scene}
-\end{figure}
-
+Now that we know which assets we'll use for the pot, let's set up
+its \ccbfile{} in \SB{}:
 \begin{leftbar}
-The assets of both pot parts have exactly the same dimensions.
- Place both of them at 50\% X position and at a Y position of 58
-Create code connections for both pot parts, linked to the \textit{Document Root}. 
-Name them \inlinecode{potBottom} and \inlinecode{potTop} respectively.
-Publish the \SB{} project
+\begin{enumerate}
+  \item Create a new \ccbfile{} of type \textit{Node} and name it
+  \textit{Pot.ccb}: \begin{figure}[H]
+    \centering
+    \includegraphics[width=180pt]{images/Chapter3/ccp_pot_file.png}
+  \end{figure}
+  \item Open the new \filemention{Pot.ccb} file
+  \item Drag the \filemention{pot-top} and \filemention{pot-bottom} assets onto
+  the root node of that \ccbfile{}: \begin{figure}[H]
+    \centering
+    \includegraphics[width=250pt]{images/Chapter3/drag_pot_assets.png}
+  \end{figure}
+  
+  \item Select the root node and set the \textit{Content Size} to (109, 75) and
+  the \textit{Anchor Point} to (0.5, 0.5)
+  \item Select the \textit{pot-top} sprite from the timeline and set the
+  \textit{Position Type} to \textit{Percent of Parent Container}, for both
+  \textit{X} and \textit{Y}. Then set the position to \textit{(50, 50)}:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter3/pot_top_position.png}
+  \end{figure}
+  \item Select the \textit{pot-bottom} sprite from the timeline and set up the
+  same position as for \textit{pot-top}
+  \item Finally, use the shortkey \textit{CMD+S} to save this \ccbfile{}. That
+  will prevent a little rendering bug in the next step
+\end{enumerate}
 \end{leftbar}
 
-Next, move to the \xcode{} project to set up the code connection variables and
-implement the touch handling code.
+The result should be a pot that is centered on stage! You might wonder why we
+are setting an explicit size for the root node of \filemention{Pot.ccb}. We do
+that because that root node will be used to test against touch positions when we
+implement the dragging mechanism. Therefore we want that root node to have the
+same dimensions as the pot assets.
+
+In a second we're going to move on and implement the touch handling code. First
+however, we need to add the pot that we created to the
+\filemention{MainScene.ccb} file. \SB{} allows us to add a \ccbfile{} to other
+\ccbfiles{} - that's an extremely useful feature as it allows us to reuse
+components in different scenes.
+
+We'll also need to set up a code connection, so that we can access the pot
+from our codebase when implementing the drag and drop mechanism later on!
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Open \filemention{MainScene.ccb}
+  \item Drag the \filemention{Pot.ccb} file from the left panel onto the root
+  node in the timeline of \filemention{MainScene.ccb}:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter3/drag_pot_ccb.png}
+  \end{figure}
+  \item Set the \textit{Position Type} of the pot to \textit{Percent of parent
+  container} for the \textit{X} component
+  \item Set the \textit{Position} to \textit{(50, 58)}
+  \item Select the pot, open the \textit{Code Connections} tab in the right
+  panel and set up a connection to the \textit{Doc root var} named
+  \textit{pot}:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter3/pot_cc.png}
+  \end{figure}
+  \item Finally, publish the \SB{} project!
+\end{enumerate}
+\end{leftbar}
+
+Now we can move to the \xcode{} project to set up the code connection variable
+we just defined in \SB{}. Then we're ready to implement the touch handling
+code!
 
 \begin{leftbar}
 Open \inlinecode{MainScene.swift} and add properties for our code
-connections at the top of the class:
+connection at the top of the class:
 \begin{lstlisting}
-weak var potTop: CCSprite!
-weak var potBottom: CCSprite!
+weak var pot: CCSprite!
 \end{lstlisting}
 \end{leftbar}
-There are three important things to remember about these code connections.
+%TODO: consider removing this duplication
+There are three important things to remember about this code connection.
+
 Firstly, all code connections should be marked as \inlinecode{weak}.
 \inlinecode{MainScene} has a reference to the pot sprites but does not
 \textit{own} them. Instead they are owned by their parent node. For any
@@ -111,14 +128,14 @@ Secondly, we always want to declare code connections as \textit{forcefully
 unwrapped optionals} as denoted by the bang (!) after the type. Swift
 requires that all properties that aren't optionals are either
 initialized with a default value or get set to a value in one of the
-initializers of the class, that way the compiler can guarantee that these
+initializers of the class. That way the compiler can guarantee that these
 variables never contain a \inlinecode{nil} value. Code connections however are
 set up after the object is initialized (they are guaranteed to be set up
 when \inlinecode{didLoadFromCCB} is called on the node), so technically these
 should be optional values. Adding a lot of code for \inlinecode{nil} checking
 would clutter our classes, that's why we prefer using the bang notation which
 basically says: \textit{I am confident that this value will never be nil when I
-am trying to access it}. This is true for code connections as we now that
+am trying to access it}. This is true for code connections as we know that
 \cocos{} guarantees to have set them up by the time \inlinecode{didLoadFromCCB}
 is called.
 
@@ -167,7 +184,7 @@ Add the required line to the \inlinecode{onEnterTransitionDidFinish} method:
   override func onEnterTransitionDidFinish() {
     super.onEnterTransitionDidFinish()
     
-    self.userInteractionEnabled = true
+    (*@\colorbox{light-gray}{self.userInteractionEnabled = true}@*) 
     
     // spawn objects with defined frequency
     schedule("spawnObject", interval: spawnFrequency)
@@ -186,9 +203,9 @@ the user.
 Add this implementation to \inlinecode{MainScene.swift}:
 \begin{lstlisting}
   override func touchBegan(touch: CCTouch, withEvent event: CCTouchEvent) {
-    if (CGRectContainsPoint(potBottom.boundingBox(), touch.locationInNode(self))) {
+    if (CGRectContainsPoint(pot.boundingBox(), touch.locationInNode(self))) {
       isDraggingPot = true
-      dragTouchOffset = ccpSub(potBottom.anchorPointInPoints, touch.locationInNode(potBottom))
+      dragTouchOffset = ccpSub(pot.anchorPointInPoints, touch.locationInNode(pot))
     }
   }
 \end{lstlisting}
@@ -202,9 +219,7 @@ within a given node. In this specific case we are receiving the touch position
 within \inlinecode{MainScene}.
 
 Next, we are using a utility function, \inlinecode{CGRectContainsPoint}, to
-check if this touch is within the pot. Remember,
-that \inlinecode{potBottom} and \inlinecode{potTop} are placed at exactly
-the same position, so we can choose either of them for this check.
+check if this touch is within the pot's bounding box.
 \inlinecode{CGRectContainsPoint} takes a rectangle as its first argument and a
 point as its second. It returns true if the point is within the rectangle.
 
@@ -213,7 +228,7 @@ If the touch position is inside of the pot, we set our state variable,
 
 There is one last line that we didn't discuss upfront:
 \begin{lstlisting}
-dragTouchOffset = ccpSub(potBottom.anchorPointInPoints, touch.locationInNode(potBottom))
+dragTouchOffset = ccpSub(pot.anchorPointInPoints, touch.locationInNode(pot))
 \end{lstlisting}
 
 In order to drag an object smoothly we need to remember where we touched that
@@ -231,22 +246,24 @@ the object is not exactly the touch position. Instead it is the touch position
 \textit{plus} the touch offset determined when we started dragging. We determine
 that offset by calculating the distance between the anchor point (that's the
 reference point for positioning a node, typically it's in the center of the
-node) of the touched object and the exact touch position. 
-No we know why it is important to store the touch offset!
+node) of the touched object and the exact touch position. We calculate that
+distance by subtracting the touch location from the anchor point location using
+the \inlinecode{ccpSub} function. 
+
+Now we know why it is important to store the touch offset!
 
 \begin{leftbar}
 To wrap up the implementation of \inlinecode{touchBegan} let's add the two
 properties we have referenced: \inlinecode{isDraggingPot} and
-\inlinecode{dragTouchOffset}. Your list of iVars should now look like this:
+\inlinecode{dragTouchOffset}. Your list of properties should now look like this:
 \begin{lstlisting}
-  weak var potTop:CCSprite!
-  weak var potBottom:CCSprite!
+  weak var pot: CCSprite!
   
   private var fallingObjects = [FallingObject]()
   private let fallingSpeed = 100.0
-  private let spawnFrequency = 0.5
-  private var isDraggingPot = false
-  private var dragTouchOffset = ccp(0,0)
+  private let spawnFrequency = 0.5}
+  (*@\colorbox{light-gray}{private var isDraggingPot = false}@*)
+  (*@\colorbox{light-gray}{private var dragTouchOffset = ccp(0,0)}@*) 
 \end{lstlisting}
 \end{leftbar}
 
@@ -281,16 +298,19 @@ If we are in dragging mode we continue. First we get the new touch position.
 Then we apply the offset that we discussed in figure
 \ref{user_interaction_touch_offset} to that new position. The next line ensures
 that the y position of the pot stays constant, we want to allow horizontal
-movement only. Finally, we apply that new position to both pot parts. Great,
-we're pretty close to finishing the drag and drop functionality.
+movement only. Finally, we apply that new position to both pot parts. 
 
-If you test the app in the current state you'll see that there's one simple yet
+Great, we're pretty close to finishing the drag and drop functionality. If you
+test the app in the current state you'll might see that there's one simple yet
 important step missing\ldots
 
 \subsection{Dropping an object}
 Right, the user will also want to drop the pot by releasing the finger from the
-screen. Otherwise we stay in dragging mode forever and the pot will keep jumping
-to whichever position the user taps on the screen.
+screen. 
+
+Otherwise we stay in dragging mode forever and the pot will keep jumping
+to whichever position the user taps on the screen. That kind of teleporting
+would turn this game into a very simple one!
 
 Luckily this can be easily implemented. All we need to do is to set
 \inlinecode{isDraggingPot} to false as soon as the user stops touching the
@@ -307,6 +327,6 @@ Awesome! Our drag and drop code is complete! Drag and drop mechanisms can be
 used in many types of games, so what you have learned in this chapter is very
 valuable.
 
-Now we can move on to the next chapter, which is one of the hardest (thus most
-interesting) parts of this book. We will implement catching objects while
-learning more about scene graphs and node transforms.
+Now we can move on to the next chapter. We will implement catching objects while
+learning some interesting tricks and details about scene graphs and node
+transforms.

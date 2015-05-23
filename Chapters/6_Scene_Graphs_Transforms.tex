@@ -1,69 +1,18 @@
-\chapter{Scene graphs and node transforms, collision detection}
-From a project perspective you will learn how to implement a catching mechanism
-for our game. This will require you to learn more details about scene graphs,
-node transforms and also about modelling game mechanics in Swift.
+\chapter{Scene graphs, node transforms and state machines}
+In this chapter we will implement the catching mechanism for our game. This will
+require you to learn more details about scene graphs, node transforms and also about modelling game mechanics in Swift.
 
-As a byproduct of implementing these features we will work with translating
-positions and sizes between different node spaces and the world space, so we
-will be discussing that important concept throughout this chapter as well.
+You will learn how to incorporate state machines into games. You will also learn
+how to detect if objects have been caught or not and how to manipulate the
+scene graph make objects fall into our catching pot.
 
-Also collision detection
-
-Also include this subchapter
-
-%%%%%%%%%
-\subsection{Working with the Z-order}\index{Z-Order}\label{z-order-intro}
-Throughout this book we are working with a 2D engine. In a 2D engine depth can
-only be represented by certain objects being placed in front or behind of other
-objects. \cocos{} uses the following criteria to decide which nodes are rendered
-in front of other nodes:
-\begin{enumerate}
-  \item Child nodes are rendered in front of their parent nodes
-  \item Siblings (nodes with the same parent) are rendered in order of their
-  \inlinecode{zOrder} property; nodes with higher \inlinecode{zOrder} are
-  rendered in front of nodes with a lower one
-  \item If two siblings have the same \inlinecode{zOrder} the siblings are
-  rendered in reverse order of how they have been added (the latest added node
-  is rendered in front of all other nodes)
-\end{enumerate}
-
-As you can see from the description above the \inlinecode{zOrder} only affects
-how siblings are ordered, \cocos{} currently does not have a global
-\inlinecode{zOrder}. For our game we want to create the illusion of objects
-dropping into a pot, we can do that using the \cocos{} Z-order as shown in
-the figure below. 
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.9\linewidth]{images/Chapter3/drawing_order.png}
-    \caption{Left: Objects on different Layers, Right: How the z-Order
-    influences on which Layer a node is rendered}
-\end{figure}
-
-For this solution to work all the falling objects and the bottom and top part of
-our pot need to have the same parent node, otherwise we would not be able to use
-the Z-Order to place the falling objects between the two parts of the pot. 
-
-That is the reason why we are not creating a separate \ccbfile{} for the pot
-object and instead place it inside of \inlinecode{MainScene.ccb}. There would be
-other ways to work around this issue but adding the pot to the Main Scene is a
-good solution for this game.
-
-\begin{details}[Global Z-order in \cocos{}] 
-While \cocos{} does not have support for global Z-order at the moment, it is
-being discussed as a potential feature for future releases. Many games run into
-issues as discussed above due to the lack of this feature. You can follow the
-discussion on GitHub: \url{https://github.com/cocos2d/cocos2d-swift/issues/662}.
-\end{details}
-
-
-%%%%%%%%%%%%%%
+There's lots of work ahead of us!
 
 \section{Catching objects}
 Implementing drag and drop was a great warm up. In this section we are going to
 solve a bunch of problems that will bring our little project a large step closer
 to being a real game. By the end of this section the user will be able to catch
-and miss objects by dragging the pot below objects with the right timing.
+and miss objects by dragging the pot with the right timing.
 
 Before we dive into coding let's think about what we actually need to implement.
 There are three important aspects that need to be covered through our
@@ -116,9 +65,9 @@ we have caught or missed an object so that we can assign the correct states to
 falling objects.
 
 \subsection{Storing state}
-Now we'll start implementing everything described earlier. Let's start by adding
-a \inlinecode{fallingState} to \inlinecode{FallingObject.swift}. That state
-variable will remember whether an object is currently falling, has been caught
+Now it's time to implement the theoretical conctepts that we've discussed. 
+Let's start by adding a \inlinecode{fallingState} to
+\inlinecode{FallingObject.swift}. That state variable will remember whether an object is currently falling, has been caught
 or has been missed.
 
 The best way to represent states in Swift is to use an enumeration!
@@ -153,13 +102,14 @@ let's implement different behaviour based on that state.
 \subsection{Implement state specific behaviour}
 The majority of our gameplay code is currently inside of the \inlinecode{update}
 method of \inlinecode{MainScene}. This is fairly common for simple games.
-Currently we are doing to things in the update method: moving the objects down
+Currently we are doing two things in the update method: moving the objects down
 the screen and checking whether they have left the stage entirely (in which
 case we delete them). Now however, we are going to add code that will only run
 for falling objects in certain states. That will add quite a lot of complexity.
 Instead of squashing everything into the update method I suggest that we
 create one method for each of the three states. These methods will contain
-all state specific code and will be called from the update method.
+all state specific code and will be called from within the \inlinecode{update}
+method.
 
 \begin{leftbar}
 Replace your existing update method with the following one:
@@ -190,7 +140,7 @@ Replace your existing update method with the following one:
 Now the update method is really easy to read. We loop over all falling objects.
 In all cases we move the falling object towards the bottom of the screen. After
 that we check in which state an object is and invoke a method that contains code
-specific for that state. We are going to implement these methods throughout the
+specific to that state. We are going to implement these methods throughout the
 remainder of this chapter.
 
 \subsection{Implementing the falling state}
@@ -198,16 +148,12 @@ Let's start implementing the default state: falling. In this state we will need
 check whether an object has been caught, has been missed or simply remains
 falling. 
 
-Later in this book you will learn how to use the \cocos{} physics
-engine and its built in collision detection - for this game however we are not
-using the physics engine and will implement catch detection code ourselves.
-
 In figure \ref{CaughtMissedDefinition} we have illustrated what we consider a
 caught/missed object. So how can we implement this? Basically all we need to do
 is compare the frame of the falling object to the frame of the pot. However,
-there is one small issue. The frame of \ccsprite{} is always a rectangle that
-contains the entire texture, here's what the dimensions of the frames of our pot
-and a falling object looks like:
+there is one small issue. The frame of a \ccsprite{} is always a rectangle that
+encloses the entire texture. Here's what the dimensions of the frames of our pot
+and a falling object look like:
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.3\linewidth]{images/Chapter3/frame_pot_falling_object.png}
@@ -220,33 +166,63 @@ landing on the handle of the pot would still be considered a catch.
 Instead of using the pot dimensions we will need to add a separate, smaller,
 node in \SB{} that marks the catch area. 
 \begin{leftbar}
-Open the \SB{} project and open \filemention{MainScene.ccb}.
+Open the \SB{} project and open \filemention{Pot.ccb}
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/Chapter6/add_catch_container.png}
+		\includegraphics[width=0.8\linewidth]{images/Chapter6/add_catch_container_2.png}
 		\caption{The size and position of this container will determine when objects
 		are caught / missed}
 \end{figure}
-Add a plain \textit{Node} from the node library and add it as a child to
-\textit{pot-bottom} node, as highlighted in the screenshot above. A short
+
+\begin{enumerate}
+  \item Add a plain \textit{Node} from the node library and add it as a child to
+root node, as highlighted in the screenshot above. A short
 reminder: the easiest way to do this, is dragging the node from the node library
 into the timeline and dropping it on top of \textit{pot-bottom} node.
-
-Because we want to reference this catch container in code you will need to set a
+  \item Set up \textit{Position Type}, \textit{Position} and \textit{Anchor
+  Point} of the container, as shown in the image above
+  \item Because we want to reference this catch container in code you will need to set a
 code connection, too. Set the target to \textit{Doc root var} and call the
-variable \inlinecode{catchContainer}.
+variable \inlinecode{catchContainer}:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter6/container_cc.png}
+\end{figure}
+  \item Since the container is now connected to the root
+  node of \filemention{Pot.ccb}, through the \inlinecode{catchContainer}
+  property, the root node needs a custom class that has that property. Select
+  the root node and set the custom class to \inlinecode{Pot}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter6/pot_cc.png}
+\end{figure}
+\item Publish the \SB{} project
+\end{enumerate}
+\end{leftbar}
 
-Now publish the \SB{} project and switch back to the \xcode{} project.
-\end{leftbar}
-Next, we need to add a variable for the code connection we just set up.
+Next, we need to create the \inlinecode{Pot} class that we just referenced,
+along with its \inlinecode{catchContainer} property!
+
 \begin{leftbar}
-Add the catch container variable to the other code connection variables:
-\begin{lstlisting}
-weak var catchContainer: CCSprite!
-\end{lstlisting}
+\begin{enumerate}
+  \item Create a new Class in \xcode{} and name it \filemention{Pot}. Make it a
+  subclass of \ccnode{}
+  \item Add the \inlinecode{catchContainer} property so that the class
+  definition looks like this:
+  \begin{lstlisting}
+  class Pot: CCNode {
+  
+    weak var catchContainer: CCNode!
+  
+  }
+  \end{lstlisting}
+\end{enumerate}
 \end{leftbar}
-Now we have a reference container set up that will allow us to test if objects
-have been caught. We can start implementing falling step function.
+Now we have a reference container set up. That container will allow us to test
+if objects have been caught or dropped. Remember, all of this code will taking
+place in the \textit{falling step} state. 
+
+We can now start implementing falling step method.
 \begin{leftbar}
 Add the method stub for the falling step to \filemention{MainScene.swift}:
 \begin{lstlisting}
@@ -259,7 +235,7 @@ Before we can dive into collision detection we will have to take a little detour
 and talk about node transformations.\index{Node transformation!Bounding Box} As
 part of the introduction to \cocos{} we have discussed that nodes are always positioned
 relative to their parent node (chapter: \ref{Introduction_CCNode}). The catch
-container that we just added in \SB{} is a child of the \inlinecode{potBottom}
+container that we just added in \SB{} is a child of the \inlinecode{Pot}
 node. We chose that setup so that the catch container always moves together
 with the pot. 
 
@@ -297,11 +273,12 @@ pot). The \cocos{} documentation describes the
 transform the node's (local) space coordinates into the parent's space coordinates.}
 
 This means after applying the transform we know the position of the catch
-container in the main scene space. 
+container in the main scene space. With the dimensions of both nodes in the same
+space, we can perform the bounding box comparison.
 
 If you are new to graphics programming this concept will likely seem a little
 confusing; frankly you won't need it too often when working with \cocos{}. If
-you aren't getting a hold of transforms yet, don't worry too much!
+you aren't getting a hold of transforms yet, don't worry about it!
 
 \begin{details}[The role of transforms in graphics programming]
 Transforms are an essential part of all graphics engines - also of \cocos{}.
@@ -317,12 +294,28 @@ the root node}. This is repeated all the way down the node hierarchy:
 
 Now that we have a solution for the transformation issue, the rest of the
 code that we need for the falling step is not too complicated.
+
+First, change the type of our \inlinecode{pot} property from \ccsprite to
+\inlinecode{Pot} so that we can access the \inlinecode{catchingContainer}
+property from within \inlinecode{MainScene}.
+
 \begin{leftbar}
-Here's the entire function that implements the stub that you added earlier:
+Change the code connection property \inlinecode{pot} within
+\filemention{MainScene.swift} to look like this:
+\begin{lstlisting}
+  weak var pot: Pot!
+\end{lstlisting}
+\end{leftbar}
+
+Now we can implement the falling step method! Let's first add the code and then
+discuss it in detail.
+
+\begin{leftbar}
+Replace the \inlinecode{performFallingStep} stub with this implementation:
 \begin{lstlisting}
   func performFallingStep(fallingObject:FallingObject) {
     let containerWorldBoundingBox = CGRectApplyAffineTransform(
-      catchContainer.boundingBox(), catchContainer.parent.nodeToParentTransform()
+      pot.catchContainer.boundingBox(), pot.nodeToParentTransform()
     );
     
     let yPositionInCatchContainer = CGRectGetMinY(fallingObject.boundingBox()) < CGRectGetMaxY(containerWorldBoundingBox)
@@ -332,17 +325,18 @@ Here's the entire function that implements the stub that you added earlier:
     // check if falling object is inside catching pot, trigger this when object reaches top of pot
     if (yPositionInCatchContainer) {
       if (xPositionLargerThanLeftEdge && xPositionSmallerThanRightEdge) {
-          // caught the object
-          let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
-          fallingObject.removeFromParent()
-          fallingObject.positionInPoints = potTop.convertToNodeSpace(fallingObjectWorldPosition)
-          potTop.addChild(fallingObject)
-          fallingObject.fallingState = .Caught
+        // caught the object
+        let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
+        fallingObject.removeFromParent()
+        fallingObject.positionInPoints = pot.convertToNodeSpace(fallingObjectWorldPosition)
+        pot.addChild(fallingObject)
+        fallingObject.fallingState = .Caught
       } else {
         fallingObject.fallingState = .Missed
       }
     }
   }
+
 \end{lstlisting}
 \end{leftbar}
 
@@ -407,8 +401,8 @@ perform the second step of the transformation:
 fallingObject.positionInPoints = potTop.convertToNodeSpace(fallingObjectWorldPosition)
 \end{lstlisting}
 This line asks: \textit{Dear pot, I have a global position for this falling
-object, could you tell me what the relative position to you would need to be? I
-want the falling object to remain at the same global position after adding it to
+object, could you tell me what the relative position in your node space would
+need to be? I want the falling object to remain at the same global position after adding it to
 you as a child.}
 After we have determined the right position we finally add the falling object to
 the pot. The object will now switch to a different node space and become a child
@@ -423,7 +417,7 @@ implement the code that runs while our object is in the \textit{falling state}:
   \item We transformed this catch container from the pot space into the main
   scene space. We did that because we need the falling object and the catch
   container to be in the same space in order to compare their positions
-  \item When determine that an object has been missed we set the state of the
+  \item When we determine that an object has been missed we set the state of the
   falling object to \inlinecode{.Missed}
   \item When we determine that an object has been caught we set the state of the
   falling object to \inlinecode{.Caught}. Additionally we add the caught object
@@ -434,12 +428,14 @@ implement the code that runs while our object is in the \textit{falling state}:
 \end{enumerate}
 
 This concludes almost all the features we need for the \textit{falling} step.
-Later we will come back for some visual tweaks but for now can move on to the
-missed state. This is also a great time for a break and your favorite hot
+Later we will come back for some visual tweaks but for now we can move on to the
+missed state. 
+
+This is also a great time for a break and your favorite hot
 beverage!
 \subsection{Implementing the missed state}
-Good news: the remain two steps are a lot simpler. The missed step only consists
-of code that we have already written.
+Good news: the remaining two steps are a lot simpler. We can implement the
+\textit{missed} state by restructuring existing code:
 \begin{leftbar}
 Add the method for the \textit{missed} step:
 \begin{lstlisting}
@@ -470,7 +466,7 @@ adding the object as a child to the pot, we've already done that in the
 \textit{falling} step. 
 
 All we need to do in the \textit{caught} state is wait until the object
-disappears into the pot entirely; then we can remove it.
+disappears entirely inside of the pot; then we can remove it.
 
 \begin{leftbar}
 Add the method for the \textit{caught} step:
@@ -484,40 +480,88 @@ Add the method for the \textit{caught} step:
     }
   }
 \end{lstlisting}
+\end{leftbar}
+
 As soon as the catch container bounding box fully encloses the caught object we
 can remove it. For the player it will seem that the object disappeared into the
 inner darkness of our bottomless pot.
-\end{leftbar}
 
 \subsection{Time to test}
 Now we're finally back to a state where we can run and test the game. You should
-now be able to catch objects in the game, the illusion of them disappearing in
-the pot should be perfect.
-There's one last thing I'd like to see tweaked before we move on: missed objects
-should be rendered behind the pot instead of in front of it. 
+now be able to catch objects in the game. 
+
+The illusion of the objects disappearing in a pot isn't really working at this
+point. All caught objects get rendered in front of the pot and then suddenly
+disappear.
+
+Let's fix this issue with a rendering tweak!
 
 \section{A rendering tweak}\index{Z-Order}\label{rendering_tweak}
-We have discussed the basics of influencing the z-order in chapter
-\ref{z-order-intro}. Now we will use the \inlinecode{zOrder} property to render
-the falling object behind the pot in case the user missed the object (remember
-that the z-order currently only applies to the ordering of siblings; children
-are always rendered in front of their parents).
+
+In the previous chapter we've briefly discussed how the rendering order in
+\cocos{} works. In order to fix our issue we need to dive into some more
+details.
+
+\subsection{Working with the Z-order}\index{Z-Order}\label{z-order-intro}
+Throughout this book we are working with a 2D engine. In a 2D engine depth can
+only be represented by certain objects being placed in front or behind of other
+objects. \cocos{} uses the following criteria to decide which nodes are rendered
+in front of other nodes:
+\begin{enumerate}
+  \item Child nodes are rendered in front of their parent nodes
+  \item Siblings (nodes with the same parent) are rendered in order of their
+  \inlinecode{zOrder} property; nodes with higher \inlinecode{zOrder} are
+  rendered in front of nodes with a lower one
+  \item If two siblings have the same \inlinecode{zOrder} the siblings are
+  rendered in reverse order of how they have been added (the latest added node
+  is rendered in front of all other nodes)
+\end{enumerate}
+
+As you can see from the description above the \inlinecode{zOrder} only affects
+how siblings are ordered, \cocos{} currently does not have a global
+\inlinecode{zOrder}. For our game we want to create the illusion of objects
+dropping into a pot, we can do that using the \cocos{} z-order. Here's a short
+reminder of how the z-order influences the rendering order:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\linewidth]{images/Chapter3/drawing_order.png}
+    \caption{Left: Objects on different Layers, Right: How the z-Order
+    influences on which Layer a node is rendered}
+\end{figure}
+
+For this solution to work all the falling objects and the bottom and top part of
+our pot need to have the same parent node, otherwise we would not be able to use
+the z-Order to place the falling objects between the two parts of the pot. 
+
+You might remember, that we have already taken care of this issue by adding all
+caught objects to the pot node. 
+
+\begin{details}[Global Z-order in \cocos{}] 
+While \cocos{} does not have support for global Z-order at the moment, it is
+being discussed as a potential feature for future releases. Many games run into
+issues as discussed above due to the lack of this feature. You can follow the
+discussion on GitHub: \url{https://github.com/cocos2d/cocos2d-swift/issues/662}.
+\end{details}
+
+At the point in time where an object is caught it has the same parent node as
+the top and bottom part of the pot - this means we can use the
+\inlinecode{zOrder} property of these nodes to solve our problem.
 
 There's a neat trick for managing the rendering order in a scene. We can use an
 enum in which each entry represents a different \textit{layer} in the scene.
 
 \begin{leftbar}
-Add this enum definition to the \inlinecode{MainScene} class:
+Add this enum definition to the \inlinecode{Pot} class:
 \begin{lstlisting}
   enum DrawingOrder: Int {
-    case BehindPot
     case PotTop
     case FallingObject
     case PotBottom
   }
 \end{lstlisting}
 \end{leftbar}
-Here we are defining four different layers. Each of them haven an associated
+Here we are defining three different layers. Each of them haven an associated
 integer value that we can directly apply to the \inlinecode{zOrder}
 variable of our nodes. This enum describes that the \inlinecode{FallingObject}
 layer will be rendered in front of the \inlinecode{PotTop} layer.
@@ -525,11 +569,48 @@ By using this enum technique we can easily change the rendering order in scenes
 without modifying a lot of code.
 
 Next, we need to assign the \inlinecode{zOrder} values to their corresponding
-nodes.
+nodes. Let's start with \inlinecode{PotTop} and \inlinecode{PotBottom}.
+
+We will need some additional code connections to get access to the two different
+parts of the pot!
+
+\begin{leftbar}
+\begin{enumerate}
+  \item Open the \filemention{Pot.ccb} file in \SB{}
+  \item Select the \textit{pot-bottom} node and assign the following code
+  connection:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter6/pot_bottom_code.png}
+  \end{figure}
+    
+  \item Select the \textit{pot-top} node and assign this code connection:
+    \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter6/pot_top_code.png}
+  \end{figure}
+  
+  \item Publish the \SB{} project!
+\end{enumerate}
+\end{leftbar}
+
+Now we can switch back to \xcode{} and initialize the pot with its correct
+z-order values.
+
+First, we need to set up the properties for our code connections.
+\begin{leftbar}
+Add the following two properties to the \inlinecode{FallingObject} class:
+\begin{lstlisting}
+weak var potTop: CCNode!
+weak var potBottom: CCNode!
+\end{lstlisting}
+\end{leftbar}
+
+Then we can add the initializer.
 
 \begin{leftbar}
 Add this implementation of \inlinecode{didLoadFromCCB} that initializes the
-pot's \inlinecode{zOrder} to \inlinecode{MainScene}:
+pots' \inlinecode{zOrder} to the \inlinecode{Pot} class:
 \begin{lstlisting}
 func didLoadFromCCB() {
   potTop.zOrder = DrawingOrder.PotTop.rawValue
@@ -538,29 +619,18 @@ func didLoadFromCCB() {
 \end{lstlisting}
 \end{leftbar}
 
-Now we need to take care of the falling object. When it is spawned it should be
-rendered on the \inlinecode{DrawingOrder.FallingObject} layer which is between
-the front and back part of the pot.
-
+Now we need to take care of the falling object. When it is caught, we want to
+render it between the two pot parts. For this we need to extend the code that
+marks objects as caught.
 \begin{leftbar}
-Add the according line to the \inlinecode{spawnObject} method:
+Add the relevant line to the \inlinecode{if} case of the
+\inlinecode{performFallingStep} method in the \inlinecode{MainScene} class:
 \begin{lstlisting}
     ...
-    fallingObject.zOrder = DrawingOrder.FallingObject.rawValue}
-    addChild(fallingObject)
-    ...
-\end{lstlisting}
-\end{leftbar}
-
-When the object is missed, we want to render it behind the pot.
-\begin{leftbar}
-Add the relevant line to the else case of the \inlinecode{performFallingStep}
-method:
-\begin{lstlisting}
-    ...
-      } else {
-        fallingObject.fallingState = .Missed
-        fallingObject.zOrder = DrawingOrder.BehindPot.rawValue
+      if (// caught) {
+        ...
+        fallingObject.fallingState = .Caught
+        fallingObject.zOrder = Pot.DrawingOrder.FallingObject.rawValue
       }
     ...
 \end{lstlisting}
@@ -568,8 +638,7 @@ method:
 Great! With this tweak we have completed a significant portion of the core
 gameplay. We have completed what we call the \textit{core mechanic}. A player
 can drag the catching pot across the screen and collect items. To turn this
-mechanic into a game we will need to add some rules and game modes on top. In
-the next chapter we will make this step and finish our first game. When we're
-done it will include two game modes and highscore system (using Apple's
-GameCenter).
+mechanic into a game we will need to add some rules and game modes. 
+
+At the end of the next chapter this game will have two different game modes!
 

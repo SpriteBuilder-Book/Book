@@ -8,28 +8,41 @@ store the highest score the player has achieved. These scores will only be
 stored locally on the device. Then we'll extend the game over popup to show the
 current highscore and to inform the player in case she has beaten her old one.
 
-\section{Extending the GameModeDelegate}
+\begin{details}[Why not Apple's Game Center?]
+For this chapter I have considered using Apple's \textit{Game Center} framework,
+which provides features such as leaderboards and achievements. I've decided
+against it because it would require all readers to purchase an Apple Developer
+account (required settings for Game Center games are only available fo
+registered Apple Developers). If you are interested in adding \textit{Game
+Center} support to your game you should read this tutorial:
+\url{http://rebeloper.com/add-game-center-spritebuilder-app-swift/}
+\end{details}
+
+Before adding this feature we should, once again, talk about the architecture of
+our game. Which class should be responsible for storing highscores?
+
+Since each game mode defines its own game rules and keeps track of highscores
+during the game, it should also be responsible for persisting the highscores.
+ 
+\section{Extending the GameMode protocol}
 We'll start implementing this feature by extending the definition of the
-\inlinecode{GameModeDelegate}. We'll add a required method called
+\inlinecode{GameMode} protocol. We'll add a required method called
 \inlinecode{saveHighscore}. That method will be called from within
 \inlinecode{MainScene} as soon a game ends. All game modes will implement this
 method and perform the highscore storing code within it.
 
 \begin{leftbar}
-Open \filemention{GameModeDelegate.swift} and add the following method to the
+Open \filemention{GameMode.swift} and add the following method to the
 end of the protocol definition:
 \begin{lstlisting}
-/**
-Should be invoked when the receiving Game Mode should store the latest Highscore
-*/
 func saveHighscore()
 \end{lstlisting}
 \end{leftbar}
 
-Now that we've extended the definition of the protocol, let's add a method call
-to \inlinecode{MainScene} that uses the new \inlinecode{saveHighscore} method.
-Whenever a game ends, we want to store the latest highscore of the current game
-mode.
+Now that we've extended the definition of the protocol we need call this method
+from within \inlinecode{MainScene}. Whenever a game ends, we want to store the
+latest highscore of the current game mode. It makes the most sense to place this
+method call in the \inlinecode{gameOver} method.
 
 \begin{leftbar}
 Extend the \inlinecode{gameOver} method in \filemention{MainScene.swift} to look
@@ -39,7 +52,7 @@ func gameOver() {
   isGameOver = true
   userInteractionEnabled = false
   isDraggingPot = false
-  gameModeDelegate?.saveHighscore()
+  (*@\colorbox{light-gray}{gameMode?.saveHighscore()}@*)
   presentGameOverPopup()
 }
 \end{lstlisting}
@@ -49,20 +62,22 @@ This change was simple. Now let's implement the highscore saving mechanism for
 both game modes.
 
 \section{Storing highscores for the endless game mode}
-iOS provides us a variety of options to persist application data. Core
-Data offers a feature-rich object persistence API that allows for advanced features
-such as search and migration between different versions of a data model. Through
+iOS provides us with a variety of options to persist application data.
+\textit{Core Data} offers a feature-rich object persistence API that allows for
+advanced features such as search and migration between different versions of a data model. Through
 \inlinecode{NSKeyedArchiver} we are able to serialize objects and store them
 in files. Another option, preferred for simple tasks, is using the
 \inlinecode{NSUserDefaults} class to persist information.
 
 \inlinecode{NSUserDefaults} is a persistent key-value store with a very simple
-API. We can store an integer with the following call:
+API. Here's an example of we can store a highscore value:
 \begin{lstlisting}
 NSUserDefaults.standardUserDefaults().setInteger(20, forKey: "highscore")
 \end{lstlisting}
+All we need to provide as a key and a value - just as when working with a
+dictionary. 
 
-And retrieving the information is just as straightforward:
+Retrieving the information is just as straightforward:
 \begin{lstlisting}
 let oldHigschore =
 NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
@@ -71,13 +86,7 @@ NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
 Since we only want to score one integer per game mode, this simple API is ideal
 for our purposes.
 
-Let's start with the implementation. First we'll define a new variable and a
-new constant. We'll use a variable called \inlinecode{newHighscore} to store
-whether or not the latest achieved score was a highscore. Based on this variable
-we will display a slightly different message to the user later on.
-
-We'll also define a constant for the \textit{key} that we use to store and
-retrieve the highscore from \inlinecode{NSUserDefaults.}
+Let's start with the implementation for the \inlinecode{EndlessGameMode}.
 
 \begin{leftbar}
 Add the following two member definitions to \filemention{EndlessGameMode.swift}:
@@ -87,13 +96,19 @@ private var newHighscore = false
 \end{lstlisting}
 \end{leftbar}
 
-When defining a key for working with \inlinecode{NSUserDefaults} it's good
-practice to prefix it with the current class name. That avoids conflicts between
+We define a variable called \inlinecode{newHighscore} to keep track of whether
+or not the latest achieved score was a highscore. We will check this value when
+we generate the highscore message. If the latest score was a highscore, we will
+extend the message to congratulate the player.
+
+We'll also define a constant for the \textit{key} that we use to store and
+retrieve the highscore from \inlinecode{NSUserDefaults.} When defining a key for
+working with \inlinecode{NSUserDefaults} it's good practice to prefix it with the current class name. That avoids conflicts between
 different parts of your app that might store and access information in the user
 defaults.
 
 Now we can implement the \inlinecode{saveHighscore} method. We'll check if
-the latest score is higher than the current highscore, if that's the case we
+the latest score is higher than the current highscore. If that's the case we
 will persist the latest score and set the \inlinecode{newHighscore} variable to
 \inlinecode{true}. Otherwise we'll simply set \inlinecode{newHighscore} to
 \inlinecode{false}.
@@ -155,25 +170,24 @@ func highscoreMessage() -> String {
 
 One of the first things you might notice is that we've introduced a
 \inlinecode{pluralize} method on \inlinecode{String}. This method is
-part of the helpers that we've included right at the beginning of this project.
-Since we now have multiple occasions in which we need to use the pluralized form
-of a word it makes sense to factor this functionality out and avoid code
-duplication. This \inlinecode{pluralize} method is very primitive, it will
+part of the helpers (in \filemention{Helpers.swift}) that we've included right
+at the beginning of this project. Since we now have multiple occasions in which
+we need to use the pluralized form of a word, it makes sense to factor this
+functionality out and avoid code duplication. This \inlinecode{pluralize} method is very primitive, it will
 append and \textit{s} to a word in case the integer passed to the method is
-larger than one. That is obviously not the correct way to pluralize all English 
+unequal one. That is obviously not the correct way to pluralize all English 
 words, but for our game in which we use \textit{points} and \textit{seconds} it
 works just fine.
 
 In the first line of this method we determine whether we need to use the word
-\textit{second} or \textit{second\textbf{s}} for this highscore message. Since
-we need this part of the message in any case, we keep it outside of the
-\inlinecode{if} statement.
+\textit{second} or \textit{second\textbf{s}} using the \inlinecode{pluralize}
+method.
 
 Next, we check if the player has achieved a new highscore. If not, we display
-the latest score along with the current highscore. Else, we let the player know
-that he just reached a new highscore.
+the latest score along with the current highscore. Otherwise we let the player
+know that he just reached a new highscore.
 
-And this is all it takes to build a simple highscore system -
+This is all it takes to build a simple highscore system!
 \inlinecode{NSUserDefaults} can go a pretty far way when storing this kind of
 simple information.
 
@@ -201,11 +215,13 @@ private let highscoreKey = "TimedGameMode.Highschore"
 private var newHighscore = false
 \end{lstlisting}
 \end{leftbar}
+These two properties are basically the same as in the
+\inlinecode{EndlessGameMode}. 
 
-Next, add the highscore saving method.
+Next, add the highscore saving method for \inlinecode{TimedGameMode}.
 
 \begin{leftbar}
-Add \inlinecode{saveHighscore} to \filemention{TimedGameMode.swift}:
+Add the following method to \filemention{TimedGameMode.swift}:
 \begin{lstlisting}
 func saveHighscore() {
   let oldHigschore = NSUserDefaults.standardUserDefaults().integerForKey(highscoreKey)
@@ -218,6 +234,7 @@ func saveHighscore() {
   } else {
     newHighscore = false
   }
+}
 \end{lstlisting}
 \end{leftbar}
 
@@ -257,16 +274,7 @@ popup message should look like once you've finished a game:
     highscore}
 \end{figure}
 
-\begin{details}[Advanced Highscores]
-If you are interested in implementing highscores and leaderboards that work
-across devices you should take a look at Apple's \textit{Game Center API}
-(\url{https://developer.apple.com/library/ios/documentation/NetworkingInternet/Conceptual/GameKit_Guide/Introduction/Introduction.html}).
-This book is mainly focused on game development so we won't discuss
-the API, however Apple's documentation should be very helpful in
-adopting Game Center.
-\end{details}
-
 We're almost done with implementing this game and thus you are getting close to
 the end of this book. In the last chapter we will discuss something that makes
-the difference between a good game and a fantastic game: \textit{Effects and
+the difference between a good game and a fantastic one: \textit{Effects and
 Animations}! Get ready for the Grand Finale.

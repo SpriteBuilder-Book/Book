@@ -1798,8 +1798,9 @@ on integrating it in code.
 \subsection{Setting up the popup in \SB{}}
 We'll start by creating a new \ccbfile{} for our popup.
 \begin{leftbar}
-Create a new \ccbfile{} in \SB{}. Select \textit{Layer} as the type. Choose the
-size to be \textit{(400, 300)} and name the file \filemention{GameOverPopup}.
+Create a new \ccbfile{} in \SB{}. Select \textit{Layer} as the type.
+\textbf{Choose the size to be \textit{(400, 300)}} and name the file
+\filemention{GameOverPopup}.
 \end{leftbar}
 We will center the popup when we present it. Centering is a lot easier when the
 anchor point of the popup is at (0.5, 0.5).
@@ -2247,7 +2248,7 @@ Add the \inlinecode{playAgain} method below the \inlinecode{backToMenu} method:
 func playAgain() {
   let mainSceneContainer = CCBReader.loadAsScene("MainScene")
   let mainScene = mainSceneContainer.children[0] as! MainScene
-  mainScene.gameMode = gameMode
+  mainScene.selectedGameMode = selectedGameMode
   let transition = CCTransition(crossFadeWithDuration: 0.7)
   CCDirector.sharedDirector().replaceScene(mainSceneContainer, withTransition: transition)
 }
@@ -2257,7 +2258,7 @@ Remember, when we use the \inlinecode{CCBReader.loadAsScene()} method, the
 root node from the loaded \ccbfile{} is added as a child to a
 \ccscene{} instance. That is why we need to access the first child of the
 loaded scene to get a reference to the new \inlinecode{MainScene} instance. With that reference
-at hand we set the \inlinecode{gameMode} of the new \inlinecode{MainScene} to
+at hand we set the \inlinecode{selectedGameMode} of the new \inlinecode{MainScene} to
 be the same as the currently selected game mode. The rest is business as usual;
 replacing the scene with an animated transition.
 
@@ -2381,7 +2382,7 @@ Add the following statements to the beginning of the \inlinecode{update:}
 method:
 \begin{lstlisting}
 override func update(delta: CCTime) {
-  if (isGameOver) {
+  if (gameEnded) {
     return
   }
 ...

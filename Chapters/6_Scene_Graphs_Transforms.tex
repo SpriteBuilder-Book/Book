@@ -398,7 +398,7 @@ transform.
 Now that we have saved the position, we remove the node from its parent. Next we
 perform the second step of the transformation:
 \begin{lstlisting}
-fallingObject.positionInPoints = potTop.convertToNodeSpace(fallingObjectWorldPosition)
+fallingObject.positionInPoints = pot.convertToNodeSpace(fallingObjectWorldPosition)
 \end{lstlisting}
 This line asks: \textit{Dear pot, I have a global position for this falling
 object, could you tell me what the relative position in your node space would

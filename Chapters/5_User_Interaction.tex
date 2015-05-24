@@ -283,10 +283,9 @@ Add the \inlinecode{touchMoved} method below the \inlinecode{touchBegan} method:
     // apply touch offset
     newPosition = ccpAdd(newPosition, dragTouchOffset);
     // ensure constant y position
-    newPosition = ccp(newPosition.x, potBottom.positionInPoints.y);
-    // apply new position to both pot parts
-    potBottom.positionInPoints = newPosition;
-    potTop.positionInPoints = newPosition;
+    newPosition = ccp(newPosition.x, pot.positionInPoints.y);
+    // apply new position to pot
+    pot.positionInPoints = newPosition;
   }
 \end{lstlisting}
 \end{leftbar}

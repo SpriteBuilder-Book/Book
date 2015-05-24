@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.14)  24 MAY 2015 12:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.14)  24 MAY 2015 12:18
 entering extended mode
  \write18 enabled.
  Source specials enabled.
@@ -2456,7 +2456,7 @@ Package pdftex.def Info: images/Chapter3/dragging_offset.png used on input line
 ]
 Chapter 5.
 [115]
-<images/Chapter3/falling_object_states.png, id=1503, 272.01625pt x 431.6125pt>
+<images/Chapter3/falling_object_states.png, id=1502, 272.01625pt x 431.6125pt>
 File: images/Chapter3/falling_object_states.png Graphic file (type png)
 
 <use images/Chapter3/falling_object_states.png>
@@ -2464,7 +2464,7 @@ Package pdftex.def Info: images/Chapter3/falling_object_states.png used on inpu
 t line 39.
 (pdftex.def)             Requested size: 127.61185pt x 202.48909pt.
  [116]
-<images/Chapter3/catch_test.png, id=1511, 1137.24875pt x 598.235pt>
+<images/Chapter3/catch_test.png, id=1510, 1137.24875pt x 598.235pt>
 File: images/Chapter3/catch_test.png Graphic file (type png)
 
 <use images/Chapter3/catch_test.png>
@@ -2472,7 +2472,7 @@ Package pdftex.def Info: images/Chapter3/catch_test.png used on input line 53.
 (pdftex.def)             Requested size: 127.61185pt x 67.12053pt.
  [117 <./images/Chapter3/falling_object_states.png> <./images/Chapter3/catch_te
 st.png>] [118] [119]
-<images/Chapter3/frame_pot_falling_object.png, id=1547, 484.81125pt x 496.85625
+<images/Chapter3/frame_pot_falling_object.png, id=1546, 484.81125pt x 496.85625
 pt>
 File: images/Chapter3/frame_pot_falling_object.png Graphic file (type png)
  <use images/Chapter3/frame_pot_falling_object.png>
@@ -2480,7 +2480,7 @@ Package pdftex.def Info: images/Chapter3/frame_pot_falling_object.png used on i
 nput line 159.
 (pdftex.def)             Requested size: 127.61185pt x 130.77925pt.
  [120]
-<images/Chapter6/add_catch_container_2.png, id=1565, 1195.46625pt x 602.25pt>
+<images/Chapter6/add_catch_container_2.png, id=1564, 1195.46625pt x 602.25pt>
 File: images/Chapter6/add_catch_container_2.png Graphic file (type png)
 
 <use images/Chapter6/add_catch_container_2.png>
@@ -2488,7 +2488,7 @@ Package pdftex.def Info: images/Chapter6/add_catch_container_2.png used on inpu
 t line 172.
 (pdftex.def)             Requested size: 325.89607pt x 164.18109pt.
 
-<images/Chapter6/container_cc.png, id=1566, 282.05376pt x 89.33376pt>
+<images/Chapter6/container_cc.png, id=1565, 282.05376pt x 89.33376pt>
 File: images/Chapter6/container_cc.png Graphic file (type png)
 
 <use images/Chapter6/container_cc.png>
@@ -2496,7 +2496,7 @@ Package pdftex.def Info: images/Chapter6/container_cc.png used on input line 18
 9.
 (pdftex.def)             Requested size: 150.0pt x 47.50887pt.
 
-<images/Chapter6/pot_cc.png, id=1567, 284.06125pt x 149.55875pt>
+<images/Chapter6/pot_cc.png, id=1566, 284.06125pt x 149.55875pt>
 File: images/Chapter6/pot_cc.png Graphic file (type png)
 
 <use images/Chapter6/pot_cc.png>
@@ -2516,7 +2516,7 @@ Underfull \vbox (badness 10000) detected at line 201
 
 [122 <./images/Chapter6/add_catch_container_2.png> <./images/Chapter6/container
 _cc.png>] [123 <./images/Chapter6/pot_cc.png>]
-<images/Chapter3/parent_transform.png, id=1602, 1367.1075pt x 780.9175pt>
+<images/Chapter3/parent_transform.png, id=1601, 1367.1075pt x 780.9175pt>
 File: images/Chapter3/parent_transform.png Graphic file (type png)
 
 <use images/Chapter3/parent_transform.png>
@@ -2524,7 +2524,7 @@ Package pdftex.def Info: images/Chapter3/parent_transform.png used on input lin
 e 251.
 (pdftex.def)             Requested size: 297.75668pt x 170.07458pt.
  [124] [125 <./images/Chapter3/parent_transform.png>]
-<images/Chapter3/parent_transform_rendering.png, id=1621, 546.04pt x 431.6125pt
+<images/Chapter3/parent_transform_rendering.png, id=1620, 546.04pt x 431.6125pt
 >
 File: images/Chapter3/parent_transform_rendering.png Graphic file (type png)
  <use images/Chapter3/parent_transform_rendering.png>
@@ -2550,7 +2550,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 545.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
  [134]
-<images/Chapter6/pot_bottom_code.png, id=1725, 282.05376pt x 91.34125pt>
+<images/Chapter6/pot_bottom_code.png, id=1724, 282.05376pt x 91.34125pt>
 File: images/Chapter6/pot_bottom_code.png Graphic file (type png)
 
 <use images/Chapter6/pot_bottom_code.png>
@@ -2558,7 +2558,7 @@ Package pdftex.def Info: images/Chapter6/pot_bottom_code.png used on input line
  584.
 (pdftex.def)             Requested size: 150.0pt x 48.57648pt.
 
-<images/Chapter6/pot_top_code.png, id=1726, 284.06125pt x 94.3525pt>
+<images/Chapter6/pot_top_code.png, id=1725, 284.06125pt x 94.3525pt>
 File: images/Chapter6/pot_top_code.png Graphic file (type png)
 
 <use images/Chapter6/pot_top_code.png>
@@ -2577,7 +2577,7 @@ code.png>]) [137]
 
 ]
 Chapter 6.
-<images/Chapter6/screen_flow.png, id=1772, 1595.7216pt x 473.6094pt>
+<images/Chapter6/screen_flow.png, id=1771, 1595.7216pt x 473.6094pt>
 File: images/Chapter6/screen_flow.png Graphic file (type png)
 
 <use images/Chapter6/screen_flow.png>
@@ -2594,7 +2594,7 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[140] <images/Chapter6/opacity_lower.png, id=1785, 280.04625pt x 141.02687pt>
+[140] <images/Chapter6/opacity_lower.png, id=1784, 280.04625pt x 141.02687pt>
 File: images/Chapter6/opacity_lower.png Graphic file (type png)
 
 <use images/Chapter6/opacity_lower.png>
@@ -2602,7 +2602,7 @@ Package pdftex.def Info: images/Chapter6/opacity_lower.png used on input line 7
 4.
 (pdftex.def)             Requested size: 200.0pt x 100.72154pt.
 
-<images/Chapter6/multiple_screen_sizes.png, id=1786, 1358.676pt x 489.5088pt>
+<images/Chapter6/multiple_screen_sizes.png, id=1785, 1358.676pt x 489.5088pt>
 File: images/Chapter6/multiple_screen_sizes.png Graphic file (type png)
 
 <use images/Chapter6/multiple_screen_sizes.png>
@@ -2611,7 +2611,7 @@ t line 86.
 (pdftex.def)             Requested size: 297.75668pt x 107.27399pt.
  [141 <./images/Chapter6/opacity_lower.png> <./images/Chapter6/multiple_screen_
 sizes.png>]
-<images/Chapter7/label_ontop_background.png, id=1794, 291.0875pt x 56.21pt>
+<images/Chapter7/label_ontop_background.png, id=1793, 291.0875pt x 56.21pt>
 File: images/Chapter7/label_ontop_background.png Graphic file (type png)
 
 <use images/Chapter7/label_ontop_background.png>
@@ -2619,7 +2619,7 @@ Package pdftex.def Info: images/Chapter7/label_ontop_background.png used on inp
 ut line 102.
 (pdftex.def)             Requested size: 200.0pt x 38.62111pt.
 
-<images/Chapter7/pos_ref_corner.png, id=1795, 226.8475pt x 51.19125pt>
+<images/Chapter7/pos_ref_corner.png, id=1794, 226.8475pt x 51.19125pt>
 File: images/Chapter7/pos_ref_corner.png Graphic file (type png)
 
 <use images/Chapter7/pos_ref_corner.png>
@@ -2628,7 +2628,7 @@ Package pdftex.def Info: images/Chapter7/pos_ref_corner.png used on input line
 (pdftex.def)             Requested size: 130.0pt x 29.3363pt.
  [142 <./images/Chapter7/label_ontop_background.png> <./images/Chapter7/pos_ref
 _corner.png>]
-<images/Chapter7/start_scene.png, id=1809, 765.86125pt x 367.3725pt>
+<images/Chapter7/start_scene.png, id=1808, 765.86125pt x 367.3725pt>
 File: images/Chapter7/start_scene.png Graphic file (type png)
 
 <use images/Chapter7/start_scene.png>
@@ -2636,7 +2636,7 @@ Package pdftex.def Info: images/Chapter7/start_scene.png used on input line 132
 .
 (pdftex.def)             Requested size: 297.75668pt x 142.83183pt.
 
-<images/Chapter7/scrollview_concept.png, id=1810, 1575.486pt x 1437.2094pt>
+<images/Chapter7/scrollview_concept.png, id=1809, 1575.486pt x 1437.2094pt>
 File: images/Chapter7/scrollview_concept.png Graphic file (type png)
 
 <use images/Chapter7/scrollview_concept.png>
@@ -2650,7 +2650,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 183.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/Chapter7/content_node_width.png, id=1824, 1195.46625pt x 602.25pt>
+<images/Chapter7/content_node_width.png, id=1823, 1195.46625pt x 602.25pt>
 File: images/Chapter7/content_node_width.png Graphic file (type png)
 
 <use images/Chapter7/content_node_width.png>
@@ -2666,7 +2666,7 @@ Underfull \vbox (badness 1314) detected at line 221
  []
 
 [146 <./images/Chapter7/content_node_width.png>]
-<images/Chapter7/content_node_completed.png, id=1841, 615.29875pt x 241.90375pt
+<images/Chapter7/content_node_completed.png, id=1840, 615.29875pt x 241.90375pt
 >
 File: images/Chapter7/content_node_completed.png Graphic file (type png)
  <use images/Chapter7/content_node_completed.png>
@@ -2674,7 +2674,7 @@ Package pdftex.def Info: images/Chapter7/content_node_completed.png used on inp
 ut line 248.
 (pdftex.def)             Requested size: 255.22371pt x 100.3402pt.
  [147 <./images/Chapter7/content_node_completed.png>]
-<images/Chapter7/arrow_label_position.png, id=1855, 205.76875pt x 61.22874pt>
+<images/Chapter7/arrow_label_position.png, id=1854, 205.76875pt x 61.22874pt>
 File: images/Chapter7/arrow_label_position.png Graphic file (type png)
 
 <use images/Chapter7/arrow_label_position.png>
@@ -2682,7 +2682,7 @@ Package pdftex.def Info: images/Chapter7/arrow_label_position.png used on input
  line 282.
 (pdftex.def)             Requested size: 150.0pt x 44.634pt.
  [148]
-<images/Chapter7/endless_mode.png, id=1872, 570.13pt x 384.43625pt>
+<images/Chapter7/endless_mode.png, id=1871, 570.13pt x 384.43625pt>
 File: images/Chapter7/endless_mode.png Graphic file (type png)
 
 <use images/Chapter7/endless_mode.png>
@@ -2690,7 +2690,7 @@ Package pdftex.def Info: images/Chapter7/endless_mode.png used on input line 29
 0.
 (pdftex.def)             Requested size: 150.0pt x 101.14186pt.
 
-<images/Chapter7/timeline_duration.png, id=1873, 889.3225pt x 211.79124pt>
+<images/Chapter7/timeline_duration.png, id=1872, 889.3225pt x 211.79124pt>
 File: images/Chapter7/timeline_duration.png Graphic file (type png)
 
 <use images/Chapter7/timeline_duration.png>
@@ -2699,7 +2699,7 @@ ne 301.
 (pdftex.def)             Requested size: 300.0pt x 71.44252pt.
  [149 <./images/Chapter7/arrow_label_position.png> <./images/Chapter7/endless_m
 ode.png> <./images/Chapter7/timeline_duration.png>]
-<images/Chapter7/timeline_ruler.png, id=1882, 144.54pt x 103.38625pt>
+<images/Chapter7/timeline_ruler.png, id=1881, 144.54pt x 103.38625pt>
 File: images/Chapter7/timeline_ruler.png Graphic file (type png)
 
 <use images/Chapter7/timeline_ruler.png>
@@ -2707,7 +2707,7 @@ Package pdftex.def Info: images/Chapter7/timeline_ruler.png used on input line
 320.
 (pdftex.def)             Requested size: 70.0pt x 50.06812pt.
 
-<images/Chapter7/edit_keyframe.png, id=1883, 433.62pt x 119.44624pt>
+<images/Chapter7/edit_keyframe.png, id=1882, 433.62pt x 119.44624pt>
 File: images/Chapter7/edit_keyframe.png Graphic file (type png)
 
 <use images/Chapter7/edit_keyframe.png>
@@ -2716,7 +2716,7 @@ Package pdftex.def Info: images/Chapter7/edit_keyframe.png used on input line 3
 (pdftex.def)             Requested size: 250.0pt x 68.86694pt.
  [150 <./images/Chapter7/timeline_ruler.png> <./images/Chapter7/edit_keyframe.p
 ng>]
-<images/Chapter7/chain_timeline_2.png, id=1892, 430.60875pt x 144.03813pt>
+<images/Chapter7/chain_timeline_2.png, id=1891, 430.60875pt x 144.03813pt>
 File: images/Chapter7/chain_timeline_2.png Graphic file (type png)
 
 <use images/Chapter7/chain_timeline_2.png>
@@ -2724,7 +2724,7 @@ Package pdftex.def Info: images/Chapter7/chain_timeline_2.png used on input lin
 e 355.
 (pdftex.def)             Requested size: 200.0pt x 66.9001pt.
 
-<images/Chapter7/loop_timeline.png, id=1893, 203.76125pt x 30.1125pt>
+<images/Chapter7/loop_timeline.png, id=1892, 203.76125pt x 30.1125pt>
 File: images/Chapter7/loop_timeline.png Graphic file (type png)
 
 <use images/Chapter7/loop_timeline.png>
@@ -2737,14 +2737,14 @@ Package pdftex.def Info: images/note.png used on input line 372.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
  [151 <./images/Chapter7/chain_timeline_2.png> <./images/Chapter7/loop_timeline
 .png>]
-<images/Chapter7/sv_result.png, id=1902, 540.0175pt x 240.9pt>
+<images/Chapter7/sv_result.png, id=1901, 540.0175pt x 240.9pt>
 File: images/Chapter7/sv_result.png Graphic file (type png)
 
 <use images/Chapter7/sv_result.png>
 Package pdftex.def Info: images/Chapter7/sv_result.png used on input line 397.
 (pdftex.def)             Requested size: 250.0pt x 111.52109pt.
  [152 <./images/Chapter7/sv_result.png>]
-<images/Chapter7/scrollview_settings.png, id=1909, 298.11375pt x 150.5625pt>
+<images/Chapter7/scrollview_settings.png, id=1908, 298.11375pt x 150.5625pt>
 File: images/Chapter7/scrollview_settings.png Graphic file (type png)
 
 <use images/Chapter7/scrollview_settings.png>
@@ -2752,7 +2752,7 @@ Package pdftex.def Info: images/Chapter7/scrollview_settings.png used on input
 line 420.
 (pdftex.def)             Requested size: 250.0pt x 126.26256pt.
  [153 <./images/Chapter7/scrollview_settings.png>] [154] [155] [156]
-<images/Chapter7/gameplay_transition.png, id=1945, 963.6pt x 157.5486pt>
+<images/Chapter7/gameplay_transition.png, id=1944, 963.6pt x 157.5486pt>
 File: images/Chapter7/gameplay_transition.png Graphic file (type png)
 
 <use images/Chapter7/gameplay_transition.png>
@@ -2760,7 +2760,7 @@ Package pdftex.def Info: images/Chapter7/gameplay_transition.png used on input
 line 549.
 (pdftex.def)             Requested size: 361.56586pt x 59.11423pt.
 
-<images/Chapter7/new_timeline.png, id=1946, 426.59375pt x 206.7725pt>
+<images/Chapter7/new_timeline.png, id=1945, 426.59375pt x 206.7725pt>
 File: images/Chapter7/new_timeline.png Graphic file (type png)
 
 <use images/Chapter7/new_timeline.png>
@@ -2772,7 +2772,7 @@ Underfull \vbox (badness 1354) detected at line 574
  []
 
 [157 <./images/Chapter7/gameplay_transition.png> <./images/Chapter7/new_timelin
-e.png>] <images/Chapter7/switch_timeline.png, id=1956, 473.77pt x 75.28125pt>
+e.png>] <images/Chapter7/switch_timeline.png, id=1955, 473.77pt x 75.28125pt>
 File: images/Chapter7/switch_timeline.png Graphic file (type png)
 
 <use images/Chapter7/switch_timeline.png>
@@ -2780,7 +2780,7 @@ Package pdftex.def Info: images/Chapter7/switch_timeline.png used on input line
  582.
 (pdftex.def)             Requested size: 200.0pt x 31.77986pt.
  [158 <./images/Chapter7/switch_timeline.png>] [159]
-<images/Chapter7/timeline_callback.png, id=1981, 538.01pt x 99.37125pt>
+<images/Chapter7/timeline_callback.png, id=1980, 538.01pt x 99.37125pt>
 File: images/Chapter7/timeline_callback.png Graphic file (type png)
 
 <use images/Chapter7/timeline_callback.png>
@@ -2788,7 +2788,7 @@ Package pdftex.def Info: images/Chapter7/timeline_callback.png used on input li
 ne 644.
 (pdftex.def)             Requested size: 300.0pt x 55.41096pt.
 
-<images/Chapter7/app_delegate.png, id=1982, 272.01625pt x 155.58125pt>
+<images/Chapter7/app_delegate.png, id=1981, 272.01625pt x 155.58125pt>
 File: images/Chapter7/app_delegate.png Graphic file (type png)
 
 <use images/Chapter7/app_delegate.png>
@@ -2805,7 +2805,7 @@ Overfull \vbox (0.76527pt too high) detected at line 892
  []
 
 [166] [167] [168] [169]
-<images/Chapter7/timed_mode_ui.png, id=2112, 571.13374pt x 386.44376pt>
+<images/Chapter7/timed_mode_ui.png, id=2111, 571.13374pt x 386.44376pt>
 File: images/Chapter7/timed_mode_ui.png Graphic file (type png)
 
 <use images/Chapter7/timed_mode_ui.png>
@@ -2817,7 +2817,7 @@ Overfull \vbox (1.74341pt too high) detected at line 1048
  []
 
 [171 <./images/Chapter7/timed_mode_ui.png>]
-<images/Chapter7/endless_mode_ui.png, id=2132, 568.1225pt x 384.43625pt>
+<images/Chapter7/endless_mode_ui.png, id=2131, 568.1225pt x 384.43625pt>
 File: images/Chapter7/endless_mode_ui.png Graphic file (type png)
 
 <use images/Chapter7/endless_mode_ui.png>
@@ -2825,7 +2825,7 @@ Package pdftex.def Info: images/Chapter7/endless_mode_ui.png used on input line
  1074.
 (pdftex.def)             Requested size: 212.68427pt x 143.91685pt.
  [172 <./images/Chapter7/endless_mode_ui.png>] [173]
-<images/Chapter7/gameplay_design.png, id=2151, 412.4208pt x 162.3666pt>
+<images/Chapter7/gameplay_design.png, id=2150, 412.4208pt x 162.3666pt>
 File: images/Chapter7/gameplay_design.png Graphic file (type png)
 
 <use images/Chapter7/gameplay_design.png>
@@ -2849,7 +2849,7 @@ Overfull \hbox (4.49599pt too wide) in paragraph at lines 1740--1743
 T1/cmtt/l/n/10.95 game-play(mainScene:, dropped-FallingOb-
  []
 
-[190] <images/Chapter7/endless_game_with_ui.png, id=2412, 1140.26pt x 642.4pt>
+[190] <images/Chapter7/endless_game_with_ui.png, id=2411, 1140.26pt x 642.4pt>
 File: images/Chapter7/endless_game_with_ui.png Graphic file (type png)
 
 <use images/Chapter7/endless_game_with_ui.png>
@@ -2857,7 +2857,7 @@ Package pdftex.def Info: images/Chapter7/endless_game_with_ui.png used on input
  line 1768.
 (pdftex.def)             Requested size: 212.68427pt x 119.82236pt.
  [191 <./images/Chapter7/endless_game_with_ui.png>]
-<images/Chapter7/game_over_popup.png, id=2424, 1140.26pt x 642.4pt>
+<images/Chapter7/game_over_popup.png, id=2423, 1140.26pt x 642.4pt>
 File: images/Chapter7/game_over_popup.png Graphic file (type png)
 
 <use images/Chapter7/game_over_popup.png>
@@ -2865,14 +2865,14 @@ Package pdftex.def Info: images/Chapter7/game_over_popup.png used on input line
  1790.
 (pdftex.def)             Requested size: 212.68427pt x 119.82236pt.
  [192 <./images/Chapter7/game_over_popup.png>] <images/Chapter7/9_slice.png, id
-=2431, 389.2944pt x 326.1786pt>
+=2430, 389.2944pt x 326.1786pt>
 File: images/Chapter7/9_slice.png Graphic file (type png)
 
 <use images/Chapter7/9_slice.png>
 Package pdftex.def Info: images/Chapter7/9_slice.png used on input line 1822.
 (pdftex.def)             Requested size: 212.68427pt x 178.20427pt.
  [193 <./images/Chapter7/9_slice.png>]
-<images/Chapter7/9_slice_setup.png, id=2439, 402.50375pt x 301.125pt>
+<images/Chapter7/9_slice_setup.png, id=2438, 402.50375pt x 301.125pt>
 File: images/Chapter7/9_slice_setup.png Graphic file (type png)
 
 <use images/Chapter7/9_slice_setup.png>
@@ -2880,7 +2880,7 @@ Package pdftex.def Info: images/Chapter7/9_slice_setup.png used on input line 1
 857.
 (pdftex.def)             Requested size: 212.68427pt x 159.11302pt.
  [194]
-<images/Chapter7/9_slice_settings.png, id=2452, 287.0725pt x 149.55875pt>
+<images/Chapter7/9_slice_settings.png, id=2451, 287.0725pt x 149.55875pt>
 File: images/Chapter7/9_slice_settings.png Graphic file (type png)
 
 <use images/Chapter7/9_slice_settings.png>
@@ -2889,7 +2889,7 @@ e 1868.
 (pdftex.def)             Requested size: 212.68427pt x 110.80638pt.
  [195 <./images/Chapter7/9_slice_setup.png> <./images/Chapter7/9_slice_settings
 .png>]
-<images/Chapter7/set_dimensions.png, id=2459, 246.9225pt x 54.2025pt>
+<images/Chapter7/set_dimensions.png, id=2458, 246.9225pt x 54.2025pt>
 File: images/Chapter7/set_dimensions.png Graphic file (type png)
 
 <use images/Chapter7/set_dimensions.png>
@@ -2897,7 +2897,7 @@ Package pdftex.def Info: images/Chapter7/set_dimensions.png used on input line
 1901.
 (pdftex.def)             Requested size: 150.0pt x 32.92618pt.
  [196 <./images/Chapter7/set_dimensions.png>] [197]
-<images/Chapter7/popup_animation.png, id=2489, 935.1738pt x 443.256pt>
+<images/Chapter7/popup_animation.png, id=2488, 935.1738pt x 443.256pt>
 File: images/Chapter7/popup_animation.png Graphic file (type png)
 
 <use images/Chapter7/popup_animation.png>
@@ -2905,7 +2905,7 @@ Package pdftex.def Info: images/Chapter7/popup_animation.png used on input line
  1975.
 (pdftex.def)             Requested size: 319.0264pt x 151.21231pt.
  [198]
-<images/Chapter7/timeline_zoom.png, id=2500, 214.8025pt x 28.105pt>
+<images/Chapter7/timeline_zoom.png, id=2499, 214.8025pt x 28.105pt>
 File: images/Chapter7/timeline_zoom.png Graphic file (type png)
 
 <use images/Chapter7/timeline_zoom.png>
@@ -2914,7 +2914,7 @@ Package pdftex.def Info: images/Chapter7/timeline_zoom.png used on input line 2
 (pdftex.def)             Requested size: 150.0pt x 19.6266pt.
  [199 <./images/Chapter7/popup_animation.png>] [200 <./images/Chapter7/timeline
 _zoom.png>]
-<images/Chapter7/timeline_ease_in.png, id=2519, 312.16624pt x 203.76125pt>
+<images/Chapter7/timeline_ease_in.png, id=2518, 312.16624pt x 203.76125pt>
 File: images/Chapter7/timeline_ease_in.png Graphic file (type png)
 
 <use images/Chapter7/timeline_ease_in.png>
@@ -2926,7 +2926,7 @@ Overfull \vbox (0.56296pt too high) detected at line 2156
  []
 
 [203]
-<images/Chapter7/root_node_disabled_position_type.png, id=2560, 203.76125pt x 4
+<images/Chapter7/root_node_disabled_position_type.png, id=2559, 203.76125pt x 4
 8.18pt>
 File: images/Chapter7/root_node_disabled_position_type.png Graphic file (type p
 ng)
@@ -2936,7 +2936,7 @@ sed on input line 2169.
 (pdftex.def)             Requested size: 200.0pt x 47.2925pt.
  [204 <./images/Chapter7/root_node_disabled_position_type.png>] [205] [206] [20
 7]
-<images/Chapter7/endless_popups.png, id=2609, 1140.26pt x 642.4pt>
+<images/Chapter7/endless_popups.png, id=2608, 1140.26pt x 642.4pt>
 File: images/Chapter7/endless_popups.png Graphic file (type png)
 
 <use images/Chapter7/endless_popups.png>
@@ -2944,7 +2944,7 @@ Package pdftex.def Info: images/Chapter7/endless_popups.png used on input line
 2323.
 (pdftex.def)             Requested size: 319.0264pt x 179.73354pt.
  [208 <./images/Chapter7/endless_popups.png>] [209]
-<images/Chapter7/no_ui_fadeout_popup.png, id=2626, 1140.26pt x 642.4pt>
+<images/Chapter7/no_ui_fadeout_popup.png, id=2625, 1140.26pt x 642.4pt>
 File: images/Chapter7/no_ui_fadeout_popup.png Graphic file (type png)
 
 <use images/Chapter7/no_ui_fadeout_popup.png>
@@ -2952,7 +2952,7 @@ Package pdftex.def Info: images/Chapter7/no_ui_fadeout_popup.png used on input
 line 2404.
 (pdftex.def)             Requested size: 319.0264pt x 179.73354pt.
  [210] [211 <./images/Chapter7/no_ui_fadeout_popup.png>]
-<images/Chapter7/ui_fadeout_popup.png, id=2658, 1140.26pt x 642.4pt>
+<images/Chapter7/ui_fadeout_popup.png, id=2657, 1140.26pt x 642.4pt>
 File: images/Chapter7/ui_fadeout_popup.png Graphic file (type png)
 
 <use images/Chapter7/ui_fadeout_popup.png>
@@ -2974,7 +2974,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 19.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
  [215] [216] [217] [218] [219] [220] [221]
-<images/Chapter8/Highscore_Message.png, id=2766, 1339.0025pt x 752.8125pt>
+<images/Chapter8/Highscore_Message.png, id=2765, 1339.0025pt x 752.8125pt>
 File: images/Chapter8/Highscore_Message.png Graphic file (type png)
 
 <use images/Chapter8/Highscore_Message.png>
@@ -2991,7 +2991,7 @@ ne 272.
 
 ]
 Chapter 8.
-<images/Chapter9/lighting_comparison.png, id=2795, 1227.58624pt x 335.2525pt>
+<images/Chapter9/lighting_comparison.png, id=2794, 1227.58624pt x 335.2525pt>
 File: images/Chapter9/lighting_comparison.png Graphic file (type png)
 
 <use images/Chapter9/lighting_comparison.png>
@@ -2999,7 +2999,7 @@ Package pdftex.def Info: images/Chapter9/lighting_comparison.png used on input
 line 17.
 (pdftex.def)             Requested size: 382.82909pt x 104.55128pt.
  [225 <./images/Chapter9/lighting_comparison.png>]
-<images/Chapter9/pot-bottom_NRM.png, id=2803, 437.635pt x 304.13625pt>
+<images/Chapter9/pot-bottom_NRM.png, id=2802, 437.635pt x 304.13625pt>
 File: images/Chapter9/pot-bottom_NRM.png Graphic file (type png)
 
 <use images/Chapter9/pot-bottom_NRM.png>
@@ -3007,7 +3007,7 @@ Package pdftex.def Info: images/Chapter9/pot-bottom_NRM.png used on input line
 54.
 (pdftex.def)             Requested size: 180.0pt x 125.09113pt.
  [226]
-<images/Chapter9/pot_lighting_comparison.png, id=2808, 654.445pt x 251.94125pt>
+<images/Chapter9/pot_lighting_comparison.png, id=2807, 654.445pt x 251.94125pt>
 File: images/Chapter9/pot_lighting_comparison.png Graphic file (type png)
 <use images/Chapter9/pot_lighting_comparison.png>
 Package pdftex.def Info: images/Chapter9/pot_lighting_comparison.png used on in
@@ -3015,7 +3015,7 @@ put line 64.
 (pdftex.def)             Requested size: 300.0pt x 115.49072pt.
  [227 <./images/Chapter9/pot-bottom_NRM.png (PNG copy)> <./images/Chapter9/pot_
 lighting_comparison.png>]
-[228] <images/Chapter9/effect_setup.png, id=2822, 758.3532pt x 541.5432pt>
+[228] <images/Chapter9/effect_setup.png, id=2821, 758.3532pt x 541.5432pt>
 File: images/Chapter9/effect_setup.png Graphic file (type png)
 
 <use images/Chapter9/effect_setup.png>
@@ -3045,7 +3045,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 151.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
  [230 <./images/Chapter9/effect_setup.png>]
-<images/Chapter9/copy_nodes_effect.png, id=2836, 294.09875pt x 77.28876pt>
+<images/Chapter9/copy_nodes_effect.png, id=2835, 294.09875pt x 77.28876pt>
 File: images/Chapter9/copy_nodes_effect.png Graphic file (type png)
 
 <use images/Chapter9/copy_nodes_effect.png>
@@ -3053,7 +3053,7 @@ Package pdftex.def Info: images/Chapter9/copy_nodes_effect.png used on input li
 ne 165.
 (pdftex.def)             Requested size: 200.0pt x 52.56036pt.
 
-<images/Chapter9/node_hierarchy_effect2.png, id=2837, 291.0875pt x 74.2775pt>
+<images/Chapter9/node_hierarchy_effect2.png, id=2836, 291.0875pt x 74.2775pt>
 File: images/Chapter9/node_hierarchy_effect2.png Graphic file (type png)
 
 <use images/Chapter9/node_hierarchy_effect2.png>
@@ -3061,7 +3061,7 @@ Package pdftex.def Info: images/Chapter9/node_hierarchy_effect2.png used on inp
 ut line 171.
 (pdftex.def)             Requested size: 200.0pt x 51.03505pt.
 
-<images/Chapter9/light_source_relative_position.png, id=2838, 891.33pt x 789.95
+<images/Chapter9/light_source_relative_position.png, id=2837, 891.33pt x 789.95
 125pt>
 File: images/Chapter9/light_source_relative_position.png Graphic file (type png
 )
@@ -3071,7 +3071,7 @@ d on input line 192.
 (pdftex.def)             Requested size: 340.29613pt x 301.59486pt.
  [231 <./images/Chapter9/copy_nodes_effect.png> <./images/Chapter9/node_hierarc
 hy_effect2.png>] [232 <./images/Chapter9/light_source_relative_position.png>]
-<images/Chapter9/select_resolution.png, id=2857, 447.6725pt x 62.2325pt>
+<images/Chapter9/select_resolution.png, id=2856, 447.6725pt x 62.2325pt>
 File: images/Chapter9/select_resolution.png Graphic file (type png)
 
 <use images/Chapter9/select_resolution.png>
@@ -3098,7 +3098,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 299.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/Chapter9/add_lighting_effect.png, id=2890, 386.44376pt x 251.94125pt>
+<images/Chapter9/add_lighting_effect.png, id=2889, 386.44376pt x 251.94125pt>
 File: images/Chapter9/add_lighting_effect.png Graphic file (type png)
 
 <use images/Chapter9/add_lighting_effect.png>
@@ -3106,7 +3106,7 @@ Package pdftex.def Info: images/Chapter9/add_lighting_effect.png used on input
 line 314.
 (pdftex.def)             Requested size: 200.0pt x 130.39127pt.
  [236 <./images/Chapter9/add_lighting_effect.png>]
-<images/Chapter9/select_normal_map.png, id=2899, 287.0725pt x 81.30376pt>
+<images/Chapter9/select_normal_map.png, id=2898, 287.0725pt x 81.30376pt>
 File: images/Chapter9/select_normal_map.png Graphic file (type png)
 
 <use images/Chapter9/select_normal_map.png>
@@ -3114,7 +3114,7 @@ Package pdftex.def Info: images/Chapter9/select_normal_map.png used on input li
 ne 349.
 (pdftex.def)             Requested size: 200.0pt x 56.64426pt.
  [237]
-<images/Chapter9/lighting_finished.png, id=2910, 547.04375pt x 307.1475pt>
+<images/Chapter9/lighting_finished.png, id=2909, 547.04375pt x 307.1475pt>
 File: images/Chapter9/lighting_finished.png Graphic file (type png)
 
 <use images/Chapter9/lighting_finished.png>
@@ -3129,7 +3129,7 @@ Package pdftex.def Info: images/note.png used on input line 387.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
 [239] [240] [241] [242]
-<images/Chapter9/particle_fire.png, id=2967, 302.12875pt x 340.27126pt>
+<images/Chapter9/particle_fire.png, id=2966, 302.12875pt x 340.27126pt>
 File: images/Chapter9/particle_fire.png Graphic file (type png)
 
 <use images/Chapter9/particle_fire.png>
@@ -3137,7 +3137,7 @@ Package pdftex.def Info: images/Chapter9/particle_fire.png used on input line 5
 21.
 (pdftex.def)             Requested size: 130.0pt x 146.41243pt.
 
-<images/Chapter9/create_particle_effect.png, id=2968, 540.0175pt x 258.9675pt>
+<images/Chapter9/create_particle_effect.png, id=2967, 540.0175pt x 258.9675pt>
 File: images/Chapter9/create_particle_effect.png Graphic file (type png)
 
 <use images/Chapter9/create_particle_effect.png>
@@ -3146,7 +3146,7 @@ ut line 540.
 (pdftex.def)             Requested size: 250.0pt x 119.88518pt.
  [243 <./images/Chapter9/particle_fire.png>] [244 <./images/Chapter9/create_par
 ticle_effect.png>]
-<images/Chapter9/select_exploded_ring.png, id=2979, 300.12125pt x 230.8625pt>
+<images/Chapter9/select_exploded_ring.png, id=2978, 300.12125pt x 230.8625pt>
 File: images/Chapter9/select_exploded_ring.png Graphic file (type png)
 
 <use images/Chapter9/select_exploded_ring.png>
@@ -3154,7 +3154,7 @@ Package pdftex.def Info: images/Chapter9/select_exploded_ring.png used on input
  line 582.
 (pdftex.def)             Requested size: 250.0pt x 192.3133pt.
 
-<images/Chapter9/start_particles.png, id=2980, 286.06876pt x 115.43124pt>
+<images/Chapter9/start_particles.png, id=2979, 286.06876pt x 115.43124pt>
 File: images/Chapter9/start_particles.png Graphic file (type png)
 
 <use images/Chapter9/start_particles.png>
@@ -3162,7 +3162,7 @@ Package pdftex.def Info: images/Chapter9/start_particles.png used on input line
  599.
 (pdftex.def)             Requested size: 150.0pt x 60.52657pt.
  [245 <./images/Chapter9/select_exploded_ring.png>]
-<images/Chapter9/change_lifetime.png, id=2986, 283.0575pt x 102.3825pt>
+<images/Chapter9/change_lifetime.png, id=2985, 283.0575pt x 102.3825pt>
 File: images/Chapter9/change_lifetime.png Graphic file (type png)
 
 <use images/Chapter9/change_lifetime.png>
@@ -3177,7 +3177,7 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 713.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
  [249]
-<images/Chapter9/wobble_animation.png, id=3029, 1858.945pt x 309.155pt>
+<images/Chapter9/wobble_animation.png, id=3028, 1858.945pt x 309.155pt>
 File: images/Chapter9/wobble_animation.png Graphic file (type png)
 
 <use images/Chapter9/wobble_animation.png>
@@ -3185,7 +3185,7 @@ Package pdftex.def Info: images/Chapter9/wobble_animation.png used on input lin
 e 734.
 (pdftex.def)             Requested size: 340.29613pt x 56.58896pt.
 
-<images/Chapter9/timeline_new.png, id=3031, 332.24126pt x 156.585pt>
+<images/Chapter9/timeline_new.png, id=3030, 332.24126pt x 156.585pt>
 File: images/Chapter9/timeline_new.png Graphic file (type png)
 
 <use images/Chapter9/timeline_new.png>
@@ -3193,7 +3193,7 @@ Package pdftex.def Info: images/Chapter9/timeline_new.png used on input line 75
 5.
 (pdftex.def)             Requested size: 200.0pt x 94.25993pt.
 
-<images/Chapter9/zoom_timeline.png, id=3033, 266.9975pt x 98.3675pt>
+<images/Chapter9/zoom_timeline.png, id=3032, 266.9975pt x 98.3675pt>
 File: images/Chapter9/zoom_timeline.png Graphic file (type png)
 
 <use images/Chapter9/zoom_timeline.png>
@@ -3201,7 +3201,7 @@ Package pdftex.def Info: images/Chapter9/zoom_timeline.png used on input line 7
 64.
 (pdftex.def)             Requested size: 130.0pt x 47.89578pt.
 
-<images/Chapter9/wobble_timeline.png, id=3034, 449.68pt x 84.315pt>
+<images/Chapter9/wobble_timeline.png, id=3033, 449.68pt x 84.315pt>
 File: images/Chapter9/wobble_timeline.png Graphic file (type png)
 
 <use images/Chapter9/wobble_timeline.png>
@@ -3211,7 +3211,7 @@ Package pdftex.def Info: images/Chapter9/wobble_timeline.png used on input line
  [250 <./images/Chapter9/wobble_animation.png> <./images/Chapter9/timeline_new.
 png>] [251 <./images/Chapter9/zoom_timeline.png> <./images/Chapter9/wobble_time
 line.png>]
-<images/Chapter9/copy_keyframes.png, id=3058, 470.75874pt x 165.61874pt>
+<images/Chapter9/copy_keyframes.png, id=3057, 470.75874pt x 165.61874pt>
 File: images/Chapter9/copy_keyframes.png Graphic file (type png)
 
 <use images/Chapter9/copy_keyframes.png>
@@ -3235,14 +3235,11 @@ Package rerunfilecheck Info: File `document.out' has not changed.
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 275.
  ) 
 Here is how much of TeX's memory you used:
- 36967 strings out of 493109
- 721420 string characters out of 6135004
+ 36966 strings out of 493109
+ 721404 string characters out of 6135004
  1111173 words of memory out of 5000000
  37865 multiletter control sequences out of 15000+600000
  35741 words of font info for 220 fonts, out of 8000000 for 9000
@@ -3262,10 +3259,10 @@ mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2014/texmf-dist
 /type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
 urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/pal
 atino/uplri8a.pfb>
-Output written on document.pdf (256 pages, 15654240 bytes).
+Output written on document.pdf (256 pages, 15645348 bytes).
 PDF statistics:
- 3512 PDF objects out of 3580 (max. 8388607)
- 2961 compressed objects within 30 object streams
- 1567 named destinations out of 1728 (max. 500000)
+ 3510 PDF objects out of 3580 (max. 8388607)
+ 2959 compressed objects within 30 object streams
+ 1566 named destinations out of 1728 (max. 500000)
  25077 words of extra memory for PDF output out of 29859 (max. 10000000)
 

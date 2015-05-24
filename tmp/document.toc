@@ -112,9 +112,8 @@
 \contentsline {subsection}{\numberline {8.1.3}Setting up lighting effects in SpriteBuilder{}}{228}{subsection.8.1.3}
 \contentsline {subsection}{\numberline {8.1.4}Assigning normal maps in SpriteBuilder{}}{237}{subsection.8.1.4}
 \contentsline {subsection}{\numberline {8.1.5}Assigning normal maps in code}{239}{subsection.8.1.5}
-\contentsline {section}{\numberline {8.2}Adding Particle Effects}{241}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Creating a Particle Effect in SpriteBuilder{}}{241}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Loading particle effects in code}{244}{subsection.8.2.2}
-\contentsline {section}{\numberline {8.3}Delightful animations with SpriteBuilder{}'s timeline}{247}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Playing the timelines}{252}{subsection.8.3.1}
-\contentsline {section}{\numberline {8.4}Playing sound effects from code}{255}{section.8.4}
+\contentsline {section}{\numberline {8.2}Adding Particle Effects}{243}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Creating a Particle Effect in SpriteBuilder{}}{243}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Loading particle effects in code}{247}{subsection.8.2.2}
+\contentsline {section}{\numberline {8.3}Delightful animations with SpriteBuilder{}'s timeline}{249}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Playing the timelines}{255}{subsection.8.3.1}

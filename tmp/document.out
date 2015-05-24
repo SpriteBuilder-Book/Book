@@ -1,0 +1,101 @@
+\BOOKMARK [0][-]{chapter.1}{Preample}{}% 1
+\BOOKMARK [1][-]{section.1.1}{Structure of this book}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Tools used throughout this book}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{What is a 2D game engine?}{chapter.1}% 4
+\BOOKMARK [0][-]{chapter.2}{About this book}{}% 5
+\BOOKMARK [1][-]{section.2.1}{Who this book is for}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.2}{What this book covers}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.3}{About the author}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.4}{How to read this book}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.5}{Conventions in this book}{chapter.2}% 10
+\BOOKMARK [2][-]{subsection.2.5.1}{Info boxes}{section.2.5}% 11
+\BOOKMARK [2][-]{subsection.2.5.2}{Action required}{section.2.5}% 12
+\BOOKMARK [1][-]{section.2.6}{Source code}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.7}{Getting involved}{chapter.2}% 14
+\BOOKMARK [0][-]{chapter.3}{Introduction to SpriteBuilder and Cocos2D}{}% 15
+\BOOKMARK [1][-]{section.3.1}{Installing the software}{chapter.3}% 16
+\BOOKMARK [1][-]{section.3.2}{Introduction to Cocos2D}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.2.1}{The Cocos2D technology stack}{section.3.2}% 18
+\BOOKMARK [2][-]{subsection.3.2.2}{Scenes}{section.3.2}% 19
+\BOOKMARK [2][-]{subsection.3.2.3}{Nodes}{section.3.2}% 20
+\BOOKMARK [2][-]{subsection.3.2.4}{Scene Graphs}{section.3.2}% 21
+\BOOKMARK [2][-]{subsection.3.2.5}{An Introduction to CCNode}{section.3.2}% 22
+\BOOKMARK [1][-]{section.3.3}{Introduction to SpriteBuilder}{chapter.3}% 23
+\BOOKMARK [2][-]{subsection.3.3.1}{Creating a first project}{section.3.3}% 24
+\BOOKMARK [2][-]{subsection.3.3.2}{The Editor}{section.3.3}% 25
+\BOOKMARK [2][-]{subsection.3.3.3}{CCB Files}{section.3.3}% 26
+\BOOKMARK [2][-]{subsection.3.3.4}{How SpriteBuilder and Xcode work together}{section.3.3}% 27
+\BOOKMARK [2][-]{subsection.3.3.5}{Code Connections}{section.3.3}% 28
+\BOOKMARK [1][-]{section.3.4}{A first SpriteBuilder project}{chapter.3}% 29
+\BOOKMARK [2][-]{subsection.3.4.1}{Setting up the first scene}{section.3.4}% 30
+\BOOKMARK [2][-]{subsection.3.4.2}{Creating the Gameplay Scene}{section.3.4}% 31
+\BOOKMARK [2][-]{subsection.3.4.3}{Adding a Scene Transition}{section.3.4}% 32
+\BOOKMARK [2][-]{subsection.3.4.4}{Implementing the Gameplay}{section.3.4}% 33
+\BOOKMARK [2][-]{subsection.3.4.5}{Adding Actions in Code}{section.3.4}% 34
+\BOOKMARK [0][-]{chapter.4}{Asset Handling and Basic Game Mechanics}{}% 35
+\BOOKMARK [1][-]{section.4.1}{Adding Assets to a SpriteBuilder project}{chapter.4}% 36
+\BOOKMARK [1][-]{section.4.2}{Asset Handling in SpriteBuilder and Cocos2D}{chapter.4}% 37
+\BOOKMARK [1][-]{section.4.3}{Adding the background image}{chapter.4}% 38
+\BOOKMARK [1][-]{section.4.4}{Create falling objects}{chapter.4}% 39
+\BOOKMARK [2][-]{subsection.4.4.1}{Create a falling object class}{section.4.4}% 40
+\BOOKMARK [2][-]{subsection.4.4.2}{Choosing an asset for a falling object}{section.4.4}% 41
+\BOOKMARK [1][-]{section.4.5}{Spawn falling objects}{chapter.4}% 42
+\BOOKMARK [1][-]{section.4.6}{Move falling objects}{chapter.4}% 43
+\BOOKMARK [2][-]{subsection.4.6.1}{Update Loop}{section.4.6}% 44
+\BOOKMARK [2][-]{subsection.4.6.2}{Implementing the update method}{section.4.6}% 45
+\BOOKMARK [1][-]{section.4.7}{Adding sound effects}{chapter.4}% 46
+\BOOKMARK [2][-]{subsection.4.7.1}{SpriteBuilder's timeline feature}{section.4.7}% 47
+\BOOKMARK [2][-]{subsection.4.7.2}{Triggering a Sound Effect}{section.4.7}% 48
+\BOOKMARK [1][-]{section.4.8}{Wrapping up}{chapter.4}% 49
+\BOOKMARK [0][-]{chapter.5}{User Interaction}{}% 50
+\BOOKMARK [1][-]{section.5.1}{Add the pot to the game}{chapter.5}% 51
+\BOOKMARK [2][-]{subsection.5.1.1}{Setting up the pot assets}{section.5.1}% 52
+\BOOKMARK [1][-]{section.5.2}{Implement a Drag and Drop mechanism}{chapter.5}% 53
+\BOOKMARK [2][-]{subsection.5.2.1}{Picking up an Object}{section.5.2}% 54
+\BOOKMARK [2][-]{subsection.5.2.2}{Moving an Object}{section.5.2}% 55
+\BOOKMARK [2][-]{subsection.5.2.3}{Dropping an object}{section.5.2}% 56
+\BOOKMARK [0][-]{chapter.6}{Scene graphs, node transforms and state machines}{}% 57
+\BOOKMARK [1][-]{section.6.1}{Catching objects}{chapter.6}% 58
+\BOOKMARK [2][-]{subsection.6.1.1}{Thinking in states}{section.6.1}% 59
+\BOOKMARK [2][-]{subsection.6.1.2}{Storing state}{section.6.1}% 60
+\BOOKMARK [2][-]{subsection.6.1.3}{Implement state specific behaviour}{section.6.1}% 61
+\BOOKMARK [2][-]{subsection.6.1.4}{Implementing the falling state}{section.6.1}% 62
+\BOOKMARK [2][-]{subsection.6.1.5}{Implementing the missed state}{section.6.1}% 63
+\BOOKMARK [2][-]{subsection.6.1.6}{Implementing the caught state}{section.6.1}% 64
+\BOOKMARK [2][-]{subsection.6.1.7}{Time to test}{section.6.1}% 65
+\BOOKMARK [1][-]{section.6.2}{A rendering tweak}{chapter.6}% 66
+\BOOKMARK [2][-]{subsection.6.2.1}{Working with the Z-order}{section.6.2}% 67
+\BOOKMARK [0][-]{chapter.7}{User Interfaces and implementing multiple game modes}{}% 68
+\BOOKMARK [1][-]{section.7.1}{Adding a game mode selection scene}{chapter.7}% 69
+\BOOKMARK [2][-]{subsection.7.1.1}{Setting the up the Start Scene}{section.7.1}% 70
+\BOOKMARK [2][-]{subsection.7.1.2}{Creating the content node for the scroll view}{section.7.1}% 71
+\BOOKMARK [2][-]{subsection.7.1.3}{Finishing up the game mode selection scene}{section.7.1}% 72
+\BOOKMARK [2][-]{subsection.7.1.4}{Adding a fancy transition animation}{section.7.1}% 73
+\BOOKMARK [2][-]{subsection.7.1.5}{Implementing the game mode selection}{section.7.1}% 74
+\BOOKMARK [1][-]{section.7.2}{Implementing multiple game modes}{chapter.7}% 75
+\BOOKMARK [2][-]{subsection.7.2.1}{Adding UIs for different game modes}{section.7.2}% 76
+\BOOKMARK [2][-]{subsection.7.2.2}{Implement game logic for different modes}{section.7.2}% 77
+\BOOKMARK [2][-]{subsection.7.2.3}{Connecting the game modes to the Main Scene}{section.7.2}% 78
+\BOOKMARK [1][-]{section.7.3}{Adding a game over popup}{chapter.7}% 79
+\BOOKMARK [2][-]{subsection.7.3.1}{Setting up the popup in SpriteBuilder}{section.7.3}% 80
+\BOOKMARK [1][-]{section.7.4}{Presenting the popup in code}{chapter.7}% 81
+\BOOKMARK [1][-]{section.7.5}{Providing a highscore for each game mode}{chapter.7}% 82
+\BOOKMARK [1][-]{section.7.6}{Tweaking the game over popup}{chapter.7}% 83
+\BOOKMARK [0][-]{chapter.8}{Persisting Highscores}{}% 84
+\BOOKMARK [1][-]{section.8.1}{Extending the GameModeDelegate}{chapter.8}% 85
+\BOOKMARK [1][-]{section.8.2}{Storing highscores for the endless game mode}{chapter.8}% 86
+\BOOKMARK [1][-]{section.8.3}{Storing highscores for the timed game mode}{chapter.8}% 87
+\BOOKMARK [1][-]{section.8.4}{Wrapping up}{chapter.8}% 88
+\BOOKMARK [0][-]{chapter.9}{Effects and Animations}{}% 89
+\BOOKMARK [1][-]{section.9.1}{Lighting with CCEffects}{chapter.9}% 90
+\BOOKMARK [2][-]{subsection.9.1.1}{Lighting in 2D games}{section.9.1}% 91
+\BOOKMARK [2][-]{subsection.9.1.2}{Creating normal maps}{section.9.1}% 92
+\BOOKMARK [2][-]{subsection.9.1.3}{Setting up lighting effects in SpriteBuilder}{section.9.1}% 93
+\BOOKMARK [2][-]{subsection.9.1.4}{Assigning normal maps in SpriteBuilder}{section.9.1}% 94
+\BOOKMARK [2][-]{subsection.9.1.5}{Assigning normal maps in code}{section.9.1}% 95
+\BOOKMARK [1][-]{section.9.2}{Adding Particle Effects}{chapter.9}% 96
+\BOOKMARK [2][-]{subsection.9.2.1}{Creating a Particle Effect in SpriteBuilder}{section.9.2}% 97
+\BOOKMARK [2][-]{subsection.9.2.2}{Loading particle effects in code}{section.9.2}% 98
+\BOOKMARK [1][-]{section.9.3}{Delightful animations with SpriteBuilder's timeline}{chapter.9}% 99
+\BOOKMARK [2][-]{subsection.9.3.1}{Playing the timelines}{section.9.3}% 100
+\BOOKMARK [1][-]{section.9.4}{Playing sound effects from code}{chapter.9}% 101

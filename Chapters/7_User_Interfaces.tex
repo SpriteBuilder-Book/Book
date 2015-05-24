@@ -1866,15 +1866,17 @@ you'll see the following entry in the \textit{Item properties} tab:
     \centering
     \includegraphics[width=0.5\linewidth]{images/Chapter7/9_slice_settings.png}
 \end{figure}
-These values are expressed in percentage of the image size. This means the
-non-scalable are is defined by 33\% of the image size from each edge. These
-settings work well for many 9 slice images, if you ever run into problems with a
-9 slice image you now know where to change these settings.
+These values are expressed in percent of the image size. This means the
+non-scalable part of the image is defined as 33\% of the image size from
+each edge.
+These settings work well for many 9 slice image. If you ever run into problems
+ with a 9 slice image (i.e. your image looks distorted), you now know where to
+change these settings.
 
-Now we'll add the label that displays the highscore when the game is over. We'll
-add this label and the two buttons as a child to the sprite 9 slice because
-we'll add a little scale up animation to the popup later on. We want the entire
-popup content to scale with the sprite 9 slice.
+Now, we'll add the label that displays the highscore when the game is over.
+We'll add this label and the two buttons as children to the sprite 9 slice
+because we will be adding a little animation to the popup that will scale it up.
+We want the entire popup content to scale with the sprite 9 slice.
 
 \begin{leftbar}
 Drag a \textit{Label TTF} to the stage. Drop it onto the
@@ -1882,17 +1884,24 @@ Drag a \textit{Label TTF} to the stage. Drop it onto the
 
 Set the label up as following:
 \begin{enumerate}
-  \item Set the position reference corner to \textit{Top-left}
-  \item Set the \textit{X} position type to \textit{percentage of parent
-  container}
-  \item Set the position to \textit{(50, 30)}
-  \item Set the label text to \textit{You have survived 10 seconds!}, this is a
-  placeholder text. We'll set the actual text in dymanically in code
-  \item Set the font name to \textit{Optima-Bold}
-  \item Set the font size to \textit{30}
-  \item Set the size type of the width of the \textit{Dimensions} to
-  \textit{percentage of parent container}. Labels resize dynamically, the
-  \textit{Dimensions} size determines the maximum size for the label
+  \item Set the \textit{Position reference corner} to \textit{Top-left}
+  \item Set the \textit{X} \textit{Position type} to \textit{percentage of
+  parent container}
+  \item Set the \textit{Anchor Point} to \textit{(0.5, 0.5)}
+  \item Set the \textit{Position} to \textit{(50, 30)}
+  \item Set the label text to \textit{You have survived 10 seconds!}. This is a
+  placeholder text. We'll set the actual text dynamically in code
+  \item Set the \textit{Font name} to \textit{Optima-Bold}
+  \item Set the \textit{Font size} to \textit{30}
+  \item Set the \textit{Size type} of the \textit{Width} of the
+  \textit{Dimensions} to \textit{percentage of parent container}:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=150pt]{images/Chapter7/set_dimensions.png}
+  \end{figure} 
+  Labels resize dynamically based on their content, the \textit{Dimensions} size
+  determines the maximum size for the label. As soon as the label reaches the
+  maximum width that we define, it will start breaking into new lines
   \item Set the the Dimensions to \textit{(95, 0)}
   \item Set the horizontal alignment to \textit{Center}
   \item Set the draw color to \textit{black}
@@ -1907,7 +1916,8 @@ By providing the \textit{owner} of the popup with access to the label we avoid
 providing a custom class for the popup. Instead, whichever class displays this
 popup can set itself as the owner and modify the popup appropriately. For UI
 components that don't have any custom behavior I prefer this approach over
-providing custom classes.
+providing custom classes. Earlier we have used it as well, as we set up the
+scoreboards for our different game modes.
 
 Now we're going to create two buttons, one to play another round of the current
 game mode, a second one to return to the main menu.
@@ -1918,41 +1928,43 @@ Drag a \textit{Button} to the stage. Drop it onto the
 
 Configure the button like this:
 \begin{enumerate}
-  \item Set the \textit{X} position type to \textit{percentage of parent
-  container}
-  \item Set the position to \textit{(30, 55)}
-  \item Set the preferred size to \textit{(120, 40)}. Buttons resize
+  \item Set the \textit{X} \textit{Position type} to \textit{percentage of
+  parent container}
+  \item Set the \textit{Position} to \textit{(30, 55)}
+  \item Set the \textit{Preferred size} to \textit{(120, 40)}. Buttons resize
   automatically based on their content, the preferred size determines the
   minimum size of the button
-  \item Set the title to \textit{Back to Menu}
-  \item Set the font name to \textit{Optima-Bold}
-  \item Set up a selector (in the code connections tab). Name it
+  \item Set the \textit{Title} to \textit{Back to Menu}
+  \item Set the \textit{Font name} to \textit{Optima-Bold}
+  \item Set up a \textit{selector} in the code connections tab. Name it
   \textit{backToMenu} and set the target to \textit{Owner}.
 \end{enumerate}
 \end{leftbar}
 
-Just as we let the owner change the text of the label, we will also invoke the
-button callbacks on the owner - we want to avoid creating a custom class for
-this simple popup.
+Just as we set up the \textit{code connection} of the label with the owner, we will also invoke the button callbacks on the owner
+ - we want to avoid creating a custom class for this simple popup.
 
 You can now copy this button to create the second one.
 \begin{leftbar}
 Copy the button that we just created. Apply the following changes:
 \begin{enumerate}
-  \item Change the position reference corner to \textit{Bottom-right}
-  \item Change the selector to \textit{playAgain} 
+  \item Change the \textit{Position reference corner} to \textit{Bottom-right}
+  \item Set the \textit{Position} to \textit{(30, 55)}
+  \item Change the \textit{Title} to \textit{Play again}
+  \item Change the \textit{selector} in the code connections tab to
+  \textit{playAgain}
 \end{enumerate}
 \end{leftbar}
 
 Now the popup should look exactly as depicted in figure \ref{fig:
-gameover_popup} at the beginning of this chapter.
+gameover_popup}, at the beginning of this chapter.
 
 We're almost done with designing the popup in \SB{}. However, so far we haven't
 considered how this popup is going to be presented. It would be weird if it
 would suddenly appear at the end of the game, without any visual transition.
 Especially iOS users are used to smooth transitions and UI elements that are
 presented and dismissed with animations - our game should live up to these
-standards! \SB{}'s timeline editor makes implementing this a matter of seconds!
+standards! \SB{}'s timeline editor makes implementing this a matter of seconds.
 
 To present the popup smoothly we will use a scale animation (very similiar to
 the animation that iOS uses for its alert views). Here's what it will look like:
@@ -1964,23 +1976,26 @@ the animation that iOS uses for its alert views). Here's what it will look like:
     property}\label{fig: animate_gamover_popup}
 \end{figure}
 
-The animation will have a length of 13 frames. We will scale the popup from 0
-to 1.1 and finally to 1. This approach creates a nice little bounce animation
-when the popup appears.
+The animation will have a length of 13 frames. We will scale the popup from 0\%
+to 110\% and finally to 100\% of its final size. This approach creates a nice
+little bounce animation when the popup appears.
 
-Instead of creating a new timeline, we will use the \textit{Default Timeline}
-that is provided by \SB{} for every \ccbfile{}. The default timeline has
-\textit{autoplay} activated, which means that it runs as soon as the root node
-of the \ccbfile{} is added to an active scene. By coincidence this is exactly
+Instead of creating a new timeline we will use the \textit{Default Timeline}
+that is provided by \SB{} for every \ccbfile{}. The default timeline has the
+\textit{autoplay} option activated, which means that it runs as soon as the root
+node of the \ccbfile{} is added to an active scene. By coincidence this is exactly
 the behavior we want: as soon as the popup is added to a scene we want this
-animation to play once.
+animation to play once. We can leave the \textit{autoplay} option activated and
+don't need to trigger this animation in code.
 
-Note, that \SB{} does not allow us to add keyframe based animations to the root
-node, instead we will animate the \textit{CCSprite9Slice} which has all other
-elements of the popup as its children.
+Note that \SB{} does not allow us to add keyframe based animations to the root
+node of \ccbfile{}, instead we will animate the \textit{CCSprite9Slice} which
+has all other elements of the popup as its children.
 
 \begin{leftbar}
-Select the \textit{CCSprite9Slice} in the timeline. Since this animation is very
+Set up the animation for the popup:
+\begin{enumerate}
+  \item Select the \textit{CCSprite9Slice} in the timeline. Since this animation is very
 short, you should use the timeline's maximum zoom level to place the keyframes
 accurately. Drag the zoom lever in the top right corner all the way to the
 right:
@@ -1988,12 +2003,17 @@ right:
     \centering
     \includegraphics[width=150pt]{images/Chapter7/timeline_zoom.png}
 \end{figure}
-Now, create three keyframes by hitting the \textit{S} key, one at
+
+\item Now, create three keyframes for our animation. Create one at
 \textit{00:00:00}, one at \textit{00:00:09} and a third one at
-\textit{00:00:13}. Next, set the scale values by double-clicking onto each of
-the keyframes. As show in figure \ref{fig: animate_gamover_popup} we want the
-values to be \textit{0}, \textit{1} and \textit{1.1}.
+\textit{00:00:13}. You can create the \textit{scale} keyframes by hitting the
+\textit{S} key or by using the \textit{Animation} menu.
+
+\item Next, set the scale values by double-clicking onto each of the keyframes. As show in figure \ref{fig: animate_gamover_popup} we want the
+values to be \textit{0.0}, \textit{1.0} and \textit{1.1}.
+\end{enumerate}
 \end{leftbar}
+
 You can now run the animation and you should see a nice bounce effect. If you
 have ever paid close attention to the animations of system elements on iOS you
 will realize that something with this animation still doesn't feel exactly
@@ -2009,18 +2029,18 @@ one is noticeable, even if the entire animation only lasts 13 frames.
 Since the developers of \cocos{} are aware of this effect, they have provided us
 with a whole bunch of different interpolations. Once you have created two
 keyframes and a pink bar appears between them you can select between all of
-the variations by right-clicking onto the pink bar.
+the variations by right-clicking onto the bar.
 
 Many developers have done a good job of visualizing the different interpolation
 types. Kirill Muzykov has create a nice blog post with animated diagrams of the
-different interpolations that \cocos{} provides
+different interpolations that \cocos{} provides:
 \url{http://kirillmuzykov.com/cocos2d-iphone-easing-examples/}.
 
 For this animation we are going to use the \textit{Ease In} interpolation.
 
 \begin{leftbar}
-Right-click onto the segment between the first and the second keyframe and
-select \textit{Ease In} as the interpolation function:
+Right-click onto the segment between the \textbf{first} and the \textbf{second}
+keyframe and select \textit{Ease In} as the interpolation function:
 \begin{figure}[H]
     \centering
     \includegraphics[width=200pt]{images/Chapter7/timeline_ease_in.png}
@@ -2028,10 +2048,9 @@ select \textit{Ease In} as the interpolation function:
 \end{leftbar}
 
 Now you can run the animation again. You should notice that it is looking much
-better now! These are the small details that catch the player's attention.
+better! These are the small details that catch the player's attention.
 
-Now we are ready to present this popup in code!
-
+We are ready to present this popup in code!
 
 \section{Presenting the popup in code}
 
@@ -2054,17 +2073,14 @@ from within \inlinecode{MainScene}. Later we'll use it to present the final
 score at the end of each game.
 
 Our game over popup should be presented above all other content of
-\inlinecode{MainScene}, so we should add a new entry to the drawing order enum,
-that places the popup at the highest z-order.
+\inlinecode{MainScene}. We should add a new entry to the
+\inlinecode{DrawingOrder} enum that places the popup at the highest z-order.
 
 \begin{leftbar}
 Extend the drawing order enum by adding a case for our new popup:
 \begin{lstlisting}
 enum DrawingOrder: Int {
-  case BehindPot
-  case PotTop
-  case FallingObject
-  case PotBottom
+  case GameplayElements
   case ScoreBoard
   case GameOverPopup
 }
@@ -2073,8 +2089,8 @@ enum DrawingOrder: Int {
 
 Now we're set up to work on the code that adds the popup to
 \inlinecode{MainScene} as soons as the game ends. We'll modify the existing
-\inlinecode{gameOver} function in this step. So far \inlinecode{gameOver}
-transitions back to the \inlinecode{StartScene} when the game ends, we can
+\inlinecode{gameOver} method in this step. So far \inlinecode{gameOver}
+transitions back to the \inlinecode{StartScene} when the game ends. We can
 remove all of that code for now.
 
 \begin{leftbar}
@@ -2089,28 +2105,27 @@ func gameOver() {
 \end{lstlisting}
 \end{leftbar}
 
-In the new implementation of \inlinecode{gameOver}, we're turning of user
-interaction on \inlinecode{MainScene} by setting the
-\inlinecode{userInteractionEnabled} property to \inlinecode{false}. This means
-that \inlinecode{MainScene} will no longer receive touch events. Without this line it
- would be possible for the user to drag the pot across the screen, even though the game has ended. Typically as soon as a
-game ends you want to disable all interactions between the player and any game
-elements - everything else tends to look awkward.
+In the new implementation of \inlinecode{gameOver} we're disabling the user
+interaction on the \inlinecode{MainScene}. This means that
+\inlinecode{MainScene} will no longer receive touch events after the game ends.
+Without this line it would be possible for the user to drag the pot across the screen, even though the game has ended. 
+Typically you want to disable all interactions between the player and any game
+elements as soon as a game ends.
 
-Additionally to disabling user interaction, we also need to set
+In addition to disabling user interaction, we also set
 \inlinecode{isDraggingPot} to \inlinecode{false}. Ongoing touch events are not
-cancelled when user interaction gets disable, so if a player would be
-dragging the pot when the game over condition is met, they could go one forever.
-With \inlinecode{isDraggingPot} disabled, the code in \inlinecode{touchMoved}
-will not be performed and the dragging is interrupted immediately.
+cancelled when user interaction gets disable. If a player would be
+dragging the pot when the game ends, they could go one forever.
+With \inlinecode{isDraggingPot} disabled, the code within
+\inlinecode{touchMoved} will not be performed and the dragging is interrupted immediately.
 
-Additionally we're calling the \inlinecode{presentGameOverPopup} method that we
+Lastly, we're calling the \inlinecode{presentGameOverPopup} method that we
 haven't implemented yet. As you'll see shortly, presenting the popup involves
-quite a few lines of boilerplate code, so it makes sense to bundle this
+quite a few lines of boilerplate code so it makes sense to bundle this
 functionality into a separate method.
 
-Let's implement \inlinecode{presentGameOverPopup} now. There aren't a lot of new
-concepts involved in this method, so I'll provide the entire implementation and
+Let's implement \inlinecode{presentGameOverPopup} now. There aren't a lot of
+new concepts involved in this method, so I'll provide the entire implementation and
 will discuss the details afterwards.
 
 \begin{leftbar}
@@ -2118,7 +2133,6 @@ Add the following lines to the end of the \inlinecode{MainScene} class,
 directly before the closing curly braces of the class definition:
 %TODO: discuss MARK: earlier add screenshot for outline with mark
 \begin{lstlisting}
-// MARK: Game over popup
 func presentGameOverPopup() {
   let gameOverPopup = CCBReader.load("GameOverPopup", owner:self)
   
@@ -2163,28 +2177,32 @@ incompatible with Swift, these constants are not available to Swift classes.
 Usually we could simply set the position type to
 \inlinecode{CCPositionTypeNormalized}, but because of this issue we need to
 construct the position type manually (if you are interested in the details you
-can read \url{https://github.com/spritebuilder/SpriteBuilder/issues/1346}).
+can read about
+the issue
+here: \url{https://github.com/spritebuilder/SpriteBuilder/issues/1346}).
 
-After we've set up the position type, we center the node by setting the position
+After we've set up the position type we center the node by setting the position
 to \textit{(0.5, 0.5)} and we set the \inlinecode{zOrder} to render this popup
 on top of all other game content.
 
 Then we configure which text is displayed on the popup. We haven't implemented
 this on the game mode classes yet, but we're adding a
-\inlinecode{highscoreMessage} function to each game mode that will return a
+\inlinecode{highscoreMessage} method to each game mode that will return a
 suitable highscore message for the current game state. This way each game mode
 can present a different message at the end of the game. This design makes it
 easy to add more game modes in future. We'll discuss the
-\inlinecode{highScoreMessage} function in detail as soon as we implement it.
+\inlinecode{highScoreMessage} method in detail as soon as we implement it.
 
 In the next line we add the game over popup to the gameplay scene. Adding the
 popup will trigger it's timeline to start playing. That will scale the popup
-from 0\% to 100\% size, with the animation that we have defined in \SB{}.
+from 0\% to 100\% size with the animation that we have defined in \SB{}.
 
 With this method in place we're getting close to presenting the popup! We'll
-need to satisfy two more code connections, the callback methods for both
-buttons on the popup, and we'll need to add the \inlinecode{highScoreMessage}
-method to our game modes.
+need to satisfy two more code connections: the callback methods for both
+buttons on the popup.
+
+Then we'll need to extend our game modes so that they capture a highscore that
+we can display within the popup.
 
 Let's start with the button and implement the callback for the \textit{Back to
 menu} button. All this button does is bring us back to the main scene, so the
@@ -2215,14 +2233,14 @@ or a new round of the same game. Creating a new instance of the core gameplay
 class is the simplest and most reliable way of resetting the entire state of the
 game.
 
-For this specific game there's on small gotcha that we need to avoid. The
+For this specific game there's one small gotcha that we need to avoid. The
 \inlinecode{MainScene} needs to know which gameplay mode has been selected. When
 a player hits the \textit{Play again} button, we want to start the \textit{same}
-game mode that the player has been playing up until then. That means as we
+game mode that the player has been playing up until then. This means that as we
 create a new instance of \inlinecode{MainScene}, we need to take care of
 preserving the selected game mode.
 
-With all of this in mind, let's add the \inlinecode{backToMenu} method.
+With all of this in mind, let's add the \inlinecode{playAgain} method.
 \begin{leftbar}
 Add the \inlinecode{playAgain} method below the \inlinecode{backToMenu} method:
 \begin{lstlisting}
@@ -2236,16 +2254,18 @@ func playAgain() {
 \end{lstlisting}
 \end{leftbar}
 Remember, when we use the \inlinecode{CCBReader.loadAsScene()} method, the
-entire scene graph from the loaded \ccbfile{} is wrapped into a \ccscene{}
-instance. That is why we need to access the first child of the loaded scene to
-get a reference to the new \inlinecode{MainScene} instance. With that reference
-at hand, we set the \inlinecode{gameMode} of the new \inlinecode{MainScene} to
-be the same as the currently selected game mode. The rest is business as usual,
+root node from the loaded \ccbfile{} is added as a child to a
+\ccscene{} instance. That is why we need to access the first child of the
+loaded scene to get a reference to the new \inlinecode{MainScene} instance. With that reference
+at hand we set the \inlinecode{gameMode} of the new \inlinecode{MainScene} to
+be the same as the currently selected game mode. The rest is business as usual;
 replacing the scene with an animated transition.
 
-And that's all there is; now you know how to add a \textit{play again} feature
-to your game easily. Next, we'll extend the game modes to provide individual
-highscore messages.
+And that's all there is; you now know how to add a \textit{play again} feature
+to your game. As you've seen it can be done with very little effort in \cocos{}!
+
+Now we'll extend the game modes to provide individual highscore messages, so
+that we have something to display on our highscore popup.
 
 \section{Providing a highscore for each game mode}
 Whenever we want to extend the functionality of our game modes we should start
@@ -2254,11 +2274,6 @@ by adding the new features to the \inlinecode{GameMode} protocol.
 Add the following method to the \inlinecode{GameMode} protocol:
 %TODO: Add info on documentation in Swift when creating this protocol first
 \begin{lstlisting}
-/**
-Provides a highscore message for the current game
-
-:returns: Highscore message
-*/
 func highscoreMessage() -> String
 \end{lstlisting}
 \end{leftbar}
@@ -2284,8 +2299,9 @@ The most exciting part of this implementation is the ternary operator that we
 use to determine whether or not we need to pluralize the term
 \inlinecode{second}. 
 
-The implementation of this method inside of \inlinecode{TimedGameMode} looks
-almost the same:
+Whenever the timed game mode ends we want to display the accomplished score. The
+implementation of \inlinecode{highscoreMessage} is very similar for both game
+modes.
 \begin{leftbar}
 Implement the \inlinecode{highscoreMessage} method in \inlinecode{TimedGameMode}
 as following:
@@ -2307,22 +2323,23 @@ You should see something very similar to this:
     \caption{An endless amount of popups is filling up the screen (and our
     main memory)}
 \end{figure}
-As soon as the game ends our popup gets presented. But not only once - new
-popups are added endlessly. We'll look into fixing this in the next section.
+As soon as the game ends our popup gets presented. But not only once; new
+popups are added endlessly. Why is that happening? We'll look into fixing this
+in the next section.
 
 \section{Tweaking the game over popup}
 The issue we are experiencing is very common among developers that are
 implementing their first game over popup. What is going wrong?
 
-We are presenting the popup from within the \inlinecode{update:} method, and
-that method gets called 60 times a second. We are currently not checking whether
-or not we've already presented the popup. Instead, every single frame the game
-over condition is met and we present a new game over popup. If you have the
+We are presenting the popup from within the \inlinecode{update:} method. That
+method gets called 60 times a second. We are currently not checking whether or not we've already presented the popup. 
+Instead, we present a new game over popup every single frame because the game
+over condition is always met. If you have the
 patience to wait long enough you will experience a crash due to excessive use of
 memory.
 
 The fix for this problem is pretty straightforward. We'll add a boolean flag to
-\inlinecode{MainScene} that will indicate whether we are in \textit{Game over}
+\inlinecode{MainScene} that will indicate whether we are in \textit{game over}
 state or not. If we are in game over state, we will skip the entire
 \inlinecode{update:} method. That way we will no longer check if the game over
 condition is met which means we'll no longer present an endless amount of
@@ -2335,11 +2352,11 @@ Let's add a new property to reflect the state of the game.
 \begin{leftbar}
 Add the following property to \inlinecode{MainScene}:
 \begin{lstlisting}
-private var isGameOver = false
+private var gameEnded = false
 \end{lstlisting}
 \end{leftbar}
 
-By default, \inlinecode{isGameOver} is \inlinecode{false}, as soon as the game
+By default, \inlinecode{gameEnded} is \inlinecode{false}, as soon as the game
 ends we'll set it to \inlinecode{true}. The most convenient place to set the
 flag is inside of the \inlinecode{gameOver} method, since this method is called
 as soon as the game ends.
@@ -2349,7 +2366,7 @@ Modify the \inlinecode{gameOver} method of \inlinecode{MainScene} to look as
 following:
 \begin{lstlisting}
 func gameOver() {
-  isGameOver = true
+  (*@\colorbox{light-gray}{gameEnded = true}@*)
   userInteractionEnabled = false
   isDraggingPot = false
   presentGameOverPopup()
@@ -2357,7 +2374,7 @@ func gameOver() {
 \end{lstlisting}
 \end{leftbar}
 
-No we'll also need to modify the \inlinecode{update:} method to check for this
+Now, we'll also need to modify the \inlinecode{update:} method to check for this
 flag.
 \begin{leftbar}
 Add the following statements to the beginning of the \inlinecode{update:}
@@ -2375,10 +2392,11 @@ If the \inlinecode{isGameOver} flag is set we immediately return from the
 \inlinecode{update:} method, without performing any game logic.
 
 Now you can run the game again, and you should notice that our issue is fixed.
-However, there's one thing left that is throwing me off. When the game ends and
+
+However, there's another small problem we should work on. When the game ends and
 the popup appears, we have multiple score displays on screen. The popup informs
-us about the final score, and in the background behind the popup we can see the
-scoreboard that is displayed during gameplay.
+us about the final score, and in the background, behind the popup, we can see
+the scoreboard that is displayed while the game is running.
 
 \begin{figure}[H]
     \centering
@@ -2388,7 +2406,8 @@ scoreboard that is displayed during gameplay.
 \end{figure}
 
 To fix this, we'll hide the scoreboard UI as soon as the game over popup is
-presented. We'll extend \inlinecode{presentGameOverPopup} to implement this. 
+presented. We'll extend the \inlinecode{presentGameOverPopup} method to
+implement this.
 
 \begin{leftbar}
 Add the following three lines to the end of \inlinecode{presentGameOverPopup}:
@@ -2415,6 +2434,8 @@ nicely presented popup with no duplicate information displayed behind it:
     \caption{Without the score information in \inlinecode{MainScene} this popup
     looks more polished}
 \end{figure}
+
+\section{Summary}
 
 Well done! In this chapter you have learned a lot about user interfaces in \SB{}
 and \cocos{}. You know how to use scroll views, how to present popups and

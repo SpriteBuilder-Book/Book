@@ -13,23 +13,23 @@
 \indexentry{Node Lifecycle|hyperpage}{63}
 \indexentry{Action System|hyperpage}{66}
 \indexentry{Touch Handling|hyperpage}{68}
-\indexentry{Assets!Adding Assets|hyperpage}{76}
+\indexentry{Assets!Adding Assets|hyperpage}{75}
 \indexentry{Assets!Automatic Downscaling|hyperpage}{76}
-\indexentry{Framework Classes!CCFileUtils|hyperpage}{82}
-\indexentry{Update Loop|hyperpage}{97}
-\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{97}
-\indexentry{Fixed Update|hyperpage}{100}
-\indexentry{\SB{} timeline|hyperpage}{101}
-\indexentry{Z-Order|hyperpage}{110}
+\indexentry{Framework Classes!CCFileUtils|hyperpage}{81}
+\indexentry{Update Loop|hyperpage}{96}
+\indexentry{Framework Classes|hyperindexformat{\CCSchedulerTarget}}{96}
+\indexentry{Fixed Update|hyperpage}{99}
+\indexentry{\SB{} timeline|hyperpage}{100}
 \indexentry{Node transformation!Bounding Box|hyperpage}{128}
-\indexentry{Node transformation!Position|hyperpage}{132}
-\indexentry{Z-Order|hyperpage}{136}
-\indexentry{User Interface!CCScrollView|hyperpage}{140}
-\indexentry{Document Types|hyperpage}{145}
-\indexentry{SpriteBuilder Timeline!Change Duration|hyperpage}{149}
-\indexentry{\SB{} Timeline!Chaining|hyperpage}{150}
-\indexentry{Start Scene|hyperpage}{159}
-\indexentry{User Interface!CCScrollView!Delegate|hyperpage}{161}
-\indexentry{Nodes!CCSprite9Slice|hyperpage}{188}
-\indexentry{SpriteBuilder Timeline!Interpolation|hyperpage}{195}
-\indexentry{SpriteBuilder Timeline!Create new   Timeline|hyperpage}{242}
+\indexentry{Node transformation!Position|hyperpage}{133}
+\indexentry{Z-Order|hyperpage}{137}
+\indexentry{Z-Order|hyperpage}{137}
+\indexentry{User Interface!CCScrollView|hyperpage}{144}
+\indexentry{Document Types|hyperpage}{149}
+\indexentry{SpriteBuilder Timeline!Change Duration|hyperpage}{153}
+\indexentry{\SB{} Timeline!Chaining|hyperpage}{155}
+\indexentry{Start Scene|hyperpage}{164}
+\indexentry{User Interface!CCScrollView!Delegate|hyperpage}{167}
+\indexentry{Nodes!CCSprite9Slice|hyperpage}{197}
+\indexentry{SpriteBuilder Timeline!Interpolation|hyperpage}{204}
+\indexentry{SpriteBuilder Timeline!Create new   Timeline|hyperpage}{250}

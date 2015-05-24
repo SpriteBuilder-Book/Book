@@ -1568,16 +1568,18 @@ Add a property to store the instantiated game mode:
 \begin{lstlisting}
 var gameMode:GameMode?
 \end{lstlisting}
-Next, add this property definition and observer to \inlinecode{gameMode}:
+Next, replace the existing property definition for
+\inlinecode{selectedGameMode} with this property and observer definition:
 \begin{lstlisting}
-var gameMode:GameMode = .Endless {
+var selectedGameMode:GameModeSelection = .Endless {
   didSet {
-    switch (gameMode) {
+    switch (selectedGameMode) {
     case .Endless:
       gameMode = EndlessGameMode()
     case .Timed:
       gameMode = TimedGameMode()
     }
+    
     self.addChild(gameMode?.userInterface)
     gameMode?.userInterface.zOrder = DrawingOrder.ScoreBoard.rawValue
   }
@@ -1585,7 +1587,7 @@ var gameMode:GameMode = .Endless {
 \end{lstlisting}
 \end{leftbar}
 Swift requires all non Optional properties to have a value after the
-initializer of the class is called. Since \inlinecode{gameMode} is is not
+initializer of the class is called. Since \inlinecode{selectedGameMode} is is not
 initialized from the \inlinecode{init} method, but is instead set by an outside caller after
  initialization we would have to mark it as an Optional type. An alternative to
  that is assigning an initial value. In this case it makes sense to work with
@@ -1595,40 +1597,89 @@ initialized from the \inlinecode{init} method, but is instead set by an outside 
 
 Inside of the property observer we first switch over the potential game modes.
 Depending on the game mode we instantiate a different game mode class. Next, we
-add the user interface of the created game mode to main scene. If you are fairly
-new to Swift you might be surprised by the question mark in
+add the user interface of the created game mode to \inlinecode{MainScene}. If
+you are fairly new to Swift you might be surprised by the question mark in
 \inlinecode{gameMode?.userInterface}. This pattern is called
 \textit{optional chaining}. In this specific case the \inlinecode{userInterface}
 variable is only being accessed if \inlinecode{gameMode} actually
-contains a value. More general optional chaining can be used to call methods and
-access properties on values that might be \inlinecode{nil}, without causing an
+contains a value. More generally, optional chaining can be used to call methods
+and access properties on values that might be \inlinecode{nil}, without causing an
 runtime error.
+
+\begin{details}[Theoretical problems]
+Note that the property observer that we've implemented on
+\inlinecode{selectedGameMode} is not entirely safe. Whenever the game mode gets
+set, we add a new UI onto the \inlinecode{MainScene} - without removing a a UI
+that potentially already exists. Theoretically this could cause multiple UIs to
+be displayed on \inlinecode{MainScene}. However, you'll see a little later in
+this chapter that this isn't a practical concern for our game.
+\end{details}
 
 In the last line of the property observer we set the \inlinecode{zOrder} of the
 game mode UI to \inlinecode{DrawingOrder.ScoreBoard.rawValue}. You probably
-remember that we have used an enum to keep track of our drawing order. The UI of
-the current game mode should be rendered on top of all gameplay elements, so we
-need a new entry in that enum.
+remember that we have used an enum to keep track of our drawing order when we
+implemented the object catching code.
+
+Here we have another use case for such a \inlinecode{DrawingOrder} enum. The UI
+of the current game mode should be rendered on top of all gameplay elements. 
+
+This means we need a new \inlinecode{DrawingOrder} enum for
+\inlinecode{MainScene}!
 
 \begin{leftbar}
-Extend the drawing order enum to include the case
-\inlinecode{DrawingOrder.ScoreBoard} that we've just used:
+Add the following enum to \inlinecode{MainScene.swift}:
 \begin{lstlisting}
   enum DrawingOrder: Int {
-    case BehindPot
-    case PotTop
-    case FallingObject
-    case PotBottom
+    case GameplayElements
     case ScoreBoard
   }
 \end{lstlisting}
 \end{leftbar}
 Having the scoreboard as the last case (with the highest integer value),
-means that the game mode UI will be rendered above all other elements in this
-scene.
+means that the game mode UI will be rendered above the
+\textit{GameplayElements}.
 
-Now we have instantiated a game mode - we can move on to the code that will
-communicate with it. Let's start by calling the
+Additionally, we need to assign the \inlinecode{.GameplayElements} z-order to
+the pot and the spawned objects.
+
+\begin{leftbar}
+Extend the \inlinecode{didLoadFromCCB} method in \inlinecode{MainScence} to set
+the pot's z-order:
+\begin{lstlisting}
+  override func onEnterTransitionDidFinish() {
+    super.onEnterTransitionDidFinish()
+    
+    userInteractionEnabled = true
+    (*@\colorbox{light-gray}{pot.zOrder =
+    DrawingOrder.GameplayElements.rawValue}@*)
+    
+    // spawn objects with defined frequency
+    schedule("spawnObject", interval: spawnFrequency)
+  }
+\end{lstlisting}
+\end{leftbar}
+
+We also need to set an initial z-order for every spawned object.
+
+\begin{leftbar}
+Extend the \inlinecode{spawnObject} method to set an initial z-order value:
+\begin{lstlisting}
+  ...
+  fallingObject.position = spawnPosition
+  (*@\colorbox{light-gray}{fallingObject.zOrder =
+  DrawingOrder.GameplayElements.rawValue}@*)
+  
+  addChild(fallingObject)
+}
+\end{lstlisting}
+\end{leftbar}
+
+Now the UI will be rendered in front of any game objects!
+
+We have successfully instantiated a game mode - we can now move on to the code
+that will communicate with it. 
+
+Let's start by calling the
 \inlinecode{gameplayStep(mainScene:, delta:)} method. This method needs to be
 called from within the \inlinecode{update:} method of \inlinecode{MainScene}.
 Additionally to calling the method we need to capture the return value to see
@@ -1638,9 +1689,9 @@ wether the current game is over or not.
 Add the following statements to the end of the \inlinecode{update:} method of
 \inlinecode{MainScene}:
 \begin{lstlisting}
-let gameOver = gameMode?.gameplayStep(self, delta: delta)
-if let gameOver = gameOver {
-  if (gameOver) {
+let isGameOver = gameMode?.gameplayStep(self, delta: delta)
+if let isGameOver = isGameOver {
+  if (isGameOver) {
     self.gameOver()
   }
 }
@@ -1651,8 +1702,8 @@ We call the step method of our delegate, passing a reference to
 and use it to check whether the game over condition occurred or not. If the game
 is over we call the \inlinecode{gameOver} method.
 
-We should add the \inlinecode{gameOver} method next. For now all it will do is
-displaying the start scene of this game. Later on we will display a popup
+We should add the \inlinecode{gameOver} method next. For now, all it will do is
+switch back to the start scene of our game. Later on we will display a popup
 that summarizes the player's results.
 
 \begin{leftbar}
@@ -1669,7 +1720,7 @@ func gameOver() {
 All we do is loading the \filemention{StartScene} and presenting it with a cross
 fade transition.
 
-Now all that is left is calling the \inlinecode{GameMode} when objects
+Now, all that is left is calling the \inlinecode{GameMode} when objects
 have been dropped or caught. Let's begin with dropped objects.
 
 \begin{leftbar}
@@ -1679,7 +1730,8 @@ delegate:
 func performMissedStep(fallingObject:FallingObject) {
   // check if falling object is below the screen boundary
   if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
-    gameMode?.gameplay(self, droppedFallingObject: fallingObject)
+    (*@\colorbox{light-gray}{gameMode?.gameplay(self, droppedFallingObject:
+    fallingObject)}@*) 
     ...
   }
 }
@@ -1696,7 +1748,8 @@ Extend \inlinecode{performCaughtStep:} with a call to the game mode delegate:
 func performCaughtStep(fallingObject:FallingObject) {
   // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
   if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
-    gameMode?.gameplay(self, caughtFallingObject: fallingObject)
+    (*@\colorbox{light-gray}{gameMode?.gameplay(self, caughtFallingObject:
+    fallingObject)}@*) 
     ...
   }
 }
@@ -1718,11 +1771,11 @@ similar to the following screen once the game starts:
 \end{figure}
 
 You should see the health bar grow and shrink according to the game mode
-rules that we implemented - finally all the parts have come together.
+rules that we implemented; finally all the parts have come together.
 
-Currently the automatic transition from the main scene back to the start scene
-is a little unexpected. It's typical for games to present a summary after each
-session the player has completed. In the next section we'll add a game over
+Currently the automatic transition from the main scene back to the start scene,
+as soon as the game ends, is a little unexpected. It's typical for games to
+present a summary after each session the player has completed. In the next section we'll add a game over
 popup to our game.
 
 \section{Adding a game over popup}
@@ -1751,7 +1804,8 @@ size to be \textit{(400, 300)} and name the file \filemention{GameOverPopup}.
 We will center the popup when we present it. Centering is a lot easier when the
 anchor point of the popup is at (0.5, 0.5).
 \begin{leftbar}
-Select the root node and change the \textit{Anchor point} to (0.5, 0.5).
+Select the root node of \filemention{GameOverPopup} and change the
+\textit{Anchor point} to (0.5, 0.5).
 \end{leftbar} 
 Next, we'll add the background for the popup. As you might have seen in figure
 \ref{fig: gameover_popup} our popup has rounded corners. The easiest way to
@@ -1782,15 +1836,16 @@ of \filemention{GameOverPopup.ccb}.
 
 Set up the sprite 9 slice as following:
 \begin{enumerate}
-  \item Set the position type to \textit{percentage of parent container} for
-  \textit{x} and \textit{y} position
-  \item Set the position to \textit{(50\%, 50\%)}
-  \item Set the content size type to \textit{percentage of parent container} for
+  \item Set the \textit{Position type} to \textit{percent of parent
+  container} for \textit{x} and \textit{y} position
+  \item Set the \textit{Position} to \textit{(50, 50)}
+  \item Set the \textit{Content size type} to \textit{percent of parent
+  container} for
   \textit{width} and \textit{height}
-  \item Set the width to \textit{(100\%, 100\%)} 
-  \item Set the anchor point to \textit{(0.5, 0.5)}
-  \item Set the sprite frame to \textit{assets/popup-background.png}
-  \item Set the opacity to \textit{0.95}
+  \item Set the \textit{Width} to \textit{(100\%, 100\%)} 
+  \item Set the \textit{Anchor point} to \textit{(0.5, 0.5)}
+  \item Set the \textit{Sprite frame} to \textit{assets/popup-background.png}
+  \item Set the \textit{Opacity} to \textit{0.95}
   \item Select a \textit{light blue} color
 \end{enumerate}
 \end{leftbar} 

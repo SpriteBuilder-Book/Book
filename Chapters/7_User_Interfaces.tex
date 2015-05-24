@@ -1,15 +1,16 @@
 \chapter{User Interfaces and implementing multiple game modes}
 
-So far we have worked hard on the core mechanic of our game. Another important
-aspect are the screens and components that wrap this mechanic. In this chapter
+So far we have made a lot of progress on the core mechanic of our game. Another
+important aspect are the screens and components that wrap this mechanic. In this chapter
 you will learn how to implement menus, popups and other user interface elements
 in \cocos{}. 
 
-\cocos{} provides its own set of basic UI components, such as buttons and
-labels. For most games these components are sufficient. However, in this chapter
-we also learn how to integrate Apple's UI framework \textit{UIKit}. Knowing
-that is important for integrating many core Apple API's. As a specific example,
-we will add integrate the Game Center framework in this chapter.
+Throughout this chapter you will not only learn how to build user interfaces
+with \cocos{} and \SB{}, you will also learn how to structure this game to
+support two different gameplay modes. We will implement and \textit{endless} and
+a \textit{timed} gameplay mode, each with a different set of rules and
+behaviors. We will choose an architecture that will make it easy to add more
+game modes in future.
 
 By the end of this chapter we will have a fully functional game!
 Here's the basic screen flow our game will have:
@@ -18,12 +19,6 @@ Here's the basic screen flow our game will have:
 		\centering
 		\includegraphics[width=0.7\linewidth]{images/Chapter6/screen_flow.png}
 \end{figure}
-
-Throughout this chapter you will not only learn how to build user interfaces
-with \cocos{} and \SB{}, you will also learn how to structure this game to
-support two different gameplay modes. We will implement and \textit{endless} and
-a \textit{timed} gameplay mode, each with a different set of rules and
-behaviors.
 
 Let's start out by adding the game mode selection scene!
 
@@ -59,18 +54,17 @@ The background image should have exactly the same settings as in
 \begin{leftbar}
 Select the background sprite in the timeline and apply the following steps:
 \begin{enumerate}
-  \item Set the position type for X to \textit{percentage of parent container}
-  \item Set the X position to \textit{50}
-  \item Set the position type for Y to \textit{percentage of parent container}
-  \item Set the Y position to \textit{50}
+  \item Set the \textit{Position type} for X and Y to \textit{percent of parent
+  container}
+  \item Set the \textit{Position} to \textit{(50, 50)}
 \end{enumerate}
 \end{leftbar}
 
 Now the background image should fill the entire background. We will be
 presenting some information in front of that background. To make that
 information stand out more we will dim the background a little bit by turning
-down its opacity. Since the fill color behind the background image is black a
-lower opacity will result in a darker image.
+down its opacity. Since the default fill color behind the background image is
+black, a lower opacity will result in a darker image.
 
 \begin{leftbar}
 Select the background sprite in the timeline. Set the opacity in the property
@@ -94,12 +88,15 @@ different screen size. Here's a little illustration:
 		their position on different screen sizes}
 \end{figure}
 
+As the screen resizes, the visible portion of the gameplay changes while the
+button positions remain similar.
+
 Throughout this chapter we will use \cocos{}'s reference
 corner feature to accomplish resizable user interfaces. 
 
 \begin{leftbar}
 Drag a \textit{CCLabelTTF} from the node library \textit{below} the background
-sprite, so that is rendered ontop of the background image:
+sprite, so that is rendered on top of the background image:
 \begin{figure}[H]
     \centering
     \includegraphics[width=200pt]{images/Chapter7/label_ontop_background.png}
@@ -107,8 +104,12 @@ sprite, so that is rendered ontop of the background image:
  
 Set the position up as following:
 \begin{enumerate}
-  \item Set the position to be relative from the \textit{Top-left}.
-  \item Set the position type for X to \textit{percentage of parent container}
+  \item Set the \textit{Position Reference Corner} to \textit{Top-left}:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=130pt]{images/Chapter7/pos_ref_corner.png}
+\end{figure}
+  \item Set the position type for X to \textit{percent of parent container}
   \item Set the X position to \textit{50}
   \item Set the Y position to \textit{80}
 \end{enumerate}
@@ -118,7 +119,7 @@ the font and appearance of this label a little:
 \begin{enumerate}
   \item As font name choose: \textit{Optima-Bold}
   \item As font size choose: \textit{40}
-  \item Set the draw color to \textit{black}
+  \item Under \textit{Font Effects}, set the draw color to \textit{black}
   \item Set the outline color to \textit{white}
   \item Set the outline width to \textit{6}
 \end{enumerate}
@@ -129,8 +130,6 @@ After setting the label up your start scene should look as following:
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.7\linewidth]{images/Chapter7/start_scene.png}
-		\caption{UI elements should be placed relative to screen edges to preserve
-		their position on different screen sizes}
 \end{figure}
 
 There's a lot more work left to do! As mentioned earlier we will create a scroll
@@ -153,7 +152,7 @@ want the user to select between two different game modes, each of these game mod
 represented by a full screen node. It wouldn't make sense to allow the user to
 scroll half way between the endless and timed game mode. For this specific case
 the scroll view provides an option called \textit{Paging enabled}. If you want
-to use a scroll view with paging your content node needs to have a size that is
+to use a scroll view with paging, your content node needs to have a size that is
 a multiple of the scroll view's size. In our particular example the content node
 for our scroll view will be twice as wide as the scroll view itself, resulting
 in a scroll view with two pages. When paging is enabled, the scroll view will
@@ -176,22 +175,27 @@ represent full screen content. Sprites are used for simple Sprite Images. Nodes
 are used for node compositions that don't have a specific content size. Layers
 are used to create content within a stage that has a fixed size.
 Layers are typically used for popups or scroll view content nodes because we
-want to layout the content based on a container size. We can still use relative
-positioning within layers. When the root node of the layer \ccbfile{} gets added
-to another node its size will be determined and all relative layouts will be
-applied accordingly. We'll use relative positioning for the content node we are
-about to create.
+want to layout the content based on a container size. We can still use
+parent-relative sizing for layers. For our scroll view content layer we will set
+a width that is \textit{2x} the width of the parent container. As soon as that
+layer is added to another node, the final size of it will be determined based on
+the size of that parent node.
 \end{details}
 
 \begin{leftbar}
-Select the root node of \textit{GameModeSelectLayer.ccb} and choose the width
-and height to be in percentage of the parent container. Choose 100\% for the
-height and 200\% for the width of the node:
+Change the size of the root node:
+\begin{enumerate}
+  \item Select the root node of \textit{GameModeSelectLayer.ccb}
+  \item Set the \textit{Content Size Type} of the width and height to  
+  \textit{percent of the parent container}
+  \item Set the content size to \textit{(200, 100)}
+\end{enumerate}
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.6\linewidth]{images/Chapter7/content_node_width.png}
+		\includegraphics[width=0.85\linewidth]{images/Chapter7/content_node_width.png}
 \end{figure}
 \end{leftbar}
+
 We want the scroll view to contain two pages, that means the content node needs
 to be exactly double as wide as the scroll view. Because we are setting up the
 size of the root node of this \ccbfile{} in percentage of the parent container,
@@ -204,23 +208,39 @@ pages. To provide a clean structure we will create one container node for each
 page.
 
 \begin{leftbar}
-Add a \ccnode{} as a child to the root node. Name this child
-\textit{endless-mode} by selecting the node in the timeline and hitting the
-return key. Set the content type of the node to be in percentage of the parent
-container. Set the width to 50\% and the height to 100\%. The container for the
-left page is set up.
+Add the container node for the left page:
+\begin{enumerate}
+  \item Add a plain \ccnode{} as a child to the root node of
+  \filemention{GameModeSelectLayer.ccb}
+  \item Name this child \textit{endless-mode} by selecting the node in the timeline and
+ hitting the return key
+  \item Set the \textit{Content Size Type} to \textit{Percent of parent
+  container} for both \textit{Width} and \textit{Height}
+  \item Set the \textit{Content Size} to \textit{(50, 100)}
+\end{enumerate}
 \end{leftbar}
 
+The first page is set up; let's add the second one.
+
 \begin{leftbar}
-Add a second \ccnode{} as a child to the root node. Name this child
-\textit{timed-mode}. Set the content type of the node to be in percentage of the parent
-container. Set the width to 50\% and the height to 100\%. Additionaly, set the x
-position to be in percentage of the parent container and set the value to 50\%.
+Add the container node for the right page:
+\begin{enumerate}
+  \item Add a plain \ccnode{} as a child to the root node of
+  \filemention{GameModeSelectLayer.ccb}
+  \item Name this child \textit{timed-mode} by selecting the node in the
+  timeline and hitting the return key
+  \item Set the \textit{Content Size Type} to \textit{Percent of parent
+  container} for both \textit{Width} and \textit{Height}
+  \item Set the \textit{Content Size} to \textit{(50, 100)}
+  \item Additionally, set the \textit{Position Type} for \textit{X} to
+  \textit{Percent of parent container}
+  \item Set the \textit{Position} to \textit{(50, 0)}
+\end{enumerate}
 \end{leftbar}
 
 Now we have containers for each page set up. We are going to fill them with
-labels that describe the game mode represented on each page and an arrow
-indicating that there is another game mode available by swiping across the
+labels that describe the game mode represented on each page. We'll also add an
+arrow indicating that there is another game mode available by swiping across the
 screen. This is what the completed content node will look like:
 
 \begin{figure}[H]
@@ -232,12 +252,14 @@ screen. This is what the completed content node will look like:
 First, let's add the labels for the endless mode.
 
 \begin{leftbar}
-Drag a \cclabel{} from the node library onto the \textit{endless-mode} node.
-Center the label within its parent node by choosing a position type of
-percentage of parent container. Then set x and y position to 50\%. This label
-should look the same as the \textit{Choose your game mode} label on the start
-scene. Apply the following settings:
+Add the label for the endless mode, it should ook the same as the \textit{Choose your game mode} label on the start
+scene:
 \begin{enumerate}
+  \item Drag a \cclabel{} from the node library onto the \textit{endless-mode}
+  node
+  \item Center the label within its parent node by choosing a \textit{Position type} of
+\textit{percentage of parent container}
+  \item Set the \textit{Position} to \textit{(50, 50)} 
   \item Set the label text to \textit{Endless}
   \item As font name choose: \textit{Optima-Bold}
   \item As font size choose: \textit{40}
@@ -251,15 +273,10 @@ Next, let's add the arrow on the right side that will indicate that the player
 can switch to the timed game mode.
 
 \begin{leftbar}
-Drag a \cclabel{} from the node library onto the \textit{endless-mode} node.
-Apply the following settings:
+Add an arrow to the \textit{endless-mode} node:
 \begin{enumerate}
-  \item Set the label text to \textit{>>}
-  \item As font name choose: \textit{Optima-Bold}
-  \item As font size choose: \textit{40}
-  \item Set the draw color to \textit{black}
-  \item Set the outline color to \textit{white}
-  \item Set the outline width to \textit{6}
+  \item Copy and Past the \textit{Endless} node
+  \item Change the label text to \textit{>>}
   \item Set the position up as following: \begin{figure}[H]
 										  \centering
 										  \includegraphics[width=150pt]{images/Chapter7/arrow_label_position.png}
@@ -273,11 +290,12 @@ Now your stage should look like this:
 \includegraphics[width=150pt]{images/Chapter7/endless_mode.png}
 \end{figure}
 We're going to add a little visual detail to this game mode selection layer. The
-arrows indicating the other available shall blink. This can be easily
-accomplished using \SB{}'s timeline feature. 
+arrows indicating the other available game mode shall blink. This can be easily
+accomplished using \SB{}'s timeline feature. The animation shall last one
+second, so start by changing the timeline duration.
 
 \begin{leftbar}
-Set the timeline duration to 1 second:
+Set the timeline duration to 1 second as illustrated in the image below: 
 \begin{figure}[H]
 \centering
 \includegraphics[width=300pt]{images/Chapter7/timeline_duration.png}
@@ -290,12 +308,13 @@ Now we are going to use three \textit{opacity} keyframes to create the blinking
 animation. 
 \begin{leftbar}
 Select the label with the arrows in the timeline. Then create three
-keyframes by hitting the \textit{O} (like in opacity) key on your keyboard.
-Alternatively you can create keyframes through the top bar menu:
-\textit{Animation -> Insert Keyframe\ldots -> Opacity}. Place the first keyframe
-at 0 seconds the second one at 0.5 seconds and the third one at 1
-second. You can choose the exact position of a keyframe by dragging the timeline
-ruler to the according position:
+keyframes. Place the first keyframe
+at timestamp 00:00:00 the second one at timestamp 00:00:15 and the third
+one at timestamp 00:01:00. You can choose the exact position of a
+keyframe by dragging the timeline ruler to the according position. You can create keyframes by hitting the
+\textit{O} (like in opacity) key on your keyboard. Alternatively you can create
+keyframes through the top bar menu:
+\textit{Animation -> Insert Keyframe\ldots -> Opacity}:
 \begin{figure}[H]
 \centering
 \includegraphics[width=70pt]{images/Chapter7/timeline_ruler.png}
@@ -317,8 +336,8 @@ small popup in which you can modify the relevant values:
 \end{figure}
 
 \begin{leftbar}
-Set the opacity in the first keyframe to 0. Set the opacity to 1 in the second
-keyframe. For the third keyframe set the opacity to 1 again.
+Set the opacity in the first keyframe to 1.0. Set the opacity to 0.0 in the
+second keyframe. For the third keyframe set the opacity to 1.0 again.
 \end{leftbar}
 
 Now the arrow will appear for half a second and then disappear for another half
@@ -333,8 +352,9 @@ timeline to itself you have an endlessly running timeline animation!
 Chain the default timeline to itself as shown below:
 \begin{figure}[H]
 \centering
-\includegraphics[width=200pt]{images/Chapter7/chain_timeline.png}
-\caption{Double-click onto keyframes to modify their values}
+\includegraphics[width=200pt]{images/Chapter7/chain_timeline_2.png}
+\caption{\SB{} allows you to connect different animations by chaining
+timelines}
 \end{figure}
 \end{leftbar}
 
@@ -351,32 +371,57 @@ Note that this control will only affect your previewed animation in \SB{}. Not
 the actual animation running in your game.
 \end{details}
 
-Now we are finished setting up one of the two game modes. Setting up the node
-for the timed game mode involves exactly the same steps as you have seen just
-now. The only difference is the arrow label. The arrows should be pointing to
-the left and the arrow should be positioned from the left edge of the
-\textit{timed-mode} node. I will leave this as an exercise to you. Remember that
-you can always check the solution on GitHub if you get stuck. Once you have set
-up the node for the second game mode come back and we'll integrate this game
-mode selection layer into the start scene.
+Now we are finished setting up one of the two pages for our scoll view. Setting
+up the node for the timed game mode involves exactly the same steps as you have seen just
+now. The only difference is the arrow label and the caption of the game mode
+label.
+
+The arrows should be pointing to the left and the arrow should be positioned from the left edge of the
+\textit{timed-mode} node. The main label should say \textit{Timed}
+instead of \textit{Endless}. 
+
+I will leave this as an exercise to you. Remember that you can always check the
+solution on GitHub if you get stuck.%TODO: link to code 
+Once you have set up the node for the second game mode come back and we'll
+integrate this game mode selection layer into the start scene.
 
 \begin{leftbar}
-Switch to the \textit{StartScene.ccb} file and drag a \textit{CCScrollView} from
-the node library \textbf{below} the \textit{background} node in the timeline
-(so that the scroll view is rendered in front of the background image). 
+Set up the second page of the \textit{GameModeSelectLayer}. You'll be the
+fastest if you copy and past the labels from the first page.
+\end{leftbar}
 
-Set the position to (0,0). 
+Once you are done, your solution should look like this:
 
-The scroll view shall cover the entire screen, so set the size type to
-\textit{percentage of parent container} and choose 100\% for the width and the height of the scroll view. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=250pt]{images/Chapter7/sv_result.png}
+\end{figure}
 
-Set up the scroll view specific settings in the
+Now we're ready to integrate this content node into a scroll view!
+
+\begin{leftbar}
+Add a scroll view to \textit{StartScene.ccb}:
+\begin{enumerate}
+  \item Open the \textit{StartScene.ccb} file
+  \item Drag a \textit{Scroll View} from
+the node library to the timeline of \textit{StartScene.ccb} and
+drop it \textbf{below} (not on top of!) the \textit{background} node in the
+timeline (so that the scroll view is rendered in front of the background image)
+  
+  \item Set the \textit{Position} to \textit{(0,0)}
+  \item The scroll view shall cover the entire screen, so set the \textit{Content size
+type} to \textit{Percent of parent container} for both \textit{Width} and
+\textit{Height}
+\item Set the \textit{Content Size} to \textit{(100, 100)}
+\item Set up the scroll view specific settings in the
 property inspector as follows:
 \begin{figure}[H]
 \centering
 \includegraphics[width=250pt]{images/Chapter7/scrollview_settings.png}
 \end{figure}
+\end{enumerate}
 \end{leftbar}
+
 Let's discuss the scroll view settings briefly. The most important property is
 the \textit{Content node} property. Here you can choose a \ccbfile{} that will
 be displayed inside of the scroll view. We choose the
@@ -405,23 +450,25 @@ Let's start by adding a plain button. It is going to be positioned towards
 the bottom of the screen, below the label that shows the selected game mode.
 
 \begin{leftbar}
-Open \textit{StartScene.ccb} and drag a \textit{Button} from the node library to
-the stage, make sure it is below the \textit{background} node, just as the
-scroll view and the label we added earlier.
-Set the button up as following:
+Add a start button to the game mode selection scene:
 \begin{enumerate}
+  \item Open \textit{StartScene.ccb} 
+  \item Drag a \textit{Button} from the node library to
+the stage, make sure it is below the \textit{background} node, just as the
+scroll view we added earlier
   \item Set the \textit{Position Reference Corner} to \textit{Bottom-left}
-  \item Set the x position to be \textit{In percent of parent container}
-  \item Set the x position to \textit{50} to center the node
-  \item Set the y position to \textit{80}
+  \item Set the \textit{Position Type} for \textit{X} to \textit{Percent of
+  parent container}
+  \item Set the \textit{X Position} to \textit{50} to center the node
+  \item Set the \textit{Y Position} to \textit{80}
   \item Set the \textit{Preferred size} to \textit{100.0, 40.0}
-  \item Set the \textit{title} to \textit{Start!}
+  \item Set the \textit{Title} to \textit{Start!}
   \item Set the \textit{Font name} to \textit{Optima-Bold}
   \item Set the \textit{Font size} to \textit{17.00} 
 \end{enumerate}
 \end{leftbar}
 
-Let's discuss some of these properties we just set up. As a short reminder - in
+Let's discuss some of the properties we just set up. As a short reminder - in
 almost all cases we want to position UI elements relative to the screen corner
 which they are closest to. This will result in the best behavior when the game
 runs on different screen sizes. Therefore we choose the \textit{Bottom-Left}
@@ -430,10 +477,10 @@ corner as reference corner (technically we could also choose the
 wouldn't make any difference).
 
 Another interesting property is the \textit{Preferred Size}. Buttons
-automatically resize to be large enough surround their content (in this case
+automatically resize to be large enough to enclose their content (in this case
 the button text). If we want a button to appear larger than necessary we can set
 the \textit{Preferred Size} property. In this example we make the button a
-little bit larger than required to fit the text \textit{Start!}.
+little bit larger than is required to fit the text \textit{Start!}.
 
 We also need to set up some code connections. When the user taps the button we
 want to start the transition. And there's another little feature that's
@@ -450,7 +497,7 @@ tab. Set up a code connection with the \textit{Doc root var} and call it
 \textit{playButton}. 
 \end{leftbar}
 
-We are going to use this code connection to active and deactivate the start
+We are going to use this code connection to activate and deactivate the start
 button. Towards the beginning of this book we have discussed how we can connect
 method calls to button taps (\ref{target_selector}). Now we are going to use
 this functionality for the start button.
@@ -460,8 +507,8 @@ Set the \textit{selector} (method name) to \textit{playButtonPressed} and choose
 the \textit{target} to be \textit{Document root}.
 \end{leftbar}
 
-As soon as the button is clicked the \inlinecode{playButtonPressed} will be
-called on the class of the root node. Right now the root node has no class set
+As soon as the button is tapped the \inlinecode{playButtonPressed} method will
+be called on the class of the root node. Right now the root node has no class set
 up. Let's change that.
 
 \begin{leftbar}
@@ -472,9 +519,9 @@ then open the code connections tab. Inside of the code connections tab set the
 
 We'll need one more code connection for this scene - a connection for the
 scroll view. Later, when we add some code to this scene you will see that we
-need to connect to the scroll view to be informed when the scroll view
-starts/stops scrolling. Whenever that happens we need to deactivate and activate
-the start button accordingly.
+need to connect to the scroll view to get informed when it
+starts and stops scrolling. Whenever that happens we need to deactivate and
+activate the start button accordingly.
 
 \begin{leftbar}
 Select the scroll view from the timeline and open the code connection tab. Set
@@ -483,13 +530,20 @@ up a code connection to \textit{Doc root var} and name that connection
 \end{leftbar}
 
 Now we have all the code connections set up. Before we add some code to make
-this scene work we will work through one last step in SpriteBuilder - creating a
-nicely animated transition from the selection scene to the gameplay scene.
+this scene work we will work through one last step in SpriteBuilder. We'll
+create a nicely animated transition from the selection scene to the gameplay scene.
 
 \subsection{Adding a fancy transition animation}
 
-This is what our transition shall look like:
+Our transition will consist of two different components:
+\begin{enumerate}
+  \item The UI elements will move off the screen
+  \item The background image will brighten up to full opacity
+\end{enumerate}
 
+Once these two steps are complete, the gameplay action will start.
+
+Here's an illustration of what our transition will look like:
 \begin{figure}[H]
 		\centering
 		\includegraphics[width=0.85\linewidth]{images/Chapter7/gameplay_transition.png}
@@ -498,13 +552,15 @@ This is what our transition shall look like:
 \end{figure}
 
 This transition is a nice example of how menus can be integrated into games
-seamlessly. Luckily creating this animation is pretty straightforward, using
-SpriteBuilder's timeline. There are a bunch of steps involved, but none of them
-are complicated. First, we'll need to create a new timeline. The default
-timeline runs automatically as soon as the scene becomes visible - the animation
-we are about to build, in contrast, shall only run when the user has selected a
-game mode. Therefore we need to create new timeline which we can run when
-triggered in code.
+seamlessly. Using SpriteBuilder's timeline, creating this animation is pretty
+straightforward. There are a bunch of steps involved, but none of them are
+complicated. 
+
+First, we'll need to create a new timeline. The default timeline runs
+automatically as soon as the scene becomes visible. The animation we are about
+to build, in contrast, shall only run when the user has selected a game mode.
+Therefore we need to create new timeline which we can explicitly start playing
+from code.
 
 \begin{leftbar}
 Create a new timeline for our transition animation:
@@ -519,8 +575,15 @@ menu (\textit{Animation -> Edit Timelines\ldots}). Change the timeline name to
 We want the transition to be pretty fast, so let's set the timeline duration to
 1 second.
 \begin{leftbar}
-Set timeline duration to 1s. If you forgot how to change the timeline duration
-you can skim back a few pages to figure \ref{fig: timeline_duration}.
+\begin{enumerate}
+  \item Switch to the \textit{StartGameplay} timeline:
+  \begin{figure}[H]
+    \centering
+    \includegraphics[width=200pt]{images/Chapter7/switch_timeline.png}
+\end{figure}
+  \item Set timeline duration to 1s. If you forgot how to change the timeline duration
+you can skim back a few pages to figure \ref{fig: timeline_duration}
+\end{enumerate}
 \end{leftbar}
 Next, we are going to set up keyframes for all of the UI elements that we want
 to move off the screen. Additionally we will fade in the background sprite. Make
@@ -536,7 +599,7 @@ sure to follow the instructions exactly!
   \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
   unchanged
   \item Create a second \textit{Position Keyframe} at 1 second and set the
-  position to \textit{(50\%, -400 points)}
+  position to \textit{(50, -400)}
   \item Select the \textit{CCScrollView}
   \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
   unchanged
@@ -546,7 +609,7 @@ sure to follow the instructions exactly!
   \item Create a \textit{Position Keyframe} at 0 seconds, leave the position
   unchanged
   \item Create a second \textit{Position Keyframe} at 1 second and set the
-  position to \textit{(50\%, -50 points)}  
+  position to \textit{(50, -50)}  
 \end{enumerate}
 \end{leftbar}
 Great! If you want you can test the animation with the \SB{} timeline playback
@@ -563,10 +626,8 @@ callback in code that gets triggered as soon as this animation completes.
 \begin{itemize}
   \item Provide a completion block to the animation manager of a scene. This
   completion block will be called whenever a timeline animation completes
-  (\inlinecode{setCompletedAnimationCallbackBlock:})
   \item Implement a delegate method that gets called by the animation manager
   when a timeline animation completes
-  (\inlinecode{completedAnimationSequenceNamed:})
   \item Set up a callback method within a \SB{} timeline animation
 \end{itemize}
 
@@ -589,7 +650,7 @@ Place that callback at 1 second. You can also choose the \textit{target} and
 
 Great! This was quite a lot of work, but now we have a game mode selection
 scene (including a scroll view) and a great transition into the gameplay scene.
-Now it's time to switch back to code and implement the scene transition.
+Now it's time to switch back to code!
 
 \subsection{Implementing the game mode selection}
 
@@ -597,7 +658,7 @@ Now it's time to switch back to code and implement the scene transition.
 Publish the \SB{} project and switch to the \xcode{} project.
 \end{leftbar}
 
-The first change we need to make to the \xcode{} project, is setting up which
+The first change we need to make to the \xcode{} project is to set up which
 scene gets presented when our game starts\index{Start Scene}. By default it's
 the \textit{MainScene}. However, we have created a new \textit{StartScene} and want
 that one to be the first scene of the game.
@@ -642,35 +703,36 @@ class StartScene: CCNode {
   
   weak var scrollView: CCScrollView!
   weak var playButton: CCButton!
-  var selectedGameMode: MainScene.GameMode = .Endless
+  var selectedGameMode: MainScene.GameModeSelection = .Endless
   
 }
 \end{lstlisting}
 \end{leftbar}
 The first two variables are necessary for the code connections that we set up
 in our \SB{} project. The third variable stores which game mode the player has
-currently selected. Since the game mode is a choice between multiple options, an
+currently selected. Since the game mode is a choice between multiple options an
 enum is a great way to model this. The enum referenced here
-(\inlinecode{MainScene.GameMode}) does not exist yet. We need to add it to the
+(\inlinecode{MainScene.GameModeSelection}) does not exist yet. We need to add it to the
 \inlinecode{MainScene} class.
 
 \begin{leftbar}
 Open \textit{MainScene.swift} and add the following lines:
 \begin{lstlisting}
-var gameMode:GameMode?
+var selectedGameMode: GameModeSelection?
   
-enum GameMode: Int {
+enum GameModeSelection: Int {
   case Endless
   case Timed
- }
+}
 \end{lstlisting}
 \end{leftbar}
 The first line is a property that stores the game mode of the current game.
 Later we will use that property to apply different rules to the gameplay and
-display different score information. Once the user has selected a game mode, the
-\inlinecode{StartScene} will set this property on the \inlinecode{MainScene}.
+display different score information based on the game mode that player picker.
+The information on which game mode the player has picker will be handed to us by
+the \inlinecode{StartScene}.
 
-We've also added an enum definition. The \inlinecode{GameMode} enum has two
+We've also added an enum definition. The \inlinecode{GameModeSelection} enum has two
 different states, one for each game mode. For now we will only implement an
 endless and a timed game mode. As we've done earlier, we are associating
 \textit{raw values} with this enum by adding the \inlinecode{Int} type after the
@@ -690,21 +752,12 @@ mode was selected. Let's start with the scroll view related code.
 \subsubsection{Implementing a scroll view delegate}\index{User
 Interface!CCScrollView!Delegate}
 If you have written code for the iOS platform before, you are very familiar with
-the principle of delegation. Since this book does not necessarily require
-previous iOS app development knowledge, I will give you a brief introduction.
+the principle of delegation. However, this book does not necessarily require
+previous iOS app development knowledge.
 
-Delegation is often used in iOS frameworks when an object A wants to provide an
-object B with the ability to modify object A's behavior or to listen to changes
-of object A. However, object A does not need to know the exact type of object B.
-Instead, all of the methods that object B can implement are described in a
-protocol. Any object can implement this protocol and be the \textit{delegate} of
-object A.
-
-\begin{details}[The Delegate pattern]
-Delegation is used so frequently as part of iOS development that Apple has a
-short chapter about it in it's documentation:
-\url{https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html}
-\end{details}
+If you haven't heard of delegation before, Apple has a great introduction in
+their developer guide:
+\url{https://developer.apple.com/library/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Delegation.html}.
 
 The \inlinecode{CCScrollView} in \cocos{} also uses the delegate pattern. This
 is what the (Objective-C) protocol looks like:
@@ -721,21 +774,22 @@ is what the (Objective-C) protocol looks like:
 @end
 \end{lstlisting}
 
-There are a total of five methods that we can implement. The optional keyword
-marks a section of the protocol in which all listed methods are not required to
-be implemented. In this specific protocol \textit{all} methods are optional. We
-want to be informed when the scroll view starts and ends scrolling. There are
+There are a total of five methods that we can implement. The
+\inlinecode{optional} keyword marks a section of the protocol in which all
+listed methods are not required to be implemented. In this specific protocol \textit{all} methods are optional. 
+
+We want to be informed when the scroll view starts and ends scrolling. There are
 two methods that get called in these cases:
 \inlinecode{scrollViewWillBeginDragging} and
-\inlinecode{scrollViewDidEndDecelerating}. Let's implement these methods and
-become the delegate of our scroll view.
+\inlinecode{scrollViewDidEndDecelerating}. Let's become the delegate of our
+scroll view and implement these methods.
 
-The first step, is setting ourselves up as the delegate of the scroll view. We
+The first step is setting ourselves up as the delegate of the scroll view. We
 can set ourselves as the delegate as soon as the scene is entirely loaded (when
 \inlinecode{didLoadFromCCB} is called). 
 \begin{leftbar}
 Add the following implementation of \inlinecode{didLoadFromCCB} to
-\inlinecode{MainScene}:
+\inlinecode{StartScene}:
 \begin{lstlisting}
 func didLoadFromCCB() {
   scrollView.delegate = self
@@ -745,7 +799,7 @@ func didLoadFromCCB() {
 Now the scroll view knows about us and will call all the methods of the
 \inlinecode{CCScrollViewDelegate} protocol that we implement.
 
-Now we need to add the protocol implementation. In Swift, it is common to
+Next, we need to add the protocol implementation. In Swift it is common to
 implement protocols in class extensions. Class extensions allow us to add functionality to
 a class outside of its original definition. Moving all protocol
 implementations into separate class extensions is a nice way of keeping our code
@@ -771,13 +825,13 @@ extension StartScene: CCScrollViewDelegate {
   
   func scrollViewDidEndDecelerating(scrollView: CCScrollView) {
     playButton.enabled = true
-    selectedGameMode = MainScene.GameMode(rawValue: Int(scrollView.horizontalPage))!
+    selectedGameMode = MainScene.GameModeSelection(rawValue: Int(scrollView.horizontalPage))!
   }
   
 }
 \end{lstlisting}
 \end{leftbar}
-Activating and deactivating the button is very simple, \inlinecode{CCButton}
+Activating and deactivating the button is very simple; \inlinecode{CCButton}
 provides a property for it. Choosing the game mode based on the selected scroll
 view page is similarly straightforward. \inlinecode{CCScrollView} provides a
 \inlinecode{horizontalPage} property that allows use to read which page the user
@@ -811,9 +865,10 @@ timelines created in \SB{} can be referenced in code by using their name.
 Now there's a last method left to be implemented. We have added a callback to
 the timeline animation that gets called when the transition animation is
 completed. In the implementation of that method we should perform the actual
-scene transition. The animation that we are running only moves the UI elements
-off the screen. But as you might remember transition between scenes can only be
-implemented in code. 
+scene transition, which means replacing the \inlinecode{StartScene} with the
+\inlinecode{MainScene}. The animation that we are running only moves the UI
+elements off the screen. However, as you might remember transition between
+scenes can only be implemented in code.
 
 Transitions between scenes can also be animated. For the
 transition from the start scene to the gameplay scene we will use a cross fade
@@ -823,33 +878,45 @@ where the pot will be displayed. The cross fade animation will make the pot
 appear slowly before the actual game starts.
 
 \begin{leftbar}
-Add the following implementation for the timeline callback that we set up in
-\SB{} to \inlinecode{MainScene}:
+Add the following implementation for the timeline callback, that we've set up in
+\SB{}, to \inlinecode{MainScene}:
 \begin{lstlisting}
 func transitionAnimationComplete() {
   let scene = CCBReader.loadAsScene("MainScene")
   let gameplay = scene.children[0] as! MainScene
-  gameplay.gameMode = selectedGameMode
+  gameplay.selectedGameMode = selectedGameMode
   let transition = CCTransition(crossFadeWithDuration: 0.7)
   CCDirector.sharedDirector().replaceScene(scene, withTransition: transition)
 }
 \end{lstlisting}
 \end{leftbar}
+This method gets called as soon as the transition animation ends. Within it we
+perform some scene transition code with which you should be familiar from our
+very first \SB{} project. That code hides the \inlinecode{StartScene} and
+presents the \inlinecode{MainScene}.
 
 Great! Now our game mode selection screen is complete; including an awesome
 transition to the gameplay scene. You can run the project and try it out.
 
-Next, we are going to implement our two different game modes. We will start by
-creating two different UIs for the two game modes. In the endless game mode the
-player will loose health for dropping items or collecting incorrect items and
-will gain health for collecting correct items. For the endless mode we need to
-display a health bar. For the timed mode we need to display a counter that shows
-the remaining time and a score label.
+The next big step for our project is implementing the two different game modes.
+While implementing the game modes you will learn how to build modular and
+extensible code! 
+
+We will start off by creating two different UIs for the two game
+modes. 
+
+In the endless game mode the player will loose health for dropping items
+or collecting incorrect items and will gain health for collecting correct items. For the endless mode we need to
+display a health bar. 
+
+In the timed mode the player will have a hard time limit. For that mode
+we need to display a counter that shows the remaining time and a score label.
 
 \section{Implementing multiple game modes}
-Lets implement the two different game modes. We're
-going to start with setting up the UI in for each game mode in \SB{}. Then we
-will come up with a way to implement the two game modes without duplicating
+Let's get started on building the two different game modes. 
+
+We're going to start with setting up the UI in for each game mode in \SB{}. Then
+we will come up with a way to implement the two game modes without duplicating
 code - this is a great use case for exploring some potential design patterns for
 game development.
 
@@ -859,11 +926,16 @@ the UI elements of each game mode.
 
 \subsubsection{UI for the timed game mode}
 \begin{leftbar}
-Create a new \ccbfile{} of type \textit{Layer} and name it \textit{TimedModeUI}.
-Select the root node of the new \ccbfile{} and change the size type to be
-\textit{percentage of parent container} for both, width and height. Set the
-values for width and height to \textit{100\%}.
+\begin{enumerate}
+  \item Create a new \ccbfile{} of type \textit{Layer} and name it
+  \textit{TimedModeUI}
+  \item Select the root node of the new \ccbfile{} and change the
+  \textit{Content size type} to be \textit{percentage of parent container} for
+  both, width and height
+  \item Set the \textit{Content Size} to \textit{(100, 100)}
+\end{enumerate}
 \end{leftbar}
+
 We will place all UI elements relative to the edges of the screen. That way the
 UI will look good on any given screen size. That's why we want the root node to
 take 100\% the size of its parent container. If we instead would use a fixed
@@ -875,42 +947,56 @@ labels that we used on the start scene. The easiest way to do accomplish this is
 to actually copy the label in \SB{}.
 
 \begin{leftbar}
-Open \filemention{StartScene.ccb} and select the \textit{CCLabelTTF} from the
-timeline. Now select \textit{Edit -> Copy} from the \SB{} menu (or use the
-shortkey: \textit{CMD+C}). 
-
-Next, open \filemention{TimedModeUI.ccb} and select \textit{Edit -> Paste} from
+\begin{enumerate}
+  \item Open \filemention{StartScene.ccb}
+  \item Select the \textit{CCLabelTTF} from the
+timeline
+\item Now select \textit{Edit -> Copy} from the \SB{} menu (or use the
+shortkey: \textit{CMD+C})
+\item Next, open \filemention{TimedModeUI.ccb}
+\item Select \textit{Edit -> Paste} from
 the \SB{} menu (or use: \textit{CMD+V}).
+\end{enumerate} 
 \end{leftbar}
 
-Now you should have an exact copy of the start scene label in our new
-\ccbfile{}. Now we can make a small tweak to this label and lay it out
+Now you should have an exact copy of the start scene label in your new
+\ccbfile{}. We'll make a small tweak to this label and lay it out
 correctly.
 
 \begin{leftbar}
 Apply the following changes to the label:
 \begin{enumerate}
   \item Select the \textit{Position Reference Corner} to be the top left corner
+  \item Change the \textit{Position Type} for \textit{X} to be \textit{in
+  Points}
   \item Change the position to \textit{(20,20)}
   \item Change the anchor point to \textit{(0.0, 1.0)}
   \item Change the label text to \textit{Time: 0}
   \item Change the font size to \textit{30}
   \item Set up a code connection to the \textbf{Owner var} (not the \textit{Doc
-  root var}, this is very important!) and name it \textit{timeLabel}
+  root var}; this is very important!) and name it \textit{timeLabel}
 \end{enumerate}
 \end{leftbar}
 
-Now the label should be nicely positioned in the top left corner! We will not be
-creating a custom class for this UI layer, since it doesn't have any behavior
-associated with it. Instead we will later assign the label code connections to
-the classes that contain the actual gameplay logic. That's why it's important to set up the code connection with the \textit{Owner var} instead of the \textit{Doc root var}.
+Now the label should be nicely positioned in the top left corner! 
+
+This is the first time we are using a variable which is assigend to the
+\textbf{Owner var}. We will not be creating a custom class for this \ccbfile{},
+since it doesn't have any specific behavior that we need to implement. 
+
+Instead we will later assign the code connections to the classes that
+contain the actual gameplay logic. The \inlinecode{MainScene} instance will
+become the owner of this \ccbfile{} which means it will have access to all
+\textit{Owner vars}.
+
+That's why it's important to set up the code connection with the \textit{Owner var} instead of the \textit{Doc root var}.
 
 Next, let's create the points label. Since it will look almost identical to the
 time label we should save some time and just copy and modify the label again
 instead of starting with a new label from scratch. Note however, that you should
-be concentrated when using this approach. When you copy a node all of it's
-properties are copied (including code connections). If you aren't careful you
-might end up with hard to debug issues (e.g. because two nodes attempt to use
+be careful when using this approach. When you copy a node all of its
+properties are copied along with it (including code connections). If you aren't
+careful you might end up with hard to debug issues (e.g two nodes attempt to use
 the same code connection variable).
 
 \begin{leftbar}
@@ -918,8 +1004,9 @@ Copy the time label that you just created it and paste it. Change the pasted
 label as following:
 \begin{enumerate}
   \item Select the \textit{Position Reference Corner} to be the top right corner
-  \item Change the anchor point to \textit{(1.0, 1.0)}
-  \item Change the label text to \textit{Points: 0}
+  \item Change the \textit{Anchor point} to \textit{(1.0, 1.0)}
+  \item Change the \textit{label text} to \textit{Points: 0}
+  \item Set the \textit{Position} to \textit{(20, 20)}
   \item Set up a code connection to the \textbf{Owner var} and name it \textit{pointsLabel}
 \end{enumerate}
 \end{leftbar}
@@ -932,17 +1019,25 @@ Great! The UI for the timed game mode is completed. It should look as following:
 \end{figure}
 
 \subsubsection{UI for the endless game mode}
-Now lets create the second UI. We'll start of by creating a new \ccbfile{}.
+Now, let's create the  UI for the endless game mode which will contain a health
+bar. We'll start of by creating a new \ccbfile{}.
+
 \begin{leftbar}
-Create a new \ccbfile{} of type \textit{Layer} and name it
-\textit{EndlessModeUI}. Select the root node of the new \ccbfile{} and change
-the size type to be \textit{percentage of parent container} for both, width and height. Set the
-values for width and height to \textit{100\%}.
+Set up the \ccbfile{} for the endless game mode UI:
+\begin{enumerate}
+  \item Create a new \ccbfile{} of type \textit{Layer} and name it
+\textit{EndlessModeUI}
+\item Select the root node of the new \ccbfile{} and change
+the \textit{Content size type} to be \textit{Percent of parent container} for
+both, width and height
+\item Set the \textit{Content Size} to \textit{(100, 100)}
+\end{enumerate}
 \end{leftbar}
 Next, let's add a label that displays the amount of seconds a player has
 survived. Once again we can copy the existing label from the
 \filemention{TimeModeUI.ccb} file since we want both labels to look identical.
 \begin{leftbar}
+
 Open \filemention{TimeModeUI.ccb} and copy the label in the \textbf{top left
 corner}. Then open \filemention{EndlessModeUI.ccb} and paste the label. Select
 the pasted label and modify it as following:
@@ -958,16 +1053,17 @@ mode. The easiest way to implement a health bar in \cocos{} is taking a plain
 of the player.
 
 \begin{leftbar}
-Drag a \textit{Color Node} from the node library to the stage. Set it up as
-following:
+Add the health bar to \textit{EndlessModeUI.ccb}:
 \begin{enumerate}
-  \item Select the \textit{Position Reference Corner} to be the top right corner
-  \item Change the position to \textit{(20,20)}
-  \item Change the anchor point to \textit{(1.0, 1.0)}
-  \item Change the node color to \textit{green} (pick any color you enjoy)
-  \item Change the font size to \textit{30}
-  \item Set up a code connection to the \textbf{Owner var} (not the \textit{Doc
-  root var}, this is very important!) and name it \textit{healthBar}
+  \item Drag a \textit{Color Node} from the node library to the stage
+  \item Select the \textit{Position Reference Corner} to be the \textit{top
+  right corner}
+  \item Change the \textit{Position} to \textit{(20,20)}
+  \item Change the \textit{Anchor point} to \textit{(1.0, 1.0)}
+  \item Chante the \textit{Content size} to \textit{(150, 40)}
+  \item Change the node color to \textit{green} (or pick any other color you
+  enjoy)
+  \item Set up a code connection to the \textbf{Owner var} and name it \textit{healthBar}
 \end{enumerate}
 \end{leftbar}
 
@@ -979,12 +1075,15 @@ Now the UI for the endless mode should look like this:
 \end{figure}
 
 We're done with the UI setup. To make these score displays actually show up as
-part of the game, we'll now move to implementing the two game modes in code.
+part of the game, we'll now move to implementing the two game modes!
 
 \subsection{Implement game logic for different modes}
 We need to change multiple parts of our game to support two different game
 modes. Depending on which game mode a player selects, we want to display a
 different score board and also implement a different set of rules.
+
+We want to implement a design that allows us to add many more game modes in
+future - without convoluting the code base.
 
 Before we dive into coding, let's try to figure out what we'll need to
 implement:
@@ -992,8 +1091,8 @@ implement:
   \item When we start a game, the \inlinecode{MainScene} class needs to know
   which game mode a user has selected
   \item \inlinecode{MainScene} shouldn't know
-  anything about the rules of the selected game mode. That way we could add game
-  modes in the future without increasing the complexity of
+  anything about the rules of the selected game mode. That way we could create
+  additional game modes in future without increasing the complexity of
   \inlinecode{MainScene}
   \item Every game mode should know about its rules (when does a player earn /
   loose points, when does a game end)
@@ -1021,20 +1120,27 @@ Here's a diagram that illustrates our solution:
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{images/Chapter7/gameplay_design.png}
-\end{figure}
+\end{figure} 
+
+We'll create a \inlinecode{GameMode} protocol that defines the
+communication between \inlinecode{MainScene} and the different game modes. Each
+game mode will implement the \inlinecode{GameMode} protocol.
 
 \subsubsection{Defining a protocol for game modes}
 Let's start implementing this design. The first step is defining a protocol
 that can be implemented by all game modes. In the diagram above I've highlighted
 the protocol in green.
+
+As discussed, there are three events that we are interested in; all of them
+should be part of our protocol.
 \begin{leftbar}
 Create a new Swift file in \xcode{} and call it
-\filemention{GameModeDelegate.swift}.
+\filemention{GameMode.swift}.
 Then add the following protocol definition to it:
 \begin{lstlisting}
 typealias GameOver = Bool
 
-protocol GameModeDelegate: class {
+protocol GameMode: class {
   var userInterface: CCNode! { get }
 
   func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject)
@@ -1044,7 +1150,9 @@ protocol GameModeDelegate: class {
 \end{lstlisting}
 \end{leftbar}
 Note that I have omitted the source code documentation of this protocol for the
-sake of brevity. The protocol we've just defined will be implemented by
+sake of brevity. 
+
+The protocol we've just defined will be implemented by
 multiple classes, it's important to document its methods and properties for developers that want
 to add game modes in future. You can take a look at the source code for
 this chapter on GitHub() to read the documentation. %TODO: add link to source
@@ -1057,35 +1165,40 @@ documentation style: \url{http://nshipster.com/swift-documentation/}.
 \end{details}
 
 Let's discuss this protocol in detail. The first interesting aspect is a
-\inlinecode{typealias} statement before the protocol declaration. Using
-typealiases is simple in Swift, and it's a nice way of better capturing the
-semantics of a type. Returning a type of \inlinecode{GameOver} is easier to
-understand the returning a \inlinecode{Bool}.
+\inlinecode{typealias} statement before the protocol declaration. The
+\inlinecode{typealias} keyword in Swift allows us to give a type a new alias
+name. In this case we are creating a new type called \inlinecode{GameOver} which
+is actually just a \textit{Bool}. Using \inlinecode{typealias} is a nice way
+of better capturing the semantics of a type. A method that returns a
+type of \inlinecode{GameOver} is easier to understand than a method returning a
+plain \inlinecode{Bool}.
 
 The second thing to note is that we
 have defined the protocol as a \textit{class-only} protocol. We can do that by
 adding the \inlinecode{class} keyword to the protocol's inheritance list. Later
-you'll see that any type that implements \inlinecode{GameModeDelegate} is
-required to be a reference type, because we need to pass references to it to
-\cocos{}.
+you'll see that any type that implements \inlinecode{GameMode} is
+required to be a reference type, because we need to pass references to it to the
+\cocos{} framework. 
 
-We start our protocol by requiring a property: \inlinecode{userInterface}. This
+We start our protocol by defining a property: \inlinecode{userInterface}. This
 property shall provide access to the game mode's user interface. The
 \inlinecode{MainScene} class can use this property to access the UI for the
 currently active game mode.
-We only expose as a getter as part of the protocol, the UI cannot be changed
-from outside of the game mode class. Each game mode knows the \ccbfile{} of its
-UI and loads it as soon as the game mode is created.
+We only expose as a getter as part of the protocol, the UI cannot be assigned
+from outside of the game mode class. Each game mode creates its own UI and is
+responsible for holding on to it.
 
 Next, we define two methods that get called when objects get dropped or caught.
 Both methods receive a reference to the \inlinecode{MainScene}. This is pretty
 common when using the delegate pattern. Theoretically a game mode instance
 could be the delegate of multiple \inlinecode{MainScene} instances. By passing
-the the \inlinecode{MainScene} in which the event occurred to the delegate the
-delegate can perform different actions based on which \inlinecode{MainScene}
-called the method. The second parameter sent to both methods is the object which
-has been caught or dropped. The class implementing
-the \inlinecode{GameModeDelegate} can use this information to determine whether
+the \inlinecode{MainScene} in which the event occurred to the delegate the
+delegate gets the chance to respond differently depending which instance has
+called the method. It's good to conform to that convention - however we won't
+sign up as the delegate of multiple \inlinecode{MainScene} instances.
+
+The second parameter sent to both methods is the object which has been caught or dropped. The class implementing
+the \inlinecode{GameMode} can use this information to determine whether
 points should be added or subtracted.
 
 The last method(\inlinecode{gameplayStep:}) fulfills two purposes. Firstly, it
@@ -1108,7 +1221,7 @@ Create a new Swift file and name it \filemention{TimedGameMode}. Add the
 following class definition to the new file:
 \begin{lstlisting}
 @objc(TimedGameMode)
-class TimedGameMode: GameModeDelegate {
+class TimedGameMode: GameMode {
   var timeLabel: CCLabelTTF!
   var pointsLabel: CCLabelTTF!
 }
@@ -1124,14 +1237,14 @@ necessary. The \inlinecode{TimedGameMode} class is our first class that is not a
 subclass of an Objective-C class.
 
 In the second line we declare that our class conforms to the
-\inlinecode{GameModeDelegate} protocol. We also declare to properties
+\inlinecode{GameMode} protocol. We also declare two properties
 for the code connections that we set up in the \ccbfile{} for the timed game
-mode. We have access to two different labels, one displays the player's the
-other one displays the time that's left.
+mode. We have access to two different labels, one displays the player's
+points the other one displays the time that's left.
 
 We'll need a whole set of additional variables. We need a
 \inlinecode{userInterface} variable to conform to the
-\inlinecode{GameModeDelegate}, we also need variables to store the amount of
+\inlinecode{GameMode} protocol. We also need variables to store the amount of
 points the player has scored and the time that is left in the current game.
 
 \begin{leftbar}
@@ -1158,12 +1271,12 @@ private var points: Int = 0 {
 \end{leftbar}
 The first two constants are used to define the bottom line for time and points
 in this game mode. In almost all cases using constants should be preferred over
-using numbers directly in code. By defining constants our intentions are obvious
-to other developers.
+using number literals directly in code. By defining constants our intentions are
+obvious to other developers and we can update the values in one place.
 
 Further, we add the \inlinecode{userInterface} variable. This variable will
 store the loaded \ccbfile{} that belongs to the timed game mode. It is also
-required to conform with the \inlinecode{GameModeDelegate} protocol.
+required to conform with the \inlinecode{GameMode} protocol.
 
 Next, we declare and define the \inlinecode{time} property that stores the time
 that is left during the current game. For testing purposes our games only last 10 seconds. We
@@ -1187,12 +1300,12 @@ func updateTimeDisplay(time: CCTime) {
 }
 \end{lstlisting}
 \end{leftbar}
-These methods are very simple. We only put this code into separate methods
+These methods are very simple. We only warp this code into separate methods
 because we need the functionality in multiple places, as you'll see shortly.
 
 Next, before we implement the methods defined in our protocol, let's tackle the
-initializer of this class. The main task the the initializer needs to perform is
-loading its UI from a \ccbfile{}.
+initializer of this class. The main task the initializer needs to perform is
+loading the game mode's UI from a \ccbfile{}.
 \begin{leftbar}
 Add the following initializer:
 \begin{lstlisting}
@@ -1206,15 +1319,17 @@ init() {
 In the first line we load the \filemention{TimedModeUI} \ccbfile{}. We store the
 loaded node hierarchy in the \inlinecode{userInterface} property, that way it
 can be accessed by \inlinecode{MainScene}.
-We also call our to label helper methods, so that the labels display the correct
-initial values for time and points.
+We also call our two label helper methods, so that the labels display the
+correct initial values for time and points.
 
-Now we can move on to the core of this class. The methods that are required by
-the \inlinecode{GameModeDelegate} protocol.
+Now we can move on to the core of this class: the methods that are required by
+the \inlinecode{GameMode} protocol.
 
 Let's start with the \inlinecode{gameplay(mainScene:,
-droppedFallingObject:)} method. Now it's time to make some decisions on the
-rules of the timed game mode. I suggest that we subtract 1 point when the player
+droppedFallingObject:)} method. At this point it's time to make some
+decisions on the rules of the timed game mode. 
+
+I suggest that we subtract 1 point when the player
 drops an object that should be caught. Because we don't want to be too mean we
 set the lowest possible score to 0.
 
@@ -1231,6 +1346,9 @@ func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject) {
 If the object that has been dropped is a \inlinecode{.Good} object, we subtract
 one point. Using Swift's \inlinecode{max} function we make sure that the total
 score never drops below \inlinecode{minPoints}, which we have defined as 0.
+
+If a \inlinecode{.Bad} object drops the score is not influenced. Therefore we
+don't need to cover this case here.
 
 Next, we'll implement the method that gets called when objects are caught.
 Once again time to decide on some rules. I propose to add a point when a good
@@ -1258,9 +1376,10 @@ Now there's only one last method to implement:
 \inlinecode{gameplayStep(mainScene:, delta:)} We need to do two things in the
 implementation of this method:
 \begin{enumerate}
-  \item Subtract passed time from time that is left over
-  \item Check if time reached minimum time (0.0) and return \inlinecode{true} if
-  that's the case
+  \item Subtract the passed time (\inlinecode{delta}) from the remaining game
+  time
+  \item Check if the remaining time reached the minimum time (0.0) and return
+  \inlinecode{true} if that's the case
 \end{enumerate}
 \begin{leftbar}
 Add the following implementation of the step method to
@@ -1290,27 +1409,27 @@ Create a new Swift file in \xcode{} and name it \textit{EndlessGameMode}. Then
 add the following class definition and properties:
 \begin{lstlisting}
 @objc(EndlessGameMode)
-class EndlessGameMode: GameModeDelegate {
+class EndlessGameMode: GameMode {
   var healthBar: CCNode!
   var survivedLabel: CCLabelTTF!
 }
 \end{lstlisting}
 \end{leftbar}
 As I said, this is pretty similar to the timed game mode. We need the
-\inlinecode{@objc} annotation because this class does not inherit from any
-Objective-C object. We declare two properties for the two UI elements in the
+\inlinecode{@objc} annotation because this class does not inherit from an
+Objective-C class. We declare two properties for the two UI elements in the
 \filemention{EndlessModeUI} \ccbfile{}.
 
 In the endless game mode we will have two game parameters that we want to keep
 track off: the current \textit{health} of the player and the
-\textit{survivalTime} of the current game. In endless game mode the player has
-the goal of surviving as long as possible. Instead of gaining points for
+\textit{survivalTime} of the current game. In the endless game mode the player
+has the goal of surviving as long as possible. Instead of gaining points for
 catching objects the player regains some health. Whenever the player catches an
-incorrect object or drops a good object she looses points. We'll need properties
+incorrect object or drops a good object she looses health. We'll need properties
 to keep track of these values.
 
 Additionally we'll need a property that stores the UI node to conform with the
-\inlinecode{GameModeDelegate} protocol.
+\inlinecode{GameMode} protocol.
 
 \begin{leftbar}
 Add the following properties and property observers to
@@ -1369,9 +1488,10 @@ init() {
 }
 \end{lstlisting}
 \end{leftbar}
+This code is basically analogous to the \inlinecode{TimedGameMode}.
 
 Now all that is left is implementing the game rules as part of the three methods
-defined in the \inlinecode{GameModeDelegate} protocol. 
+defined in the \inlinecode{GameMode} protocol. 
 
 When the player drops a \inlinecode{.Good} object, we subtract a point.
 \begin{leftbar}
@@ -1387,12 +1507,12 @@ func gameplay(mainScene:MainScene, droppedFallingObject:FallingObject) {
 We once again use the \inlinecode{max} function to ensure that the health does
 not drop below our defined minimum.
 
-Next, let's implement the caught method. When the user catches a
-\inlinecode{.Good} object he regains a point, when he catches a
-\inlinecode{.Bad} object he looses one.
+Next, let's implement the method that informs us about a caught object. When the
+user catches a \inlinecode{.Good} object he regains a health point, when he
+catches a \inlinecode{.Bad} object he looses one.
 
 \begin{leftbar}
-Add the caught method:
+Add the following method to the \inlinecode{EndlessGameMode} class:
 \begin{lstlisting}
 func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject) {
   switch (caughtFallingObject.type) {
@@ -1406,10 +1526,10 @@ func gameplay(mainScene:MainScene, caughtFallingObject:FallingObject) {
 \end{leftbar}
 
 The last method we need to implement is the \inlinecode{gameplayStep(mainScene:,
-delta:)} method. We need to keep track of the time that the user has survived,
-we can do that by adding up all the delta time frames that we receive in this
+delta:)} method. We need to keep track of the time that the user has survived.
+We can do that by adding up all the delta time frames that we receive in this
 method. Additionally we need to determine the game over situation. In this game
-mode the player loses as soon as his health drops to the minimum health.
+mode the player loses as soon as her health drops to the minimum health.
 
 \begin{leftbar}
 Add the \inlinecode{gameplayStep(mainScene:,
@@ -1424,10 +1544,10 @@ func gameplayStep(mainScene: MainScene, delta: CCTime) -> GameOver {
 And this completes our second game mode. As you can see there weren't too many
 surprises after implementing the \inlinecode{TimedGameMode}.
 
-Before we can test these two game modes in our app we need to integrate them
-into the \inlinecode{MainScene} class.
+Before we can move on and test these two game modes, we need to
+integrate them into the \inlinecode{MainScene} class.
 
-\subsection{Connecting the game modes to the main scene}
+\subsection{Connecting the game modes to the Main Scene}
 The last important step in implementing the game modes is connecting them to
 \inlinecode{MainScene}. Currently the \inlinecode{StartScene} passes the
 selected game mode to the \inlinecode{MainScene}. The next step for 
@@ -1435,18 +1555,18 @@ selected game mode to the \inlinecode{MainScene}. The next step for
 selection.
 
 Additionally we need to modify \inlinecode{MainScene} to call the methods
-defined in \inlinecode{GameModeDelegate} whenever objects are caught, dropped
+defined in \inlinecode{GameMode} whenever objects are caught, dropped
 and when the \inlinecode{update} method is called.
 
 Let's start with instantiating one of our two game modes. In order to do that we
-need a variable that can store the created game mode and a property observer for
-the \inlinecode{gameMode} property. Observing the \inlinecode{gameMode} property
+need a variable that can store the created game mode object and a property
+observer for the \inlinecode{gameMode} property. Observing the \inlinecode{gameMode} property
 will allow us to instantiate a game mode object as soon as a game mode has been
 selected:
 \begin{leftbar}
 Add a property to store the instantiated game mode:
 \begin{lstlisting}
-var gameModeDelegate:GameModeDelegate?
+var gameMode:GameMode?
 \end{lstlisting}
 Next, add this property definition and observer to \inlinecode{gameMode}:
 \begin{lstlisting}
@@ -1454,12 +1574,12 @@ var gameMode:GameMode = .Endless {
   didSet {
     switch (gameMode) {
     case .Endless:
-      gameModeDelegate = EndlessGameMode()
+      gameMode = EndlessGameMode()
     case .Timed:
-      gameModeDelegate = TimedGameMode()
+      gameMode = TimedGameMode()
     }
-    self.addChild(gameModeDelegate?.userInterface)
-    gameModeDelegate?.userInterface.zOrder = DrawingOrder.ScoreBoard.rawValue
+    self.addChild(gameMode?.userInterface)
+    gameMode?.userInterface.zOrder = DrawingOrder.ScoreBoard.rawValue
   }
 }
 \end{lstlisting}
@@ -1477,9 +1597,9 @@ Inside of the property observer we first switch over the potential game modes.
 Depending on the game mode we instantiate a different game mode class. Next, we
 add the user interface of the created game mode to main scene. If you are fairly
 new to Swift you might be surprised by the question mark in
-\inlinecode{gameModeDelegate?.userInterface}. This pattern is called
+\inlinecode{gameMode?.userInterface}. This pattern is called
 \textit{optional chaining}. In this specific case the \inlinecode{userInterface}
-variable is only being accessed if \inlinecode{gameModeDelegate} actually
+variable is only being accessed if \inlinecode{gameMode} actually
 contains a value. More general optional chaining can be used to call methods and
 access properties on values that might be \inlinecode{nil}, without causing an
 runtime error.
@@ -1518,7 +1638,7 @@ wether the current game is over or not.
 Add the following statements to the end of the \inlinecode{update:} method of
 \inlinecode{MainScene}:
 \begin{lstlisting}
-let gameOver = gameModeDelegate?.gameplayStep(self, delta: delta)
+let gameOver = gameMode?.gameplayStep(self, delta: delta)
 if let gameOver = gameOver {
   if (gameOver) {
     self.gameOver()
@@ -1549,7 +1669,7 @@ func gameOver() {
 All we do is loading the \filemention{StartScene} and presenting it with a cross
 fade transition.
 
-Now all that is left is calling the \inlinecode{GameModeDelegate} when objects
+Now all that is left is calling the \inlinecode{GameMode} when objects
 have been dropped or caught. Let's begin with dropped objects.
 
 \begin{leftbar}
@@ -1559,7 +1679,7 @@ delegate:
 func performMissedStep(fallingObject:FallingObject) {
   // check if falling object is below the screen boundary
   if (CGRectGetMaxY(fallingObject.boundingBox()) < CGRectGetMinY(boundingBox())) {
-    gameModeDelegate?.gameplay(self, droppedFallingObject: fallingObject)
+    gameMode?.gameplay(self, droppedFallingObject: fallingObject)
     ...
   }
 }
@@ -1567,7 +1687,7 @@ func performMissedStep(fallingObject:FallingObject) {
 \end{leftbar}
 We again use optional chaining to only call the
 \inlinecode{gameplay(mainScene:, droppedFallingObject:)} method if
-\inlinecode{gameModeDelegate} actually contains a value.
+\inlinecode{gameMode} actually contains a value.
 
 As a last step implement the same functionality for caught objects.
 \begin{leftbar}
@@ -1576,7 +1696,7 @@ Extend \inlinecode{performCaughtStep:} with a call to the game mode delegate:
 func performCaughtStep(fallingObject:FallingObject) {
   // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
   if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
-    gameModeDelegate?.gameplay(self, caughtFallingObject: fallingObject)
+    gameMode?.gameplay(self, caughtFallingObject: fallingObject)
     ...
   }
 }
@@ -1958,7 +2078,7 @@ func presentGameOverPopup() {
   gameOverPopup.position = ccp(0.5, 0.5)
   gameOverPopup.zOrder = DrawingOrder.GameOverPopup.rawValue
   
-  gameOverPopUpHighscoreLabel.string = gameModeDelegate?.highscoreMessage()
+  gameOverPopUpHighscoreLabel.string = gameMode?.highscoreMessage()
   
   addChild(gameOverPopup)
 }
@@ -2074,10 +2194,9 @@ highscore messages.
 
 \section{Providing a highscore for each game mode}
 Whenever we want to extend the functionality of our game modes we should start
-by adding the new features to the \inlinecode{GameModeDelegate} protocol.
+by adding the new features to the \inlinecode{GameMode} protocol.
 \begin{leftbar}
-Add the following method the \inlinecode{GameModeDelegate} in
-\filemention{GameModeDelegate.swift}:
+Add the following method to the \inlinecode{GameMode} protocol:
 %TODO: Add info on documentation in Swift when creating this protocol first
 \begin{lstlisting}
 /**
@@ -2222,8 +2341,8 @@ Add the following three lines to the end of \inlinecode{presentGameOverPopup}:
 func presentGameOverPopup() {
   ...  
   let fadeOutAction = CCActionFadeOut.actionWithDuration(0.3) as CCAction
-  gameModeDelegate?.userInterface.cascadeOpacityEnabled = true
-  gameModeDelegate?.userInterface.runAction(fadeOutAction)
+  gameMode?.userInterface.cascadeOpacityEnabled = true
+  gameMode?.userInterface.runAction(fadeOutAction)
 }
 \end{lstlisting}
 \end{leftbar}

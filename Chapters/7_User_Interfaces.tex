@@ -36,7 +36,7 @@ most of the functionality that we need for that scene.
 
 \begin{leftbar}
 Open the \SB{} project and create a new File (File -> New -> File\ldots). Name
-the new file \textit{StartScene} and select \texit{Scene} as the type.
+the new file \textit{StartScene} and select \textit{Scene} as the type.
 \end{leftbar}
 
 We will create a game mode select scene that smoothly transitions into the
@@ -2132,7 +2132,6 @@ will discuss the details afterwards.
 \begin{leftbar}
 Add the following lines to the end of the \inlinecode{MainScene} class,
 directly before the closing curly braces of the class definition:
-%TODO: discuss MARK: earlier add screenshot for outline with mark
 \begin{lstlisting}
 func presentGameOverPopup() {
   let gameOverPopup = CCBReader.load("GameOverPopup", owner:self)
@@ -2169,8 +2168,6 @@ you'll see that the control is disabled:
     \includegraphics[width=200pt]{images/Chapter7/root_node_disabled_position_type.png}
     \caption{It isn't possible to change the position type or position of the
     root node in \SB{}}
-    %TODO: file an issue about this on GitHub, CCB file should be able to define
-    % default, file that includes the ccb file can override
 \end{figure}
 When setting the position type in code, we run into a small Swift <->
 Objective-C related issue. The way that many \cocos{} constants are defined is
@@ -2273,7 +2270,6 @@ Whenever we want to extend the functionality of our game modes we should start
 by adding the new features to the \inlinecode{GameMode} protocol.
 \begin{leftbar}
 Add the following method to the \inlinecode{GameMode} protocol:
-%TODO: Add info on documentation in Swift when creating this protocol first
 \begin{lstlisting}
 func highscoreMessage() -> String
 \end{lstlisting}
@@ -2436,7 +2432,7 @@ nicely presented popup with no duplicate information displayed behind it:
     looks more polished}
 \end{figure}
 
-\section{Summary}
+\section{Summary} 
 
 Well done! In this chapter you have learned a lot about user interfaces in \SB{}
 and \cocos{}. You know how to use scroll views, how to present popups and

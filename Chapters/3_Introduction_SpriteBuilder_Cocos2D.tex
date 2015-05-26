@@ -6,18 +6,26 @@ chapter.
 Besides general 2D programming concepts, this chapter will introduce \SB{}
 and \cocos{} - the Open Source tools that we will use throughout this book. 
 \cocos{} is the game engine (or framework) and \SB{} is a visual content editor
-for \cocos{}
+for \cocos{}.
 
 \section{Installing the software}
-%TODO: mention Xcode installation
-First things first. Let's install the software used throughout this book. \SB{}
-comes bundled with the latest version of \cocos{}, so we don't need to install
-these two tools separately.
+First things first. Let's install the software used throughout this book. If you
+haven't developed for iOS or Mac OS X before, you first need to download
+\xcode{}. The software is available on the \textit{App Store}. You should find
+it when searching for the term \textit{\xcode{}}:
 
-Installing \SB{} is easy. Simply open the \textit{App Store} app on your Mac and
-search for \textit{SpriteBuilder}. Note that you should always use the latest
-version of Mac OS X and \xcode{} together with \SB{} (as of this writing Mac
-OS X 10.10 and \xcode{} 6.3).
+\begin{figure}[H] 
+    \centering
+    \includegraphics[width=200pt]{images/Chapter2/install_xcode.png}     
+    \caption{\xcode{} on the Mac App Store}
+\end{figure}
+
+Next, you should install \SB{}. \SB{} comes bundled with the latest version of
+\cocos{}, so we don't need to install these two tools separately.
+
+\SB{} is also available on the \textit{App Store}. You can find it by searching
+for \textit{SpriteBuilder}. Note that you should always use the latest version of
+ Mac OS X and \xcode{} together with \SB{} (as of this writing MacOS X 10.10 and \xcode{} 6.3).
 
 \begin{figure}[H] 
 		\centering
@@ -359,28 +367,32 @@ It lists all the \textit{.ccb} files and resources that are part of the \SB{}
 project:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_fileview.png}     
+		\includegraphics[width=0.95\linewidth]{images/spritebuilder/spritebuilder_fileview.png}     
 \end{figure} 
 In this view you can add new resources and restructure your project's folder
 hierarchy.
+
+\newpage{}
 \subsubsection{Node Library}
 The third tab in the left view is the {Node Library}:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
+		\includegraphics[width=0.95\linewidth]{images/spritebuilder/spritebuilder_nodeview.png}     
 \end{figure} 
 This panel shows you all available node types you can use to construct your
 Gameplay scenes and menus. You will drag these nodes from this view to the stage
 in the center to add them to your scenes.
 
+\newpage{}
 \subsubsection{Inspector}
 The first tab of the Detail View (the right panel) is
 the Inspector. Once you have selected an object on your stage you can use this panel to modify many of its properties, like position and color:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_inspector.png}     
+		\includegraphics[width=0.95\linewidth]{images/spritebuilder/spritebuilder_inspector.png}     
 \end{figure} 
 
+\newpage{}
 \subsubsection{Code Connections}\index{Code Connections} 
 The second tab on the right panel let's you manage code connections for your
 selected node. As mentioned previously the entire code for your games will be
@@ -391,10 +403,10 @@ that shall be called once a button in your scene is tapped. We will discuss the
 use of code connections extensively throughout this book.
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.8\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
+		\includegraphics[width=0.95\linewidth]{images/spritebuilder/spritebuilder_codeconnections.png}     
 \end{figure} 
 
-
+\newpage{}
 \subsection{\ccbfile{}s}
 \ccbfile{}s are the basic building blocks of your \SB{} project. Every scene in
 your game that is created with \SB{} is represented by one \ccbfile{}. However
@@ -1446,8 +1458,14 @@ should see a new square spawn at the touch position:
 		\centering
 		\includegraphics[width=350pt]{images/firstproject/spinning_squares.png}
 \end{figure}
+
+\section{Summary}
+
 \textbf{Well done!} You have come a very long way from the blank project to a
 first simple game that uses scene transitions, actions and the \cocos{} touch
-system. But this is only the very beginning. In the next chapter we will start
-working on a much more complex game that will teach you many more important
-concepts of \SB{} and \cocos{}. 
+system. 
+
+This chapter has introduced you to the fundamental concepts of 2D game
+programming, \SB{} and \cocos{}. But this is only the very beginning. In the
+next chapter we will start working on a much more complex game that will teach you many more important
+concepts of mobile game development with \SB{} and \cocos{}. 

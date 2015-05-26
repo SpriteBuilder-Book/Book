@@ -1,4 +1,4 @@
-\chapter{Scene graphs, node transforms and state machines}
+\chapter{Scene Graphs, Node Transforms and State Machines}
 In this chapter we will implement the catching mechanism for our game. This will
 require you to learn more details about scene graphs, node transforms and also about modelling game mechanics in Swift.
 
@@ -8,7 +8,7 @@ scene graph make objects fall into our catching pot.
 
 There's lots of work ahead of us!
 
-\section{Catching objects}
+\section{Catching Objects}
 Implementing drag and drop was a great warm up. In this section we are going to
 solve a bunch of problems that will bring our little project a large step closer
 to being a real game. By the end of this section the user will be able to catch
@@ -23,7 +23,7 @@ implementation:
   \item visualizing catching / missing correctly
 \end{enumerate}
 
-\subsection{Thinking in states}
+\subsection{Thinking in States}
 Our feature outline describes that objects start out as falling objects,
 directly after they have been spawned. At some later point in time the user can
 catch or miss these objects. In each of these situations we need our falling objects to behave differently. If they are
@@ -64,7 +64,7 @@ code for each of these states. Additionally we need to write code that checks if
 we have caught or missed an object so that we can assign the correct states to
 falling objects.
 
-\subsection{Storing state}
+\subsection{Storing State}
 Now it's time to implement the theoretical conctepts that we've discussed. 
 Let's start by adding a \inlinecode{fallingState} to
 \inlinecode{FallingObject.swift}. That state variable will remember whether an object is currently falling, has been caught
@@ -99,7 +99,7 @@ assign it as part of the variable declaration.
 Now we can store a \inlinecode{fallingState} for each falling object; next,
 let's implement different behaviour based on that state.
 
-\subsection{Implement state specific behaviour}
+\subsection{Implement State Specific Behaviour}
 The majority of our gameplay code is currently inside of the \inlinecode{update}
 method of \inlinecode{MainScene}. This is fairly common for simple games.
 Currently we are doing two things in the update method: moving the objects down
@@ -143,7 +143,7 @@ that we check in which state an object is and invoke a method that contains code
 specific to that state. We are going to implement these methods throughout the
 remainder of this chapter.
 
-\subsection{Implementing the falling state}
+\subsection{Implementing the Falling State}
 Let's start implementing the default state: falling. In this state we will need
 check whether an object has been caught, has been missed or simply remains
 falling. 
@@ -433,7 +433,7 @@ missed state.
 
 This is also a great time for a break and your favorite hot
 beverage!
-\subsection{Implementing the missed state}
+\subsection{Implementing the Missed State}
 Good news: the remaining two steps are a lot simpler. We can implement the
 \textit{missed} state by restructuring existing code:
 \begin{leftbar}
@@ -459,7 +459,7 @@ state we now that it has fallen below the pot opening and can be no longer
 caught. Now all we need to do is to wait until the object falls below the
 screen boundary, then we play our sound and remove it.
 
-\subsection{Implementing the caught state}
+\subsection{Implementing the Caught State}
 The last state is the simplest of all. When we have caught an object we want to
 create the illusion of the object disappearing into the pot. The first step is
 adding the object as a child to the pot, we've already done that in the
@@ -486,7 +486,7 @@ As soon as the catch container bounding box fully encloses the caught object we
 can remove it. For the player it will seem that the object disappeared into the
 inner darkness of our bottomless pot.
 
-\subsection{Time to test}
+\subsection{Time to Test}
 Now we're finally back to a state where we can run and test the game. You should
 now be able to catch objects in the game. 
 
@@ -496,13 +496,13 @@ disappear.
 
 Let's fix this issue with a rendering tweak!
 
-\section{A rendering tweak}\index{Z-Order}\label{rendering_tweak}
+\section{A Rendering Tweak}\index{Z-Order}\label{rendering_tweak}
 
 In the previous chapter we've briefly discussed how the rendering order in
 \cocos{} works. In order to fix our issue we need to dive into some more
 details.
 
-\subsection{Working with the Z-order}\index{Z-Order}\label{z-order-intro}
+\subsection{Working with the Z-Order}\index{Z-Order}\label{z-order-intro}
 Throughout this book we are working with a 2D engine. In a 2D engine depth can
 only be represented by certain objects being placed in front or behind of other
 objects. \cocos{} uses the following criteria to decide which nodes are rendered

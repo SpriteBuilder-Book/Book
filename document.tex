@@ -28,8 +28,10 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 %\usepackage[hyphens]{url}
 
 %http://tex.stackexchange.com/questions/3033/forcing-linebreaks-in-url
-\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks=true]{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage[colorlinks=true, linkcolor =
+MidnightBlue, urlcolor  = MidnightBlue, citecolor = MidnightBlue]{hyperref}
 \usepackage[hyphenbreaks]{breakurl}
+
 %\usepackage[T1]{fontenc}                
 %\usepackage{lipsum}
 %\usepackage[linedheaders,parts,pdfspacing]{classicthesis} % ,manychapters
@@ -107,7 +109,7 @@ outer=2cm, inner=2.1cm,includefoot, includehead]{geometry}
 \lstdefinestyle{Xcode} {
     language        = Swift,
     basicstyle      = \ttfamily\small,
-    identifierstyle = \color{orange},
+    identifierstyle = \color{black},
     commentstyle    = \color{green},
     keywordstyle    = \color{pink},
     stringstyle     = \color{red},
@@ -207,13 +209,14 @@ sep=10pt] at (frame.north west) {\includegraphics[width=16mm]{images/note.png}};
 %bold lines in
 % listings:http://tex.stackexchange.com/questions/63845/boldface-and-subscripts-in-verbatim-mode
 \usepackage{fancyvrb}
+\usepackage{pdfpages}
+
 
 \begin{document}
-
+\include{Chapters/0_Cover}
 \tableofcontents{}
-
+\newpage{}
 \include{Chapters/2_About_Book}
-\newpage
 \include{Chapters/3_Introduction_SpriteBuilder_Cocos2D}
 \include{Chapters/4_Assets_SpriteBuilder}
 \include{Chapters/5_User_Interaction}
@@ -221,6 +224,7 @@ sep=10pt] at (frame.north west) {\includegraphics[width=16mm]{images/note.png}};
 \include{Chapters/7_User_Interfaces}
 \include{Chapters/8_Persistence_Leaderboards}
 \include{Chapters/9_Effects_and_Animations}
+\include{Chapters/10_What_Next}
 
 % \include{Chapters/Cocos2D}
 % \newpage

@@ -31,7 +31,7 @@ of the lighting for this game with only a handful lines of code.
 The first step of adding lighting to our game is understanding some of the
 theory that goes into lighting in 2D games.
 
-\subsection{Lighting in 2D games}
+\subsection{Lighting in 2D Games}
 The simplest way to light a 2D scene is to use brighter and darker colors,
 depending on the distance to a given light source, I'll refer to this technique
 as \textit{flat lighting}. Figure \ref{lighting_example} shows flat lighting on
@@ -75,7 +75,7 @@ this overview of how lighting works. Even this basic knowledge will allows us to
 make the game look quite a bit better. You might wonder where the normal maps
 for our textures come from. The answer is: we need to create them ourselves. 
 
-\subsection{Creating normal maps}
+\subsection{Creating Normal Maps}
 There are a bunch of tools that make it easy to create simple normal maps. For this book I've provided all of the normal maps for you, as
 part of the asset pack that you downloaded at the beginning of this book.
 
@@ -93,7 +93,7 @@ manually creating normal maps.
 Since we already have all the normal maps we need, let's dive right into \SB{}
 and set up some light sources!
 
-\subsection{Setting up lighting effects in \SB{}}
+\subsection{Setting up Lighting Effects in \SB{}}
 Now that we have a basic understanding of 2D lighting it's time to dive into the
 CCEffects API. There are three important components that we will be using:
 \begin{description}
@@ -333,7 +333,7 @@ Now you should see the lighting taking effect! The last thing we need to do is
 add our normal maps. Adding normal maps will lead to reflections on game objects
 and make them fell 3D.
 
-\subsection{Assigning normal maps in \SB{}}
+\subsection{Assigning Normal Maps in \SB{}}
 Now that our light sources and lighting effects are set up, let's assign the
 normal maps to our sprites so that we get more detailed lighting. For the \textit{pot-top}
 and \textit{pot-bottom} sprite, we can set up the normal map in \SB{}. The
@@ -386,7 +386,7 @@ recommend testing your game on an actual device if you have the required Apple
 Developer Account.
 \end{details}
 
-\subsection{Assigning normal maps in code}
+\subsection{Assigning Normal Maps in Code}
 As mentioned earlier, the falling objects are spawned dynamically in code,
 therefore we cannot assign the normal maps in \SB{}. However, adding normal
 maps in code is pretty simple. Additionally, we will need to look into
@@ -636,7 +636,7 @@ before moving on!
 Next, we'll load this particle effect in code and add it to our game scene
 dynamically whenever the user catches a good object.
 
-\subsection{Loading particle effects in code}
+\subsection{Loading Particle Effects in Code}
 Now it's time to pull up the \xcode{} project again. We want to run the particle
 effect when the player catches a good object. This means we need to extend the
 \inlinecode{performCaughtStep} method that we implemented earlier.
@@ -721,7 +721,7 @@ chapter.
 In the next and last section we will look into using the \SB{} timeline to add
 some more animations to our core gameplay.
 
-\section{Delightful animations with \SB{}'s timeline}
+\section{Delightful Animations with \SB{}'s timeline}
 We will now add some animations to the game to wrap this chapter up. So far
 we've used the \SB{} timeline to animate user interfaces, now we want to
 animate parts of our gameplay as well.
@@ -887,7 +887,7 @@ playback of our new timelines.
 Publish the \SB{} project!
 \end{leftbar}
 
-\subsection{Playing the timelines}
+\subsection{Playing the Timelines}
 Now it's time to switch back to our \xcode{} project. Since both animations
 will be playing once an object is caught, we once again need to extend the
 \inlinecode{performCaughtStep(fallingObject:)} method in

@@ -8,7 +8,7 @@ to catch objects.
 While implementing the drag and drop feature you'll learn how \cocos{}'s touch
 system works in detail.
 
-\section{Add the pot to the game}
+\section{Add the Pot to the Game}
 The goal of our game will be to move a pot across the screen and try to catch
 food while avoiding catching inedible objects. Before we can
 implement the drag and drop mechanism we need to add the pot assets to our game,
@@ -34,7 +34,7 @@ the pot, we can make it look like objects drop into the pot:
 It's essential for this trick to break down the pot into two assets. Such
 rendering tricks are very common in 2D games!
 
-\subsection{Setting up the pot assets}
+\subsection{Setting Up the Pot Assets}
 Now that we know which assets we'll use for the pot, let's set up
 its \ccbfile{} in \SB{}:
 \begin{leftbar}
@@ -76,7 +76,7 @@ same dimensions as the pot assets.
 In a second we're going to move on and implement the touch handling code. First
 however, we need to add the pot that we created to the
 \filemention{MainScene.ccb} file. \SB{} allows us to add a \ccbfile{} to other
-\ccbfiles{} - that's an extremely useful feature as it allows us to reuse
+\ccbfile{} - that's an extremely useful feature as it allows us to reuse
 components in different scenes.
 
 We'll also need to set up a code connection, so that we can access the pot
@@ -145,7 +145,7 @@ code connections.
 Okay, now we have the basics set up and are ready to dive into the details of
 implementing a drag and drop mechanism!
 
-\section{Implement a Drag and Drop mechanism}
+\section{Implement a Drag and Drop Mechanism}
 For the very first project in this book we have already implemented a basic
 touch mechanism. You should remember that \inlinecode{userInteractionEnabled} is
 the property that activates/deactivates touch handling for a node and that
@@ -169,7 +169,7 @@ Dragging and dropping includes three different steps:
   \item Drop object
 \end{enumerate}
 
-\subsection{Picking up an Object}
+\subsection{Picking Up an Object}
 In order to pick up an object we need to detect a user's touch and determine if
 the touch is within the boundaries of our object, if that is the case,
 we start dragging the object.
@@ -302,7 +302,7 @@ Great, we're pretty close to finishing the drag and drop functionality. If you
 test the app in the current state you'll might see that there's one simple yet
 important step missing\ldots
 
-\subsection{Dropping an object}
+\subsection{Dropping an Object}
 Right, the user will also want to drop the pot by releasing the finger from the
 screen. 
 

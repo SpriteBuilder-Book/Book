@@ -1,4 +1,4 @@
-\chapter{User Interfaces and implementing multiple game modes}
+\chapter{User Interfaces and Implementing Multiple Game Modes}
 
 So far we have made a lot of progress on the core mechanic of our game. Another
 important aspect are the screens and components that wrap this mechanic. In this chapter
@@ -22,7 +22,7 @@ Here's the basic screen flow our game will have:
 
 Let's start out by adding the game mode selection scene!
 
-\section{Adding a game mode selection scene}
+\section{Adding a Game Mode Selection Scene}
 We will now change the screen flow of our existing game. Instead of diving into
 the gameplay directly the user will see a game mode selection scene when
 starting the game. 
@@ -32,7 +32,7 @@ endless and timed game mode. Luckily \cocos{} provides a component called
 \inlinecode{CCScrollView}\index{User Interface!CCScrollView} that implements
 most of the functionality that we need for that scene.
 
-\subsection{Setting the up the Start Scene}
+\subsection{Setting the Start Scene Up}
 
 \begin{leftbar}
 Open the \SB{} project and create a new File (File -> New -> File\ldots). Name
@@ -159,7 +159,7 @@ in a scroll view with two pages. When paging is enabled, the scroll view will
 always snap to one of the two pages as soon as a user stops scrolling. If this
 sounds a little bit too abstract for you, it should become clearer as we implement and use the scroll view.
 
-\subsection{Creating the content node for the scroll view}
+\subsection{Creating the Content Node for the Scroll View}
 
 First we need to create the content view. We will set it up in a separate
 \ccbfile{} file. 
@@ -381,7 +381,8 @@ The arrows should be pointing to the left and the arrow should be positioned fro
 instead of \textit{Endless}. 
 
 I will leave this as an exercise to you. Remember that you can always check the
-solution on GitHub if you get stuck.%TODO: link to code 
+solution on GitHub (\url{https://github.com/SpriteBuilder-Book/Code}) if you get
+stuck.
 Once you have set up the node for the second game mode come back and we'll
 integrate this game mode selection layer into the start scene.
 
@@ -434,7 +435,7 @@ stop scrolling in the middle of two game modes.
 
 Great! At this point the set up of our start scene is almost complete.
 
-\subsection{Finishing up the game mode selection scene}
+\subsection{Finishing up the Game Mode Selection Scene}
 As a last step we will implement the actual selection of one of the two game
 modes. So far we have a scroll view that will allow users to switch between the
 game modes but we don't have a mechanism to select one of the two and start a
@@ -533,7 +534,7 @@ Now we have all the code connections set up. Before we add some code to make
 this scene work we will work through one last step in SpriteBuilder. We'll
 create a nicely animated transition from the selection scene to the gameplay scene.
 
-\subsection{Adding a fancy transition animation}
+\subsection{Adding a Fancy Transition Animation}
 
 Our transition will consist of two different components:
 \begin{enumerate}
@@ -652,7 +653,7 @@ Great! This was quite a lot of work, but now we have a game mode selection
 scene (including a scroll view) and a great transition into the gameplay scene.
 Now it's time to switch back to code!
 
-\subsection{Implementing the game mode selection}
+\subsection{Implementing the Game Mode Selection}
 
 \begin{leftbar}
 Publish the \SB{} project and switch to the \xcode{} project.
@@ -749,7 +750,7 @@ gameplay scene (\inlinecode{MainScene}) as soon as a user taps the start button.
 As part of that transition we need to inform \inlinecode{MainScene} which game
 mode was selected. Let's start with the scroll view related code.
 
-\subsubsection{Implementing a scroll view delegate}\index{User
+\subsubsection{Implementing a Scroll View Delegate}\index{User
 Interface!CCScrollView!Delegate}
 If you have written code for the iOS platform before, you are very familiar with
 the principle of delegation. However, this book does not necessarily require
@@ -912,7 +913,7 @@ display a health bar.
 In the timed mode the player will have a hard time limit. For that mode
 we need to display a counter that shows the remaining time and a score label.
 
-\section{Implementing multiple game modes}
+\section{Implementing Multiple Game Modes}
 Let's get started on building the two different game modes. 
 
 We're going to start with setting up the UI in for each game mode in \SB{}. Then
@@ -920,11 +921,11 @@ we will come up with a way to implement the two game modes without duplicating
 code - this is a great use case for exploring some potential design patterns for
 game development.
 
-\subsection{Adding UIs for different game modes}
+\subsection{Adding UIs for Different Game Modes}
 Open your \SB{} project. We're going to create two separate \ccbfile{}s, one for
 the UI elements of each game mode.
 
-\subsubsection{UI for the timed game mode}
+\subsubsection{UI for the Timed Game Mode}
 \begin{leftbar}
 \begin{enumerate}
   \item Create a new \ccbfile{} of type \textit{Layer} and name it
@@ -1018,7 +1019,7 @@ Great! The UI for the timed game mode is completed. It should look as following:
     \includegraphics[width=0.5\linewidth]{images/Chapter7/timed_mode_ui.png}
 \end{figure}
 
-\subsubsection{UI for the endless game mode}
+\subsubsection{UI for the Endless Game Mode}
 Now, let's create the  UI for the endless game mode which will contain a health
 bar. We'll start of by creating a new \ccbfile{}.
 
@@ -1077,7 +1078,7 @@ Now the UI for the endless mode should look like this:
 We're done with the UI setup. To make these score displays actually show up as
 part of the game, we'll now move to implementing the two game modes!
 
-\subsection{Implement game logic for different modes}
+\subsection{Implement Game Logic for Different Modes}
 We need to change multiple parts of our game to support two different game
 modes. Depending on which game mode a player selects, we want to display a
 different score board and also implement a different set of rules.
@@ -1126,7 +1127,7 @@ We'll create a \inlinecode{GameMode} protocol that defines the
 communication between \inlinecode{MainScene} and the different game modes. Each
 game mode will implement the \inlinecode{GameMode} protocol.
 
-\subsubsection{Defining a protocol for game modes}
+\subsubsection{Defining a Protocol for Game Modes}
 Let's start implementing this design. The first step is defining a protocol
 that can be implemented by all game modes. In the diagram above I've highlighted
 the protocol in green.
@@ -1155,8 +1156,9 @@ sake of brevity.
 The protocol we've just defined will be implemented by
 multiple classes, it's important to document its methods and properties for developers that want
 to add game modes in future. You can take a look at the source code for
-this chapter on GitHub() to read the documentation. %TODO: add link to source
-% code
+this protocol on
+GitHub
+(\url{https://github.com/SpriteBuilder-Book/Code/blob/master/Chapter7/FallingObjects.spritebuilder/GameMode.swift}) to read the documentation.
 
 \begin{details}[Source code
 documentation in Swift] Many details about source code documentation in Swift are still up in the air.
@@ -1211,7 +1213,7 @@ this method to implement the game over condition.
 
 Now that our protocol is defined we can implement the two game modes. 
 
-\subsubsection{Implementing the timed game mode}
+\subsubsection{Implementing the Timed Game Mode}
 Let's start by implementing the timed game mode. Since we thought about the
 software design upfront and even defined a protocol for game modes, the
 implementation itself is not too complicated.
@@ -1398,7 +1400,7 @@ based on that.
 Congratulations! We have fully implemented our first game mode. Now, let's
 implement the endless game mode.
 
-\subsubsection{Implementing the endless game mode}
+\subsubsection{Implementing the Endless Game Mode}
 The procedure for implementing the endless game mode will be very similar to the
 timed one: Setting up code connections, implementing game mode rules and
 updating the scoreboard.
@@ -1547,7 +1549,7 @@ surprises after implementing the \inlinecode{TimedGameMode}.
 Before we can move on and test these two game modes, we need to
 integrate them into the \inlinecode{MainScene} class.
 
-\subsection{Connecting the game modes to the Main Scene}
+\subsection{Connecting the Game Modes to the Main Scene}
 The last important step in implementing the game modes is connecting them to
 \inlinecode{MainScene}. Currently the \inlinecode{StartScene} passes the
 selected game mode to the \inlinecode{MainScene}. The next step for 
@@ -1778,7 +1780,7 @@ as soon as the game ends, is a little unexpected. It's typical for games to
 present a summary after each session the player has completed. In the next section we'll add a game over
 popup to our game.
 
-\section{Adding a game over popup}
+\section{Adding a Game Over Popup}
 Whenever a session ends, either because of a game over situation or because the
 time has run out, we want to present a popup that shows the results of this
 session. The popup should also provide easy ways to play the same game mode
@@ -1795,7 +1797,7 @@ By the end of this section we will have built a popup that looks like this:
 We will get started by creating this new UI element in \SB{}, then we will work
 on integrating it in code.
 
-\subsection{Setting up the popup in \SB{}}
+\subsection{Setting up the Popup in \SB{}}
 We'll start by creating a new \ccbfile{} for our popup.
 \begin{leftbar}
 Create a new \ccbfile{} in \SB{}. Select \textit{Layer} as the type.
@@ -2053,7 +2055,7 @@ better! These are the small details that catch the player's attention.
 
 We are ready to present this popup in code!
 
-\section{Presenting the popup in code}
+\section{Presenting the Popup in Code}
 
 As always, let's get started by setting up properties for the code connections
 we've added in \SB{}. The code to present the popup will be part of 
@@ -2265,7 +2267,7 @@ to your game. As you've seen it can be done with very little effort in \cocos{}!
 Now we'll extend the game modes to provide individual highscore messages, so
 that we have something to display on our highscore popup.
 
-\section{Providing a highscore for each game mode}
+\section{Providing a Highscore for each Game Mode}
 Whenever we want to extend the functionality of our game modes we should start
 by adding the new features to the \inlinecode{GameMode} protocol.
 \begin{leftbar}
@@ -2324,7 +2326,7 @@ As soon as the game ends our popup gets presented. But not only once; new
 popups are added endlessly. Why is that happening? We'll look into fixing this
 in the next section.
 
-\section{Tweaking the game over popup}
+\section{Tweaking the Game Over Popup}
 The issue we are experiencing is very common among developers that are
 implementing their first game over popup. What is going wrong?
 

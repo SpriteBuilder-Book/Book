@@ -46,7 +46,7 @@ Now you should have a decent idea of the game we will be building throughout the
 rest of this book! Let's get started with the first part: asset
 management and setting up the basic mechanics of our game.
 
-\section{Adding Assets to a SpriteBuilder project}
+\section{Adding Assets to a SpriteBuilder Project}
 First of all we need to create a new \SB{} project. You will also need to
 download the art pack for this game.
 
@@ -54,7 +54,7 @@ download the art pack for this game.
 \begin{enumerate}
   \item Create a new \SB{} project and name it \textit{FallingObjects}.
   \item Download the assets from
-  \url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/assets.zip}.
+  \url{http://bit.ly/sb-book-assets}.
   \item Unzip the folder once the download completes
   \item Add the assets to the project by dragging the
 entire folder into the left \textit{File View} in the left panel of
@@ -199,7 +199,7 @@ configuration of \inlinecode{CCFileUtils} that is set up in
 Classes!CCFileUtils}
 \end{details}
 
-\section{Adding the background image}
+\section{Adding the Background Image}
 Now that we have a basic understanding of how asset management works, lets get
 started working on our game. For now it will only consist of one scene, so
 we can start working directly in the \textit{MainScene.ccb} that is part of the
@@ -248,7 +248,7 @@ Resolution}. You can also use the CMD+1, CMD+2 and CMD+3 shortcuts. This feature
 will allow you to preview the game on a 3.5-inch iPhone, a 4-inch iPhone and an
 iPad. \label{preview_screen_sizes}
 
-\section{Create falling objects}
+\section{Create Falling Objects}
 Now let's dive into the implementation of the actual game. The next step should
 be adding falling objects. Our game will have two categories of objects, ones
 that should be caught (food) and ones that shouldn't (electronic devices).
@@ -266,7 +266,7 @@ Open the \xcode{} project of the game to get started. Remember that you can use
 the \textit{CMD + Shift + O} shortcut to do so!
 \end{leftbar}
 
-\subsection{Create a falling object class}
+\subsection{Create a Falling Object Class}
 In general we have two ways to differentiate objects a player should catch and
 ones he shouldn't catch. We could:
 \begin{itemize}
@@ -352,7 +352,7 @@ Note that the code will not compile at this point. Since \inlinecode{type} isn't
 declared as an optional value, Swift requires us to provide an initializer that
 sets this value. We will fix this in the next section.
 
-\subsection{Choosing an asset for a falling object}
+\subsection{Choosing an Asset for a Falling Object}
 We want the game to spawn entirely random falling objects. As you remember we
 have a couple of assets for both types of objects. Whenever we spawn an object
 we will need to choose a random asset, based on the object type. A good place to
@@ -571,7 +571,7 @@ You need to download the file containing the helper and add it to your project.
 
 \begin{leftbar}
 Download \filemention{Helpers.swift} from this url
-\url{https://dl.dropboxusercontent.com/u/13528538/SpriteBuilderBook/Helpers.swift}
+\url{http://bit.ly/sb-book-helpers}
 and add it to your project.
 \end{leftbar}
 
@@ -580,7 +580,7 @@ Now the compiler should be satisfied!
 That's all we need in order to create a \inlinecode{FallingObject}! Now we
 can move on and spawn some objects.
 
-\section{Spawn falling objects}
+\section{Spawn Falling Objects}
 Now it's time to implement one of the core mechanics of the game: Spawning
 objects and making them fall from the top of the screen to the bottom. We are
 going to implement this in \textit{MainScene.swift}. 
@@ -698,7 +698,7 @@ the screen and at a random X position. However, these objects don't move yet so
 you won't be able to see them falling down. Let's implement the falling code to
 complete the entire spawning functionality!
 
-\section{Move falling objects}
+\section{Move Falling Objects}
 The last step for this chapter will be making the objects we are spawning fall
 to the ground. While building your very first \SB{} game you have learned to use
 the \cocos{} action system to move nodes. The action system lets us describe changes over time, e.g. \textit{move 100 points to the right over 2
@@ -734,7 +734,7 @@ calculate how far we need to move nodes between two given frames.
 Enough of the theory - let's implement our update method, that will help you
 understand the details.
 
-\subsection{Implementing the update method}
+\subsection{Implementing the Update Method}
 Here is what we want to do in the update method:
 
 \begin{itemize}
@@ -811,7 +811,7 @@ you can read a nice blog post about the \inlinecode{fixedUpdate} method here:
 \url{http://kirillmuzykov.com/update-vs-fixedupdate-in-cocos2d/}.
 \end{details}
 
-\section{Adding sound effects}
+\section{Adding Sound Effects}
 The goal of this chapter is for you to learn how to use assets with \SB{} and
 \cocos{}. Obviously images are the most important assets in games, but sound
 effects also play a big role in creating games that your players enjoy. In this
@@ -835,7 +835,7 @@ book I will show you how to play sound effects in code.
 Before we set up the sound effect I want to give you a basic introduction to the timeline feature
 of \SB{} since it is one of the most powerful tools that \SB{} provides.
 
-\subsection{\SB{}'s timeline feature}\index{\SB{} timeline}
+\subsection{\SB{}'s Timeline Feature}\index{\SB{} timeline}
 The \SB{} timeline is a tool that allows developers to create animations and
 sequences of sound effects without writing code. Every \ccbfile{} has one
 \textit{Default Timeline} associated with it as soon as it is created. However,
@@ -851,7 +851,7 @@ animations.
 Timelines can either be idle or playing. Timelines start playing in one of three
 cases:
 \begin{enumerate}
-  \item \texit{Autoplay} is activated. That's the default setting for the
+  \item \textit{Autoplay} is activated. That's the default setting for the
   \textit{Default Timeline}
   \item The timeline is triggered to play from code
   \item The timeline has been chained to another timeline

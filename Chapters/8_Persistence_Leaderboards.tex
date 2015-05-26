@@ -24,7 +24,7 @@ our game. Which class should be responsible for storing highscores?
 Since each game mode defines its own game rules and keeps track of highscores
 during the game, it should also be responsible for persisting the highscores.
  
-\section{Extending the GameMode protocol}
+\section{Extending the GameMode Protocol}
 We'll start implementing this feature by extending the definition of the
 \inlinecode{GameMode} protocol. We'll add a required method called
 \inlinecode{saveHighscore}. That method will be called from within
@@ -61,7 +61,7 @@ func gameOver() {
 This change was simple. Now let's implement the highscore saving mechanism for
 both game modes.
 
-\section{Storing highscores for the endless game mode}
+\section{Storing Highscores for the Endless Game Mode}
 iOS provides us with a variety of options to persist application data.
 \textit{Core Data} offers a feature-rich object persistence API that allows for
 advanced features such as search and migration between different versions of a data model. Through
@@ -194,7 +194,7 @@ simple information.
 All that is left for this chapter is adding the same highscore functionality to
 the timed game mode.
 
-\section{Storing highscores for the timed game mode}
+\section{Storing Highscores for the Timed Game Mode}
 The implementation for the timed game mode is very similar to the one we've
 implemented just now. In fact they are so similar that I briefly thought about
 factoring the implementation out, so that it can be used by both game modes

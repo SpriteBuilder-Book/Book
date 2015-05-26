@@ -8,7 +8,7 @@ and \cocos{} - the Open Source tools that we will use throughout this book.
 \cocos{} is the game engine (or framework) and \SB{} is a visual content editor
 for \cocos{}.
 
-\section{Installing the software}
+\section{Installing the Software}
 First things first. Let's install the software used throughout this book. If you
 haven't developed for iOS or Mac OS X before, you first need to download
 \xcode{}. The software is available on the \textit{App Store}. You should find
@@ -64,7 +64,7 @@ days use game engines instead of building all of these features from scratch.
  
 Let's take a closer look at how \cocos{} works.
 
-\subsection{The \cocos{} technology stack}
+\subsection{The \cocos{} Technology Stack}
 
 \cocos{} is built on top of OpenGL ES 2.0 (and it has recently added
 experimental support for Apple's \textit{Metal} Framework).
@@ -295,7 +295,7 @@ everything that can be implemented in \SB{} can also be implemented in code.
 \SB{} is not part of the game engine, it simply allows you to configure \cocos{}
 scenes and nodes in an editor instead of configuring them in code.
 
-\subsection{Creating a first project}
+\subsection{Creating a First Project}
 To dive into the features of \SB{} we will create our first project! 
 
 \begin{leftbar}
@@ -434,7 +434,7 @@ get started with our example projects. The key takeaway is that \ccbfile{}s are
 used by \SB{} to store an entire scene graph including size, positions and many
 other properties of all the nodes that you have added.
 
-\subsection{How \SB{} and \xcode{} work together}
+\subsection{How \SB{} and \xcode{} Work Together}
 \label{Publish}
 I have mentioned how \SB{} and \xcode{} integrate a couple of times briefly. In
 order to be a well versed and efficient \SB{} game developer it is very
@@ -539,7 +539,7 @@ By creating this project you will learn all of the following:
   \item Using the \cocos{} touch handling system to capture touches
 \end{itemize}
 
-\subsection{Setting up the first scene}
+\subsection{Setting Up the First Scene}
 Now it is time to open the \textit{HelloSB} \SB{} project. We want to add a
 \textit{Start Button} to the first scene. When this button is tapped we want to
 switch to the second scene. 
@@ -1068,7 +1068,7 @@ a plain \ccnode{} does not have a property called
 \textit{colorNode}! We once again need to define a custom class for the root
 node of this \ccbfile{}.
 
-\begin{details}[Variable Assignments, Callbacks and Custom Classes] 
+\begin{details}{Variable Assignments, Callbacks and Custom Classes} 
 Always remember that you practically cannot set up a \textit{Variable
 assignment} or a \textit{Callback} for the \textit{Document Root} without also
 setting a custom class for the root node of the corresponding \ccbfile{}. You
@@ -1146,7 +1146,7 @@ you have selected in \SB{}. The node type of the root node of
 
 \begin{leftbar}
 Now open \textit{Square.swift} and add the property
-\inlinecode{\colorNode{}} to the \inlinecode{Square} class. This property is the
+\inlinecode{colorNode} to the \inlinecode{Square} class. This property is the
 one that we defined in \SB{} to store the reference to the
 \inlinecode{CCNodeColor} that displays the color of our square:
 \begin{lstlisting}

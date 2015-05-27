@@ -35,8 +35,8 @@
 
   \item Node Lifecycle, \hyperpage{63}
   \item Node transformation
-    \subitem Bounding Box, \hyperpage{127}
-    \subitem Position, \hyperpage{132}
+    \subitem Bounding Box, \hyperpage{126}
+    \subitem Position, \hyperpage{131}
   \item Nodes
     \subitem CCSprite9Slice, \hyperpage{196}
 
@@ -67,6 +67,6 @@
 
   \indexspace
 
-  \item Z-Order, \hyperpage{136}
+  \item Z-Order, \hyperpage{135}
 
 \end{theindex}

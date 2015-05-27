@@ -36,7 +36,7 @@ From the paragraph above we can extract three different states in which a
 falling object can be:
 \begin{figure}[H]
 		\centering
-		\includegraphics[width=0.3\linewidth]{images/Chapter3/falling_object_states.png}
+		\includegraphics[width=0.25\linewidth]{images/Chapter3/falling_object_states.png}
 		\caption{Objects start in falling state, then they end up caught or missed}
 \end{figure}
 As the diagram shows, a falling object can either stay a falling object or turn
@@ -318,11 +318,18 @@ Replace the \inlinecode{performFallingStep} stub with this implementation:
       pot.catchContainer.boundingBox(), pot.nodeToParentTransform()
     );
     
-    let yPositionInCatchContainer = CGRectGetMinY(fallingObject.boundingBox()) < CGRectGetMaxY(containerWorldBoundingBox)
-    let xPositionLargerThanLeftEdge = CGRectGetMinX(fallingObject.boundingBox()) > CGRectGetMinX(containerWorldBoundingBox)
-    let xPositionSmallerThanRightEdge = CGRectGetMaxX(fallingObject.boundingBox()) < CGRectGetMaxX(containerWorldBoundingBox)
+    let yPositionInCatchContainer = 
+      CGRectGetMinY(fallingObject.boundingBox()) <
+      CGRectGetMaxY(containerWorldBoundingBox)
+       
+    let xPositionLargerThanLeftEdge = 
+      CGRectGetMinX(fallingObject.boundingBox()) >
+      CGRectGetMinX(containerWorldBoundingBox) 
+      
+    let xPositionSmallerThanRightEdge = 
+      CGRectGetMaxX(fallingObject.boundingBox()) < 
+      CGRectGetMaxX(containerWorldBoundingBox)
     
-    // check if falling object is inside catching pot, trigger this when object reaches top of pot
     if (yPositionInCatchContainer) {
       if (xPositionLargerThanLeftEdge && xPositionSmallerThanRightEdge) {
         // caught the object

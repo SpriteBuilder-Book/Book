@@ -59,9 +59,9 @@
 \contentsline {section}{\numberline {3.7}Adding Sound Effects}{98}{section.3.7}
 \contentsline {subsection}{\numberline {3.7.1}SpriteBuilder{}'s Timeline Feature}{99}{subsection.3.7.1}
 \contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{100}{section*.17}
-\contentsline {subsection}{\numberline {3.7.2}Triggering a Sound Effect}{103}{subsection.3.7.2}
+\contentsline {subsection}{\numberline {3.7.2}Triggering a Sound Effect}{102}{subsection.3.7.2}
 \contentsline {section}{\numberline {3.8}Summary}{104}{section.3.8}
-\contentsline {subsection}{\numberline {3.8.1}Grab the Source Code}{105}{subsection.3.8.1}
+\contentsline {subsection}{\numberline {3.8.1}Grab the Source Code}{104}{subsection.3.8.1}
 \contentsline {chapter}{\numberline {4}User Interaction}{106}{chapter.4}
 \contentsline {section}{\numberline {4.1}Add the Pot to the Game}{106}{section.4.1}
 \contentsline {subsection}{\numberline {4.1.1}Setting Up the Pot Assets}{107}{subsection.4.1.1}
@@ -74,16 +74,16 @@
 \contentsline {chapter}{\numberline {5}Scene Graphs, Node Transforms and State Machines}{118}{chapter.5}
 \contentsline {section}{\numberline {5.1}Catching Objects}{118}{section.5.1}
 \contentsline {subsection}{\numberline {5.1.1}Thinking in States}{119}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Storing State}{121}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Implement State Specific Behaviour}{122}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.2}Storing State}{120}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Implement State Specific Behaviour}{121}{subsection.5.1.3}
 \contentsline {subsection}{\numberline {5.1.4}Implementing the Falling State}{123}{subsection.5.1.4}
 \contentsline {subsection}{\numberline {5.1.5}Implementing the Missed State}{133}{subsection.5.1.5}
-\contentsline {subsection}{\numberline {5.1.6}Implementing the Caught State}{134}{subsection.5.1.6}
-\contentsline {subsection}{\numberline {5.1.7}Time to Test}{135}{subsection.5.1.7}
-\contentsline {section}{\numberline {5.2}A Rendering Tweak}{136}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Working with the Z-Order}{136}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Summary}{140}{section.5.3}
-\contentsline {subsection}{\numberline {5.3.1}Grab the Source Code}{141}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.1.6}Implementing the Caught State}{133}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Time to Test}{134}{subsection.5.1.7}
+\contentsline {section}{\numberline {5.2}A Rendering Tweak}{135}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Working with the Z-Order}{135}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Summary}{139}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Grab the Source Code}{140}{subsection.5.3.1}
 \contentsline {chapter}{\numberline {6}User Interfaces and Implementing Multiple Game Modes}{142}{chapter.6}
 \contentsline {section}{\numberline {6.1}Adding a Game Mode Selection Scene}{143}{section.6.1}
 \contentsline {subsection}{\numberline {6.1.1}Setting the Start Scene Up}{143}{subsection.6.1.1}

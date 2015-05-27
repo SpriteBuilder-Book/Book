@@ -1,128 +1,135 @@
-\contentsline {chapter}{\numberline {1}About this Book}{7}{chapter.1}
-\contentsline {section}{\numberline {1.1}Who This Book Is for}{8}{section.1.1}
-\contentsline {section}{\numberline {1.2}What This Book Covers}{8}{section.1.2}
-\contentsline {section}{\numberline {1.3}About the Author}{11}{section.1.3}
-\contentsline {section}{\numberline {1.4}How to Read This Book}{11}{section.1.4}
-\contentsline {section}{\numberline {1.5}Conventions in This Book}{11}{section.1.5}
-\contentsline {subsection}{\numberline {1.5.1}Info Boxes}{12}{subsection.1.5.1}
-\contentsline {subsection}{\numberline {1.5.2}Action Required}{12}{subsection.1.5.2}
-\contentsline {section}{\numberline {1.6}Source Code}{12}{section.1.6}
-\contentsline {section}{\numberline {1.7}Getting Involved}{13}{section.1.7}
-\contentsline {chapter}{\numberline {2}Introduction to SpriteBuilder{} and Cocos2D{}}{15}{chapter.2}
-\contentsline {section}{\numberline {2.1}Installing the Software}{15}{section.2.1}
-\contentsline {section}{\numberline {2.2}Introduction to Cocos2D{}}{17}{section.2.2}
-\contentsline {subsection}{\numberline {2.2.1}The Cocos2D{} Technology Stack}{18}{subsection.2.2.1}
-\contentsline {subsection}{\numberline {2.2.2}Scenes}{19}{subsection.2.2.2}
-\contentsline {subsection}{\numberline {2.2.3}Nodes}{20}{subsection.2.2.3}
-\contentsline {subsection}{\numberline {2.2.4}Scene Graphs}{21}{subsection.2.2.4}
-\contentsline {subsection}{\numberline {2.2.5}An Introduction to CCNode}{23}{subsection.2.2.5}
-\contentsline {section}{\numberline {2.3}Introduction to SpriteBuilder{}}{26}{section.2.3}
-\contentsline {subsection}{\numberline {2.3.1}Creating a First Project}{26}{subsection.2.3.1}
-\contentsline {subsection}{\numberline {2.3.2}The Editor}{28}{subsection.2.3.2}
-\contentsline {subsubsection}{\nonumberline File View}{30}{section*.2}
-\contentsline {subsubsection}{\nonumberline Node Library}{31}{section*.3}
-\contentsline {subsubsection}{\nonumberline Inspector}{32}{section*.4}
-\contentsline {subsubsection}{\nonumberline Code Connections}{33}{section*.5}
-\contentsline {subsection}{\numberline {2.3.3}CCB File{}s}{34}{subsection.2.3.3}
-\contentsline {subsection}{\numberline {2.3.4}How SpriteBuilder{} and Xcode{} Work Together}{35}{subsection.2.3.4}
-\contentsline {subsection}{\numberline {2.3.5}Code Connections}{38}{subsection.2.3.5}
-\contentsline {section}{\numberline {2.4}A first SpriteBuilder{} project}{39}{section.2.4}
-\contentsline {subsection}{\numberline {2.4.1}Setting Up the First Scene}{40}{subsection.2.4.1}
-\contentsline {subsubsection}{\nonumberline Positioning the first button}{40}{section*.6}
-\contentsline {subsubsection}{\nonumberline Setting up a code connection}{42}{section*.7}
-\contentsline {subsubsection}{\nonumberline Adding Code to a SpriteBuilder{} project}{46}{section*.8}
-\contentsline {subsection}{\numberline {2.4.2}Creating the Gameplay Scene}{49}{subsection.2.4.2}
-\contentsline {subsection}{\numberline {2.4.3}Adding a Scene Transition}{50}{subsection.2.4.3}
-\contentsline {subsubsection}{\nonumberline Replacing scenes vs. pushing scenes}{51}{section*.9}
-\contentsline {subsubsection}{\nonumberline Adding transition effects}{53}{section*.10}
-\contentsline {subsubsection}{\nonumberline Implementing a scene transition for our game}{53}{section*.11}
-\contentsline {subsection}{\numberline {2.4.4}Implementing the Gameplay}{55}{subsection.2.4.4}
-\contentsline {subsubsection}{\nonumberline Creating the Square CCB File{}}{55}{section*.12}
-\contentsline {subsubsection}{\nonumberline Setting up a custom class for the Gameplay}{59}{section*.13}
-\contentsline {subsubsection}{\nonumberline Creating the Square class}{59}{section*.14}
-\contentsline {subsection}{\numberline {2.4.5}Adding Actions in Code}{65}{subsection.2.4.5}
-\contentsline {subsubsection}{\nonumberline Creating the Gameplay class}{66}{section*.15}
-\contentsline {subsubsection}{\nonumberline Adding Touch Handling to the Gameplay}{67}{section*.16}
-\contentsline {section}{\numberline {2.5}Summary}{70}{section.2.5}
-\contentsline {chapter}{\numberline {3}Asset Handling and Basic Game Mechanics}{71}{chapter.3}
-\contentsline {section}{\numberline {3.1}Adding Assets to a SpriteBuilder Project}{73}{section.3.1}
-\contentsline {section}{\numberline {3.2}Asset Handling in SpriteBuilder{} and Cocos2D{}}{73}{section.3.2}
-\contentsline {section}{\numberline {3.3}Adding the Background Image}{79}{section.3.3}
-\contentsline {section}{\numberline {3.4}Create Falling Objects}{81}{section.3.4}
-\contentsline {subsection}{\numberline {3.4.1}Create a Falling Object Class}{81}{subsection.3.4.1}
-\contentsline {subsection}{\numberline {3.4.2}Choosing an Asset for a Falling Object}{84}{subsection.3.4.2}
-\contentsline {section}{\numberline {3.5}Spawn Falling Objects}{90}{section.3.5}
-\contentsline {section}{\numberline {3.6}Move Falling Objects}{94}{section.3.6}
-\contentsline {subsection}{\numberline {3.6.1}Update Loop}{94}{subsection.3.6.1}
-\contentsline {subsection}{\numberline {3.6.2}Implementing the Update Method}{95}{subsection.3.6.2}
-\contentsline {section}{\numberline {3.7}Adding Sound Effects}{97}{section.3.7}
-\contentsline {subsection}{\numberline {3.7.1}SpriteBuilder{}'s Timeline Feature}{98}{subsection.3.7.1}
-\contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{99}{section*.17}
-\contentsline {subsection}{\numberline {3.7.2}Triggering a Sound Effect}{102}{subsection.3.7.2}
-\contentsline {section}{\numberline {3.8}Summary}{103}{section.3.8}
-\contentsline {chapter}{\numberline {4}User Interaction}{105}{chapter.4}
-\contentsline {section}{\numberline {4.1}Add the Pot to the Game}{105}{section.4.1}
-\contentsline {subsection}{\numberline {4.1.1}Setting Up the Pot Assets}{106}{subsection.4.1.1}
-\contentsline {section}{\numberline {4.2}Implement a Drag and Drop Mechanism}{110}{section.4.2}
-\contentsline {subsection}{\numberline {4.2.1}Picking Up an Object}{110}{subsection.4.2.1}
-\contentsline {subsection}{\numberline {4.2.2}Moving an Object}{113}{subsection.4.2.2}
-\contentsline {subsection}{\numberline {4.2.3}Dropping an Object}{114}{subsection.4.2.3}
-\contentsline {section}{\numberline {4.3}Summary}{115}{section.4.3}
-\contentsline {chapter}{\numberline {5}Scene Graphs, Node Transforms and State Machines}{117}{chapter.5}
-\contentsline {section}{\numberline {5.1}Catching Objects}{117}{section.5.1}
-\contentsline {subsection}{\numberline {5.1.1}Thinking in States}{118}{subsection.5.1.1}
-\contentsline {subsection}{\numberline {5.1.2}Storing State}{120}{subsection.5.1.2}
-\contentsline {subsection}{\numberline {5.1.3}Implement State Specific Behaviour}{121}{subsection.5.1.3}
-\contentsline {subsection}{\numberline {5.1.4}Implementing the Falling State}{122}{subsection.5.1.4}
-\contentsline {subsection}{\numberline {5.1.5}Implementing the Missed State}{132}{subsection.5.1.5}
-\contentsline {subsection}{\numberline {5.1.6}Implementing the Caught State}{133}{subsection.5.1.6}
-\contentsline {subsection}{\numberline {5.1.7}Time to Test}{134}{subsection.5.1.7}
-\contentsline {section}{\numberline {5.2}A Rendering Tweak}{135}{section.5.2}
-\contentsline {subsection}{\numberline {5.2.1}Working with the Z-Order}{135}{subsection.5.2.1}
-\contentsline {section}{\numberline {5.3}Summary}{139}{section.5.3}
-\contentsline {chapter}{\numberline {6}User Interfaces and Implementing Multiple Game Modes}{141}{chapter.6}
-\contentsline {section}{\numberline {6.1}Adding a Game Mode Selection Scene}{142}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Setting the Start Scene Up}{142}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Creating the Content Node for the Scroll View}{147}{subsection.6.1.2}
-\contentsline {subsection}{\numberline {6.1.3}Finishing up the Game Mode Selection Scene}{156}{subsection.6.1.3}
-\contentsline {subsection}{\numberline {6.1.4}Adding a Fancy Transition Animation}{158}{subsection.6.1.4}
-\contentsline {subsection}{\numberline {6.1.5}Implementing the Game Mode Selection}{162}{subsection.6.1.5}
-\contentsline {subsubsection}{\nonumberline Implementing a Scroll View Delegate}{165}{section*.18}
-\contentsline {section}{\numberline {6.2}Implementing Multiple Game Modes}{169}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Adding UIs for Different Game Modes}{170}{subsection.6.2.1}
-\contentsline {subsubsection}{\nonumberline UI for the Timed Game Mode}{170}{section*.19}
-\contentsline {subsubsection}{\nonumberline UI for the Endless Game Mode}{173}{section*.20}
-\contentsline {subsection}{\numberline {6.2.2}Implement Game Logic for Different Modes}{175}{subsection.6.2.2}
-\contentsline {subsubsection}{\nonumberline Defining a Protocol for Game Modes}{176}{section*.21}
-\contentsline {subsubsection}{\nonumberline Implementing the Timed Game Mode}{179}{section*.22}
-\contentsline {subsubsection}{\nonumberline Implementing the Endless Game Mode}{184}{section*.23}
-\contentsline {subsection}{\numberline {6.2.3}Connecting the Game Modes to the Main Scene}{188}{subsection.6.2.3}
-\contentsline {section}{\numberline {6.3}Adding a Game Over Popup}{194}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Setting up the Popup in SpriteBuilder{}}{194}{subsection.6.3.1}
-\contentsline {section}{\numberline {6.4}Presenting the Popup in Code}{203}{section.6.4}
-\contentsline {section}{\numberline {6.5}Providing a Highscore for each Game Mode}{209}{section.6.5}
-\contentsline {section}{\numberline {6.6}Tweaking the Game Over Popup}{211}{section.6.6}
-\contentsline {section}{\numberline {6.7}Summary}{214}{section.6.7}
-\contentsline {chapter}{\numberline {7}Persisting Highscores}{217}{chapter.7}
-\contentsline {section}{\numberline {7.1}Extending the GameMode Protocol}{218}{section.7.1}
-\contentsline {section}{\numberline {7.2}Storing Highscores for the Endless Game Mode}{219}{section.7.2}
-\contentsline {section}{\numberline {7.3}Storing Highscores for the Timed Game Mode}{222}{section.7.3}
-\contentsline {section}{\numberline {7.4}Summary}{224}{section.7.4}
-\contentsline {chapter}{\numberline {8}Effects and Animations}{227}{chapter.8}
-\contentsline {section}{\numberline {8.1}Lighting with CCEffects}{227}{section.8.1}
-\contentsline {subsection}{\numberline {8.1.1}Lighting in 2D Games}{228}{subsection.8.1.1}
-\contentsline {subsection}{\numberline {8.1.2}Creating Normal Maps}{230}{subsection.8.1.2}
-\contentsline {subsection}{\numberline {8.1.3}Setting up Lighting Effects in SpriteBuilder{}}{230}{subsection.8.1.3}
-\contentsline {subsection}{\numberline {8.1.4}Assigning Normal Maps in SpriteBuilder{}}{239}{subsection.8.1.4}
-\contentsline {subsection}{\numberline {8.1.5}Assigning Normal Maps in Code}{241}{subsection.8.1.5}
-\contentsline {section}{\numberline {8.2}Adding Particle Effects}{245}{section.8.2}
-\contentsline {subsection}{\numberline {8.2.1}Creating a Particle Effect in SpriteBuilder{}}{245}{subsection.8.2.1}
-\contentsline {subsection}{\numberline {8.2.2}Loading Particle Effects in Code}{249}{subsection.8.2.2}
-\contentsline {section}{\numberline {8.3}Delightful Animations with SpriteBuilder{}'s timeline}{251}{section.8.3}
-\contentsline {subsection}{\numberline {8.3.1}Playing the Timelines}{257}{subsection.8.3.1}
-\contentsline {section}{\numberline {8.4}Summary}{259}{section.8.4}
-\contentsline {chapter}{\numberline {9}Where to Go from Here?}{261}{chapter.9}
-\contentsline {section}{\numberline {9.1}Building Games with the Physics Engine}{261}{section.9.1}
-\contentsline {section}{\numberline {9.2}Building Puzzle Games}{262}{section.9.2}
-\contentsline {section}{\numberline {9.3}Getting Help}{262}{section.9.3}
-\contentsline {section}{\numberline {9.4}Build your own Game!}{262}{section.9.4}
+\contentsline {chapter}{\numberline {1}About this Book}{8}{chapter.1}
+\contentsline {section}{\numberline {1.1}Who This Book Is for}{9}{section.1.1}
+\contentsline {section}{\numberline {1.2}What This Book Covers}{9}{section.1.2}
+\contentsline {section}{\numberline {1.3}About the Author}{12}{section.1.3}
+\contentsline {section}{\numberline {1.4}How to Read This Book}{12}{section.1.4}
+\contentsline {section}{\numberline {1.5}Conventions in This Book}{12}{section.1.5}
+\contentsline {subsection}{\numberline {1.5.1}Info Boxes}{13}{subsection.1.5.1}
+\contentsline {subsection}{\numberline {1.5.2}Action Required}{13}{subsection.1.5.2}
+\contentsline {section}{\numberline {1.6}Source Code}{13}{section.1.6}
+\contentsline {section}{\numberline {1.7}Getting Involved}{14}{section.1.7}
+\contentsline {chapter}{\numberline {2}Introduction to SpriteBuilder{} and Cocos2D{}}{16}{chapter.2}
+\contentsline {section}{\numberline {2.1}Installing the Software}{16}{section.2.1}
+\contentsline {section}{\numberline {2.2}Introduction to Cocos2D{}}{18}{section.2.2}
+\contentsline {subsection}{\numberline {2.2.1}The Cocos2D{} Technology Stack}{19}{subsection.2.2.1}
+\contentsline {subsection}{\numberline {2.2.2}Scenes}{20}{subsection.2.2.2}
+\contentsline {subsection}{\numberline {2.2.3}Nodes}{21}{subsection.2.2.3}
+\contentsline {subsection}{\numberline {2.2.4}Scene Graphs}{22}{subsection.2.2.4}
+\contentsline {subsection}{\numberline {2.2.5}An Introduction to CCNode}{24}{subsection.2.2.5}
+\contentsline {section}{\numberline {2.3}Introduction to SpriteBuilder{}}{27}{section.2.3}
+\contentsline {subsection}{\numberline {2.3.1}Creating a First Project}{27}{subsection.2.3.1}
+\contentsline {subsection}{\numberline {2.3.2}The Editor}{29}{subsection.2.3.2}
+\contentsline {subsubsection}{\nonumberline File View}{31}{section*.2}
+\contentsline {subsubsection}{\nonumberline Node Library}{32}{section*.3}
+\contentsline {subsubsection}{\nonumberline Inspector}{33}{section*.4}
+\contentsline {subsubsection}{\nonumberline Code Connections}{34}{section*.5}
+\contentsline {subsection}{\numberline {2.3.3}CCB File{}s}{35}{subsection.2.3.3}
+\contentsline {subsection}{\numberline {2.3.4}How SpriteBuilder{} and Xcode{} Work Together}{36}{subsection.2.3.4}
+\contentsline {subsection}{\numberline {2.3.5}Code Connections}{39}{subsection.2.3.5}
+\contentsline {section}{\numberline {2.4}A first SpriteBuilder{} project}{40}{section.2.4}
+\contentsline {subsection}{\numberline {2.4.1}Setting Up the First Scene}{41}{subsection.2.4.1}
+\contentsline {subsubsection}{\nonumberline Positioning the first button}{41}{section*.6}
+\contentsline {subsubsection}{\nonumberline Setting up a code connection}{43}{section*.7}
+\contentsline {subsubsection}{\nonumberline Adding Code to a SpriteBuilder{} project}{47}{section*.8}
+\contentsline {subsection}{\numberline {2.4.2}Creating the Gameplay Scene}{50}{subsection.2.4.2}
+\contentsline {subsection}{\numberline {2.4.3}Adding a Scene Transition}{51}{subsection.2.4.3}
+\contentsline {subsubsection}{\nonumberline Replacing scenes vs. pushing scenes}{52}{section*.9}
+\contentsline {subsubsection}{\nonumberline Adding transition effects}{54}{section*.10}
+\contentsline {subsubsection}{\nonumberline Implementing a scene transition for our game}{54}{section*.11}
+\contentsline {subsection}{\numberline {2.4.4}Implementing the Gameplay}{56}{subsection.2.4.4}
+\contentsline {subsubsection}{\nonumberline Creating the Square CCB File{}}{56}{section*.12}
+\contentsline {subsubsection}{\nonumberline Setting up a custom class for the Gameplay}{60}{section*.13}
+\contentsline {subsubsection}{\nonumberline Creating the Square class}{60}{section*.14}
+\contentsline {subsection}{\numberline {2.4.5}Adding Actions in Code}{66}{subsection.2.4.5}
+\contentsline {subsubsection}{\nonumberline Creating the Gameplay class}{67}{section*.15}
+\contentsline {subsubsection}{\nonumberline Adding Touch Handling to the Gameplay}{68}{section*.16}
+\contentsline {section}{\numberline {2.5}Summary}{71}{section.2.5}
+\contentsline {subsection}{\numberline {2.5.1}Grab the Source Code}{71}{subsection.2.5.1}
+\contentsline {chapter}{\numberline {3}Asset Handling and Basic Game Mechanics}{72}{chapter.3}
+\contentsline {section}{\numberline {3.1}Adding Assets to a SpriteBuilder Project}{74}{section.3.1}
+\contentsline {section}{\numberline {3.2}Asset Handling in SpriteBuilder{} and Cocos2D{}}{74}{section.3.2}
+\contentsline {section}{\numberline {3.3}Adding the Background Image}{80}{section.3.3}
+\contentsline {section}{\numberline {3.4}Create Falling Objects}{82}{section.3.4}
+\contentsline {subsection}{\numberline {3.4.1}Create a Falling Object Class}{82}{subsection.3.4.1}
+\contentsline {subsection}{\numberline {3.4.2}Choosing an Asset for a Falling Object}{85}{subsection.3.4.2}
+\contentsline {section}{\numberline {3.5}Spawn Falling Objects}{91}{section.3.5}
+\contentsline {section}{\numberline {3.6}Move Falling Objects}{95}{section.3.6}
+\contentsline {subsection}{\numberline {3.6.1}Update Loop}{95}{subsection.3.6.1}
+\contentsline {subsection}{\numberline {3.6.2}Implementing the Update Method}{96}{subsection.3.6.2}
+\contentsline {section}{\numberline {3.7}Adding Sound Effects}{98}{section.3.7}
+\contentsline {subsection}{\numberline {3.7.1}SpriteBuilder{}'s Timeline Feature}{99}{subsection.3.7.1}
+\contentsline {subsubsection}{\nonumberline Adding the sound effect to a timeline}{100}{section*.17}
+\contentsline {subsection}{\numberline {3.7.2}Triggering a Sound Effect}{103}{subsection.3.7.2}
+\contentsline {section}{\numberline {3.8}Summary}{104}{section.3.8}
+\contentsline {subsection}{\numberline {3.8.1}Grab the Source Code}{105}{subsection.3.8.1}
+\contentsline {chapter}{\numberline {4}User Interaction}{106}{chapter.4}
+\contentsline {section}{\numberline {4.1}Add the Pot to the Game}{106}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Setting Up the Pot Assets}{107}{subsection.4.1.1}
+\contentsline {section}{\numberline {4.2}Implement a Drag and Drop Mechanism}{111}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}Picking Up an Object}{111}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}Moving an Object}{114}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Dropping an Object}{115}{subsection.4.2.3}
+\contentsline {section}{\numberline {4.3}Summary}{116}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Grab the Source Code}{116}{subsection.4.3.1}
+\contentsline {chapter}{\numberline {5}Scene Graphs, Node Transforms and State Machines}{118}{chapter.5}
+\contentsline {section}{\numberline {5.1}Catching Objects}{118}{section.5.1}
+\contentsline {subsection}{\numberline {5.1.1}Thinking in States}{119}{subsection.5.1.1}
+\contentsline {subsection}{\numberline {5.1.2}Storing State}{121}{subsection.5.1.2}
+\contentsline {subsection}{\numberline {5.1.3}Implement State Specific Behaviour}{122}{subsection.5.1.3}
+\contentsline {subsection}{\numberline {5.1.4}Implementing the Falling State}{123}{subsection.5.1.4}
+\contentsline {subsection}{\numberline {5.1.5}Implementing the Missed State}{133}{subsection.5.1.5}
+\contentsline {subsection}{\numberline {5.1.6}Implementing the Caught State}{134}{subsection.5.1.6}
+\contentsline {subsection}{\numberline {5.1.7}Time to Test}{135}{subsection.5.1.7}
+\contentsline {section}{\numberline {5.2}A Rendering Tweak}{136}{section.5.2}
+\contentsline {subsection}{\numberline {5.2.1}Working with the Z-Order}{136}{subsection.5.2.1}
+\contentsline {section}{\numberline {5.3}Summary}{140}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Grab the Source Code}{141}{subsection.5.3.1}
+\contentsline {chapter}{\numberline {6}User Interfaces and Implementing Multiple Game Modes}{142}{chapter.6}
+\contentsline {section}{\numberline {6.1}Adding a Game Mode Selection Scene}{143}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Setting the Start Scene Up}{143}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Creating the Content Node for the Scroll View}{148}{subsection.6.1.2}
+\contentsline {subsection}{\numberline {6.1.3}Finishing up the Game Mode Selection Scene}{157}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Adding a Fancy Transition Animation}{159}{subsection.6.1.4}
+\contentsline {subsection}{\numberline {6.1.5}Implementing the Game Mode Selection}{163}{subsection.6.1.5}
+\contentsline {subsubsection}{\nonumberline Implementing a Scroll View Delegate}{166}{section*.18}
+\contentsline {section}{\numberline {6.2}Implementing Multiple Game Modes}{170}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Adding UIs for Different Game Modes}{171}{subsection.6.2.1}
+\contentsline {subsubsection}{\nonumberline UI for the Timed Game Mode}{171}{section*.19}
+\contentsline {subsubsection}{\nonumberline UI for the Endless Game Mode}{174}{section*.20}
+\contentsline {subsection}{\numberline {6.2.2}Implement Game Logic for Different Modes}{176}{subsection.6.2.2}
+\contentsline {subsubsection}{\nonumberline Defining a Protocol for Game Modes}{177}{section*.21}
+\contentsline {subsubsection}{\nonumberline Implementing the Timed Game Mode}{180}{section*.22}
+\contentsline {subsubsection}{\nonumberline Implementing the Endless Game Mode}{185}{section*.23}
+\contentsline {subsection}{\numberline {6.2.3}Connecting the Game Modes to the Main Scene}{189}{subsection.6.2.3}
+\contentsline {section}{\numberline {6.3}Adding a Game Over Popup}{195}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Setting up the Popup in SpriteBuilder{}}{195}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}Presenting the Popup in Code}{204}{section.6.4}
+\contentsline {section}{\numberline {6.5}Providing a Highscore for each Game Mode}{210}{section.6.5}
+\contentsline {section}{\numberline {6.6}Tweaking the Game Over Popup}{212}{section.6.6}
+\contentsline {section}{\numberline {6.7}Summary}{215}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Grab the Source Code}{216}{subsection.6.7.1}
+\contentsline {chapter}{\numberline {7}Persisting Highscores}{218}{chapter.7}
+\contentsline {section}{\numberline {7.1}Extending the GameMode Protocol}{219}{section.7.1}
+\contentsline {section}{\numberline {7.2}Storing Highscores for the Endless Game Mode}{220}{section.7.2}
+\contentsline {section}{\numberline {7.3}Storing Highscores for the Timed Game Mode}{223}{section.7.3}
+\contentsline {section}{\numberline {7.4}Summary}{225}{section.7.4}
+\contentsline {subsection}{\numberline {7.4.1}Grab the Source Code}{226}{subsection.7.4.1}
+\contentsline {chapter}{\numberline {8}Effects and Animations}{228}{chapter.8}
+\contentsline {section}{\numberline {8.1}Lighting with CCEffects}{228}{section.8.1}
+\contentsline {subsection}{\numberline {8.1.1}Lighting in 2D Games}{229}{subsection.8.1.1}
+\contentsline {subsection}{\numberline {8.1.2}Creating Normal Maps}{231}{subsection.8.1.2}
+\contentsline {subsection}{\numberline {8.1.3}Setting up Lighting Effects in SpriteBuilder{}}{231}{subsection.8.1.3}
+\contentsline {subsection}{\numberline {8.1.4}Assigning Normal Maps in SpriteBuilder{}}{240}{subsection.8.1.4}
+\contentsline {subsection}{\numberline {8.1.5}Assigning Normal Maps in Code}{242}{subsection.8.1.5}
+\contentsline {section}{\numberline {8.2}Adding Particle Effects}{246}{section.8.2}
+\contentsline {subsection}{\numberline {8.2.1}Creating a Particle Effect in SpriteBuilder{}}{246}{subsection.8.2.1}
+\contentsline {subsection}{\numberline {8.2.2}Loading Particle Effects in Code}{250}{subsection.8.2.2}
+\contentsline {section}{\numberline {8.3}Delightful Animations with SpriteBuilder{}'s timeline}{252}{section.8.3}
+\contentsline {subsection}{\numberline {8.3.1}Playing the Timelines}{258}{subsection.8.3.1}
+\contentsline {section}{\numberline {8.4}Summary}{260}{section.8.4}
+\contentsline {subsection}{\numberline {8.4.1}Grab the Source Code}{260}{subsection.8.4.1}
+\contentsline {chapter}{\numberline {9}Where to Go from Here?}{262}{chapter.9}
+\contentsline {section}{\numberline {9.1}Building Games with the Physics Engine}{262}{section.9.1}
+\contentsline {section}{\numberline {9.2}Building Puzzle Games}{263}{section.9.2}
+\contentsline {section}{\numberline {9.3}Getting Help}{263}{section.9.3}
+\contentsline {section}{\numberline {9.4}Build your own Game!}{263}{section.9.4}

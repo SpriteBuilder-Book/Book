@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.14)  26 MAY 2015 00:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2015.5.14)  26 MAY 2015 21:21
 entering extended mode
  \write18 enabled.
  Source specials enabled.
@@ -1668,7 +1668,7 @@ ABD: EveryShipout initializing macros
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 
-<images/cover_no_badge.pdf, id=457, 396.48125pt x 486.81876pt>
+<images/cover_no_badge.pdf, id=485, 396.48125pt x 486.81876pt>
 File: images/cover_no_badge.pdf Graphic file (type pdf)
 
 <use images/cover_no_badge.pdf>
@@ -1686,7 +1686,7 @@ x/updmap/pdftex.map}>]) [2
 
 
 ]
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 217.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 218.
 
 
 (/usr/local/texlive/2014/texmf-dist/tex/latex/base/t1cmss.fd
@@ -1697,7 +1697,7 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 Package tocbasic Info: character protrusion at toc deactivated on input line 21
-7.
+8.
  (./document.toc
 
 Package xcolor Warning: Incompatible color definition on input line 1.
@@ -1772,7 +1772,10 @@ Package xcolor Warning: Incompatible color definition on input line 26.
 
 Package xcolor Warning: Incompatible color definition on input line 27.
 
-[3]
+[3
+
+
+]
 
 Package xcolor Warning: Incompatible color definition on input line 28.
 
@@ -1837,7 +1840,7 @@ Package xcolor Warning: Incompatible color definition on input line 58.
 Package xcolor Warning: Incompatible color definition on input line 59.
 
 
-Package xcolor Warning: Incompatible color definition on input line 61.
+Package xcolor Warning: Incompatible color definition on input line 60.
 
 
 Package xcolor Warning: Incompatible color definition on input line 62.
@@ -1860,10 +1863,10 @@ Package xcolor Warning: Incompatible color definition on input line 67.
 
 Package xcolor Warning: Incompatible color definition on input line 68.
 
-[4]
 
 Package xcolor Warning: Incompatible color definition on input line 69.
 
+[4]
 
 Package xcolor Warning: Incompatible color definition on input line 70.
 
@@ -1925,25 +1928,25 @@ Package xcolor Warning: Incompatible color definition on input line 88.
 Package xcolor Warning: Incompatible color definition on input line 89.
 
 
+Package xcolor Warning: Incompatible color definition on input line 90.
+
+
 Package xcolor Warning: Incompatible color definition on input line 91.
 
 
 Package xcolor Warning: Incompatible color definition on input line 92.
 
 
+Package xcolor Warning: Incompatible color definition on input line 93.
+
+
 Package xcolor Warning: Incompatible color definition on input line 95.
 
 
+Package xcolor Warning: Incompatible color definition on input line 96.
+
+
 Package xcolor Warning: Incompatible color definition on input line 99.
-
-
-Package xcolor Warning: Incompatible color definition on input line 100.
-
-
-Package xcolor Warning: Incompatible color definition on input line 101.
-
-
-Package xcolor Warning: Incompatible color definition on input line 102.
 
 
 Package xcolor Warning: Incompatible color definition on input line 103.
@@ -2024,11 +2027,33 @@ Package xcolor Warning: Incompatible color definition on input line 127.
 
 Package xcolor Warning: Incompatible color definition on input line 128.
 
+
+Package xcolor Warning: Incompatible color definition on input line 129.
+
+
+Package xcolor Warning: Incompatible color definition on input line 130.
+
+
+Package xcolor Warning: Incompatible color definition on input line 131.
+
+
+Package xcolor Warning: Incompatible color definition on input line 132.
+
+[6]
+
+Package xcolor Warning: Incompatible color definition on input line 133.
+
+
+Package xcolor Warning: Incompatible color definition on input line 134.
+
+
+Package xcolor Warning: Incompatible color definition on input line 135.
+
 )
 \tf@toc=\write9
 \openout9 = `document.toc'.
 
- [6]
+ [7]
 \openout2 = `Chapters/2_About_Book.aux'.
 
  (./Chapters/2_About_Book.tex
@@ -2057,7 +2082,7 @@ Package xcolor Warning: Incompatible color definition on input line 16.
 
 Package xcolor Warning: Incompatible color definition on input line 22.
 
-[7
+[8
 
 
 
@@ -2074,17 +2099,17 @@ tunes . apple . com / us / book / swift -[] programming -[] language /
 
 Package xcolor Warning: Incompatible color definition on input line 61.
 
-[8]
+[9]
 LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
 (Font)              Font shape `T1/ppl/b/n' tried instead on input line 69.
- [9] [10] <images/Chapter1/benji.png, id=660, 461.725pt x 461.725pt>
+ [10] [11] <images/Chapter1/benji.png, id=700, 461.725pt x 461.725pt>
 File: images/Chapter1/benji.png Graphic file (type png)
 
 <use images/Chapter1/benji.png>
 Package pdftex.def Info: images/Chapter1/benji.png used on input line 123.
 (pdftex.def)             Requested size: 76.56322pt x 76.56178pt.
- [11 <./images/Chapter1/benji.png>]
-<images/note.png, id=665, 256.96pt x 256.96pt>
+ [12 <./images/Chapter1/benji.png>]
+<images/note.png, id=705, 256.96pt x 256.96pt>
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 153.
@@ -2096,80 +2121,80 @@ Package xcolor Warning: Incompatible color definition on input line 168.
 
 Package xcolor Warning: Incompatible color definition on input line 178.
 
-) [12 <./images/note.png>] [13]
+) [13 <./images/note.png>] [14]
 \openout2 = `Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux'.
 
 
-(./Chapters/3_Introduction_SpriteBuilder_Cocos2D.tex [14
+(./Chapters/3_Introduction_SpriteBuilder_Cocos2D.tex [15
 
 
 
 
 ]
 Chapter 2.
-<images/Chapter2/install_xcode.png, id=686, 992.70876pt x 576.1525pt>
+<images/Chapter2/install_xcode.png, id=725, 992.70876pt x 576.1525pt>
 File: images/Chapter2/install_xcode.png Graphic file (type png)
 
 <use images/Chapter2/install_xcode.png>
 Package pdftex.def Info: images/Chapter2/install_xcode.png used on input line 1
 9.
 (pdftex.def)             Requested size: 200.0pt x 116.07242pt.
- [15]
-<images/cocos2d/setup/mac_appstore_install.png, id=691, 1244.65pt x 823.075pt>
+ [16]
+<images/cocos2d/setup/mac_appstore_install.png, id=730, 1244.65pt x 823.075pt>
 File: images/cocos2d/setup/mac_appstore_install.png Graphic file (type png)
 
 <use images/cocos2d/setup/mac_appstore_install.png>
 Package pdftex.def Info: images/cocos2d/setup/mac_appstore_install.png used on 
 input line 32.
 (pdftex.def)             Requested size: 200.0pt x 132.24728pt.
- [16 <./images/Chapter2/install_xcode.png> <./images/cocos2d/setup/mac_appstore
-_install.png>] [17]
-<images/cocos2d/TechnologyStack.png, id=703, 229.8186pt x 211.7511pt>
+ [17 <./images/Chapter2/install_xcode.png> <./images/cocos2d/setup/mac_appstore
+_install.png>] [18]
+<images/cocos2d/TechnologyStack.png, id=742, 229.8186pt x 211.7511pt>
 File: images/cocos2d/TechnologyStack.png Graphic file (type png)
 
 <use images/cocos2d/TechnologyStack.png>
 Package pdftex.def Info: images/cocos2d/TechnologyStack.png used on input line 
 85.
 (pdftex.def)             Requested size: 120.0pt x 110.56677pt.
- [18 <./images/cocos2d/TechnologyStack.png>] <images/Chapter1/scenegraph.png, i
-d=710, 700.6175pt x 517.935pt>
+ [19 <./images/cocos2d/TechnologyStack.png>] <images/Chapter1/scenegraph.png, i
+d=750, 700.6175pt x 517.935pt>
 File: images/Chapter1/scenegraph.png Graphic file (type png)
 
 <use images/Chapter1/scenegraph.png>
 Package pdftex.def Info: images/Chapter1/scenegraph.png used on input line 113.
 
 (pdftex.def)             Requested size: 300.0pt x 221.78304pt.
- [19 <./images/Chapter1/scenegraph.png>]
-[20] <images/cocos2d/SceneGraph.png, id=724, 1013.58675pt x 536.9661pt>
+ [20 <./images/Chapter1/scenegraph.png>]
+[21] <images/cocos2d/SceneGraph.png, id=763, 1013.58675pt x 536.9661pt>
 File: images/cocos2d/SceneGraph.png Graphic file (type png)
 
 <use images/cocos2d/SceneGraph.png>
 Package pdftex.def Info: images/cocos2d/SceneGraph.png used on input line 166.
 (pdftex.def)             Requested size: 382.82909pt x 202.81203pt.
- [21 <./images/cocos2d/SceneGraph.png>]
+ [22 <./images/cocos2d/SceneGraph.png>]
 File: images/note.png Graphic file (type png)
 
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 186.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [22] [23]
-<images/cocos2d/ccnode/NodePositioning.png, id=743, 501.875pt x 386.44376pt>
+ [23] [24]
+<images/cocos2d/ccnode/NodePositioning.png, id=782, 501.875pt x 386.44376pt>
 File: images/cocos2d/ccnode/NodePositioning.png Graphic file (type png)
 
 <use images/cocos2d/ccnode/NodePositioning.png>
 Package pdftex.def Info: images/cocos2d/ccnode/NodePositioning.png used on inpu
 t line 242.
 (pdftex.def)             Requested size: 212.68427pt x 163.76764pt.
- [24 <./images/cocos2d/ccnode/NodePositioning.png>]
-<images/cocos2d/ccnode/Rotation.png, id=750, 501.875pt x 373.395pt>
+ [25 <./images/cocos2d/ccnode/NodePositioning.png>]
+<images/cocos2d/ccnode/Rotation.png, id=790, 501.875pt x 373.395pt>
 File: images/cocos2d/ccnode/Rotation.png Graphic file (type png)
 
 <use images/cocos2d/ccnode/Rotation.png>
 Package pdftex.def Info: images/cocos2d/ccnode/Rotation.png used on input line 
 268.
 (pdftex.def)             Requested size: 255.22371pt x 189.88766pt.
- [25 <./images/cocos2d/ccnode/Rotation.png>]
-<images/cocos2d/setup/spritebuilder_new_project.png, id=758, 582.175pt x 158.09
+ [26 <./images/cocos2d/ccnode/Rotation.png>]
+<images/cocos2d/setup/spritebuilder_new_project.png, id=797, 582.175pt x 158.09
 062pt>
 File: images/cocos2d/setup/spritebuilder_new_project.png Graphic file (type png
 )
@@ -2178,22 +2203,22 @@ Package pdftex.def Info: images/cocos2d/setup/spritebuilder_new_project.png use
 d on input line 307.
 (pdftex.def)             Requested size: 366.6292pt x 99.56142pt.
 
-<images/Chapter1/new_project_swift.png, id=759, 712.6625pt x 597.23125pt>
+<images/Chapter1/new_project_swift.png, id=798, 712.6625pt x 597.23125pt>
 File: images/Chapter1/new_project_swift.png Graphic file (type png)
 
 <use images/Chapter1/new_project_swift.png>
 Package pdftex.def Info: images/Chapter1/new_project_swift.png used on input li
 ne 315.
 (pdftex.def)             Requested size: 366.6292pt x 307.2449pt.
- [26]
-<images/cocos2d/setup/project_structure.png, id=765, 523.9575pt x 106.3975pt>
+ [27]
+<images/cocos2d/setup/project_structure.png, id=805, 523.9575pt x 106.3975pt>
 File: images/cocos2d/setup/project_structure.png Graphic file (type png)
 
 <use images/cocos2d/setup/project_structure.png>
 Package pdftex.def Info: images/cocos2d/setup/project_structure.png used on inp
 ut line 324.
 (pdftex.def)             Requested size: 250.0pt x 50.765pt.
- [27 <./images/cocos2d/setup/spritebuilder_new_project.png> <./images/Chapter1/
+ [28 <./images/cocos2d/setup/spritebuilder_new_project.png> <./images/Chapter1/
 new_project_swift.png>]
 File: images/note.png Graphic file (type png)
 
@@ -2201,39 +2226,39 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 335.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/spritebuilder/spritebuilder_ui.png, id=773, 963.6pt x 550.055pt>
+<images/spritebuilder/spritebuilder_ui.png, id=813, 963.6pt x 550.055pt>
 File: images/spritebuilder/spritebuilder_ui.png Graphic file (type png)
 
 <use images/spritebuilder/spritebuilder_ui.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_ui.png used on inpu
 t line 349.
 (pdftex.def)             Requested size: 382.82909pt x 218.52411pt.
- [28 <./images/cocos2d/setup/project_structure.png>]
-<images/spritebuilder/spritebuilder_fileview.png, id=779, 1149.29375pt x 678.53
+ [29 <./images/cocos2d/setup/project_structure.png>]
+<images/spritebuilder/spritebuilder_fileview.png, id=819, 1149.29375pt x 678.53
 5pt>
 File: images/spritebuilder/spritebuilder_fileview.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_fileview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_fileview.png used o
 n input line 370.
 (pdftex.def)             Requested size: 404.09882pt x 238.57793pt.
- [29 <./images/spritebuilder/spritebuilder_ui.png>] [30 <./images/spritebuilder
+ [30 <./images/spritebuilder/spritebuilder_ui.png>] [31 <./images/spritebuilder
 /spritebuilder_fileview.png>]
-<images/spritebuilder/spritebuilder_nodeview.png, id=795, 1148.29pt x 682.55pt>
+<images/spritebuilder/spritebuilder_nodeview.png, id=836, 1148.29pt x 682.55pt>
 File: images/spritebuilder/spritebuilder_nodeview.png Graphic file (type png)
 <use images/spritebuilder/spritebuilder_nodeview.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_nodeview.png used o
 n input line 380.
 (pdftex.def)             Requested size: 404.09882pt x 240.19794pt.
- [31 <./images/spritebuilder/spritebuilder_nodeview.png>]
-<images/spritebuilder/spritebuilder_inspector.png, id=804, 1167.36125pt x 597.2
+ [32 <./images/spritebuilder/spritebuilder_nodeview.png>]
+<images/spritebuilder/spritebuilder_inspector.png, id=843, 1167.36125pt x 597.2
 3125pt>
 File: images/spritebuilder/spritebuilder_inspector.png Graphic file (type png)
  <use images/spritebuilder/spritebuilder_inspector.png>
 Package pdftex.def Info: images/spritebuilder/spritebuilder_inspector.png used 
 on input line 392.
 (pdftex.def)             Requested size: 404.09882pt x 206.73758pt.
- [32 <./images/spritebuilder/spritebuilder_inspector.png>]
-<images/spritebuilder/spritebuilder_codeconnections.png, id=811, 1168.365pt x 5
+ [33 <./images/spritebuilder/spritebuilder_inspector.png>]
+<images/spritebuilder/spritebuilder_codeconnections.png, id=850, 1168.365pt x 5
 96.2275pt>
 File: images/spritebuilder/spritebuilder_codeconnections.png Graphic file (type
  png)
@@ -2242,16 +2267,16 @@ Package pdftex.def Info: images/spritebuilder/spritebuilder_codeconnections.png
  used on input line 406.
 (pdftex.def)             Requested size: 404.09882pt x 206.21727pt.
 
-[33 <./images/spritebuilder/spritebuilder_codeconnections.png>]
-<images/spritebuilder/new-ccb.png, id=818, 534.99875pt x 256.96pt>
+[34 <./images/spritebuilder/spritebuilder_codeconnections.png>]
+<images/spritebuilder/new-ccb.png, id=857, 534.99875pt x 256.96pt>
 File: images/spritebuilder/new-ccb.png Graphic file (type png)
 
 <use images/spritebuilder/new-ccb.png>
 Package pdftex.def Info: images/spritebuilder/new-ccb.png used on input line 42
 1.
 (pdftex.def)             Requested size: 240.0pt x 115.27412pt.
- [34 <./images/spritebuilder/new-ccb.png (PNG copy)>]
-<images/spritebuilder/spritebuilder_publish_button.png, id=823, 1437.37pt x 821
+ [35 <./images/spritebuilder/new-ccb.png (PNG copy)>]
+<images/spritebuilder/spritebuilder_publish_button.png, id=862, 1437.37pt x 821
 .0675pt>
 File: images/spritebuilder/spritebuilder_publish_button.png Graphic file (type 
 png)
@@ -2259,8 +2284,8 @@ png)
 Package pdftex.def Info: images/spritebuilder/spritebuilder_publish_button.png 
 used on input line 456.
 (pdftex.def)             Requested size: 382.82909pt x 218.68436pt.
- [35]
-<images/spritebuilder/spritebuilder_publishing.png, id=828, 1806.38866pt x 787.
+ [36]
+<images/spritebuilder/spritebuilder_publishing.png, id=867, 1806.38866pt x 787.
 743pt>
 File: images/spritebuilder/spritebuilder_publishing.png Graphic file (type png)
 
@@ -2268,16 +2293,16 @@ File: images/spritebuilder/spritebuilder_publishing.png Graphic file (type png)
 Package pdftex.def Info: images/spritebuilder/spritebuilder_publishing.png used
  on input line 469.
 (pdftex.def)             Requested size: 382.82909pt x 166.94542pt.
- [36 <./images/spritebuilder/spritebuilder_publish_button.png>] [37 <./images/s
+ [37 <./images/spritebuilder/spritebuilder_publish_button.png>] [38 <./images/s
 pritebuilder/spritebuilder_publishing.png>]
-<images/firstproject/first_project.png, id=842, 2307.5811pt x 723.4227pt>
+<images/firstproject/first_project.png, id=881, 2307.5811pt x 723.4227pt>
 File: images/firstproject/first_project.png Graphic file (type png)
 
 <use images/firstproject/first_project.png>
 Package pdftex.def Info: images/firstproject/first_project.png used on input li
 ne 526.
 (pdftex.def)             Requested size: 382.82909pt x 120.01086pt.
- [38]
+ [39]
 LaTeX Font Info:    Try loading font information for OMS+ppl on input line 532.
 
 
@@ -2286,15 +2311,15 @@ File: omsppl.fd
 )
 LaTeX Font Info:    Font shape `OMS/ppl/m/n' in size <10.95> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 532.
- [39 <./images/firstproject/first_project.png>]
-<images/firstproject/add_button.png, id=854, 1444.39626pt x 821.0675pt>
+ [40 <./images/firstproject/first_project.png>]
+<images/firstproject/add_button.png, id=893, 1444.39626pt x 821.0675pt>
 File: images/firstproject/add_button.png Graphic file (type png)
 
 <use images/firstproject/add_button.png>
 Package pdftex.def Info: images/firstproject/add_button.png used on input line 
 554.
 (pdftex.def)             Requested size: 366.6292pt x 208.41101pt.
- [40 <./images/firstproject/add_button.png>]
+ [41 <./images/firstproject/add_button.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 603.
 
@@ -2302,11 +2327,11 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 604.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [41]
+ [42]
 
 Package xcolor Warning: Incompatible color definition on input line 612.
 
-<images/firstproject/button_callback.png, id=868, 1149.29375pt x 427.5975pt>
+<images/firstproject/button_callback.png, id=907, 1149.29375pt x 427.5975pt>
 File: images/firstproject/button_callback.png Graphic file (type png)
 
 <use images/firstproject/button_callback.png>
@@ -2317,7 +2342,7 @@ line 624.
 Underfull \vbox (badness 10000) detected at line 634
  []
 
-[42]
+[43]
 
 Package xcolor Warning: Incompatible color definition on input line 641.
 
@@ -2357,22 +2382,22 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 642.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/firstproject/documentroot_node.png, id=876, 296.10625pt x 171.64125pt>
+<images/firstproject/documentroot_node.png, id=916, 296.10625pt x 171.64125pt>
 File: images/firstproject/documentroot_node.png Graphic file (type png)
 
 <use images/firstproject/documentroot_node.png>
 Package pdftex.def Info: images/firstproject/documentroot_node.png used on inpu
 t line 651.
 (pdftex.def)             Requested size: 150.0pt x 86.95181pt.
- [43 <./images/firstproject/button_callback.png>]
-<images/firstproject/custom_class.png, id=885, 1189.44376pt x 724.7075pt>
+ [44 <./images/firstproject/button_callback.png>]
+<images/firstproject/custom_class.png, id=924, 1189.44376pt x 724.7075pt>
 File: images/firstproject/custom_class.png Graphic file (type png)
 
 <use images/firstproject/custom_class.png>
 Package pdftex.def Info: images/firstproject/custom_class.png used on input lin
 e 680.
 (pdftex.def)             Requested size: 382.82909pt x 233.24918pt.
- [44 <./images/firstproject/documentroot_node.png>] [45 <./images/firstproject/
+ [45 <./images/firstproject/documentroot_node.png>] [46 <./images/firstproject/
 custom_class.png>]
 File: images/note.png Graphic file (type png)
 
@@ -2383,13 +2408,13 @@ Package pdftex.def Info: images/note.png used on input line 708.
 
 Package xcolor Warning: Incompatible color definition on input line 724.
 
-[46]
+[47]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 756.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/firstproject/run_app.png, id=904, 361.35pt x 35.13126pt>
+<images/firstproject/run_app.png, id=943, 361.35pt x 35.13126pt>
 File: images/firstproject/run_app.png Graphic file (type png)
 
 <use images/firstproject/run_app.png>
@@ -2397,61 +2422,61 @@ Package pdftex.def Info: images/firstproject/run_app.png used on input line 764
 .
 (pdftex.def)             Requested size: 200.0pt x 19.44446pt.
 
-<images/firstproject/button_success_log.png, id=905, 756.8275pt x 498.86375pt>
+<images/firstproject/button_success_log.png, id=944, 756.8275pt x 498.86375pt>
 File: images/firstproject/button_success_log.png Graphic file (type png)
 
 <use images/firstproject/button_success_log.png>
 Package pdftex.def Info: images/firstproject/button_success_log.png used on inp
 ut line 772.
 (pdftex.def)             Requested size: 382.82909pt x 252.33905pt.
- [47 <./images/firstproject/run_app.png>]
+ [48 <./images/firstproject/run_app.png>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 793.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [48 <./images/firstproject/button_success_log.png>] <images/firstproject/new_s
-cene.png, id=920, 539.01375pt x 257.96375pt>
+ [49 <./images/firstproject/button_success_log.png>] <images/firstproject/new_s
+cene.png, id=961, 539.01375pt x 257.96375pt>
 File: images/firstproject/new_scene.png Graphic file (type png)
 
 <use images/firstproject/new_scene.png>
 Package pdftex.def Info: images/firstproject/new_scene.png used on input line 8
 06.
 (pdftex.def)             Requested size: 250.0pt x 119.6488pt.
- [49 <./images/firstproject/new_scene.png>]
+ [50 <./images/firstproject/new_scene.png>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 838.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [50]
+ [51]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 858.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/firstproject/navigation_stack.png, id=936, 452.4102pt x 158.2713pt>
+<images/firstproject/navigation_stack.png, id=976, 452.4102pt x 158.2713pt>
 File: images/firstproject/navigation_stack.png Graphic file (type png)
 
 <use images/firstproject/navigation_stack.png>
 Package pdftex.def Info: images/firstproject/navigation_stack.png used on input
  line 884.
 (pdftex.def)             Requested size: 250.0pt x 87.46002pt.
- [51]
+ [52]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 918.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-[52 <./images/firstproject/navigation_stack.png>] [53]
+[53 <./images/firstproject/navigation_stack.png>] [54]
 
 Package xcolor Warning: Incompatible color definition on input line 956.
 
-[54]
+[55]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 985.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/firstproject/square_ccb.png, id=981, 538.01pt x 260.975pt>
+<images/firstproject/square_ccb.png, id=1021, 538.01pt x 260.975pt>
 File: images/firstproject/square_ccb.png Graphic file (type png)
 
 <use images/firstproject/square_ccb.png>
@@ -2462,19 +2487,18 @@ Package pdftex.def Info: images/firstproject/square_ccb.png used on input line
 Underfull \vbox (badness 10000) detected at line 1009
  []
 
-[55]
-<images/firstproject/square_add_colornode.png, id=988, 1438.37375pt x 822.07124
-pt>
+[56]
+<images/firstproject/square_add_colornode.png, id=1027, 1438.37375pt x 822.0712
+4pt>
 File: images/firstproject/square_add_colornode.png Graphic file (type png)
  <use images/firstproject/square_add_colornode.png>
 Package pdftex.def Info: images/firstproject/square_add_colornode.png used on i
 nput line 1022.
 (pdftex.def)             Requested size: 366.6292pt x 209.53131pt.
- [56 <./images/firstproject/square_ccb.png> <./images/firstproject/square_add_c
+ [57 <./images/firstproject/square_ccb.png> <./images/firstproject/square_add_c
 olornode.png>]
-<images/Chapter1/square_code_connection.png, id=994, 280.04625pt x 90.83937pt>
+<images/Chapter1/square_code_connection.png, id=1033, 280.04625pt x 90.83937pt>
 File: images/Chapter1/square_code_connection.png Graphic file (type png)
-
 <use images/Chapter1/square_code_connection.png>
 Package pdftex.def Info: images/Chapter1/square_code_connection.png used on inp
 ut line 1054.
@@ -2483,21 +2507,21 @@ ut line 1054.
 
 Package xcolor Warning: Incompatible color definition on input line 1059.
 
-[57 <./images/Chapter1/square_code_connection.png>]
+[58 <./images/Chapter1/square_code_connection.png>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1077.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/firstproject/square_custom_class.png, id=1001, 625.1355pt x 96.1191pt>
+<images/firstproject/square_custom_class.png, id=1040, 625.1355pt x 96.1191pt>
 File: images/firstproject/square_custom_class.png Graphic file (type png)
 
 <use images/firstproject/square_custom_class.png>
 Package pdftex.def Info: images/firstproject/square_custom_class.png used on in
 put line 1084.
 (pdftex.def)             Requested size: 350.0pt x 53.81458pt.
- [58 <./images/firstproject/square_custom_class.png>]
-<images/Chapter1/new_cocoa_touch.png, id=1007, 730.73pt x 429.605pt>
+ [59 <./images/firstproject/square_custom_class.png>]
+<images/Chapter1/new_cocoa_touch.png, id=1046, 730.73pt x 429.605pt>
 File: images/Chapter1/new_cocoa_touch.png Graphic file (type png)
 
 <use images/Chapter1/new_cocoa_touch.png>
@@ -2505,14 +2529,14 @@ Package pdftex.def Info: images/Chapter1/new_cocoa_touch.png used on input line
  1130.
 (pdftex.def)             Requested size: 350.0pt x 205.76884pt.
 
-<images/Chapter1/new_cocoa_touch_2.png, id=1008, 730.73pt x 430.60875pt>
+<images/Chapter1/new_cocoa_touch_2.png, id=1047, 730.73pt x 430.60875pt>
 File: images/Chapter1/new_cocoa_touch_2.png Graphic file (type png)
 
 <use images/Chapter1/new_cocoa_touch_2.png>
 Package pdftex.def Info: images/Chapter1/new_cocoa_touch_2.png used on input li
 ne 1137.
 (pdftex.def)             Requested size: 350.0pt x 206.24962pt.
- [59]
+ [60]
 Underfull \vbox (badness 10000) detected at line 1141
  []
 
@@ -2520,7 +2544,7 @@ Underfull \vbox (badness 10000) detected at line 1141
 Underfull \vbox (badness 10000) detected at line 1141
  []
 
-[60 <./images/Chapter1/new_cocoa_touch.png>] [61 <./images/Chapter1/new_cocoa_t
+[61 <./images/Chapter1/new_cocoa_touch.png>] [62 <./images/Chapter1/new_cocoa_t
 ouch_2.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 1191.
@@ -2529,12 +2553,12 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1192.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [62] [63]
+ [63] [64]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1251.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [64] [65] [66]
+ [65] [66] [67]
 
 Package xcolor Warning: Incompatible color definition on input line 1390.
 
@@ -2553,263 +2577,274 @@ Underfull \hbox (badness 1014) in paragraph at lines 1387--1392
 ou are in-
  []
 
-[67]
+[68]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1392.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [68]
-<images/firstproject/spinning_squares.png, id=1111, 1140.26pt x 642.4pt>
+ [69]
+<images/firstproject/spinning_squares.png, id=1150, 1140.26pt x 642.4pt>
 File: images/firstproject/spinning_squares.png Graphic file (type png)
 
 <use images/firstproject/spinning_squares.png>
 Package pdftex.def Info: images/firstproject/spinning_squares.png used on input
  line 1459.
 (pdftex.def)             Requested size: 350.0pt x 197.18149pt.
- [69]) [70 <./images/firstproject/spinning_squares.png (PNG copy)>]
+ [70]
+
+Package xcolor Warning: Incompatible color definition on input line 1475.
+
+) [71 <./images/firstproject/spinning_squares.png (PNG copy)>]
 \openout2 = `Chapters/4_Assets_SpriteBuilder.aux'.
 
- (./Chapters/4_Assets_SpriteBuilder.tex
+
+(./Chapters/4_Assets_SpriteBuilder.tex
 Chapter 3.
-<images/Chapter2/final_game.png, id=1127, 2216.28pt x 1246.6575pt>
+
+Package xcolor Warning: Incompatible color definition on input line 9.
+
+<images/Chapter2/final_game.png, id=1169, 2216.28pt x 1246.6575pt>
 File: images/Chapter2/final_game.png Graphic file (type png)
 
 <use images/Chapter2/final_game.png>
-Package pdftex.def Info: images/Chapter2/final_game.png used on input line 13.
+Package pdftex.def Info: images/Chapter2/final_game.png used on input line 14.
 (pdftex.def)             Requested size: 250.0pt x 140.61385pt.
- [71
+ [72
 
 
 
 
  <./images/Chapter2/final_game.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 40.
+Package xcolor Warning: Incompatible color definition on input line 41.
 
 
-Package xcolor Warning: Incompatible color definition on input line 42.
+Package xcolor Warning: Incompatible color definition on input line 43.
 
-[72]
+[73]
 
-Package xcolor Warning: Incompatible color definition on input line 57.
+Package xcolor Warning: Incompatible color definition on input line 58.
 
-<images/Chapter2/DragAssets.png, id=1144, 251.94125pt x 125.46875pt>
+<images/Chapter2/DragAssets.png, id=1187, 251.94125pt x 125.46875pt>
 File: images/Chapter2/DragAssets.png Graphic file (type png)
 
 <use images/Chapter2/DragAssets.png>
-Package pdftex.def Info: images/Chapter2/DragAssets.png used on input line 64.
+Package pdftex.def Info: images/Chapter2/DragAssets.png used on input line 65.
 (pdftex.def)             Requested size: 200.0pt x 99.60167pt.
- [73 <./images/Chapter2/DragAssets.png>]
-<images/Chapter2/ResultsFlexibleScaleMode.png, id=1155, 960.58875pt x 718.685pt
+ [74 <./images/Chapter2/DragAssets.png>]
+<images/Chapter2/ResultsFlexibleScaleMode.png, id=1197, 960.58875pt x 718.685pt
 >
 File: images/Chapter2/ResultsFlexibleScaleMode.png Graphic file (type png)
  <use images/Chapter2/ResultsFlexibleScaleMode.png>
 Package pdftex.def Info: images/Chapter2/ResultsFlexibleScaleMode.png used on i
-nput line 106.
+nput line 107.
 (pdftex.def)             Requested size: 382.82909pt x 286.42711pt.
- [74]
-<images/Chapter2/DownScalingGlobal.png, id=1160, 470.75874pt x 102.3825pt>
+ [75]
+<images/Chapter2/DownScalingGlobal.png, id=1203, 470.75874pt x 102.3825pt>
 File: images/Chapter2/DownScalingGlobal.png Graphic file (type png)
 
 <use images/Chapter2/DownScalingGlobal.png>
 Package pdftex.def Info: images/Chapter2/DownScalingGlobal.png used on input li
-ne 120.
+ne 121.
 (pdftex.def)             Requested size: 300.0pt x 65.24493pt.
- [75 <./images/Chapter2/ResultsFlexibleScaleMode.png>]
-<images/Chapter2/DownScalingPerAsset.png, id=1167, 251.94125pt x 411.5375pt>
+ [76 <./images/Chapter2/ResultsFlexibleScaleMode.png>]
+<images/Chapter2/DownScalingPerAsset.png, id=1210, 251.94125pt x 411.5375pt>
 File: images/Chapter2/DownScalingPerAsset.png Graphic file (type png)
 
 <use images/Chapter2/DownScalingPerAsset.png>
 Package pdftex.def Info: images/Chapter2/DownScalingPerAsset.png used on input 
-line 133.
+line 134.
 (pdftex.def)             Requested size: 122.4374pt x 200.0pt.
- [76 <./images/Chapter2/DownScalingGlobal.png> <./images/Chapter2/DownScalingPe
+ [77 <./images/Chapter2/DownScalingGlobal.png> <./images/Chapter2/DownScalingPe
 rAsset.png>]
-<images/Chapter2/DifferentImageDevice.png, id=1173, 248.93pt x 288.07625pt>
+<images/Chapter2/DifferentImageDevice.png, id=1216, 248.93pt x 288.07625pt>
 File: images/Chapter2/DifferentImageDevice.png Graphic file (type png)
 
 <use images/Chapter2/DifferentImageDevice.png>
 Package pdftex.def Info: images/Chapter2/DifferentImageDevice.png used on input
- line 172.
+ line 173.
 (pdftex.def)             Requested size: 120.97778pt x 140.0pt.
 File: images/note.png Graphic file (type png)
  <use images/note.png>
-Package pdftex.def Info: images/note.png used on input line 178.
+Package pdftex.def Info: images/note.png used on input line 179.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [77]
-<images/Chapter2/behindscenes_resourcepack.png, id=1178, 603.25375pt x 111.4162
+ [78]
+<images/Chapter2/behindscenes_resourcepack.png, id=1221, 603.25375pt x 111.4162
 4pt>
 File: images/Chapter2/behindscenes_resourcepack.png Graphic file (type png)
  <use images/Chapter2/behindscenes_resourcepack.png>
 Package pdftex.def Info: images/Chapter2/behindscenes_resourcepack.png used on 
-input line 187.
+input line 188.
 (pdftex.def)             Requested size: 280.0pt x 51.7128pt.
 File: images/note.png Graphic file (type png)
  <use images/note.png>
-Package pdftex.def Info: images/note.png used on input line 200.
+Package pdftex.def Info: images/note.png used on input line 201.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-[78 <./images/Chapter2/DifferentImageDevice.png> <./images/Chapter2/behindscene
+[79 <./images/Chapter2/DifferentImageDevice.png> <./images/Chapter2/behindscene
 s_resourcepack.png>]
 
-Package xcolor Warning: Incompatible color definition on input line 224.
+Package xcolor Warning: Incompatible color definition on input line 225.
 
-[79] <images/Chapter2/center_background.png, id=1192, 937.5025pt x 323.2075pt>
+[80] <images/Chapter2/center_background.png, id=1235, 937.5025pt x 323.2075pt>
 File: images/Chapter2/center_background.png Graphic file (type png)
 
 <use images/Chapter2/center_background.png>
 Package pdftex.def Info: images/Chapter2/center_background.png used on input li
-ne 240.
+ne 241.
 (pdftex.def)             Requested size: 366.6292pt x 126.39563pt.
- [80 <./images/Chapter2/center_background.png>] [81]
+ [81 <./images/Chapter2/center_background.png>] [82]
 
-Package xcolor Warning: Incompatible color definition on input line 320.
-
-
-Package xcolor Warning: Incompatible color definition on input line 322.
+Package xcolor Warning: Incompatible color definition on input line 321.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--323
+Package xcolor Warning: Incompatible color definition on input line 323.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 318--324
 [][]\T1/ppl/m/n/10.95 (+20) You can read ev-ery-thing about the dif-fer-ent way
 s of cre-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--323
+Underfull \hbox (badness 10000) in paragraph at lines 318--324
 \T1/ppl/m/n/10.95 (+20) at-ing enu-mer-a-tions in Swift in the of-fi-cial doc-u
 -men-ta-tion
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--323
+Underfull \hbox (badness 10000) in paragraph at lines 318--324
 \T1/ppl/m/n/10.95 (+20) ([][]$\T1/cmtt/l/n/10.95 https : / / developer . apple 
 . com / library / ios / documentation / Swift /
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 317--323
+Underfull \hbox (badness 10000) in paragraph at lines 318--324
 \T1/ppl/m/n/10.95 (+20) ([][]$\T1/cmtt/l/n/10.95 https : / / www . makeschool .
  com / tutorials / learn -[] swift -[] by -[] example -[]
  []
 
 File: images/note.png Graphic file (type png)
 <use images/note.png>
-Package pdftex.def Info: images/note.png used on input line 323.
+Package pdftex.def Info: images/note.png used on input line 324.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [82] [83]
-<images/Chapter2/create_plist.png, id=1233, 731.73375pt x 429.605pt>
+ [83] [84]
+<images/Chapter2/create_plist.png, id=1275, 731.73375pt x 429.605pt>
 File: images/Chapter2/create_plist.png Graphic file (type png)
 
 <use images/Chapter2/create_plist.png>
 Package pdftex.def Info: images/Chapter2/create_plist.png used on input line 38
-8.
+9.
 (pdftex.def)             Requested size: 300.0pt x 176.13263pt.
 
-Underfull \vbox (badness 10000) detected at line 392
+Underfull \vbox (badness 10000) detected at line 393
  []
 
-[84] <images/Chapter2/plist_setup.png, id=1238, 543.02875pt x 372.39125pt>
+[85] <images/Chapter2/plist_setup.png, id=1281, 543.02875pt x 372.39125pt>
 File: images/Chapter2/plist_setup.png Graphic file (type png)
 
 <use images/Chapter2/plist_setup.png>
-Package pdftex.def Info: images/Chapter2/plist_setup.png used on input line 419
+Package pdftex.def Info: images/Chapter2/plist_setup.png used on input line 420
 .
 (pdftex.def)             Requested size: 285.15674pt x 195.55946pt.
- [85 <./images/Chapter2/create_plist.png>] [86 <./images/Chapter2/plist_setup.p
+ [86 <./images/Chapter2/create_plist.png>] [87 <./images/Chapter2/plist_setup.p
 ng>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
-Package pdftex.def Info: images/note.png used on input line 447.
+Package pdftex.def Info: images/note.png used on input line 448.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [87] [88]
+ [88] [89]
 LaTeX Font Info:    Font shape `T1/ppl/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/it' tried instead on input line 552.
+(Font)              Font shape `T1/ppl/b/it' tried instead on input line 553.
 
-[89]
+[90]
 
-Package xcolor Warning: Incompatible color definition on input line 574.
+Package xcolor Warning: Incompatible color definition on input line 575.
 
-[90] [91] [92]
-<images/Chapter2/SpawnObjects.png, id=1350, 1073.9322pt x 917.1063pt>
+[91] [92] [93]
+<images/Chapter2/SpawnObjects.png, id=1392, 1073.9322pt x 917.1063pt>
 File: images/Chapter2/SpawnObjects.png Graphic file (type png)
 
 <use images/Chapter2/SpawnObjects.png>
 Package pdftex.def Info: images/Chapter2/SpawnObjects.png used on input line 69
-3.
+4.
 (pdftex.def)             Requested size: 170.0pt x 145.17268pt.
- [93 <./images/Chapter2/SpawnObjects.png>] [94] [95]
+ [94 <./images/Chapter2/SpawnObjects.png>] [95] [96]
 
-Package xcolor Warning: Incompatible color definition on input line 811.
+Package xcolor Warning: Incompatible color definition on input line 812.
 
-[96]
+[97]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
-Package pdftex.def Info: images/note.png used on input line 812.
+Package pdftex.def Info: images/note.png used on input line 813.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [97] [98]
-<images/Chapter2/new_timeline_audio.png, id=1410, 1077.02374pt x 763.85374pt>
+ [98] [99]
+<images/Chapter2/new_timeline_audio.png, id=1453, 1077.02374pt x 763.85374pt>
 File: images/Chapter2/new_timeline_audio.png Graphic file (type png)
 
 <use images/Chapter2/new_timeline_audio.png>
 Package pdftex.def Info: images/Chapter2/new_timeline_audio.png used on input l
-ine 875.
+ine 876.
 (pdftex.def)             Requested size: 366.6292pt x 260.02153pt.
 
-Underfull \vbox (badness 10000) detected at line 879
+Underfull \vbox (badness 10000) detected at line 880
  []
 
-[99] <images/Chapter2/audio_timeline.png, id=1417, 905.3825pt x 450.68375pt>
+[100] <images/Chapter2/audio_timeline.png, id=1460, 905.3825pt x 450.68375pt>
 File: images/Chapter2/audio_timeline.png Graphic file (type png)
 
 <use images/Chapter2/audio_timeline.png>
 Package pdftex.def Info: images/Chapter2/audio_timeline.png used on input line 
-887.
+888.
 (pdftex.def)             Requested size: 366.6292pt x 182.4984pt.
 
-Underfull \vbox (badness 10000) detected at line 899
+Underfull \vbox (badness 10000) detected at line 900
  []
 
-[100 <./images/Chapter2/new_timeline_audio.png>]
-<images/Chapter2/edit_timeline.png, id=1425, 347.2975pt x 156.585pt>
+[101 <./images/Chapter2/new_timeline_audio.png>]
+<images/Chapter2/edit_timeline.png, id=1467, 347.2975pt x 156.585pt>
 File: images/Chapter2/edit_timeline.png Graphic file (type png)
 
 <use images/Chapter2/edit_timeline.png>
 Package pdftex.def Info: images/Chapter2/edit_timeline.png used on input line 9
-12.
+13.
 (pdftex.def)             Requested size: 200.0pt x 90.17664pt.
 
-<images/Chapter2/rename_timeline.png, id=1426, 482.80376pt x 236.885pt>
+<images/Chapter2/rename_timeline.png, id=1468, 482.80376pt x 236.885pt>
 File: images/Chapter2/rename_timeline.png Graphic file (type png)
 
 <use images/Chapter2/rename_timeline.png>
 Package pdftex.def Info: images/Chapter2/rename_timeline.png used on input line
- 917.
+ 918.
 (pdftex.def)             Requested size: 200.0pt x 98.12833pt.
 
-Underfull \vbox (badness 10000) detected at line 921
+Underfull \vbox (badness 10000) detected at line 922
  []
 
-[101 <./images/Chapter2/audio_timeline.png>] [102 <./images/Chapter2/edit_timel
-ine.png> <./images/Chapter2/rename_timeline.png>] [103]) [104]
+[102 <./images/Chapter2/audio_timeline.png>] [103 <./images/Chapter2/edit_timel
+ine.png> <./images/Chapter2/rename_timeline.png>] [104]
+
+Package xcolor Warning: Incompatible color definition on input line 983.
+
+) [105]
 \openout2 = `Chapters/5_User_Interaction.aux'.
 
-
-(./Chapters/5_User_Interaction.tex
+ (./Chapters/5_User_Interaction.tex
 Chapter 4.
-<images/Chapter3/drawing_order.png, id=1460, 1467.44235pt x 516.7305pt>
+<images/Chapter3/drawing_order.png, id=1504, 1467.44235pt x 516.7305pt>
 File: images/Chapter3/drawing_order.png Graphic file (type png)
 
 <use images/Chapter3/drawing_order.png>
 Package pdftex.def Info: images/Chapter3/drawing_order.png used on input line 2
 9.
 (pdftex.def)             Requested size: 382.82909pt x 134.80406pt.
- [105
+ [106
 
 
 
 
 ]
-<images/Chapter3/ccp_pot_file.png, id=1465, 536.0025pt x 258.9675pt>
+<images/Chapter3/ccp_pot_file.png, id=1509, 536.0025pt x 258.9675pt>
 File: images/Chapter3/ccp_pot_file.png Graphic file (type png)
 
 <use images/Chapter3/ccp_pot_file.png>
@@ -2817,7 +2852,7 @@ Package pdftex.def Info: images/Chapter3/ccp_pot_file.png used on input line 45
 .
 (pdftex.def)             Requested size: 180.0pt x 86.96506pt.
 
-<images/Chapter3/drag_pot_assets.png, id=1466, 545.03625pt x 289.58188pt>
+<images/Chapter3/drag_pot_assets.png, id=1510, 545.03625pt x 289.58188pt>
 File: images/Chapter3/drag_pot_assets.png Graphic file (type png)
 
 <use images/Chapter3/drag_pot_assets.png>
@@ -2825,17 +2860,17 @@ Package pdftex.def Info: images/Chapter3/drag_pot_assets.png used on input line
  51.
 (pdftex.def)             Requested size: 250.0pt x 132.82484pt.
 
-<images/Chapter3/pot_top_position.png, id=1467, 202.7575pt x 48.18pt>
+<images/Chapter3/pot_top_position.png, id=1511, 202.7575pt x 48.18pt>
 File: images/Chapter3/pot_top_position.png Graphic file (type png)
 
 <use images/Chapter3/pot_top_position.png>
 Package pdftex.def Info: images/Chapter3/pot_top_position.png used on input lin
 e 61.
 (pdftex.def)             Requested size: 150.0pt x 35.64453pt.
- [106 <./images/Chapter3/drawing_order.png> <./images/Chapter3/ccp_pot_file.png
->] [107 <./images/Chapter3/drag_pot_assets.png> <./images/Chapter3/pot_top_posi
+ [107 <./images/Chapter3/drawing_order.png> <./images/Chapter3/ccp_pot_file.png
+>] [108 <./images/Chapter3/drag_pot_assets.png> <./images/Chapter3/pot_top_posi
 tion.png>]
-<images/Chapter3/drag_pot_ccb.png, id=1488, 286.06876pt x 108.405pt>
+<images/Chapter3/drag_pot_ccb.png, id=1532, 286.06876pt x 108.405pt>
 File: images/Chapter3/drag_pot_ccb.png Graphic file (type png)
 
 <use images/Chapter3/drag_pot_ccb.png>
@@ -2843,14 +2878,14 @@ Package pdftex.def Info: images/Chapter3/drag_pot_ccb.png used on input line 92
 .
 (pdftex.def)             Requested size: 150.0pt x 56.84233pt.
 
-<images/Chapter3/pot_cc.png, id=1489, 281.05pt x 95.35625pt>
+<images/Chapter3/pot_cc.png, id=1533, 281.05pt x 95.35625pt>
 File: images/Chapter3/pot_cc.png Graphic file (type png)
 
 <use images/Chapter3/pot_cc.png>
 Package pdftex.def Info: images/Chapter3/pot_cc.png used on input line 102.
 (pdftex.def)             Requested size: 150.0pt x 50.89212pt.
- [108 <./images/Chapter3/drag_pot_ccb.png> <./images/Chapter3/pot_cc.png>] [109
-] [110]
+ [109 <./images/Chapter3/drag_pot_ccb.png> <./images/Chapter3/pot_cc.png>] [110
+] [111]
 
 Package xcolor Warning: Incompatible color definition on input line 216.
 
@@ -2860,57 +2895,61 @@ Underfull \hbox (badness 1158) in paragraph at lines 213--219
  al-ready have seen the us-age of
  []
 
-[111] <images/Chapter3/dragging_offset.png, id=1537, 873.0216pt x 959.38425pt>
+[112] <images/Chapter3/dragging_offset.png, id=1582, 873.0216pt x 959.38425pt>
 File: images/Chapter3/dragging_offset.png Graphic file (type png)
 
 <use images/Chapter3/dragging_offset.png>
 Package pdftex.def Info: images/Chapter3/dragging_offset.png used on input line
  237.
 (pdftex.def)             Requested size: 170.14482pt x 186.96938pt.
- [112 <./images/Chapter3/dragging_offset.png>] [113]
+ [113 <./images/Chapter3/dragging_offset.png>] [114]
 
 Package xcolor Warning: Incompatible color definition on input line 297.
 
-[114]) [115]
+[115]
+
+Package xcolor Warning: Incompatible color definition on input line 337.
+
+) [116]
 \openout2 = `Chapters/6_Scene_Graphs_Transforms.aux'.
 
- (./Chapters/6_Scene_Graphs_Transforms.tex [116
+ (./Chapters/6_Scene_Graphs_Transforms.tex [117
 
 
 
 
 ]
 Chapter 5.
-[117]
-<images/Chapter3/falling_object_states.png, id=1595, 272.01625pt x 431.6125pt>
+[118]
+<images/Chapter3/falling_object_states.png, id=1641, 272.01625pt x 431.6125pt>
 File: images/Chapter3/falling_object_states.png Graphic file (type png)
 
 <use images/Chapter3/falling_object_states.png>
 Package pdftex.def Info: images/Chapter3/falling_object_states.png used on inpu
 t line 39.
 (pdftex.def)             Requested size: 127.61185pt x 202.48909pt.
- [118]
-<images/Chapter3/catch_test.png, id=1603, 1137.24875pt x 598.235pt>
+ [119]
+<images/Chapter3/catch_test.png, id=1649, 1137.24875pt x 598.235pt>
 File: images/Chapter3/catch_test.png Graphic file (type png)
 
 <use images/Chapter3/catch_test.png>
 Package pdftex.def Info: images/Chapter3/catch_test.png used on input line 53.
 (pdftex.def)             Requested size: 127.61185pt x 67.12053pt.
- [119 <./images/Chapter3/falling_object_states.png> <./images/Chapter3/catch_te
-st.png>] [120] [121]
+ [120 <./images/Chapter3/falling_object_states.png> <./images/Chapter3/catch_te
+st.png>] [121] [122]
 
 Package xcolor Warning: Incompatible color definition on input line 151.
 
 
-<images/Chapter3/frame_pot_falling_object.png, id=1639, 484.81125pt x 496.85625
+<images/Chapter3/frame_pot_falling_object.png, id=1686, 484.81125pt x 496.85625
 pt>
 File: images/Chapter3/frame_pot_falling_object.png Graphic file (type png)
  <use images/Chapter3/frame_pot_falling_object.png>
 Package pdftex.def Info: images/Chapter3/frame_pot_falling_object.png used on i
 nput line 159.
 (pdftex.def)             Requested size: 127.61185pt x 130.77925pt.
- [122]
-<images/Chapter6/add_catch_container_2.png, id=1657, 1195.46625pt x 602.25pt>
+ [123]
+<images/Chapter6/add_catch_container_2.png, id=1704, 1195.46625pt x 602.25pt>
 File: images/Chapter6/add_catch_container_2.png Graphic file (type png)
 
 <use images/Chapter6/add_catch_container_2.png>
@@ -2918,7 +2957,7 @@ Package pdftex.def Info: images/Chapter6/add_catch_container_2.png used on inpu
 t line 172.
 (pdftex.def)             Requested size: 325.89607pt x 164.18109pt.
 
-<images/Chapter6/container_cc.png, id=1658, 282.05376pt x 89.33376pt>
+<images/Chapter6/container_cc.png, id=1705, 282.05376pt x 89.33376pt>
 File: images/Chapter6/container_cc.png Graphic file (type png)
 
 <use images/Chapter6/container_cc.png>
@@ -2926,7 +2965,7 @@ Package pdftex.def Info: images/Chapter6/container_cc.png used on input line 18
 9.
 (pdftex.def)             Requested size: 150.0pt x 47.50887pt.
 
-<images/Chapter6/pot_cc.png, id=1659, 284.06125pt x 149.55875pt>
+<images/Chapter6/pot_cc.png, id=1706, 284.06125pt x 149.55875pt>
 File: images/Chapter6/pot_cc.png Graphic file (type png)
 
 <use images/Chapter6/pot_cc.png>
@@ -2936,7 +2975,7 @@ Package pdftex.def Info: images/Chapter6/pot_cc.png used on input line 197.
 Underfull \vbox (badness 10000) detected at line 201
  []
 
-[123 <./images/Chapter3/frame_pot_falling_object.png>]
+[124 <./images/Chapter3/frame_pot_falling_object.png>]
 Underfull \vbox (badness 10000) detected at line 201
  []
 
@@ -2944,20 +2983,20 @@ Underfull \vbox (badness 10000) detected at line 201
 Underfull \vbox (badness 10000) detected at line 201
  []
 
-[124 <./images/Chapter6/add_catch_container_2.png> <./images/Chapter6/container
-_cc.png>] [125 <./images/Chapter6/pot_cc.png>]
+[125 <./images/Chapter6/add_catch_container_2.png> <./images/Chapter6/container
+_cc.png>] [126 <./images/Chapter6/pot_cc.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 237.
 
-<images/Chapter3/parent_transform.png, id=1694, 1367.1075pt x 780.9175pt>
+<images/Chapter3/parent_transform.png, id=1740, 1367.1075pt x 780.9175pt>
 File: images/Chapter3/parent_transform.png Graphic file (type png)
 
 <use images/Chapter3/parent_transform.png>
 Package pdftex.def Info: images/Chapter3/parent_transform.png used on input lin
 e 251.
 (pdftex.def)             Requested size: 297.75668pt x 170.07458pt.
- [126] [127 <./images/Chapter3/parent_transform.png>]
-<images/Chapter3/parent_transform_rendering.png, id=1714, 546.04pt x 431.6125pt
+ [127] [128 <./images/Chapter3/parent_transform.png>]
+<images/Chapter3/parent_transform_rendering.png, id=1760, 546.04pt x 431.6125pt
 >
 File: images/Chapter3/parent_transform_rendering.png Graphic file (type png)
  <use images/Chapter3/parent_transform_rendering.png>
@@ -2969,17 +3008,17 @@ File: images/note.png Graphic file (type png)
 Package pdftex.def Info: images/note.png used on input line 293.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-[128 <./images/Chapter3/parent_transform_rendering.png>] [129]
+[129 <./images/Chapter3/parent_transform_rendering.png>] [130]
 
 Package xcolor Warning: Incompatible color definition on input line 352.
 
-[130] [131] [132] [133] [134]
+[131] [132] [133] [134] [135]
 File: images/Chapter3/drawing_order.png Graphic file (type png)
  <use images/Chapter3/drawing_order.png>
 Package pdftex.def Info: images/Chapter3/drawing_order.png used on input line 5
 28.
 (pdftex.def)             Requested size: 382.82909pt x 134.80406pt.
- [135]
+ [136]
 
 Package xcolor Warning: Incompatible color definition on input line 544.
 
@@ -2987,8 +3026,8 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 545.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [136]
-<images/Chapter6/pot_bottom_code.png, id=1817, 282.05376pt x 91.34125pt>
+ [137]
+<images/Chapter6/pot_bottom_code.png, id=1863, 282.05376pt x 91.34125pt>
 File: images/Chapter6/pot_bottom_code.png Graphic file (type png)
 
 <use images/Chapter6/pot_bottom_code.png>
@@ -2996,34 +3035,37 @@ Package pdftex.def Info: images/Chapter6/pot_bottom_code.png used on input line
  584.
 (pdftex.def)             Requested size: 150.0pt x 48.57648pt.
 
-<images/Chapter6/pot_top_code.png, id=1818, 284.06125pt x 94.3525pt>
+<images/Chapter6/pot_top_code.png, id=1864, 284.06125pt x 94.3525pt>
 File: images/Chapter6/pot_top_code.png Graphic file (type png)
 
 <use images/Chapter6/pot_top_code.png>
 Package pdftex.def Info: images/Chapter6/pot_top_code.png used on input line 59
 0.
 (pdftex.def)             Requested size: 150.0pt x 49.82516pt.
- [137 <./images/Chapter6/pot_bottom_code.png>] [138 <./images/Chapter6/pot_top_
-code.png>]) [139]
+ [138 <./images/Chapter6/pot_bottom_code.png>] [139 <./images/Chapter6/pot_top_
+code.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 660.
+
+) [140] [141]
 \openout2 = `Chapters/7_User_Interfaces.aux'.
 
-
-(./Chapters/7_User_Interfaces.tex [140
-
-
-
-
-]
+ (./Chapters/7_User_Interfaces.tex
 Chapter 6.
-<images/Chapter6/screen_flow.png, id=1864, 1595.7216pt x 473.6094pt>
+<images/Chapter6/screen_flow.png, id=1913, 1595.7216pt x 473.6094pt>
 File: images/Chapter6/screen_flow.png Graphic file (type png)
 
 <use images/Chapter6/screen_flow.png>
 Package pdftex.def Info: images/Chapter6/screen_flow.png used on input line 20.
 
 (pdftex.def)             Requested size: 297.75668pt x 88.37517pt.
- [141 <./images/Chapter6/screen_flow.png>] [142] <images/Chapter6/opacity_lower
-.png, id=1876, 280.04625pt x 141.02687pt>
+ [142
+
+
+
+
+ <./images/Chapter6/screen_flow.png>] [143] <images/Chapter6/opacity_lower.png,
+ id=1925, 280.04625pt x 141.02687pt>
 File: images/Chapter6/opacity_lower.png Graphic file (type png)
 
 <use images/Chapter6/opacity_lower.png>
@@ -3031,16 +3073,16 @@ Package pdftex.def Info: images/Chapter6/opacity_lower.png used on input line 7
 4.
 (pdftex.def)             Requested size: 200.0pt x 100.72154pt.
 
-<images/Chapter6/multiple_screen_sizes.png, id=1877, 1358.676pt x 489.5088pt>
+<images/Chapter6/multiple_screen_sizes.png, id=1926, 1358.676pt x 489.5088pt>
 File: images/Chapter6/multiple_screen_sizes.png Graphic file (type png)
 
 <use images/Chapter6/multiple_screen_sizes.png>
 Package pdftex.def Info: images/Chapter6/multiple_screen_sizes.png used on inpu
 t line 86.
 (pdftex.def)             Requested size: 297.75668pt x 107.27399pt.
- [143 <./images/Chapter6/opacity_lower.png> <./images/Chapter6/multiple_screen_
+ [144 <./images/Chapter6/opacity_lower.png> <./images/Chapter6/multiple_screen_
 sizes.png>]
-<images/Chapter7/label_ontop_background.png, id=1885, 291.0875pt x 56.21pt>
+<images/Chapter7/label_ontop_background.png, id=1934, 291.0875pt x 56.21pt>
 File: images/Chapter7/label_ontop_background.png Graphic file (type png)
 
 <use images/Chapter7/label_ontop_background.png>
@@ -3048,16 +3090,16 @@ Package pdftex.def Info: images/Chapter7/label_ontop_background.png used on inp
 ut line 102.
 (pdftex.def)             Requested size: 200.0pt x 38.62111pt.
 
-<images/Chapter7/pos_ref_corner.png, id=1886, 226.8475pt x 51.19125pt>
+<images/Chapter7/pos_ref_corner.png, id=1935, 226.8475pt x 51.19125pt>
 File: images/Chapter7/pos_ref_corner.png Graphic file (type png)
 
 <use images/Chapter7/pos_ref_corner.png>
 Package pdftex.def Info: images/Chapter7/pos_ref_corner.png used on input line 
 110.
 (pdftex.def)             Requested size: 130.0pt x 29.3363pt.
- [144 <./images/Chapter7/label_ontop_background.png> <./images/Chapter7/pos_ref
+ [145 <./images/Chapter7/label_ontop_background.png> <./images/Chapter7/pos_ref
 _corner.png>]
-<images/Chapter7/start_scene.png, id=1900, 765.86125pt x 367.3725pt>
+<images/Chapter7/start_scene.png, id=1950, 765.86125pt x 367.3725pt>
 File: images/Chapter7/start_scene.png Graphic file (type png)
 
 <use images/Chapter7/start_scene.png>
@@ -3065,21 +3107,21 @@ Package pdftex.def Info: images/Chapter7/start_scene.png used on input line 132
 .
 (pdftex.def)             Requested size: 297.75668pt x 142.83183pt.
 
-<images/Chapter7/scrollview_concept.png, id=1901, 1575.486pt x 1437.2094pt>
+<images/Chapter7/scrollview_concept.png, id=1951, 1575.486pt x 1437.2094pt>
 File: images/Chapter7/scrollview_concept.png Graphic file (type png)
 
 <use images/Chapter7/scrollview_concept.png>
 Package pdftex.def Info: images/Chapter7/scrollview_concept.png used on input l
 ine 143.
 (pdftex.def)             Requested size: 212.68427pt x 194.0149pt.
- [145 <./images/Chapter7/start_scene.png>] [146 <./images/Chapter7/scrollview_c
+ [146 <./images/Chapter7/start_scene.png>] [147 <./images/Chapter7/scrollview_c
 oncept.png>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 183.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/Chapter7/content_node_width.png, id=1917, 1195.46625pt x 602.25pt>
+<images/Chapter7/content_node_width.png, id=1965, 1195.46625pt x 602.25pt>
 File: images/Chapter7/content_node_width.png Graphic file (type png)
 
 <use images/Chapter7/content_node_width.png>
@@ -3090,28 +3132,28 @@ ine 195.
 Underfull \vbox (badness 10000) detected at line 197
  []
 
-[147]
+[148]
 Underfull \vbox (badness 1314) detected at line 221
  []
 
-[148 <./images/Chapter7/content_node_width.png>]
-<images/Chapter7/content_node_completed.png, id=1933, 615.29875pt x 241.90375pt
+[149 <./images/Chapter7/content_node_width.png>]
+<images/Chapter7/content_node_completed.png, id=1981, 615.29875pt x 241.90375pt
 >
 File: images/Chapter7/content_node_completed.png Graphic file (type png)
  <use images/Chapter7/content_node_completed.png>
 Package pdftex.def Info: images/Chapter7/content_node_completed.png used on inp
 ut line 248.
 (pdftex.def)             Requested size: 255.22371pt x 100.3402pt.
- [149 <./images/Chapter7/content_node_completed.png>]
-<images/Chapter7/arrow_label_position.png, id=1947, 205.76875pt x 61.22874pt>
+ [150 <./images/Chapter7/content_node_completed.png>]
+<images/Chapter7/arrow_label_position.png, id=1995, 205.76875pt x 61.22874pt>
 File: images/Chapter7/arrow_label_position.png Graphic file (type png)
 
 <use images/Chapter7/arrow_label_position.png>
 Package pdftex.def Info: images/Chapter7/arrow_label_position.png used on input
  line 282.
 (pdftex.def)             Requested size: 150.0pt x 44.634pt.
- [150]
-<images/Chapter7/endless_mode.png, id=1964, 570.13pt x 384.43625pt>
+ [151]
+<images/Chapter7/endless_mode.png, id=2013, 570.13pt x 384.43625pt>
 File: images/Chapter7/endless_mode.png Graphic file (type png)
 
 <use images/Chapter7/endless_mode.png>
@@ -3119,16 +3161,16 @@ Package pdftex.def Info: images/Chapter7/endless_mode.png used on input line 29
 0.
 (pdftex.def)             Requested size: 150.0pt x 101.14186pt.
 
-<images/Chapter7/timeline_duration.png, id=1965, 889.3225pt x 211.79124pt>
+<images/Chapter7/timeline_duration.png, id=2014, 889.3225pt x 211.79124pt>
 File: images/Chapter7/timeline_duration.png Graphic file (type png)
 
 <use images/Chapter7/timeline_duration.png>
 Package pdftex.def Info: images/Chapter7/timeline_duration.png used on input li
 ne 301.
 (pdftex.def)             Requested size: 300.0pt x 71.44252pt.
- [151 <./images/Chapter7/arrow_label_position.png> <./images/Chapter7/endless_m
+ [152 <./images/Chapter7/arrow_label_position.png> <./images/Chapter7/endless_m
 ode.png> <./images/Chapter7/timeline_duration.png>]
-<images/Chapter7/timeline_ruler.png, id=1975, 144.54pt x 103.38625pt>
+<images/Chapter7/timeline_ruler.png, id=2023, 144.54pt x 103.38625pt>
 File: images/Chapter7/timeline_ruler.png Graphic file (type png)
 
 <use images/Chapter7/timeline_ruler.png>
@@ -3136,16 +3178,16 @@ Package pdftex.def Info: images/Chapter7/timeline_ruler.png used on input line
 320.
 (pdftex.def)             Requested size: 70.0pt x 50.06812pt.
 
-<images/Chapter7/edit_keyframe.png, id=1976, 433.62pt x 119.44624pt>
+<images/Chapter7/edit_keyframe.png, id=2024, 433.62pt x 119.44624pt>
 File: images/Chapter7/edit_keyframe.png Graphic file (type png)
 
 <use images/Chapter7/edit_keyframe.png>
 Package pdftex.def Info: images/Chapter7/edit_keyframe.png used on input line 3
 34.
 (pdftex.def)             Requested size: 250.0pt x 68.86694pt.
- [152 <./images/Chapter7/timeline_ruler.png> <./images/Chapter7/edit_keyframe.p
+ [153 <./images/Chapter7/timeline_ruler.png> <./images/Chapter7/edit_keyframe.p
 ng>]
-<images/Chapter7/chain_timeline_2.png, id=1985, 430.60875pt x 144.03813pt>
+<images/Chapter7/chain_timeline_2.png, id=2033, 430.60875pt x 144.03813pt>
 File: images/Chapter7/chain_timeline_2.png Graphic file (type png)
 
 <use images/Chapter7/chain_timeline_2.png>
@@ -3153,7 +3195,7 @@ Package pdftex.def Info: images/Chapter7/chain_timeline_2.png used on input lin
 e 355.
 (pdftex.def)             Requested size: 200.0pt x 66.9001pt.
 
-<images/Chapter7/loop_timeline.png, id=1986, 203.76125pt x 30.1125pt>
+<images/Chapter7/loop_timeline.png, id=2034, 203.76125pt x 30.1125pt>
 File: images/Chapter7/loop_timeline.png Graphic file (type png)
 
 <use images/Chapter7/loop_timeline.png>
@@ -3164,31 +3206,31 @@ File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 372.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [153 <./images/Chapter7/chain_timeline_2.png> <./images/Chapter7/loop_timeline
+ [154 <./images/Chapter7/chain_timeline_2.png> <./images/Chapter7/loop_timeline
 .png>]
 
 Package xcolor Warning: Incompatible color definition on input line 384.
 
-<images/Chapter7/sv_result.png, id=1995, 540.0175pt x 240.9pt>
+<images/Chapter7/sv_result.png, id=2043, 540.0175pt x 240.9pt>
 File: images/Chapter7/sv_result.png Graphic file (type png)
 
 <use images/Chapter7/sv_result.png>
 Package pdftex.def Info: images/Chapter7/sv_result.png used on input line 398.
 (pdftex.def)             Requested size: 250.0pt x 111.52109pt.
- [154 <./images/Chapter7/sv_result.png>]
-<images/Chapter7/scrollview_settings.png, id=2001, 298.11375pt x 150.5625pt>
+ [155 <./images/Chapter7/sv_result.png>]
+<images/Chapter7/scrollview_settings.png, id=2049, 298.11375pt x 150.5625pt>
 File: images/Chapter7/scrollview_settings.png Graphic file (type png)
 
 <use images/Chapter7/scrollview_settings.png>
 Package pdftex.def Info: images/Chapter7/scrollview_settings.png used on input 
 line 421.
 (pdftex.def)             Requested size: 250.0pt x 126.26256pt.
- [155 <./images/Chapter7/scrollview_settings.png>] [156]
+ [156 <./images/Chapter7/scrollview_settings.png>] [157]
 
 Package xcolor Warning: Incompatible color definition on input line 503.
 
-[157] [158]
-<images/Chapter7/gameplay_transition.png, id=2038, 963.6pt x 157.5486pt>
+[158] [159]
+<images/Chapter7/gameplay_transition.png, id=2087, 963.6pt x 157.5486pt>
 File: images/Chapter7/gameplay_transition.png Graphic file (type png)
 
 <use images/Chapter7/gameplay_transition.png>
@@ -3196,7 +3238,7 @@ Package pdftex.def Info: images/Chapter7/gameplay_transition.png used on input
 line 550.
 (pdftex.def)             Requested size: 361.56586pt x 59.11423pt.
 
-<images/Chapter7/new_timeline.png, id=2039, 426.59375pt x 206.7725pt>
+<images/Chapter7/new_timeline.png, id=2088, 426.59375pt x 206.7725pt>
 File: images/Chapter7/new_timeline.png Graphic file (type png)
 
 <use images/Chapter7/new_timeline.png>
@@ -3207,8 +3249,8 @@ Package pdftex.def Info: images/Chapter7/new_timeline.png used on input line 57
 Underfull \vbox (badness 1354) detected at line 575
  []
 
-[159 <./images/Chapter7/gameplay_transition.png> <./images/Chapter7/new_timelin
-e.png>] <images/Chapter7/switch_timeline.png, id=2048, 473.77pt x 75.28125pt>
+[160 <./images/Chapter7/gameplay_transition.png> <./images/Chapter7/new_timelin
+e.png>] <images/Chapter7/switch_timeline.png, id=2097, 473.77pt x 75.28125pt>
 File: images/Chapter7/switch_timeline.png Graphic file (type png)
 
 <use images/Chapter7/switch_timeline.png>
@@ -3219,8 +3261,8 @@ Package pdftex.def Info: images/Chapter7/switch_timeline.png used on input line
 
 Package xcolor Warning: Incompatible color definition on input line 586.
 
-[160 <./images/Chapter7/switch_timeline.png>] [161]
-<images/Chapter7/timeline_callback.png, id=2074, 538.01pt x 99.37125pt>
+[161 <./images/Chapter7/switch_timeline.png>] [162]
+<images/Chapter7/timeline_callback.png, id=2122, 538.01pt x 99.37125pt>
 File: images/Chapter7/timeline_callback.png Graphic file (type png)
 
 <use images/Chapter7/timeline_callback.png>
@@ -3228,7 +3270,7 @@ Package pdftex.def Info: images/Chapter7/timeline_callback.png used on input li
 ne 645.
 (pdftex.def)             Requested size: 300.0pt x 55.41096pt.
 
-<images/Chapter7/app_delegate.png, id=2075, 272.01625pt x 155.58125pt>
+<images/Chapter7/app_delegate.png, id=2123, 272.01625pt x 155.58125pt>
 File: images/Chapter7/app_delegate.png Graphic file (type png)
 
 <use images/Chapter7/app_delegate.png>
@@ -3239,44 +3281,44 @@ Package pdftex.def Info: images/Chapter7/app_delegate.png used on input line 67
 Underfull \vbox (badness 7379) detected at line 674
  []
 
-[162 <./images/Chapter7/timeline_callback.png>] [163 <./images/Chapter7/app_del
-egate.png>] [164]
+[163 <./images/Chapter7/timeline_callback.png>] [164 <./images/Chapter7/app_del
+egate.png>] [165]
 
 Package xcolor Warning: Incompatible color definition on input line 761.
 
-[165] [166] [167]
+[166] [167] [168]
 Overfull \vbox (0.76527pt too high) detected at line 893
  []
 
-[168] [169] [170] [171]
-<images/Chapter7/timed_mode_ui.png, id=2205, 571.13374pt x 386.44376pt>
+[169] [170] [171] [172]
+<images/Chapter7/timed_mode_ui.png, id=2253, 571.13374pt x 386.44376pt>
 File: images/Chapter7/timed_mode_ui.png Graphic file (type png)
 
 <use images/Chapter7/timed_mode_ui.png>
 Package pdftex.def Info: images/Chapter7/timed_mode_ui.png used on input line 1
 019.
 (pdftex.def)             Requested size: 212.68427pt x 143.90771pt.
- [172]
+ [173]
 Overfull \vbox (1.74341pt too high) detected at line 1049
  []
 
-[173 <./images/Chapter7/timed_mode_ui.png>]
-<images/Chapter7/endless_mode_ui.png, id=2225, 568.1225pt x 384.43625pt>
+[174 <./images/Chapter7/timed_mode_ui.png>]
+<images/Chapter7/endless_mode_ui.png, id=2273, 568.1225pt x 384.43625pt>
 File: images/Chapter7/endless_mode_ui.png Graphic file (type png)
 
 <use images/Chapter7/endless_mode_ui.png>
 Package pdftex.def Info: images/Chapter7/endless_mode_ui.png used on input line
  1075.
 (pdftex.def)             Requested size: 212.68427pt x 143.91685pt.
- [174 <./images/Chapter7/endless_mode_ui.png>] [175]
-<images/Chapter7/gameplay_design.png, id=2244, 412.4208pt x 162.3666pt>
+ [175 <./images/Chapter7/endless_mode_ui.png>] [176]
+<images/Chapter7/gameplay_design.png, id=2293, 412.4208pt x 162.3666pt>
 File: images/Chapter7/gameplay_design.png Graphic file (type png)
 
 <use images/Chapter7/gameplay_design.png>
 Package pdftex.def Info: images/Chapter7/gameplay_design.png used on input line
  1123.
 (pdftex.def)             Requested size: 212.68427pt x 83.73245pt.
- [176 <./images/Chapter7/gameplay_design.png>]
+ [177 <./images/Chapter7/gameplay_design.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 1161.
 
@@ -3287,81 +3329,81 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1167.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [177] [178] [179] [180] [181] [182] [183] [184] [185]
-[186] [187] [188]
+ [178] [179] [180] [181] [182] [183] [184] [185] [186]
+[187] [188] [189]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 1618.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [189] [190] [191]
+ [190] [191] [192]
 Overfull \hbox (4.49599pt too wide) in paragraph at lines 1742--1745
 [][]\T1/ppl/m/n/10.95 (-20) We again use op-tional chain-ing to only call the \
 T1/cmtt/l/n/10.95 game-play(mainScene:, dropped-FallingOb-
  []
 
-[192] <images/Chapter7/endless_game_with_ui.png, id=2507, 1140.26pt x 642.4pt>
+[193] <images/Chapter7/endless_game_with_ui.png, id=2556, 1140.26pt x 642.4pt>
 File: images/Chapter7/endless_game_with_ui.png Graphic file (type png)
 
 <use images/Chapter7/endless_game_with_ui.png>
 Package pdftex.def Info: images/Chapter7/endless_game_with_ui.png used on input
  line 1770.
 (pdftex.def)             Requested size: 212.68427pt x 119.82236pt.
- [193 <./images/Chapter7/endless_game_with_ui.png>]
-<images/Chapter7/game_over_popup.png, id=2520, 1140.26pt x 642.4pt>
+ [194 <./images/Chapter7/endless_game_with_ui.png>]
+<images/Chapter7/game_over_popup.png, id=2568, 1140.26pt x 642.4pt>
 File: images/Chapter7/game_over_popup.png Graphic file (type png)
 
 <use images/Chapter7/game_over_popup.png>
 Package pdftex.def Info: images/Chapter7/game_over_popup.png used on input line
  1792.
 (pdftex.def)             Requested size: 212.68427pt x 119.82236pt.
- [194 <./images/Chapter7/game_over_popup.png>]
+ [195 <./images/Chapter7/game_over_popup.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 1814.
 
-<images/Chapter7/9_slice.png, id=2527, 389.2944pt x 326.1786pt>
+<images/Chapter7/9_slice.png, id=2575, 389.2944pt x 326.1786pt>
 File: images/Chapter7/9_slice.png Graphic file (type png)
 
 <use images/Chapter7/9_slice.png>
 Package pdftex.def Info: images/Chapter7/9_slice.png used on input line 1824.
 (pdftex.def)             Requested size: 212.68427pt x 178.20427pt.
- [195 <./images/Chapter7/9_slice.png>]
-<images/Chapter7/9_slice_setup.png, id=2534, 402.50375pt x 301.125pt>
+ [196 <./images/Chapter7/9_slice.png>]
+<images/Chapter7/9_slice_setup.png, id=2582, 402.50375pt x 301.125pt>
 File: images/Chapter7/9_slice_setup.png Graphic file (type png)
 
 <use images/Chapter7/9_slice_setup.png>
 Package pdftex.def Info: images/Chapter7/9_slice_setup.png used on input line 1
 859.
 (pdftex.def)             Requested size: 212.68427pt x 159.11302pt.
- [196]
-<images/Chapter7/9_slice_settings.png, id=2547, 287.0725pt x 149.55875pt>
+ [197]
+<images/Chapter7/9_slice_settings.png, id=2595, 287.0725pt x 149.55875pt>
 File: images/Chapter7/9_slice_settings.png Graphic file (type png)
 
 <use images/Chapter7/9_slice_settings.png>
 Package pdftex.def Info: images/Chapter7/9_slice_settings.png used on input lin
 e 1870.
 (pdftex.def)             Requested size: 212.68427pt x 110.80638pt.
- [197 <./images/Chapter7/9_slice_setup.png> <./images/Chapter7/9_slice_settings
+ [198 <./images/Chapter7/9_slice_setup.png> <./images/Chapter7/9_slice_settings
 .png>]
-<images/Chapter7/set_dimensions.png, id=2554, 246.9225pt x 54.2025pt>
+<images/Chapter7/set_dimensions.png, id=2602, 246.9225pt x 54.2025pt>
 File: images/Chapter7/set_dimensions.png Graphic file (type png)
 
 <use images/Chapter7/set_dimensions.png>
 Package pdftex.def Info: images/Chapter7/set_dimensions.png used on input line 
 1903.
 (pdftex.def)             Requested size: 150.0pt x 32.92618pt.
- [198 <./images/Chapter7/set_dimensions.png>] [199]
+ [199 <./images/Chapter7/set_dimensions.png>] [200]
 
 Package xcolor Warning: Incompatible color definition on input line 1963.
 
-<images/Chapter7/popup_animation.png, id=2584, 935.1738pt x 443.256pt>
+<images/Chapter7/popup_animation.png, id=2633, 935.1738pt x 443.256pt>
 File: images/Chapter7/popup_animation.png Graphic file (type png)
 
 <use images/Chapter7/popup_animation.png>
 Package pdftex.def Info: images/Chapter7/popup_animation.png used on input line
  1977.
 (pdftex.def)             Requested size: 319.0264pt x 151.21231pt.
- [200]
-<images/Chapter7/timeline_zoom.png, id=2595, 214.8025pt x 28.105pt>
+ [201]
+<images/Chapter7/timeline_zoom.png, id=2644, 214.8025pt x 28.105pt>
 File: images/Chapter7/timeline_zoom.png Graphic file (type png)
 
 <use images/Chapter7/timeline_zoom.png>
@@ -3372,24 +3414,24 @@ Package pdftex.def Info: images/Chapter7/timeline_zoom.png used on input line 2
 
 Package xcolor Warning: Incompatible color definition on input line 2015.
 
-[201 <./images/Chapter7/popup_animation.png>]
+[202 <./images/Chapter7/popup_animation.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 2040.
 
-[202 <./images/Chapter7/timeline_zoom.png>]
-<images/Chapter7/timeline_ease_in.png, id=2613, 312.16624pt x 203.76125pt>
+[203 <./images/Chapter7/timeline_zoom.png>]
+<images/Chapter7/timeline_ease_in.png, id=2662, 312.16624pt x 203.76125pt>
 File: images/Chapter7/timeline_ease_in.png Graphic file (type png)
 
 <use images/Chapter7/timeline_ease_in.png>
 Package pdftex.def Info: images/Chapter7/timeline_ease_in.png used on input lin
 e 2049.
 (pdftex.def)             Requested size: 200.0pt x 130.54976pt.
- [203 <./images/Chapter7/timeline_ease_in.png>] [204]
+ [204 <./images/Chapter7/timeline_ease_in.png>] [205]
 Overfull \vbox (0.56296pt too high) detected at line 2157
  []
 
-[205]
-<images/Chapter7/root_node_disabled_position_type.png, id=2656, 203.76125pt x 4
+[206]
+<images/Chapter7/root_node_disabled_position_type.png, id=2704, 203.76125pt x 4
 8.18pt>
 File: images/Chapter7/root_node_disabled_position_type.png Graphic file (type p
 ng)
@@ -3401,34 +3443,38 @@ sed on input line 2170.
 
 Package xcolor Warning: Incompatible color definition on input line 2182.
 
-[206 <./images/Chapter7/root_node_disabled_position_type.png>] [207] [208]
-[209] <images/Chapter7/endless_popups.png, id=2703, 1140.26pt x 642.4pt>
+[207 <./images/Chapter7/root_node_disabled_position_type.png>] [208] [209]
+[210] <images/Chapter7/endless_popups.png, id=2752, 1140.26pt x 642.4pt>
 File: images/Chapter7/endless_popups.png Graphic file (type png)
 
 <use images/Chapter7/endless_popups.png>
 Package pdftex.def Info: images/Chapter7/endless_popups.png used on input line 
 2321.
 (pdftex.def)             Requested size: 319.0264pt x 179.73354pt.
- [210 <./images/Chapter7/endless_popups.png>] [211]
-<images/Chapter7/no_ui_fadeout_popup.png, id=2721, 1140.26pt x 642.4pt>
+ [211 <./images/Chapter7/endless_popups.png>] [212]
+<images/Chapter7/no_ui_fadeout_popup.png, id=2770, 1140.26pt x 642.4pt>
 File: images/Chapter7/no_ui_fadeout_popup.png Graphic file (type png)
 
 <use images/Chapter7/no_ui_fadeout_popup.png>
 Package pdftex.def Info: images/Chapter7/no_ui_fadeout_popup.png used on input 
 line 2402.
 (pdftex.def)             Requested size: 319.0264pt x 179.73354pt.
- [212] [213 <./images/Chapter7/no_ui_fadeout_popup.png>]
-<images/Chapter7/ui_fadeout_popup.png, id=2753, 1140.26pt x 642.4pt>
+ [213] [214 <./images/Chapter7/no_ui_fadeout_popup.png>]
+<images/Chapter7/ui_fadeout_popup.png, id=2801, 1140.26pt x 642.4pt>
 File: images/Chapter7/ui_fadeout_popup.png Graphic file (type png)
 
 <use images/Chapter7/ui_fadeout_popup.png>
 Package pdftex.def Info: images/Chapter7/ui_fadeout_popup.png used on input lin
 e 2432.
 (pdftex.def)             Requested size: 319.0264pt x 179.73354pt.
-) [214 <./images/Chapter7/ui_fadeout_popup.png>] [215]
+ [215 <./images/Chapter7/ui_fadeout_popup.png>]
+
+Package xcolor Warning: Incompatible color definition on input line 2455.
+
+) [216]
 \openout2 = `Chapters/8_Persistence_Leaderboards.aux'.
 
- (./Chapters/8_Persistence_Leaderboards.tex [216
+ (./Chapters/8_Persistence_Leaderboards.tex [217
 
 
 
@@ -3442,50 +3488,55 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 19.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [217] [218] [219] [220] [221] [222] [223]
-<images/Chapter8/Highscore_Message.png, id=2862, 1339.0025pt x 752.8125pt>
+ [218] [219] [220] [221] [222] [223] [224]
+<images/Chapter8/Highscore_Message.png, id=2912, 1339.0025pt x 752.8125pt>
 File: images/Chapter8/Highscore_Message.png Graphic file (type png)
 
 <use images/Chapter8/Highscore_Message.png>
 Package pdftex.def Info: images/Chapter8/Highscore_Message.png used on input li
 ne 271.
 (pdftex.def)             Requested size: 255.22371pt x 143.48384pt.
- [224]) [225 <./images/Chapter8/Highscore_Message.png>]
+ [225]
+
+Package xcolor Warning: Incompatible color definition on input line 283.
+
+) [226 <./images/Chapter8/Highscore_Message.png>]
 \openout2 = `Chapters/9_Effects_and_Animations.aux'.
 
- (./Chapters/9_Effects_and_Animations.tex [226
+
+(./Chapters/9_Effects_and_Animations.tex [227
 
 
 
 
 ]
 Chapter 8.
-<images/Chapter9/lighting_comparison.png, id=2890, 1227.58624pt x 335.2525pt>
+<images/Chapter9/lighting_comparison.png, id=2942, 1227.58624pt x 335.2525pt>
 File: images/Chapter9/lighting_comparison.png Graphic file (type png)
 
 <use images/Chapter9/lighting_comparison.png>
 Package pdftex.def Info: images/Chapter9/lighting_comparison.png used on input 
 line 17.
 (pdftex.def)             Requested size: 382.82909pt x 104.55128pt.
- [227 <./images/Chapter9/lighting_comparison.png>]
+ [228 <./images/Chapter9/lighting_comparison.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 37.
 
-<images/Chapter9/pot-bottom_NRM.png, id=2898, 437.635pt x 304.13625pt>
+<images/Chapter9/pot-bottom_NRM.png, id=2950, 437.635pt x 304.13625pt>
 File: images/Chapter9/pot-bottom_NRM.png Graphic file (type png)
 
 <use images/Chapter9/pot-bottom_NRM.png>
 Package pdftex.def Info: images/Chapter9/pot-bottom_NRM.png used on input line 
 54.
 (pdftex.def)             Requested size: 180.0pt x 125.09113pt.
- [228]
-<images/Chapter9/pot_lighting_comparison.png, id=2903, 654.445pt x 251.94125pt>
+ [229]
+<images/Chapter9/pot_lighting_comparison.png, id=2956, 654.445pt x 251.94125pt>
 File: images/Chapter9/pot_lighting_comparison.png Graphic file (type png)
 <use images/Chapter9/pot_lighting_comparison.png>
 Package pdftex.def Info: images/Chapter9/pot_lighting_comparison.png used on in
 put line 64.
 (pdftex.def)             Requested size: 300.0pt x 115.49072pt.
- [229 <./images/Chapter9/pot-bottom_NRM.png (PNG copy)> <./images/Chapter9/pot_
+ [230 <./images/Chapter9/pot-bottom_NRM.png (PNG copy)> <./images/Chapter9/pot_
 lighting_comparison.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 84.
@@ -3493,14 +3544,14 @@ Package xcolor Warning: Incompatible color definition on input line 84.
 
 Package xcolor Warning: Incompatible color definition on input line 90.
 
-[230] <images/Chapter9/effect_setup.png, id=2918, 758.3532pt x 541.5432pt>
+[231] <images/Chapter9/effect_setup.png, id=2971, 758.3532pt x 541.5432pt>
 File: images/Chapter9/effect_setup.png Graphic file (type png)
 
 <use images/Chapter9/effect_setup.png>
 Package pdftex.def Info: images/Chapter9/effect_setup.png used on input line 12
 7.
 (pdftex.def)             Requested size: 260.0pt x 185.66748pt.
- [231]
+ [232]
 
 Package xcolor Warning: Incompatible color definition on input line 150.
 
@@ -3526,8 +3577,8 @@ File: images/note.png Graphic file (type png)
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 151.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [232 <./images/Chapter9/effect_setup.png>]
-<images/Chapter9/copy_nodes_effect.png, id=2930, 294.09875pt x 77.28876pt>
+ [233 <./images/Chapter9/effect_setup.png>]
+<images/Chapter9/copy_nodes_effect.png, id=2983, 294.09875pt x 77.28876pt>
 File: images/Chapter9/copy_nodes_effect.png Graphic file (type png)
 
 <use images/Chapter9/copy_nodes_effect.png>
@@ -3535,7 +3586,7 @@ Package pdftex.def Info: images/Chapter9/copy_nodes_effect.png used on input li
 ne 165.
 (pdftex.def)             Requested size: 200.0pt x 52.56036pt.
 
-<images/Chapter9/node_hierarchy_effect2.png, id=2931, 291.0875pt x 74.2775pt>
+<images/Chapter9/node_hierarchy_effect2.png, id=2984, 291.0875pt x 74.2775pt>
 File: images/Chapter9/node_hierarchy_effect2.png Graphic file (type png)
 
 <use images/Chapter9/node_hierarchy_effect2.png>
@@ -3543,7 +3594,7 @@ Package pdftex.def Info: images/Chapter9/node_hierarchy_effect2.png used on inp
 ut line 171.
 (pdftex.def)             Requested size: 200.0pt x 51.03505pt.
 
-<images/Chapter9/light_source_relative_position.png, id=2932, 891.33pt x 789.95
+<images/Chapter9/light_source_relative_position.png, id=2985, 891.33pt x 789.95
 125pt>
 File: images/Chapter9/light_source_relative_position.png Graphic file (type png
 )
@@ -3551,12 +3602,12 @@ File: images/Chapter9/light_source_relative_position.png Graphic file (type png
 Package pdftex.def Info: images/Chapter9/light_source_relative_position.png use
 d on input line 192.
 (pdftex.def)             Requested size: 340.29613pt x 301.59486pt.
- [233 <./images/Chapter9/copy_nodes_effect.png> <./images/Chapter9/node_hierarc
-hy_effect2.png>] [234 <./images/Chapter9/light_source_relative_position.png>]
+ [234 <./images/Chapter9/copy_nodes_effect.png> <./images/Chapter9/node_hierarc
+hy_effect2.png>] [235 <./images/Chapter9/light_source_relative_position.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 208.
 
-<images/Chapter9/select_resolution.png, id=2951, 447.6725pt x 62.2325pt>
+<images/Chapter9/select_resolution.png, id=3005, 447.6725pt x 62.2325pt>
 File: images/Chapter9/select_resolution.png Graphic file (type png)
 
 <use images/Chapter9/select_resolution.png>
@@ -3571,7 +3622,7 @@ Package pdftex.def Info: images/note.png used on input line 217.
 Overfull \vbox (0.31154pt too high) detected at line 252
  []
 
-[235 <./images/Chapter9/select_resolution.png>] [236]
+[236 <./images/Chapter9/select_resolution.png>] [237]
 
 Package xcolor Warning: Incompatible color definition on input line 297.
 
@@ -3581,44 +3632,44 @@ Underfull \hbox (badness 3803) in paragraph at lines 294--299
 ng -[] tutorial$[][]\T1/ppl/m/n/10.95 (+20) . The
  []
 
-[237]
+[238]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 299.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-<images/Chapter9/add_lighting_effect.png, id=2985, 386.44376pt x 251.94125pt>
+<images/Chapter9/add_lighting_effect.png, id=3037, 386.44376pt x 251.94125pt>
 File: images/Chapter9/add_lighting_effect.png Graphic file (type png)
 
 <use images/Chapter9/add_lighting_effect.png>
 Package pdftex.def Info: images/Chapter9/add_lighting_effect.png used on input 
 line 314.
 (pdftex.def)             Requested size: 200.0pt x 130.39127pt.
- [238 <./images/Chapter9/add_lighting_effect.png>]
-<images/Chapter9/select_normal_map.png, id=2994, 287.0725pt x 81.30376pt>
+ [239 <./images/Chapter9/add_lighting_effect.png>]
+<images/Chapter9/select_normal_map.png, id=3046, 287.0725pt x 81.30376pt>
 File: images/Chapter9/select_normal_map.png Graphic file (type png)
 
 <use images/Chapter9/select_normal_map.png>
 Package pdftex.def Info: images/Chapter9/select_normal_map.png used on input li
 ne 349.
 (pdftex.def)             Requested size: 200.0pt x 56.64426pt.
- [239]
-<images/Chapter9/lighting_finished.png, id=3005, 547.04375pt x 307.1475pt>
+ [240]
+<images/Chapter9/lighting_finished.png, id=3057, 547.04375pt x 307.1475pt>
 File: images/Chapter9/lighting_finished.png Graphic file (type png)
 
 <use images/Chapter9/lighting_finished.png>
 Package pdftex.def Info: images/Chapter9/lighting_finished.png used on input li
 ne 368.
 (pdftex.def)             Requested size: 350.0pt x 196.51749pt.
- [240 <./images/Chapter9/select_normal_map.png> <./images/Chapter9/lighting_fin
+ [241 <./images/Chapter9/select_normal_map.png> <./images/Chapter9/lighting_fin
 ished.png>]
 File: images/note.png Graphic file (type png)
  <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 387.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
 
-[241] [242] [243] [244]
-<images/Chapter9/particle_fire.png, id=3061, 302.12875pt x 340.27126pt>
+[242] [243] [244] [245]
+<images/Chapter9/particle_fire.png, id=3114, 302.12875pt x 340.27126pt>
 File: images/Chapter9/particle_fire.png Graphic file (type png)
 
 <use images/Chapter9/particle_fire.png>
@@ -3626,16 +3677,16 @@ Package pdftex.def Info: images/Chapter9/particle_fire.png used on input line 5
 21.
 (pdftex.def)             Requested size: 130.0pt x 146.41243pt.
 
-<images/Chapter9/create_particle_effect.png, id=3062, 540.0175pt x 258.9675pt>
+<images/Chapter9/create_particle_effect.png, id=3115, 540.0175pt x 258.9675pt>
 File: images/Chapter9/create_particle_effect.png Graphic file (type png)
 
 <use images/Chapter9/create_particle_effect.png>
 Package pdftex.def Info: images/Chapter9/create_particle_effect.png used on inp
 ut line 540.
 (pdftex.def)             Requested size: 250.0pt x 119.88518pt.
- [245 <./images/Chapter9/particle_fire.png>] [246 <./images/Chapter9/create_par
+ [246 <./images/Chapter9/particle_fire.png>] [247 <./images/Chapter9/create_par
 ticle_effect.png>]
-<images/Chapter9/select_exploded_ring.png, id=3073, 300.12125pt x 230.8625pt>
+<images/Chapter9/select_exploded_ring.png, id=3127, 300.12125pt x 230.8625pt>
 File: images/Chapter9/select_exploded_ring.png Graphic file (type png)
 
 <use images/Chapter9/select_exploded_ring.png>
@@ -3643,30 +3694,30 @@ Package pdftex.def Info: images/Chapter9/select_exploded_ring.png used on input
  line 582.
 (pdftex.def)             Requested size: 250.0pt x 192.3133pt.
 
-<images/Chapter9/start_particles.png, id=3074, 286.06876pt x 115.43124pt>
+<images/Chapter9/start_particles.png, id=3128, 286.06876pt x 115.43124pt>
 File: images/Chapter9/start_particles.png Graphic file (type png)
 
 <use images/Chapter9/start_particles.png>
 Package pdftex.def Info: images/Chapter9/start_particles.png used on input line
  599.
 (pdftex.def)             Requested size: 150.0pt x 60.52657pt.
- [247 <./images/Chapter9/select_exploded_ring.png>]
-<images/Chapter9/change_lifetime.png, id=3081, 283.0575pt x 102.3825pt>
+ [248 <./images/Chapter9/select_exploded_ring.png>]
+<images/Chapter9/change_lifetime.png, id=3134, 283.0575pt x 102.3825pt>
 File: images/Chapter9/change_lifetime.png Graphic file (type png)
 
 <use images/Chapter9/change_lifetime.png>
 Package pdftex.def Info: images/Chapter9/change_lifetime.png used on input line
  621.
 (pdftex.def)             Requested size: 250.0pt x 90.42807pt.
- [248 <./images/Chapter9/start_particles.png> <./images/Chapter9/change_lifetim
-e.png>] [249] [250]
+ [249 <./images/Chapter9/start_particles.png> <./images/Chapter9/change_lifetim
+e.png>] [250] [251]
 File: images/note.png Graphic file (type png)
 
 <use images/note.png>
 Package pdftex.def Info: images/note.png used on input line 713.
 (pdftex.def)             Requested size: 45.5244pt x 45.52151pt.
- [251]
-<images/Chapter9/wobble_animation.png, id=3124, 1858.945pt x 309.155pt>
+ [252]
+<images/Chapter9/wobble_animation.png, id=3176, 1858.945pt x 309.155pt>
 File: images/Chapter9/wobble_animation.png Graphic file (type png)
 
 <use images/Chapter9/wobble_animation.png>
@@ -3677,7 +3728,7 @@ e 734.
 
 Package xcolor Warning: Incompatible color definition on input line 744.
 
-<images/Chapter9/timeline_new.png, id=3126, 332.24126pt x 156.585pt>
+<images/Chapter9/timeline_new.png, id=3178, 332.24126pt x 156.585pt>
 File: images/Chapter9/timeline_new.png Graphic file (type png)
 
 <use images/Chapter9/timeline_new.png>
@@ -3688,7 +3739,7 @@ Package pdftex.def Info: images/Chapter9/timeline_new.png used on input line 75
 
 Package xcolor Warning: Incompatible color definition on input line 759.
 
-<images/Chapter9/zoom_timeline.png, id=3128, 266.9975pt x 98.3675pt>
+<images/Chapter9/zoom_timeline.png, id=3180, 266.9975pt x 98.3675pt>
 File: images/Chapter9/zoom_timeline.png Graphic file (type png)
 
 <use images/Chapter9/zoom_timeline.png>
@@ -3696,31 +3747,35 @@ Package pdftex.def Info: images/Chapter9/zoom_timeline.png used on input line 7
 64.
 (pdftex.def)             Requested size: 130.0pt x 47.89578pt.
 
-<images/Chapter9/wobble_timeline.png, id=3129, 449.68pt x 84.315pt>
+<images/Chapter9/wobble_timeline.png, id=3181, 449.68pt x 84.315pt>
 File: images/Chapter9/wobble_timeline.png Graphic file (type png)
 
 <use images/Chapter9/wobble_timeline.png>
 Package pdftex.def Info: images/Chapter9/wobble_timeline.png used on input line
  781.
 (pdftex.def)             Requested size: 300.0pt x 56.25273pt.
- [252 <./images/Chapter9/wobble_animation.png> <./images/Chapter9/timeline_new.
-png>] [253 <./images/Chapter9/zoom_timeline.png> <./images/Chapter9/wobble_time
+ [253 <./images/Chapter9/wobble_animation.png> <./images/Chapter9/timeline_new.
+png>] [254 <./images/Chapter9/zoom_timeline.png> <./images/Chapter9/wobble_time
 line.png>]
-<images/Chapter9/copy_keyframes.png, id=3154, 470.75874pt x 165.61874pt>
+<images/Chapter9/copy_keyframes.png, id=3206, 470.75874pt x 165.61874pt>
 File: images/Chapter9/copy_keyframes.png Graphic file (type png)
 
 <use images/Chapter9/copy_keyframes.png>
 Package pdftex.def Info: images/Chapter9/copy_keyframes.png used on input line 
 803.
 (pdftex.def)             Requested size: 300.0pt x 105.54327pt.
- [254 <./images/Chapter9/copy_keyframes.png>]
+ [255 <./images/Chapter9/copy_keyframes.png>]
 
 Package xcolor Warning: Incompatible color definition on input line 837.
 
-[255] [256] [257] [258]) [259]
+[256] [257] [258] [259]
+
+Package xcolor Warning: Incompatible color definition on input line 966.
+
+) [260]
 \openout2 = `Chapters/10_What_Next.aux'.
 
- (./Chapters/10_What_Next.tex [260
+ (./Chapters/10_What_Next.tex [261
 
 
 
@@ -3736,34 +3791,34 @@ Package xcolor Warning: Incompatible color definition on input line 22.
 
 Package xcolor Warning: Incompatible color definition on input line 30.
 
-[261]
+[262]
 
 Package xcolor Warning: Incompatible color definition on input line 39.
 
-) [262]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 279.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 279.
+) [263]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 281.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 281.
  (./document.aux (./Chapters/0_Cover.aux) (./Chapters/2_About_Book.aux)
 (./Chapters/3_Introduction_SpriteBuilder_Cocos2D.aux)
 (./Chapters/4_Assets_SpriteBuilder.aux) (./Chapters/5_User_Interaction.aux)
 (./Chapters/6_Scene_Graphs_Transforms.aux) (./Chapters/7_User_Interfaces.aux)
 (./Chapters/8_Persistence_Leaderboards.aux)
 (./Chapters/9_Effects_and_Animations.aux) (./Chapters/10_What_Next.aux))
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 279.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 279.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 281.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 281.
 Package rerunfilecheck Info: File `document.out' has not changed.
-(rerunfilecheck)             Checksum: F68A093188A66ECD91338F5534A1E43D;7923.
+(rerunfilecheck)             Checksum: 6138D298E34DBB987F50E54A410AFC6D;8448.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 279.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 281.
  ) 
 Here is how much of TeX's memory you used:
- 37593 strings out of 493109
- 731866 string characters out of 6135004
- 1119607 words of memory out of 5000000
- 38449 multiletter control sequences out of 15000+600000
+ 37609 strings out of 493109
+ 732139 string characters out of 6135004
+ 1120969 words of memory out of 5000000
+ 38457 multiletter control sequences out of 15000+600000
  35741 words of font info for 220 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  73i,9n,145p,10423b,1852s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -3781,10 +3836,10 @@ mf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2014/texmf-dist
 /type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/
 urw/palatino/uplr8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/pal
 atino/uplri8a.pfb>
-Output written on document.pdf (262 pages, 16685194 bytes).
+Output written on document.pdf (263 pages, 16702039 bytes).
 PDF statistics:
- 3633 PDF objects out of 4296 (max. 8388607)
- 3060 compressed objects within 31 object streams
- 1582 named destinations out of 1728 (max. 500000)
- 25159 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 3690 PDF objects out of 4296 (max. 8388607)
+ 3115 compressed objects within 32 object streams
+ 1590 named destinations out of 1728 (max. 500000)
+ 25215 words of extra memory for PDF output out of 29859 (max. 10000000)
 

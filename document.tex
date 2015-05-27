@@ -214,8 +214,10 @@ sep=10pt] at (frame.north west) {\includegraphics[width=16mm]{images/note.png}};
 
 \begin{document}
 \include{Chapters/0_Cover}
+\cleardoublepage{}
 \tableofcontents{}
-\newpage{}
+%http://tex.stackexchange.com/questions/111338/inserting-a-blank-left-starting-page-in-a-koma-script-book
+\KOMAoptions{open=left}
 \include{Chapters/2_About_Book}
 \include{Chapters/3_Introduction_SpriteBuilder_Cocos2D}
 \include{Chapters/4_Assets_SpriteBuilder}

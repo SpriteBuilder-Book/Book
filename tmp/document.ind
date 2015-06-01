@@ -1,72 +1,72 @@
 \begin{theindex}
 
   \item \SB{} Timeline
-    \subitem Chaining, \hyperpage{154}
-  \item \SB{} timeline, \hyperpage{99}
+    \subitem Chaining, \hyperpage{152}
+  \item \SB{} timeline, \hyperpage{97}
 
   \indexspace
 
-  \item Action System, \hyperpage{66}
+  \item Action System, \hyperpage{64}
   \item Assets
-    \subitem Adding Assets, \hyperpage{74}
-    \subitem Automatic Downscaling, \hyperpage{75}
+    \subitem Adding Assets, \hyperpage{72}
+    \subitem Automatic Downscaling, \hyperpage{73}
 
   \indexspace
 
-  \item CCBReader, \hyperpage{55}
-  \item CCDirector, \hyperpage{51}
-  \item Code Connections, \hyperpage{34}
-    \subitem Callbacks, \hyperpage{43}
-    \subitem Custom Classes, \hyperpage{45}, \hyperpage{47}
-    \subitem Variable Assignment, \hyperpage{58}
+  \item CCBReader, \hyperpage{53}
+  \item CCDirector, \hyperpage{49}
+  \item Code Connections, \hyperpage{32}
+    \subitem Callbacks, \hyperpage{41}
+    \subitem Custom Classes, \hyperpage{43}, \hyperpage{45}
+    \subitem Variable Assignment, \hyperpage{56}
 
   \indexspace
 
-  \item Document Root, \hyperpage{45}
-  \item Document Types, \hyperpage{35}, \hyperpage{148}
+  \item Document Root, \hyperpage{43}
+  \item Document Types, \hyperpage{33}, \hyperpage{146}
 
   \indexspace
 
-  \item Fixed Update, \hyperpage{98}
-  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{95}
-    \subitem CCFileUtils, \hyperpage{80}
+  \item Fixed Update, \hyperpage{96}
+  \item Framework Classes, \hyperindexformat{\CCSchedulerTarget}{93}
+    \subitem CCFileUtils, \hyperpage{78}
 
   \indexspace
 
-  \item Node Lifecycle, \hyperpage{63}
+  \item Node Lifecycle, \hyperpage{61}
   \item Node transformation
-    \subitem Bounding Box, \hyperpage{126}
-    \subitem Position, \hyperpage{131}
+    \subitem Bounding Box, \hyperpage{124}
+    \subitem Position, \hyperpage{129}
   \item Nodes
-    \subitem CCSprite9Slice, \hyperpage{196}
+    \subitem CCSprite9Slice, \hyperpage{194}
 
   \indexspace
 
-  \item Positioning System, \hyperpage{42}
-  \item Publish, \hyperpage{36}
+  \item Positioning System, \hyperpage{40}
+  \item Publish, \hyperpage{34}
 
   \indexspace
 
-  \item Scene Transition, \hyperpage{51}
+  \item Scene Transition, \hyperpage{49}
   \item SpriteBuilder Timeline
-    \subitem Change Duration, \hyperpage{152}
-    \subitem Create new   Timeline, \hyperpage{253}
-    \subitem Interpolation, \hyperpage{203}
-  \item Start Scene, \hyperpage{163}
+    \subitem Change Duration, \hyperpage{150}
+    \subitem Create new   Timeline, \hyperpage{251}
+    \subitem Interpolation, \hyperpage{201}
+  \item Start Scene, \hyperpage{161}
 
   \indexspace
 
-  \item Touch Handling, \hyperpage{68}
+  \item Touch Handling, \hyperpage{66}
 
   \indexspace
 
-  \item Update Loop, \hyperpage{95}
+  \item Update Loop, \hyperpage{93}
   \item User Interface
-    \subitem CCScrollView, \hyperpage{143}
-      \subsubitem Delegate, \hyperpage{166}
+    \subitem CCScrollView, \hyperpage{141}
+      \subsubitem Delegate, \hyperpage{164}
 
   \indexspace
 
-  \item Z-Order, \hyperpage{135}
+  \item Z-Order, \hyperpage{133}
 
 \end{theindex}

@@ -660,7 +660,7 @@ func performCaughtStep(fallingObject:FallingObject) {
   if (CGRectContainsRect(pot.catchContainer.boundingBox(), fallingObject.boundingBox())) {
     gameMode?.gameplay(self, caughtFallingObject: fallingObject)
     fallingObject.removeFromParent()
-    let fallingObjectIndex = find(fallingObjects, fallingObject)!
+    let fallingObjectIndex = fallingObjects.indexOf(fallingObject)!
     fallingObjects.removeAtIndex(fallingObjectIndex)
     
     (*@\colorbox{light-gray}{// New code starts here}@*)
@@ -903,7 +903,7 @@ func performCaughtStep(fallingObject:FallingObject) {
   if (CGRectContainsRect(pot.catchContainer.boundingBox(), fallingObject.boundingBox())) {
     gameMode?.gameplay(self, caughtFallingObject: fallingObject)
     fallingObject.removeFromParent()
-    let fallingObjectIndex = find(fallingObjects, fallingObject)!
+    let fallingObjectIndex = fallingObjects.indexOf(fallingObject)!
     fallingObjects.removeAtIndex(fallingObjectIndex)
     
     if (fallingObject.type == .Good) {

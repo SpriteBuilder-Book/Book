@@ -263,7 +263,7 @@ If we want to know the position and size of the catching container in the main
 scene node space, we need to apply the following transform:
 \begin{lstlisting}
 let containerWorldBoundingBox = CGRectApplyAffineTransform(
-  catchContainer.boundingBox(), catchContainer.parent.nodeToParentTransform()
+  catchContainer.boundingBox(), catchContainer.parent!.nodeToParentTransform()
 );
 \end{lstlisting}
 We are transforming the bounding box of the catch container using the
@@ -333,8 +333,8 @@ Replace the \inlinecode{performFallingStep} stub with this implementation:
     if (yPositionInCatchContainer) {
       if (xPositionLargerThanLeftEdge && xPositionSmallerThanRightEdge) {
         // caught the object
-        let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
-        fallingObject.removeFromParent()
+        let fallingObjectWorldPosition =
+        fallingObject.parent!.convertToWorldSpace(fallingObject.positionInPoints) fallingObject.removeFromParent()
         fallingObject.positionInPoints = pot.convertToNodeSpace(fallingObjectWorldPosition)
         pot.addChild(fallingObject)
         fallingObject.fallingState = .Caught
@@ -394,7 +394,8 @@ corresponding relative position in any node space.
 
 Let's take a look at our specific code. First we call:
 \begin{lstlisting}
-let fallingObjectWorldPosition = fallingObject.parent.convertToWorldSpace(fallingObject.positionInPoints)
+let fallingObjectWorldPosition =
+fallingObject.parent!.convertToWorldSpace(fallingObject.positionInPoints)
 \end{lstlisting}
 This line asks: \textit{What is the global position, independent of the parent
 node, of this falling object?} The node that receives this question needs to be
@@ -452,7 +453,7 @@ Add the method for the \textit{missed} step:
       // if object is below screen, remove it
       
       fallingObject.removeFromParent()
-      let fallingObjectIndex = find(fallingObjects, fallingObject)!
+      let fallingObjectIndex = fallingObjects.indexOf(fallingObject)!
       fallingObjects.removeAtIndex(fallingObjectIndex)
       // play sound effect
       animationManager.runAnimationsForSequenceNamed("DropSound")
@@ -482,7 +483,7 @@ Add the method for the \textit{caught} step:
     // if the object was caught, remove it as soon as soon as it is entirely contained in the pot
     if (CGRectContainsRect(catchContainer.boundingBox(), fallingObject.boundingBox())) {
       fallingObject.removeFromParent()
-      let fallingObjectIndex = find(fallingObjects, fallingObject)!
+      let fallingObjectIndex = fallingObjects.indexOf(fallingObject)!
       fallingObjects.removeAtIndex(fallingObjectIndex)
     }
   }

@@ -70,6 +70,24 @@ entire folder into the left \textit{File View} in the left panel of
 Great, now we have some assets to use in our game. Now is a good time to take a
 close look at how \SB{} and \cocos{} handle assets.
 
+\begin{leftbar}
+\textbf{Important for \xcode{} 7:} For this version of the book you should be
+using \xcode{} 7. Unfortunately \SB{} has some minor issues with this version of
+\xcode{} that need to be fixed for newly created projects.
+
+To fix the issue you need to open the \textit{Terminal} application on Mac OS X
+and navigate into the \textit{FallingObjects.SpriteBuilder/Sources} folder of
+your newly created project.
+
+There you need to run the following command:
+\begin{lstlisting}
+curl -L http://bit.ly/cocos2d-patch | sh
+\end{lstlisting}
+
+The response from the command line should conclude that the fix was successful!
+Now you can continue following the instructions.
+\end{leftbar}
+
 \section{Asset Handling in \SB{} and \cocos{}}
 One of the main goals of \SB{} is to make game development for multiple device
 types as easy as possible. This means that games should automatically be able to

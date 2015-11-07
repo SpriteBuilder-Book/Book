@@ -1222,21 +1222,21 @@ implementation itself is not too complicated.
 Create a new Swift file and name it \filemention{TimedGameMode}. Add the
 following class definition to the new file:
 \begin{lstlisting}
-@objc(TimedGameMode)
-class TimedGameMode: GameMode {
+class TimedGameMode: GameMode, NSObject {
   var timeLabel: CCLabelTTF!
   var pointsLabel: CCLabelTTF!
 }
 \end{lstlisting}
 \end{leftbar}
-There's a lot going on in these few lines. Firstly, we need the
-\inlinecode{@objc} annotation to make this class visible to \cocos{}. \cocos{}
-is written in Objective-C and can only see classes that are subclasses of
+There's a lot going on in these few lines. Firstly, we need to inherit from
+\inlinecode{NSObject} to make this class visible to Objective-C.
+\cocos{} is written in Objective-C and can only see classes that are subclasses of
 \inlinecode{NSObject} or that have the \inlinecode{@objc} annotation. So far all
 of our classes have been subclasses of \cocos{} classes, and all of them in turn
-are derived from \inlinecode{NSObject}, therefore this annotation wasn't
-necessary. The \inlinecode{TimedGameMode} class is our first class that is not a
-subclass of an Objective-C class.
+are derived from \inlinecode{NSObject}, therefore explicitly subclassing from
+\inlinecode{NSObject} wasn't necessary.
+The \inlinecode{TimedGameMode} class is our first class that is not a subclass
+of a \cocos{} class.
 
 In the second line we declare that our class conforms to the
 \inlinecode{GameMode} protocol. We also declare two properties
@@ -1311,15 +1311,19 @@ loading the game mode's UI from a \ccbfile{}.
 \begin{leftbar}
 Add the following initializer:
 \begin{lstlisting}
-init() {
+override init() {
+  super.init()
+  
   userInterface = CCBReader.load("TimedModeUI", owner:self)
   updatePointsDisplay(points)
   updateTimeDisplay(time)
 }
 \end{lstlisting}
 \end{leftbar}
-In the first line we load the \filemention{TimedModeUI} \ccbfile{}. We store the
-loaded node hierarchy in the \inlinecode{userInterface} property, that way it
+In the first line after the call to \inlinecode{super}
+(which is \inlinecode{NSObject}) we load the \filemention{TimedModeUI}
+\ccbfile{}.
+We store the loaded node hierarchy in the \inlinecode{userInterface} property, that way it
 can be accessed by \inlinecode{MainScene}.
 We also call our two label helper methods, so that the labels display the
 correct initial values for time and points.
@@ -1410,17 +1414,15 @@ Let's start with setting up the basic class and code connections.
 Create a new Swift file in \xcode{} and name it \textit{EndlessGameMode}. Then
 add the following class definition and properties:
 \begin{lstlisting}
-@objc(EndlessGameMode)
-class EndlessGameMode: GameMode {
+class EndlessGameMode: NSObject, GameMode {
   var healthBar: CCNode!
   var survivedLabel: CCLabelTTF!
 }
 \end{lstlisting}
 \end{leftbar}
-As I said, this is pretty similar to the timed game mode. We need the
-\inlinecode{@objc} annotation because this class does not inherit from an
-Objective-C class. We declare two properties for the two UI elements in the
-\filemention{EndlessModeUI} \ccbfile{}.
+As I said, this is pretty similar to the timed game mode. We need the to inherit
+from \inlinecode{NSObject} to expose this class to our Objective-C code.
+We declare two properties for the two UI elements in the \filemention{EndlessModeUI} \ccbfile{}.
 
 In the endless game mode we will have two game parameters that we want to keep
 track off: the current \textit{health} of the player and the
@@ -1485,7 +1487,9 @@ Next, we need to add the initializer that will load the user interface.
 \begin{leftbar}
 Add the following init method to \inlinecode{EndlessGameMode}:
 \begin{lstlisting}
-init() {
+override init() {
+  super.init()
+  
   userInterface = CCBReader.load("EndlessModeUI", owner:self)
 }
 \end{lstlisting}

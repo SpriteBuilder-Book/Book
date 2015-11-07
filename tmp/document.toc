@@ -102,11 +102,11 @@
 \contentsline {subsubsection}{\nonumberline Implementing the Endless Game Mode}{187}{section*.23}
 \contentsline {subsection}{\numberline {6.2.3}Connecting the Game Modes to the Main Scene}{191}{subsection.6.2.3}
 \contentsline {section}{\numberline {6.3}Adding a Game Over Popup}{197}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Setting up the Popup in SpriteBuilder{}}{197}{subsection.6.3.1}
-\contentsline {section}{\numberline {6.4}Presenting the Popup in Code}{206}{section.6.4}
+\contentsline {subsection}{\numberline {6.3.1}Setting up the Popup in SpriteBuilder{}}{198}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}Presenting the Popup in Code}{207}{section.6.4}
 \contentsline {section}{\numberline {6.5}Providing a Highscore for each Game Mode}{212}{section.6.5}
 \contentsline {section}{\numberline {6.6}Tweaking the Game Over Popup}{214}{section.6.6}
-\contentsline {section}{\numberline {6.7}Summary}{217}{section.6.7}
+\contentsline {section}{\numberline {6.7}Summary}{218}{section.6.7}
 \contentsline {subsection}{\numberline {6.7.1}Grab the Source Code}{218}{subsection.6.7.1}
 \contentsline {chapter}{\numberline {7}Persisting Highscores}{220}{chapter.7}
 \contentsline {section}{\numberline {7.1}Extending the GameMode Protocol}{221}{section.7.1}

@@ -1271,7 +1271,7 @@ add an according \inlinecode{\_\_attribute\_\_} to the method definition:
 \end{details}
 \begin{leftbar}
 Add this implementation of
-\inlinecode{onEnter} to \textit{Square.m}:
+\inlinecode{onEnter} to \textit{Square.swift}:
 \begin{lstlisting}
 override func onEnter() {
   super.onEnter()
@@ -1328,8 +1328,8 @@ another action and - exactly, repeats it forever!
 Let's use the Action System to rotate our squares!
 
 \begin{leftbar}
-Add the following lines to the \inlinecode{onEnter} method of \textit{Square.m}
-to make the square rotate endlessly:
+Add the following lines to the \inlinecode{onEnter} method of
+\textit{Square.swift} to make the square rotate endlessly:
 \begin{lstlisting}
 let rotate = CCActionRotateBy(duration: 2.0, angle: 360.0)
 let repeatRotation = CCActionRepeatForever(action: rotate)
